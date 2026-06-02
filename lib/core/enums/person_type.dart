@@ -1,0 +1,1 @@
+enum PersonType { male, female }

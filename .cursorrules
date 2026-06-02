@@ -1,0 +1,124 @@
+# Wathiq Project Development Rules & Guidelines
+
+You are an expert Flutter & Dart developer. When writing code, generating components, or refactoring in this project, you MUST strictly adhere to the following rules and patterns.
+
+---
+
+## 1. Project Architecture & Structure
+
+This project uses a **Feature-based Architecture**. Always organize your files accordingly:
+
+- **`lib/core/`**: Shared core code.
+  - `services/`: Shared services (e.g., service locator).
+  - `utils/`: Common utilities, helpers, and extensions (like theme, context extensions).
+  - `widgets/`: Common global widgets.
+  - `routes/`: Named routing setup.
+  - `api/` & `network/`: Networking, API consumers, and interceptors.
+- **`lib/features/`**: Feature-specific modules. Each feature must have:
+  - `view.dart` or `presentation/view/` for UI screens.
+  - `widget/` or `presentation/view/widgets/` for UI components.
+  - `cubit/` or `presentation/view_model/` for state management.
+  - `model/` or `data/models/` for models specific to this feature.
+- **`lib/models/`**: Global models shared across multiple features.
+- **`lib/gen/`**: Generated code (assets, localization keys). **NEVER edit files in this directory manually.**
+
+---
+
+## 2. Coding & Naming Standards
+
+- **Case Conventions:**
+  - **Classes / Types:** `PascalCase` (e.g., `LoginView`, `AppInterceptor`).
+  - **Variables / Functions / Methods:** `camelCase` (e.g., `setupServiceLocator`, `isLoggedIn`).
+  - **Files / Folders:** `snake_case` (e.g., `dio_consumer.dart`, `app_btn.dart`).
+- **Screen Naming:** Every screen or primary page widget MUST use the `View` suffix instead of `Screen` (e.g., `LoginView` instead of `LoginScreen`).
+- **Imports:** Always use **absolute imports** based on the package name `wathiq` (e.g., `import 'package:wathiq/core/api/api_consumer.dart';`). Do NOT use relative imports.
+- **Clean Code:** Methods should be short, concise, and focused on a single responsibility. Use private members (`_`) for state-specific variables or controllers in Cubits and StatefulWidgets.
+
+---
+
+## 3. UI & Responsive Design
+
+- **Responsiveness (`flutter_screenutil`):**
+  - Always make layouts responsive by using `flutter_screenutil` extensions:
+    - `.h` for height.
+    - `.w` for width.
+    - `.sp` for font size.
+    - `.r` for radius.
+  - *Example:* `padding: 16.h.verticalSpace`, `width: 100.w`, `fontSize: 14.sp`, `borderRadius: BorderRadius.circular(12.r)`.
+- **Theme & Styles:** Always access style and color tokens via `BuildContext` extensions (defined in `lib/core/utils/extensions.dart`):
+  - **Colors:** `context.primaryColor`, `context.scaffoldBackgroundColor`, `context.hintColor`, `context.primaryContainer`.
+  - **Typography:** `context.boldText`, `context.mediumText`, `context.regularText`.
+- **Common Widgets:** Re-use project-specific custom widgets to keep the UI consistent:
+  - `CustomAppBar`: For all screen headers.
+  - `AppBtn`: For primary and secondary buttons.
+  - `AppField`: For all text fields, forms, and inputs.
+  - `CustomImage`: For all network, asset, and SVG images.
+
+---
+
+## 4. Localization (No Hardcoded Strings)
+
+- **Rule:** **NEVER hardcode user-facing strings.**
+- **Implementation:** Use `easy_localization`.
+- **Location:** Put all user-facing strings in JSON translation files under `assets/translations/`.
+- **Accessing Keys:** Refer to translation keys using `LocaleKeys` generated under `lib/gen/locale_keys.g.dart` and append `.tr()`.
+  - *Example:* `LocaleKeys.login.tr()`.
+
+---
+
+## 5. State Management (Bloc / Cubit)
+
+- **Library:** Use `flutter_bloc`. Cubit is preferred for feature-specific state management.
+- **Structure:** Every feature must have its own Cubit and State file.
+- **State Pattern:**
+  - Keep a single State class per feature/Cubit.
+  - Provide a `copyWith` method for state transition.
+  - Every state MUST include `RequestState state` to track API request statuses (Initial, Loading, Success, Error).
+  - Include `String message` and `ErrorType errorType` in the state to handle and display error states.
+- **Dependency Injection:** Register all Cubits in `lib/core/services/service_locator.dart` or `lib/app/injector.dart`.
+- **Usage:** Use `BlocProvider` for scoping within the widget tree, or use `sl<MyCubit>()` for global/temporary access.
+- **Events & Listeners:** Use `BlocListener` in the View to handle one-time actions such as navigation, showing toast messages, or alerts.
+
+---
+
+## 6. Networking & API Integration
+
+- **Client:** Use `Dio` as the HTTP client.
+- **Wrapper:** Always use the `ServerGate.i` singleton instance for all API calls.
+- **Request Methods:** Use the established methods like `sendToServer`, `getFromServer`, `deleteFromServer`, etc.
+- **Response Handling:** Wrap API responses with the `CustomResponse` class to manage success and error flows cleanly.
+- **File Uploads:** Use `FormData` for requests containing files, images, or media.
+
+---
+
+## 7. Assets Management
+
+- **Asset Generation:** Use `flutter_gen` to access assets in a type-safe manner.
+- **Reference:** Access assets via the static `Assets` class.
+- **Example:** `Assets.icons.logo.path`, `Assets.images.banner.path`.
+
+---
+
+## 8. Form Handling & Inputs
+
+- **Controller Lifecycle:** Always define `TextEditingController` instances inside the corresponding Cubit, NOT inside the UI/View.
+- **Validation:** Always wrap input fields in a `Form` widget and validate inputs using a `GlobalKey<FormState>`.
+- **Cleanup:** Always dispose of controllers and close streams within the Cubit's `close()` method to prevent memory leaks.
+
+---
+
+## 9. Navigation & Arguments
+
+- **Passing Arguments:** Pass arguments as a `Map<String, dynamic>` map during navigation.
+- **Retrieving Arguments:** Retrieve the passed map in the destination View using the custom `context.arg` helper/extension.
+  - *Example:* `push(NamedRoutes.verify, arg: {"phone": "12345"})`.
+
+---
+
+## 10. Best Practices
+
+- **Performance:** Add the `const` modifier to widgets wherever possible to optimize rebuild cycles.
+- **Layout Spacing:** When using modern Flutter layouts, prefer the `spacing` parameter in `Column` or `Row` rather than manual `SizedBox` blocks between every element.
+- **Safety:** Always wrap main screens in a `SafeArea` to prevent system UI overlay and notch clipping.
+- **Feedback:** Use `FlashHelper.showToast(message)` to provide toast notices and error alerts to the user.
+- **Logic Isolation:** Keep the UI clean; all business logic, validation logic, and state manipulation must reside in the Cubit, while the View only handles layout and user interaction.

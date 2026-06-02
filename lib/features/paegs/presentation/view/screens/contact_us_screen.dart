@@ -1,0 +1,183 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+
+import '../../../../../core/functions/url_luncher.dart';
+import '../../../../../core/widgets/error_app_widget.dart';
+import '../widgets/contact_us/contact_us_card_widget.dart';
+import '../widgets/contact_us/contact_us_form_widget.dart';
+import '../widgets/contact_us/our_office_wrap_widget.dart';
+import '../widgets/contact_us/shimmer_contact_us.dart';
+
+class ContactUsScreen extends StatefulWidget {
+  const ContactUsScreen({super.key});
+
+  @override
+  State<ContactUsScreen> createState() => _ContactUsScreenState();
+}
+
+class _ContactUsScreenState extends State<ContactUsScreen> {
+  @override
+  void initState() {
+    context.read<PagesCubit>().getSocial();
+    context.read<PagesCubit>().getUserCashedData();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    PagesCubit pagesCubit = context.read<PagesCubit>();
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primarySurface(context),
+        appBar: CoustomAppBarWidget(title: 'تواصل معنا'),
+        body: Form(
+          key: context.read<PagesCubit>().ContactFormKey,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  SizedBox(height: 32),
+                  Text(
+                    'نسعد بتواصلكم معنا ونرحب بمقترحاتكم والإجابة على استفساراتكم',
+                    textAlign: TextAlign.start,
+                    style: AppStyles.styleMedium16(context)
+                        .copyWith(color: AppColors.typographyBody(context)),
+                  ),
+                  SizedBox(height: 32),
+                  BlocBuilder<PagesCubit, PagesState>(
+                    builder: (context, state) {
+                      switch (state.getsocialRequestState) {
+                        case RequestState.loading:
+                        case RequestState.ideal:
+                          return ShimmerContactUs();
+                        case RequestState.error:
+                          return ErrorAppWidget(
+                            text: state.socialError!.message,
+                            onTap: () {
+                              context.read<PagesCubit>().getSocial();
+                            },
+                          );
+                        case RequestState.loaded:
+                          return Container(
+                            padding: const EdgeInsets.all(40),
+                            decoration: ShapeDecoration(
+                              color: Colors
+                                  .white /* Background-background-white */,
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  width: 1,
+                                  color: const Color(
+                                      0xFFE1E1E2) /* Borders-primary */,
+                                ),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                ContactUsCardWidget(
+                                  text: 'إتصل بنا',
+                                  subText:
+                                      '${'966' + state.socialModel!.data!.phoneNumber!.number! + '+'}',
+                                  subtextIcon: AppAssets.app_imagesCopy,
+                                  icon: AppAssets.app_imagesPhoneNum,
+                                  onTap: () {
+                                    String? phoneNumber = state.socialModel!
+                                            .data!.phoneNumber!.key! +
+                                        state.socialModel!.data!.phoneNumber!
+                                            .number!;
+                                    callPhoneNumber(phoneNumber);
+                                  },
+                                ),
+                                SizedBox(height: 16),
+                                ContactUsCardWidget(
+                                  text: 'المحادثة المباشرة',
+                                  icon: AppAssets.app_imagesWhatsapp,
+                                  subText:
+                                      '${'966' + state.socialModel!.data!.whatsapp!.number! + '+'}',
+                                  onTap: () {
+                                    String? whatsappNumber = state
+                                            .socialModel!.data!.whatsapp!.key! +
+                                        state.socialModel!.data!.whatsapp!
+                                            .number!;
+                                    openLink('https://wa.me/${whatsappNumber}');
+                                  },
+                                ),
+                                SizedBox(height: 16),
+                                ContactUsCardWidget(
+                                  text: 'البريد الالكتروني',
+                                  subText: '${state.socialModel!.data!.email}',
+                                  subtextIcon: AppAssets.app_imagesCopy,
+                                  icon: AppAssets.app_imagesEmail,
+                                  onTap: () {
+                                    openEmail(
+                                        email: state.socialModel!.data!.email);
+                                  },
+                                ),
+                                SizedBox(height: 16),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SvgPicture.asset(
+                                        AppAssets.app_imagesOuroffice),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'مكاتبنا',
+                                              textAlign: TextAlign.start,
+                                              style: AppStyles.styleBold16(
+                                                  context),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 4),
+                                        OurOfficeWrap(
+                                          offices: state.socialModel?.data
+                                                  ?.ourOffice ??
+                                              [],
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 16),
+                                ContactUsCardWidget(
+                                  text: 'تابعنا على',
+                                  onTap: null,
+                                  instagram: state.socialModel!.data!.instagram,
+                                  linkedin: state.socialModel!.data!.linkedin,
+                                  twitter: state.socialModel!.data!.twitter,
+                                  youtube: state.socialModel!.data!.facebook,
+                                ),
+                                SizedBox(height: 16),
+                              ],
+                            ),
+                          );
+                      }
+                    },
+                  ),
+                  ContactUsFormWidget(pagesCubit: pagesCubit),
+                  SizedBox(height: 16)
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
