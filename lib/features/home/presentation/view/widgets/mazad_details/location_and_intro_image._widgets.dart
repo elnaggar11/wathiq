@@ -7,10 +7,10 @@ import 'package:wathiq/core/functions/get_auction_status_and_type.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../app/app.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/auctions_favorite_button.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/auctions_favorite_button.dart';
 
 class MazadDetailsIntoImage extends StatelessWidget {
   const MazadDetailsIntoImage({
@@ -110,7 +110,7 @@ class AuctionDetaislIconWidget extends StatelessWidget {
     return Container(
       width: 40,
       height: 40,
-      padding: EdgeInsets.all(9),
+      padding: const EdgeInsets.all(9),
       decoration: ShapeDecoration(
         color: const Color(0xFFF5F6F7),
         shape: RoundedRectangleBorder(
@@ -142,7 +142,7 @@ class AuctionTitleAndLocationWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -161,7 +161,7 @@ class AuctionTitleAndLocationWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 4,
             ),
             Row(
@@ -171,7 +171,7 @@ class AuctionTitleAndLocationWidget extends StatelessWidget {
                   AppAssets.app_imagesLocationDot,
                   color: AppColors.typographyHeading(context),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 SizedBox(
                   width: 210,
                   child: Text(
@@ -186,16 +186,16 @@ class AuctionTitleAndLocationWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
         ),
-        Spacer(),
-        AuctionDetaislIconWidget(
+        const Spacer(),
+        const AuctionDetaislIconWidget(
           image: AppAssets.app_imagesShareAndroidW,
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         KisGuest
-            ? SizedBox.shrink()
+            ? const SizedBox.shrink()
             : AuctionsFavoriteButton(
                 auctionData: homeCubit.auctionData!,
                 homeCubit: homeCubit,
@@ -220,7 +220,7 @@ class MazadLocationWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        shadows: [
+        shadows: const [
           BoxShadow(
             color: Color(0x26111311),
             blurRadius: 8,
@@ -236,7 +236,7 @@ class MazadLocationWidget extends StatelessWidget {
           SvgPicture.asset(
             AppAssets.app_imagesMapPoinWave,
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Text(

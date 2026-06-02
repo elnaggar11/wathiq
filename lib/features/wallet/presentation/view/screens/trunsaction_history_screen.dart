@@ -5,13 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
-import 'package:wathiq/features/home/presentation/view/screens/wallet.dart';
 
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../home/presentation/view_model/home/home_cubit.dart';
-import '../../view_model/wallet/wallet_cubit.dart';
-import '../widgets/cards_widgets.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/features/wallet/presentation/view/widgets/cards_widgets.dart';
 
 class TrunsactionHistoryScreen extends StatefulWidget {
   const TrunsactionHistoryScreen({super.key});
@@ -31,9 +29,9 @@ class _TrunsactionHistoryScreenState extends State<TrunsactionHistoryScreen> {
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            SliverToBoxAdapter(child: IntroTrunsactonScreenWidget()),
+            const SliverToBoxAdapter(child: IntroTrunsactonScreenWidget()),
           ],
-          body: WalletBodyWidget(),
+          body: const WalletBodyWidget(),
         ),
       ),
     );
@@ -75,7 +73,7 @@ class IntroTrunsactonScreenWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               Row(
                 children: [
                   GestureDetector(
@@ -83,11 +81,11 @@ class IntroTrunsactonScreenWidget extends StatelessWidget {
                       context.pop();
                     },
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 24, maxWidth: 24),
+                      constraints: const BoxConstraints(maxHeight: 24, maxWidth: 24),
                       child: SvgPicture.asset(Assets.imagesArrowLeftLong),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(
@@ -98,7 +96,7 @@ class IntroTrunsactonScreenWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               TextFormFieldWithTitleWidget(
                 hint: 'ابحث عن معاملة',
                 // controller: homeCubit.originSearch,

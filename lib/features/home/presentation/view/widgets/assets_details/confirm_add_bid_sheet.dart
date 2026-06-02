@@ -8,22 +8,22 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
 
 Future<void> confirmAddBidSheetBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
-      return confirmAddBidSheetBottomSheetBodyWidget();
+      return const confirmAddBidSheetBottomSheetBodyWidget();
     },
   );
 }
@@ -59,7 +59,7 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.backgroundPrimary(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -69,7 +69,7 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -91,12 +91,12 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 77,
                       minWidth: 90,
                     ),
@@ -106,7 +106,7 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
                       color: AppColors.buttonsPrimary(context),
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Text(
                     'تأكيد مزايدة',
                     textAlign: TextAlign.center,
@@ -114,7 +114,7 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
                       color: AppColors.typographyHeading(context),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
                     'هل انت متأكد من المزايدة بمبلغ',
                     textAlign: TextAlign.center,
@@ -122,10 +122,10 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
                       color: AppColors.typographySubTitle(context),
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: AppColors.white(context),
                       borderRadius: BorderRadius.circular(10),
@@ -138,14 +138,14 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '${formatNumber(homeCubit.state.total)}',
+                          formatNumber(homeCubit.state.total),
                           textAlign: TextAlign.center,
                           style: AppStyles.styleBold20(context).copyWith(
                             fontWeight: FontWeight.w800,
                             color: AppColors.mainColor(context),
                           ),
                         ),
-                        SizedBox(width: 2),
+                        const SizedBox(width: 2),
                         CurrancyLogoWidget(
                           color: AppColors.mainColor(context),
                         ),
@@ -160,9 +160,9 @@ class _confirmAddBidSheetBottomSheetBodyWidgetState
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
-                  AddAuctionButtonWidget(),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
+                  const AddAuctionButtonWidget(),
+                  const SizedBox(height: 24),
                 ],
               )
             ],
@@ -198,7 +198,7 @@ class AddAuctionButtonWidget extends StatelessWidget {
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(
+                  side: const BorderSide(
                     width: 0.84,
                     strokeAlign: BorderSide.strokeAlignCenter,
                     color: Color(0xFFEBEEF3),
@@ -215,7 +215,7 @@ class AddAuctionButtonWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
             child: ElevatedButton(
               onPressed: () {

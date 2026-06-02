@@ -8,15 +8,15 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../core/widgets/show_success_bottom_sheet.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../core/functions/format_number.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../../paegs/presentation/view/widgets/sales_agent/bank_names_dropdown_button_form_field_widget.dart';
-import '../../view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/bank_names_dropdown_button_form_field_widget.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
 class WithdrawScreen extends StatefulWidget {
   const WithdrawScreen({super.key});
@@ -69,7 +69,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       TextFormFieldWithTitleWidget(
                         controller: walletCubit.beneficiaryNameController,
                         label: 'إسم المستفيد',
@@ -81,7 +81,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       TextFormFieldWithTitleWidget(
                         controller: walletCubit.contactNumberController,
                         label: 'رقم التواصل',
@@ -127,11 +127,11 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
-                      BankNamesDropdownButtonFormFieldWidget(
+                      const SizedBox(height: 16),
+                      const BankNamesDropdownButtonFormFieldWidget(
                         filled: false,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       TextFormFieldWithTitleWidget(
                         controller: walletCubit.ibanNumberController,
                         label: 'رقم الأيبان',
@@ -164,7 +164,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                           }
                         },
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       GestureDetector(
                         onTap: () {
                           walletCubit.pickIbanAttachment().then((val) {
@@ -202,7 +202,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       TextFormFieldWithTitleWidget(
                         controller: walletCubit.withdrawAmountController,
                         label: 'مبلغ السحب ',
@@ -234,9 +234,9 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 48),
-                      SubmitWithdrawButtonWidget(),
-                      SizedBox(height: 32),
+                      const SizedBox(height: 48),
+                      const SubmitWithdrawButtonWidget(),
+                      const SizedBox(height: 32),
                     ],
                   ),
                 ),

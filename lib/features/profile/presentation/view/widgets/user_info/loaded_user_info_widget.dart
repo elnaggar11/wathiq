@@ -14,10 +14,10 @@ import 'package:wathiq/features/profile/data/models/profile_model.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/user_info/show_delete_account_bottom_sheet.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../auth/presentation/view/widgets/sign_up/complete_sign_up_mobile_layout_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/complete_sign_up_mobile_layout_widget.dart';
 
 class LoadedUserInfoWidget extends StatelessWidget {
   const LoadedUserInfoWidget({
@@ -34,7 +34,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
-          margin: EdgeInsets.only(top: 30, bottom: 30),
+          margin: const EdgeInsets.only(top: 30, bottom: 30),
           padding: const EdgeInsets.all(16),
           decoration: ShapeDecoration(
             color: Colors.white,
@@ -45,7 +45,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               BlocBuilder<ProfileCubit, ProfileState>(
                 builder: (context, state) {
                   return Row(
@@ -69,7 +69,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(360),
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 6,
                               strokeAlign: BorderSide.strokeAlignOutside,
                               color: Color(0xFFD6D9E1),
@@ -77,7 +77,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 12,
                       ),
                       GestureDetector(
@@ -100,24 +100,24 @@ class LoadedUserInfoWidget extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Divider(
                 height: 0,
                 thickness: 1,
                 color: AppColors.borderPrimary(context),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               TextFormFieldWithTitleWidget(
                 // controller: cubit.loginUserIDController,
                 label: 'الإسم الأول',
                 controller: profileCubit.firstNameController,
                 prefix: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 12,
                     horizontal: 12,
                   ),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 20,
                       maxHeight: 20,
                     ),
@@ -131,18 +131,18 @@ class LoadedUserInfoWidget extends StatelessWidget {
                 enabled: false,
                 keyboardType: TextInputType.text,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormFieldWithTitleWidget(
                 // controller: cubit.loginUserIDController,
                 label: 'الإسم الثاني',
                 controller: profileCubit.SecondNameController,
                 prefix: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 12,
                     horizontal: 12,
                   ),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 20,
                       maxHeight: 20,
                     ),
@@ -156,17 +156,17 @@ class LoadedUserInfoWidget extends StatelessWidget {
                 enabled: false,
                 keyboardType: TextInputType.text,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormFieldWithTitleWidget(
                 label: 'الإسم الثالث',
                 controller: profileCubit.thirdNameController,
                 prefix: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 12,
                     horizontal: 12,
                   ),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 20,
                       maxHeight: 20,
                     ),
@@ -180,18 +180,18 @@ class LoadedUserInfoWidget extends StatelessWidget {
                 enabled: false,
                 keyboardType: TextInputType.text,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormFieldWithTitleWidget(
                 // controller: cubit.loginUserIDController,
                 label: 'الإسم الاخير',
                 controller: profileCubit.lastNameController,
                 prefix: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 12,
                     horizontal: 12,
                   ),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 20,
                       maxHeight: 20,
                     ),
@@ -205,7 +205,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                 enabled: false,
                 keyboardType: TextInputType.text,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormFieldWithTitleWidget(
                 // controller: cubit.loginUserIDController,
                 label: 'رقم الهوية الوطنة / الاقامة',
@@ -217,12 +217,12 @@ class LoadedUserInfoWidget extends StatelessWidget {
                 enabled: false,
                 keyboardType: TextInputType.number,
                 prefix: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 12,
                     horizontal: 12,
                   ),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 20,
                       maxHeight: 20,
                     ),
@@ -233,7 +233,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               BlocListener<ProfileCubit, ProfileState>(
                 listenWhen: (previous, current) =>
                     previous.askEditPhoneRequestState !=
@@ -273,7 +273,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                       label: 'رقم الجوال',
                       controller: profileCubit.phoneController,
                       suffix: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 15,
                           horizontal: 12,
                         ),
@@ -292,12 +292,12 @@ class LoadedUserInfoWidget extends StatelessWidget {
                         LengthLimitingTextInputFormatter(9),
                       ],
                       prefix: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 12,
                           horizontal: 12,
                         ),
                         child: ConstrainedBox(
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             maxWidth: 20,
                             maxHeight: 20,
                           ),
@@ -311,11 +311,11 @@ class LoadedUserInfoWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               CitiesDropdownButtonFormFieldWidget(
                 selectedValue: profileModel.data.country.name,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               BlocListener<ProfileCubit, ProfileState>(
                 listenWhen: (previous, current) =>
                     previous.askAddEmailRequestState !=
@@ -366,12 +366,12 @@ class LoadedUserInfoWidget extends StatelessWidget {
                       enabled: true,
                       keyboardType: TextInputType.emailAddress,
                       prefix: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 12,
                           horizontal: 12,
                         ),
                         child: ConstrainedBox(
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             maxWidth: 20,
                             maxHeight: 20,
                           ),
@@ -382,7 +382,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                         ),
                       ),
                       suffix: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 15,
                           horizontal: 12,
                         ),
@@ -402,7 +402,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               profileModel.data.email == null
                   ? Row(
                       children: [
@@ -414,8 +414,8 @@ class LoadedUserInfoWidget extends StatelessWidget {
                         ),
                       ],
                     )
-                  : SizedBox.shrink(),
-              SizedBox(height: 44),
+                  : const SizedBox.shrink(),
+              const SizedBox(height: 44),
               InkWell(
                 onTap: () {
                   showDeleteAccountBottomSheet(context);
@@ -427,9 +427,9 @@ class LoadedUserInfoWidget extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
-                    color: Color(0x19EB5757),
+                    color: const Color(0x19EB5757),
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFE9EBEC)),
+                      side: const BorderSide(width: 1, color: Color(0xFFE9EBEC)),
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
@@ -439,7 +439,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                         Assets.imagesTrashBinTrash,
                         fit: BoxFit.fill,
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Text(
                         'حذف الحساب ',
                         style: AppStyles.styleBold16(context).copyWith(
@@ -450,7 +450,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

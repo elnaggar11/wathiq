@@ -6,15 +6,15 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/utils/app_animations.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/my_snackbar.dart';
-import '../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
-import '../../view_model/auth/auth_cubit.dart';
-import '../widgets/reset_and_forget_password/reset_password_widget.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/reset_and_forget_password/reset_password_widget.dart';
 
 class ResetePasswordScreen extends StatelessWidget {
   const ResetePasswordScreen({super.key});
@@ -25,12 +25,13 @@ class ResetePasswordScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CoustomAppBarWidget(),
         body: AdaptiveLayout(
-          mobileLayout: (context) => ResetePasswordScreenMobileLayoutWidget(),
+          mobileLayout: (context) =>
+              const ResetePasswordScreenMobileLayoutWidget(),
           tabletLayout: (context) => Center(
             child: SizedBox(
               height: 1.sw,
               width: 600,
-              child: ResetePasswordScreenMobileLayoutWidget(),
+              child: const ResetePasswordScreenMobileLayoutWidget(),
             ),
           ),
         ),
@@ -53,13 +54,13 @@ class ResetePasswordScreenMobileLayoutWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   child: StepperWidget(
                     stepperList: [
                       BuildStep(
@@ -103,11 +104,11 @@ class ResetePasswordScreenMobileLayoutWidget extends StatelessWidget {
                   ],
                 ),
                 32.verticalSpace,
-                ResetPasswordWidget(),
+                const ResetPasswordWidget(),
                 20.verticalSpace,
-                ResetConfirmPasswordWidget(),
+                const ResetConfirmPasswordWidget(),
                 32.verticalSpace,
-                ResetPasswordButtonWidget(),
+                const ResetPasswordButtonWidget(),
                 32.verticalSpace,
               ],
             ),

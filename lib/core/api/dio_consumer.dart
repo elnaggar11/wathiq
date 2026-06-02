@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../app/injector.dart';
-import '../error/exceptions.dart';
-import 'api_consumer.dart';
-import 'status_code.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/exceptions.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/status_code.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;

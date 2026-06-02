@@ -30,7 +30,7 @@ class CompleteSignUpParams extends Equatable {
     return <String, dynamic>{
       'country': country,
       'password': password,
-      "phoneNumber": {"number": sanitizedPhoneNumber, "key": "+966"}
+      'phoneNumber': {'number': sanitizedPhoneNumber, 'key': '+966'}
     };
   }
 }

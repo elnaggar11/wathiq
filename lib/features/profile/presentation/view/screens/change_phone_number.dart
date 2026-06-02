@@ -9,15 +9,15 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../core/utils/images.dart';
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
 
 class ChangePhoneNumberScreen extends StatefulWidget {
   const ChangePhoneNumberScreen({super.key});
@@ -46,12 +46,12 @@ class _ChangePhoneNumberScreenState extends State<ChangePhoneNumberScreen> {
           title: '',
         ),
         body: AdaptiveLayout(
-          mobileLayout: (context) => ChangePhoneNumberMobileLayoutWidget(),
+          mobileLayout: (context) => const ChangePhoneNumberMobileLayoutWidget(),
           tabletLayout: (context) => Center(
             child: SizedBox(
               height: 1.sw,
               width: 600,
-              child: ChangePhoneNumberMobileLayoutWidget(),
+              child: const ChangePhoneNumberMobileLayoutWidget(),
             ),
           ),
         ),
@@ -73,13 +73,13 @@ class ChangePhoneNumberMobileLayoutWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   child: StepperWidget(
                     stepperList: [
                       BuildStep(
@@ -168,12 +168,12 @@ class ChangePhoneNumberMobileLayoutWidget extends StatelessWidget {
                     ],
                   ),
                   prefix: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 12,
                       horizontal: 16,
                     ),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 24,
                         maxHeight: 24,
                       ),
@@ -185,7 +185,7 @@ class ChangePhoneNumberMobileLayoutWidget extends StatelessWidget {
                   ),
                 ),
                 31.verticalSpace,
-                ChangePhoneNumberButtonWidget(),
+                const ChangePhoneNumberButtonWidget(),
                 31.verticalSpace,
               ],
             ),

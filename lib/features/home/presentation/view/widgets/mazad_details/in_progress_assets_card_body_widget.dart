@@ -4,12 +4,12 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/Mazadenroll_and_show_more_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/asset_card_widget.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../assets_details/logout_auction_sheet.dart';
-import '../assets_details/register_auction_sheet.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/assets_details/logout_auction_sheet.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/assets_details/register_auction_sheet.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 class InProgressAssetsCardBodyWidget extends StatelessWidget {
   const InProgressAssetsCardBodyWidget({super.key, required this.index});
@@ -39,7 +39,7 @@ class InProgressAssetsCardBodyWidget extends StatelessWidget {
                 showCurrancyLogo: false,
                 icon: AppAssets.app_imagesCalendar,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               AssetsDetailsCardColumWidget(
                 maxWidth: 100,
                 dateLabel: 'وقت بداية المزاد',
@@ -50,7 +50,7 @@ class InProgressAssetsCardBodyWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Row(
             children: [
               AssetsDetailsCardColumWidget(
@@ -60,7 +60,7 @@ class InProgressAssetsCardBodyWidget extends StatelessWidget {
                 showCurrancyLogo: true,
                 icon: AppAssets.app_imagesBanknote,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               AssetsDetailsCardColumWidget(
                 maxWidth: 100,
                 dateLabel: 'عربون الدخول',
@@ -71,7 +71,7 @@ class InProgressAssetsCardBodyWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
             return MazadEnrollAndShowMoreWidget(
               buttonColor: AppColors.iconsSecondary(context),

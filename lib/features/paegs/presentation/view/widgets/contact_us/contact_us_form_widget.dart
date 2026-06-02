@@ -9,10 +9,10 @@ import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/contact_us/select_type_radio_button.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
-import '../../../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../core/widgets/show_success_bottom_sheet.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
 
 class ContactUsFormWidget extends StatelessWidget {
   const ContactUsFormWidget({
@@ -25,11 +25,11 @@ class ContactUsFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           TextFormFieldWithTitleWidget(
             filled: true,
             fillColor: AppColors.primarySurface(context),
@@ -43,7 +43,7 @@ class ContactUsFormWidget extends StatelessWidget {
             },
             keyboardType: TextInputType.text,
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           TextFormFieldWithTitleWidget(
             filled: true,
             fillColor: AppColors.primarySurface(context),
@@ -93,7 +93,7 @@ class ContactUsFormWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           TextFormFieldWithTitleWidget(
             filled: true,
             fillColor: AppColors.primarySurface(context),
@@ -107,14 +107,14 @@ class ContactUsFormWidget extends StatelessWidget {
             },
             keyboardType: TextInputType.emailAddress,
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Text(
             'نوع الإستفسار',
             style: AppStyles.styleSemiBold18(context),
           ),
-          SizedBox(height: 4),
-          SelectTypeRadioButton(),
-          SizedBox(height: 24),
+          const SizedBox(height: 4),
+          const SelectTypeRadioButton(),
+          const SizedBox(height: 24),
           TextFormFieldWithTitleWidget(
             filled: true,
             fillColor: AppColors.primarySurface(context),
@@ -132,7 +132,7 @@ class ContactUsFormWidget extends StatelessWidget {
             },
             keyboardType: TextInputType.text,
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ElevatedButton(
             onPressed: () {
               context.read<PagesCubit>().postcontactUs();

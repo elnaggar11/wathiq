@@ -7,10 +7,10 @@ import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 class DeleteButtonWidget extends StatelessWidget {
   const DeleteButtonWidget({
@@ -62,7 +62,7 @@ class DeleteButtonWidget extends StatelessWidget {
                     Assets.imagesDelete,
                     color: AppColors.white(context),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Text(
                     'حذف', // Format DateTime
                     style: AppStyles.styleBold16(context).copyWith(
@@ -131,7 +131,7 @@ class _CustomSwitchButtonState extends State<CustomSwitchButton> {
           profileCubit.activeAgencies();
         },
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           width: 44,
           height: 24,
           padding: EdgeInsets.only(left: isSwich ? 20 : 0),

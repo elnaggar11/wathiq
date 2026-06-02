@@ -8,12 +8,12 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/functions/format_number.dart';
-import '../../../data/model/held_model.dart';
-import '../../../data/model/invoice_model.dart';
-import '../../../data/model/withdraw_model.dart';
-import '../../view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/features/wallet/data/model/held_model.dart';
+import 'package:wathiq/features/wallet/data/model/invoice_model.dart';
+import 'package:wathiq/features/wallet/data/model/withdraw_model.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
 class HeldFundsCardWidget extends StatelessWidget {
   const HeldFundsCardWidget({
@@ -37,12 +37,12 @@ class HeldFundsCardWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
         decoration: ShapeDecoration(
-          color: Color(0xffF8F8F8) /* [-Tokens-]-_Background-secondary */,
+          color: const Color(0xffF8F8F8) /* [-Tokens-]-_Background-secondary */,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               width: 0,
               color:
-                  const Color(0xFFEBEEF3) /* [-Tokens-]-_Separating-Border */,
+                  Color(0xFFEBEEF3) /* [-Tokens-]-_Separating-Border */,
             ),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -50,7 +50,7 @@ class HeldFundsCardWidget extends StatelessWidget {
         child: Row(
           children: [
             SvgPicture.asset(AppAssets.app_imagesHeldFundes),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -79,7 +79,7 @@ class HeldFundsCardWidget extends StatelessWidget {
                         ),
                         ConstrainedBox(
                           constraints:
-                              BoxConstraints(maxHeight: 17, maxWidth: 16),
+                              const BoxConstraints(maxHeight: 17, maxWidth: 16),
                           child: SvgPicture.asset(
                             Assets.imagesCurrencyIcon,
                             color: AppColors.typographyHeading(context),
@@ -89,7 +89,7 @@ class HeldFundsCardWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 6),
+                const SizedBox(height: 6),
                 Text(
                   DateFormat('dd, MMMM, yyyy').format(
                     heldFunds.data[index].createdAt.toLocal(),
@@ -99,7 +99,7 @@ class HeldFundsCardWidget extends StatelessWidget {
                   ),
                 ),
                 // SizedBox(height: 16),
-                Row(
+                const Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Text(
@@ -279,12 +279,12 @@ class WithdrawCardWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
         decoration: ShapeDecoration(
-          color: Color(0xffF8F8F8) /* [-Tokens-]-_Background-secondary */,
+          color: const Color(0xffF8F8F8) /* [-Tokens-]-_Background-secondary */,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               width: 0,
               color:
-                  const Color(0xFFEBEEF3) /* [-Tokens-]-_Separating-Border */,
+                  Color(0xFFEBEEF3) /* [-Tokens-]-_Separating-Border */,
             ),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -292,7 +292,7 @@ class WithdrawCardWidget extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
@@ -301,7 +301,7 @@ class WithdrawCardWidget extends StatelessWidget {
               ),
               child: SvgPicture.asset(AppAssets.app_imagesWithdr),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -353,7 +353,7 @@ class WithdrawCardWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -387,7 +387,7 @@ class WithdrawCardWidget extends StatelessWidget {
                           ),
                           ConstrainedBox(
                             constraints:
-                                BoxConstraints(maxHeight: 17, maxWidth: 16),
+                                const BoxConstraints(maxHeight: 17, maxWidth: 16),
                             child: SvgPicture.asset(
                               Assets.imagesCurrencyIcon,
                               color: AppColors.typographyHeading(context),
@@ -468,12 +468,12 @@ class InvoiceCardWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
         decoration: ShapeDecoration(
-          color: Color(0xffF8F8F8) /* [-Tokens-]-_Background-secondary */,
+          color: const Color(0xffF8F8F8) /* [-Tokens-]-_Background-secondary */,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               width: 0,
               color:
-                  const Color(0xFFEBEEF3) /* [-Tokens-]-_Separating-Border */,
+                  Color(0xFFEBEEF3) /* [-Tokens-]-_Separating-Border */,
             ),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -481,7 +481,7 @@ class InvoiceCardWidget extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
@@ -490,7 +490,7 @@ class InvoiceCardWidget extends StatelessWidget {
               ),
               child: SvgPicture.asset(AppAssets.app_imagesAddmony),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -540,7 +540,7 @@ class InvoiceCardWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -574,7 +574,7 @@ class InvoiceCardWidget extends StatelessWidget {
                           ),
                           ConstrainedBox(
                             constraints:
-                                BoxConstraints(maxHeight: 17, maxWidth: 16),
+                                const BoxConstraints(maxHeight: 17, maxWidth: 16),
                             child: SvgPicture.asset(
                               Assets.imagesCurrencyIcon,
                               color: AppColors.typographyHeading(context),

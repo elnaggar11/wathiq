@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 class ChangePasswordButtonWidget extends StatelessWidget {
   const ChangePasswordButtonWidget({

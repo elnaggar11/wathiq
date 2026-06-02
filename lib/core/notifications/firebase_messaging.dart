@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import '../../app/app.dart';
-import '../../app/injector.dart';
-import '../../config/routes/app_routes.dart';
-import '../storage/i_app_local_storage.dart';
-import '../utils/app_strings.dart';
-import 'local_notifications.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/notifications/local_notifications.dart';
 
 class FirebaseNotifications {
   static final FirebaseMessaging _fcm = FirebaseMessaging.instance;

@@ -10,15 +10,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
 
 Future<void> showDeleteAccountBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -27,7 +27,7 @@ Future<void> showDeleteAccountBottomSheet(BuildContext context) async {
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.white(context),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(24),
               topRight: Radius.circular(24),
             ),
@@ -39,16 +39,16 @@ Future<void> showDeleteAccountBottomSheet(BuildContext context) async {
                 SvgPicture.asset(
                   Assets.imagesDeleteAccount,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text('حذف الحساب؟', // Format DateTime
                     style: AppStyles.stylBold24(context)),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                     'هل أنت متأكد أنك تريد حذف الحساب نهائيا؟', // Format DateTime
                     style: AppStyles.styleSemiBold18(context).copyWith(
                       color: AppColors.typographySubTitle(context),
                     )),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 SizedBox(
                   height: 48,
                   child: Row(
@@ -67,7 +67,7 @@ Future<void> showDeleteAccountBottomSheet(BuildContext context) async {
                             Assets.imagesClose,
                           ),
                           style: OutlinedButton.styleFrom(
-                              minimumSize: Size(double.infinity, 46),
+                              minimumSize: const Size(double.infinity, 46),
                               side: BorderSide(
                                 color: AppColors.iconsTertiary(context),
                               ),
@@ -78,7 +78,7 @@ Future<void> showDeleteAccountBottomSheet(BuildContext context) async {
                               backgroundColor: AppColors.white(context)),
                         ),
                       ),
-                      SizedBox(width: 24),
+                      const SizedBox(width: 24),
                       Expanded(
                         child: BlocProvider(
                           create: (context) => serviceLocator<ProfileCubit>(),
@@ -125,7 +125,7 @@ Future<void> showDeleteAccountBottomSheet(BuildContext context) async {
                                           Assets.imagesDelete,
                                           color: AppColors.white(context),
                                         ),
-                                        SizedBox(width: 8),
+                                        const SizedBox(width: 8),
                                         Text(
                                           'حذف', // Format DateTime
                                           style: AppStyles.styleBold16(context)

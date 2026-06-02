@@ -10,15 +10,15 @@ import 'package:wathiq/features/profile/data/models/agencies_model.dart';
 import 'package:wathiq/features/profile/data/models/profile_model.dart';
 import 'package:wathiq/core/network/socket/socket_service.dart';
 
-import '../../../../../app/injector.dart';
-import '../../../../../core/error/failure.dart';
-import '../../../../../core/params/profile/change_password_params.dart';
-import '../../../../../core/params/profile/create_agency_params.dart';
-import '../../../../../core/storage/flutter_secure_storage.dart';
-import '../../../../../core/storage/i_app_local_storage.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../data/repository/profile_repo.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/profile/change_password_params.dart';
+import 'package:wathiq/core/params/profile/create_agency_params.dart';
+import 'package:wathiq/core/storage/flutter_secure_storage.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/features/profile/data/repository/profile_repo.dart';
 
 part 'profile_state.dart';
 
@@ -26,7 +26,7 @@ String? Kemail;
 String? Kphone;
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit(this._profileRepository) : super(ProfileState());
+  ProfileCubit(this._profileRepository) : super(const ProfileState());
   final ProfileRepository _profileRepository;
   File? imageFile;
   File? agencyAttachment;
@@ -91,7 +91,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
   }
 
-  setProfileControllers(ProfileModel profileModel) {
+  void setProfileControllers(ProfileModel profileModel) {
     List<String> userName = profileModel.data.name.split(' ');
     if (userName.length < 4) {
       userName.addAll(['', '', '', '']);
@@ -133,7 +133,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
   }
 
-  pickProfileImage() async {
+  Future<void> pickProfileImage() async {
     imageFile = await pickImage();
     if (imageFile != null) {
       emit(state.copyWith(
@@ -142,13 +142,13 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  EditCountryIDFunction() async {
+  Future<void> EditCountryIDFunction() async {
     emit(state.copyWith(
       editUserInfoCountryID: editUserInfoCountryID,
     ));
   }
 
-  deletePickedImage() async {
+  Future<void> deletePickedImage() async {
     imageFile = null;
 
     emit(state.copyWith(
@@ -161,7 +161,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     ));
   }
 
-  deleteCountryIDFunction() async {
+  Future<void> deleteCountryIDFunction() async {
     editUserInfoCountryID = null;
 
     emit(state.copyWith(
@@ -399,7 +399,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  deleteAgencyAttachment() async {
+  Future<void> deleteAgencyAttachment() async {
     agencyAttachment = null;
 
     emit(state.copyWith(

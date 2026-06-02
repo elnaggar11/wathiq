@@ -7,14 +7,14 @@ import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/empty_widget.dart';
 
-import '../../../../../core/utils/app_strings.dart';
-import '../../view_model/home/home_cubit.dart';
-import '../widgets/mazad_details/asset_card_widget.dart';
-import '../widgets/mazad_details/asset_search_widget_and_num.dart';
-import '../widgets/mazad_details/auction_assets_num_and_day.dart';
-import '../widgets/mazad_details/comming_mazad_timer_widget.dart';
-import '../widgets/mazad_details/licenses_widget.dart';
-import '../widgets/mazad_details/location_and_intro_image._widgets.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/asset_card_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/asset_search_widget_and_num.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/auction_assets_num_and_day.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/comming_mazad_timer_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/licenses_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/location_and_intro_image._widgets.dart';
 
 class MazadDetailsScreen extends StatefulWidget {
   const MazadDetailsScreen({super.key});
@@ -35,18 +35,18 @@ class _MazadDetailsScreenState extends State<MazadDetailsScreen> {
           title: homeCubit.auctionData?.title ?? 'تفاصيل المزاد',
           actions: [
             homeCubit.auctionData?.status == AppStrings.auctionsOnGoing
-                ? AuctionDetailsOnGoingStutesWidget()
+                ? const AuctionDetailsOnGoingStutesWidget()
                 : homeCubit.auctionData?.status == AppStrings.auctionsInProgress
-                    ? AuctionDetailsInprogressStutesWidget()
-                    : AuctionDetailsCompletedStutesWidget(),
+                    ? const AuctionDetailsInprogressStutesWidget()
+                    : const AuctionDetailsCompletedStutesWidget(),
           ],
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 8),
           child: CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(child: SizedBox(height: 8)),
-              MazadDetailsIntoImage(),
+              const SliverToBoxAdapter(child: SizedBox(height: 8)),
+              const MazadDetailsIntoImage(),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -60,7 +60,7 @@ class _MazadDetailsScreenState extends State<MazadDetailsScreen> {
                   numOfDayes: homeCubit.auctionData!.numberOfDays.toString(),
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: CurrentMazadTimerWidget(),
                 //  getKTapIndex(context) == 1
                 //     ? CurrentMazadTimerWidget()
@@ -68,15 +68,15 @@ class _MazadDetailsScreenState extends State<MazadDetailsScreen> {
                 //         ? CommingMazadTimerWidget()
                 //         : EndedMazadTimerWidget(),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: AuctionBrochureWidget(),
               ),
               // SliverToBoxAdapter(child: MazadInfoAndTitle()),
 
               // SliverToBoxAdapter(child: LicensesWidget()),
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
-              SliverToBoxAdapter(child: AssetSearchWidgetAndNum()),
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
+              const SliverToBoxAdapter(child: AssetSearchWidgetAndNum()),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -87,13 +87,13 @@ class _MazadDetailsScreenState extends State<MazadDetailsScreen> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   return homeCubit.originList.isEmpty
-                      ? SliverToBoxAdapter(
+                      ? const SliverToBoxAdapter(
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 16),
+                            padding: EdgeInsets.only(bottom: 16),
                             child:
                                 EmptyWidget(title: 'لا يوجد اصول بهذا الاسم'),
                           ),
@@ -126,14 +126,14 @@ class AuctionDetailsInprogressStutesWidget extends StatelessWidget {
     return Container(
       height: 46,
       alignment: Alignment.center,
-      margin: EdgeInsetsDirectional.only(end: 16),
+      margin: const EdgeInsetsDirectional.only(end: 16),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: ShapeDecoration(
         color: const Color(0x19F2994A),
         shape: RoundedRectangleBorder(
-          side: BorderSide(
+          side: const BorderSide(
             width: 1,
-            color: const Color(0xFF9E5C21),
+            color: Color(0xFF9E5C21),
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -158,14 +158,14 @@ class AuctionDetailsCompletedStutesWidget extends StatelessWidget {
     return Container(
       height: 46,
       alignment: Alignment.center,
-      margin: EdgeInsetsDirectional.only(end: 16),
+      margin: const EdgeInsetsDirectional.only(end: 16),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: ShapeDecoration(
         color: const Color(0xFFFCE8E8),
         shape: RoundedRectangleBorder(
-          side: BorderSide(
+          side: const BorderSide(
             width: 1,
-            color: const Color(0xFFF7B8B8),
+            color: Color(0xFFF7B8B8),
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -192,14 +192,14 @@ class AuctionDetailsOnGoingStutesWidget extends StatelessWidget {
     return Container(
       height: 46,
       alignment: Alignment.center,
-      margin: EdgeInsetsDirectional.only(end: 16),
+      margin: const EdgeInsetsDirectional.only(end: 16),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
       decoration: ShapeDecoration(
         color: const Color(0x0C22A06B),
         shape: RoundedRectangleBorder(
-          side: BorderSide(
+          side: const BorderSide(
             width: 1,
-            color: const Color(0xFF22A06B),
+            color: Color(0xFF22A06B),
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -207,7 +207,7 @@ class AuctionDetailsOnGoingStutesWidget extends StatelessWidget {
       child: Row(
         children: [
           SvgPicture.asset(AppAssets.app_imagesOnGoing),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Text(
@@ -234,8 +234,8 @@ class AuctionBrochureWidget extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF2F2F2),
+      decoration: const BoxDecoration(
+        color: Color(0xFFF2F2F2),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(12),
           bottomRight: Radius.circular(12),
@@ -245,7 +245,7 @@ class AuctionBrochureWidget extends StatelessWidget {
         onTap: () {
           context.read<HomeCubit>().auctionBrochure(context);
         },
-        child: AuctionBrochureChiledWidget(),
+        child: const AuctionBrochureChiledWidget(),
       ),
     );
   }

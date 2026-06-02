@@ -8,11 +8,11 @@ import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/com
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/in_progress_assets_card_body_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/on_going_assets_card_body_idget.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../auth/presentation/view/screens/splash_screen.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/splash_screen.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 class AssetCardWidget extends StatelessWidget {
   const AssetCardWidget({
@@ -34,25 +34,25 @@ class AssetCardWidget extends StatelessWidget {
         context.navigateTo(Routes.assetsDetailsScreen);
       },
       child: Container(
-        margin: EdgeInsetsDirectional.only(bottom: 24, end: 16, start: 16),
+        margin: const EdgeInsetsDirectional.only(bottom: 24, end: 16, start: 16),
         width: double.infinity,
         padding: const EdgeInsets.all(12),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               width: 1,
-              color: const Color(0xFFD7DBD7),
+              color: Color(0xFFD7DBD7),
             ),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
         child: Column(
           children: [
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             AssetTitleAndLocationWidget(
               index: index,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             getKTapIndex(context) == 1
                 ? OnGoingAssetsCardBodyWidget(
                     index: index,
@@ -64,7 +64,7 @@ class AssetCardWidget extends StatelessWidget {
                     : CompletedAssetsCardBodyWidget(
                         index: index,
                       ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
         ),
       ),
@@ -93,7 +93,7 @@ class AssetDepositScreen extends StatelessWidget {
             color: AppColors.typographySubTitle(context),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           desc,
           style: AppStyles.styleBold14(context).copyWith(

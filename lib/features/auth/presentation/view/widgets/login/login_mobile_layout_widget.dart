@@ -10,16 +10,16 @@ import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/login/login_password_widget.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
-import '../../../view_model/auth/auth_cubit.dart';
-import '../auth_app_logo_widget.dart';
-import '../contact_us_auth_widget.dart';
-import '../nav_to_another_screen_row.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/contact_us_auth_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/nav_to_another_screen_row.dart';
 
 class LoginMobileLayoutWidget extends StatelessWidget {
   const LoginMobileLayoutWidget({
@@ -37,19 +37,19 @@ class LoginMobileLayoutWidget extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     20.verticalSpace,
-                    Row(
+                    const Row(
                       children: [
                         AuthAppLogoWidget(),
                       ],
                     ),
                     48.verticalSpace,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24),
                       child: StepperWidget(
                         stepperList: [
                           BuildStep(
@@ -113,12 +113,12 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                       ),
                     ),
                     20.verticalSpace,
-                    LoginPasswordWidget(),
+                    const LoginPasswordWidget(),
                     24.verticalSpace,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RememberUserWidget(),
+                        const RememberUserWidget(),
                         InkWell(
                           onTap: () {
                             context.navigateTo(Routes.forgetPasswordScreen);
@@ -132,7 +132,7 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                       ],
                     ),
                     30.verticalSpace,
-                    LoginButtonWidget(),
+                    const LoginButtonWidget(),
                     30.verticalSpace,
                     Row(
                       children: [
@@ -162,7 +162,7 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(AppAssets.app_imagesNafathLogo),
-                          SizedBox(width: 12),
+                          const SizedBox(width: 12),
                           Text(
                             'تسجيل الدخول عبر نفاذ',
                             style: AppStyles.styleBold14(context).copyWith(
@@ -196,7 +196,7 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              ContactUsAuthWidget()
+              const ContactUsAuthWidget()
             ],
           ),
         ),

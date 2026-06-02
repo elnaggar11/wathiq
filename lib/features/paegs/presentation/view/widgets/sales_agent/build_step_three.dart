@@ -6,11 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
-import '../../../view_model/pages_cubit.dart';
-import '../../widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
 
 class BuildStepThreeWidget extends StatefulWidget {
   const BuildStepThreeWidget({super.key});
@@ -31,7 +31,7 @@ class _BuildStepThreeWidgetState extends State<BuildStepThreeWidget> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              StepperWidget(
+              const StepperWidget(
                 stepperList: [
                   BuildStep(
                     title: 'بيانات الشركة',

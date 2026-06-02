@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class AgenciesTabBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
-  AgenciesTabBarWidget({
+  const AgenciesTabBarWidget({
     super.key,
     required this.tabController,
   });
@@ -57,7 +57,7 @@ class _AgenciesTabBarWidgetState extends State<AgenciesTabBarWidget> {
                   child: Container(
                     padding:
                         EdgeInsets.symmetric(vertical: 8.h, horizontal: 4.w),
-                    margin: EdgeInsetsDirectional.only(top: 20, bottom: 8),
+                    margin: const EdgeInsetsDirectional.only(top: 20, bottom: 8),
                     decoration: BoxDecoration(
                       color: AppColors.white(context),
                       border: Border.all(
@@ -95,7 +95,7 @@ class _AgenciesTabBarWidgetState extends State<AgenciesTabBarWidget> {
                           return SizedBox(
                             height: 40,
                             child: Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 6, vertical: 8),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.r),
@@ -117,7 +117,7 @@ class _AgenciesTabBarWidgetState extends State<AgenciesTabBarWidget> {
                                               context),
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 6, vertical: 2),

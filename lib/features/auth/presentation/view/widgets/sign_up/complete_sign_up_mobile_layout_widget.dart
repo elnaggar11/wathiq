@@ -13,13 +13,13 @@ import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/sign_up_password_widget.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
-import '../../../view_model/auth/auth_cubit.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 
 class CompleteSignUpMobileLayoutWidget extends StatefulWidget {
   const CompleteSignUpMobileLayoutWidget({
@@ -48,13 +48,13 @@ class _CompleteSignUpMobileLayoutWidgetState
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 24.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   child: StepperWidget(
                     stepperList: [
                       BuildStep(
@@ -96,9 +96,9 @@ class _CompleteSignUpMobileLayoutWidgetState
                   ],
                 ),
                 24.verticalSpace,
-                SignUpPasswordWidget(),
+                const SignUpPasswordWidget(),
                 20.verticalSpace,
-                CitiesDropdownButtonFormFieldWidget(), 20.verticalSpace,
+                const CitiesDropdownButtonFormFieldWidget(), 20.verticalSpace,
                 TextFormFieldWithTitleWidget(
                   controller: cubit.completeSignUpPhoneController,
                   label: 'رقم الجوال',
@@ -146,12 +146,12 @@ class _CompleteSignUpMobileLayoutWidgetState
                     ],
                   ),
                   prefix: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 12,
                       horizontal: 16,
                     ),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 24,
                         maxHeight: 24,
                       ),
@@ -178,12 +178,12 @@ class _CompleteSignUpMobileLayoutWidgetState
                   enabled: false,
                   keyboardType: TextInputType.number,
                   prefix: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 12,
                       horizontal: 16,
                     ),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 24,
                         maxHeight: 24,
                       ),
@@ -205,12 +205,12 @@ class _CompleteSignUpMobileLayoutWidgetState
                   keyboardType: TextInputType.number,
 
                   prefix: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 12,
                       horizontal: 16,
                     ),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 24,
                         maxHeight: 24,
                       ),
@@ -264,7 +264,7 @@ class _CompleteSignUpMobileLayoutWidgetState
                 //         .read<AuthCubit>()
                 //         .completeSignUpBirthDateController),
                 43.verticalSpace,
-                CompleteSignUpButtonWidget(),
+                const CompleteSignUpButtonWidget(),
                 24.verticalSpace,
               ],
             ),
@@ -332,7 +332,7 @@ class CompleteSignUpButtonWidget extends StatelessWidget {
 }
 
 class CitiesDropdownButtonFormFieldWidget extends StatefulWidget {
-  CitiesDropdownButtonFormFieldWidget({super.key, this.selectedValue});
+  const CitiesDropdownButtonFormFieldWidget({super.key, this.selectedValue});
   final String? selectedValue;
 
   @override
@@ -385,7 +385,7 @@ class _DropdownButtonFormFieldWidgetState
                       profileCubit.EditCountryIDFunction();
                     },
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Text(
                         country.name,
                         style: AppStyles.styleRegular16(context)
@@ -412,7 +412,7 @@ class _DropdownButtonFormFieldWidgetState
           }
 
           return DropdownButtonFormField<String>(
-            value: selectedValue,
+            initialValue: selectedValue,
             menuMaxHeight: 600,
             dropdownColor: AppColors.white(context),
             style: AppStyles.styleBold16(context).copyWith(),
@@ -434,12 +434,12 @@ class _DropdownButtonFormFieldWidgetState
                 color: AppColors.typographyBody(context),
               ),
               prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 12,
                   horizontal: 14,
                 ),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 24,
                     maxHeight: 24,
                   ),

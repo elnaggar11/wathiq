@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/map_error_widget.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/map_error_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class MapLocationWidget extends StatefulWidget {
   const MapLocationWidget({
@@ -106,7 +106,7 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
 
     markers.add(
       Marker(
-        markerId: MarkerId('auction_location'),
+        markerId: const MarkerId('auction_location'),
         position: auctionLocation!,
         infoWindow: InfoWindow(
           title: homeCubit.auctionOrigin?.title ?? 'موقع الاصل',
@@ -153,7 +153,7 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -166,7 +166,7 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
                       ),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -179,13 +179,13 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
                       ),
                     ],
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 0),
+                margin: const EdgeInsets.symmetric(horizontal: 0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
@@ -196,7 +196,7 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
                 child: _buildMapContent(),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
           ],
         ),
       ),
@@ -215,7 +215,7 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
               CircularProgressIndicator(
                 color: AppColors.primary(context),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 'جاري تحميل الخريطة...',
                 style: AppStyles.styleBold16(context).copyWith(

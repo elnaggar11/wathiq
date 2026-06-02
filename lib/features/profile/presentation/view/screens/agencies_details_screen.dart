@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/error_app_widget.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../widgets/agencies/loaded_agencies_widget.dart';
-import '../widgets/agencies/shimmer_agency_list.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/error_app_widget.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/agencies/loaded_agencies_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/agencies/shimmer_agency_list.dart';
 
 class AgenciesDetailsScreen extends StatefulWidget {
   const AgenciesDetailsScreen({super.key});
@@ -39,14 +39,14 @@ class _AgenciesDetailsScreenState extends State<AgenciesDetailsScreen>
         appBar: CoustomAppBarWidget(
           title: 'الوكالات',
         ),
-        body: KisGuest == true ? GuestWidget() : AgenciesTapBarViweWidegt(),
+        body: KisGuest == true ? const GuestWidget() : const AgenciesTapBarViweWidegt(),
       ),
     );
   }
 }
 
 class AgenciesTapBarViweWidegt extends StatelessWidget {
-  AgenciesTapBarViweWidegt({
+  const AgenciesTapBarViweWidegt({
     super.key,
   });
 
@@ -57,7 +57,7 @@ class AgenciesTapBarViweWidegt extends StatelessWidget {
         switch (state.getAgenciesRequestState) {
           case RequestState.ideal:
           case RequestState.loading:
-            return ShimmerAgencyList();
+            return const ShimmerAgencyList();
           case RequestState.error:
             return ErrorAppWidget(
               text: state.getAgenciesError!.message ?? 'حدث خطا',

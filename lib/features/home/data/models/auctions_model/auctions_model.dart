@@ -7,7 +7,7 @@ class AuctionsModel extends Equatable {
   final List<AuctionData> data;
   final Counts? counts;
 
-  AuctionsModel({
+  const AuctionsModel({
     required this.message,
     required this.pagination,
     required this.data,

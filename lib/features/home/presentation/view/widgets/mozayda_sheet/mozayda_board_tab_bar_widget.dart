@@ -64,7 +64,7 @@ class _MozaydaBoardTabBarWidgetState extends State<MozaydaBoardTabBarWidget> {
           ),
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: EdgeInsets.all(0),
+          labelPadding: const EdgeInsets.all(0),
           tabs: List<Widget>.generate(
             tapsName.length,
             (index) => InkWell(
@@ -77,7 +77,7 @@ class _MozaydaBoardTabBarWidgetState extends State<MozaydaBoardTabBarWidget> {
               child: SizedBox(
                 height: 44,
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(

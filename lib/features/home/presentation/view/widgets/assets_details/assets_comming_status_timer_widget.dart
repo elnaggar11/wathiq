@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/timer_home_widget.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/timer_home_widget.dart';
 
 class AssetsCommingStatusTimerWidget extends StatelessWidget {
   const AssetsCommingStatusTimerWidget({
@@ -44,7 +44,7 @@ class AssetsCommingStatusTimerWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16,
                 ),
                 TimerHomeWidget(
@@ -54,7 +54,7 @@ class AssetsCommingStatusTimerWidget extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         )
       ],
@@ -82,14 +82,14 @@ class RowAssetsDateWidget extends StatelessWidget {
           icon,
           color: iconColor,
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
         Text(
           lable,
           style: AppStyles.styleMedium14(context).copyWith(
             color: textColor ?? AppColors.typographyBody(context),
           ),
         ),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
           description,
           style: AppStyles.styleBold16(context).copyWith(
@@ -139,7 +139,7 @@ class _AssetsDescriptionWidgetState extends State<AssetsDescriptionWidget> {
               });
             },
             child: Text(
-              _isExpanded ? "عرض أقل" : "عرض المزيد",
+              _isExpanded ? 'عرض أقل' : 'عرض المزيد',
               style: AppStyles.styleMedium16(context).copyWith(
                 color: AppColors.primary(context),
               ),

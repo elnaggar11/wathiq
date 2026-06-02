@@ -7,11 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../../../../core/functions/get_auction_status_and_type.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/functions/get_auction_status_and_type.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class AssetsImageSlider extends StatefulWidget {
   @override
@@ -60,7 +60,7 @@ class _AssetsImageSliderState extends State<AssetsImageSlider> {
                             ),
                           ),
                           errorWidget: (context, url, error) =>
-                              Icon(Icons.image_not_supported_sharp),
+                              const Icon(Icons.image_not_supported_sharp),
                           fit: BoxFit.cover,
                         ),
                 );
@@ -77,7 +77,7 @@ class _AssetsImageSliderState extends State<AssetsImageSlider> {
             children: List.generate(homeCubit.auctionOrigin!.attachment.length,
                 (index) {
               return Container(
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                margin: const EdgeInsets.symmetric(horizontal: 5.0),
                 width: _currentIndex == index ? 19 : 13,
                 height: 10,
                 decoration: BoxDecoration(
@@ -93,7 +93,7 @@ class _AssetsImageSliderState extends State<AssetsImageSlider> {
             Container(
               height: 226,
               width: 1.sw,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 8,
@@ -105,7 +105,7 @@ class _AssetsImageSliderState extends State<AssetsImageSlider> {
                     Row(
                       children: [
                         // MazadLocationWidget(),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           height: 40,
                           alignment: Alignment.center,
@@ -139,7 +139,7 @@ class _AssetsImageSliderState extends State<AssetsImageSlider> {
 class VideoWidget extends StatefulWidget {
   final String videoUrl;
 
-  VideoWidget({required this.videoUrl});
+  const VideoWidget({required this.videoUrl});
 
   @override
   _VideoWidgetState createState() => _VideoWidgetState();
@@ -160,8 +160,8 @@ class _VideoWidgetState extends State<VideoWidget> {
             autoPlay: true,
             looping: true,
             aspectRatio: _videoPlayerController.value.aspectRatio,
-            errorBuilder: (context, errorMessage) => Center(
-              child: Text("Error loading video"),
+            errorBuilder: (context, errorMessage) => const Center(
+              child: Text('Error loading video'),
             ),
           );
         });
@@ -180,6 +180,6 @@ class _VideoWidgetState extends State<VideoWidget> {
     return _chewieController != null &&
             _chewieController!.videoPlayerController.value.isInitialized
         ? Chewie(controller: _chewieController!)
-        : Center(child: CircularProgressIndicator());
+        : const Center(child: CircularProgressIndicator());
   }
 }

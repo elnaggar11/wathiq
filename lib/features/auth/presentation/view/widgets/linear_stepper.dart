@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
 
 class LinearStepper extends StatelessWidget {
   final int totalSteps;

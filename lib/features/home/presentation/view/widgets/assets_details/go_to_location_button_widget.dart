@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class GoToLocationButtonWidget extends StatelessWidget {
   const GoToLocationButtonWidget({
@@ -24,7 +24,7 @@ class GoToLocationButtonWidget extends StatelessWidget {
         Assets.imagesPointOnMap,
       ),
       style: OutlinedButton.styleFrom(
-        minimumSize: Size.fromHeight(54),
+        minimumSize: const Size.fromHeight(54),
         side: BorderSide(
           width: 1,
           color: AppColors.primary(context),

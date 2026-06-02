@@ -7,20 +7,20 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 Future<void> LogOutFromAuctionSheetBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
-      return LogOutFromAuctionSheetBottomSheetBodyWidget();
+      return const LogOutFromAuctionSheetBottomSheetBodyWidget();
     },
   );
 }
@@ -56,7 +56,7 @@ class _LogOutFromAuctionSheetBottomSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.backgroundPrimary(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -66,7 +66,7 @@ class _LogOutFromAuctionSheetBottomSheetBodyWidgetState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -88,12 +88,12 @@ class _LogOutFromAuctionSheetBottomSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 77,
                       minWidth: 90,
                     ),
@@ -102,7 +102,7 @@ class _LogOutFromAuctionSheetBottomSheetBodyWidgetState
                       fit: BoxFit.contain,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Text(
                     'تأكيد المغادرة',
                     textAlign: TextAlign.center,
@@ -110,7 +110,7 @@ class _LogOutFromAuctionSheetBottomSheetBodyWidgetState
                       color: AppColors.typographyHeading(context),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
                     'هل انت متأكد من انك تريد مغادرة المزاد',
                     textAlign: TextAlign.center,
@@ -118,9 +118,9 @@ class _LogOutFromAuctionSheetBottomSheetBodyWidgetState
                       color: AppColors.typographySubTitle(context),
                     ),
                   ),
-                  SizedBox(height: 24),
-                  LogOutFromAuctionButtonWidget(),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
+                  const LogOutFromAuctionButtonWidget(),
+                  const SizedBox(height: 24),
                 ],
               )
             ],
@@ -156,7 +156,7 @@ class LogOutFromAuctionButtonWidget extends StatelessWidget {
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(
+                  side: const BorderSide(
                     width: 0.84,
                     strokeAlign: BorderSide.strokeAlignCenter,
                     color: Color(0xFFEBEEF3),
@@ -173,7 +173,7 @@ class LogOutFromAuctionButtonWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
             child: ElevatedButton(
               onPressed: () {

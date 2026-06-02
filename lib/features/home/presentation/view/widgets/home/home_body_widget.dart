@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import 'tabBar_view_body_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/tabBar_view_body_widget.dart';
 
 class HomeBodyWidget extends StatelessWidget {
   const HomeBodyWidget({
@@ -32,7 +32,7 @@ class HomeBodyWidget extends StatelessWidget {
           _tabController.animateTo(index);
         }
       },
-      children: [
+      children: const [
         TabBarViewBodyWidget(),
         TabBarViewBodyWidget(),
         TabBarViewBodyWidget(),

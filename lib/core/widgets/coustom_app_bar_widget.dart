@@ -41,7 +41,7 @@ class CoustomAppBarWidget extends StatelessWidget
           SizedBox(
             width: 160,
             child: Text(
-              title ?? "",
+              title ?? '',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: AppStyles.styleBold16(context).copyWith(
@@ -54,7 +54,7 @@ class CoustomAppBarWidget extends StatelessWidget
       actions: actions,
       leadingWidth: canPop ? 68 : 0,
       leading: leading != null
-          ? SizedBox.shrink()
+          ? const SizedBox.shrink()
           : canPop
               ? InkWell(
                   onTap: () {
@@ -62,14 +62,14 @@ class CoustomAppBarWidget extends StatelessWidget
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),
-                    margin: EdgeInsetsDirectional.only(
+                    margin: const EdgeInsetsDirectional.only(
                         start: 24, top: 6, bottom: 6),
                     decoration: ShapeDecoration(
                       color: const Color(0xFFFAFAFA) /* Surface-primary */,
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(
+                        side: const BorderSide(
                           width: 1,
-                          color: const Color(0xFFE1E1E2) /* Borders-primary */,
+                          color: Color(0xFFE1E1E2) /* Borders-primary */,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -82,7 +82,7 @@ class CoustomAppBarWidget extends StatelessWidget
                     ),
                   ),
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
     );
   }
 

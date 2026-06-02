@@ -5,14 +5,14 @@ import 'package:intl/intl.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 
-import '../../../../../core/functions/format_number.dart';
-import '../../../../../core/services/pdf_service.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../../../../core/utils/images.dart';
-import '../../../../../core/widgets/my_snackbar.dart';
-import '../../view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/services/pdf_service.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
 class TransactionDetailsScreen extends StatelessWidget {
   const TransactionDetailsScreen({super.key});
@@ -37,7 +37,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                       color: AppColors.typographyHeading(context),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
@@ -48,7 +48,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                       ),
                       ConstrainedBox(
                         constraints:
-                            BoxConstraints(maxHeight: 30, maxWidth: 30),
+                            const BoxConstraints(maxHeight: 30, maxWidth: 30),
                         child: SvgPicture.asset(
                           Assets.imagesCurrencyIcon,
                           color: AppColors.typographyHeading(context),
@@ -56,11 +56,11 @@ class TransactionDetailsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Container(
                     width: double.infinity,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
@@ -70,8 +70,8 @@ class TransactionDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 8),
-                        TransactionDetailsCardWidget(
+                        const SizedBox(height: 8),
+                        const TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
                           desc: '16, سبتمبر ,2024',
                         ),
@@ -79,7 +79,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                           thickness: 1,
                           color: AppColors.backgroundPrimary(context),
                         ),
-                        TransactionDetailsCardWidget(
+                        const TransactionDetailsCardWidget(
                           title: 'الرقم المرجعي',
                           desc: '1tf324452356665',
                         ),
@@ -87,7 +87,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                           thickness: 1,
                           color: AppColors.backgroundPrimary(context),
                         ),
-                        TransactionDetailsCardWidget(
+                        const TransactionDetailsCardWidget(
                           title: 'الرصيد بعد المعاملة',
                           desc: '556,138.5',
                         ),
@@ -95,12 +95,12 @@ class TransactionDetailsScreen extends StatelessWidget {
                           thickness: 1,
                           color: AppColors.backgroundPrimary(context),
                         ),
-                        TransactionDetailsCardWidget(
+                        const TransactionDetailsCardWidget(
                           title: 'تفاصيل المعاملة',
                           desc:
                               'حجز مبلغ للسوم على " أرض سكنية رقم 344 - 2435 ',
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   )
@@ -140,7 +140,7 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                       color: AppColors.typographyHeading(context),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
@@ -151,7 +151,7 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                       ),
                       ConstrainedBox(
                         constraints:
-                            BoxConstraints(maxHeight: 30, maxWidth: 30),
+                            const BoxConstraints(maxHeight: 30, maxWidth: 30),
                         child: SvgPicture.asset(
                           Assets.imagesCurrencyIcon,
                           color: AppColors.typographyHeading(context),
@@ -159,11 +159,11 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Container(
                     width: double.infinity,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
@@ -173,11 +173,11 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
                           desc:
-                              '${DateFormat('dd, MMMM, yyyy').format(heldFunds?.createdAt.toLocal() ?? DateTime.now())}',
+                              DateFormat('dd, MMMM, yyyy').format(heldFunds?.createdAt.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -186,7 +186,7 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                         TransactionDetailsCardWidget(
                           title: 'وقت المعاملة',
                           desc:
-                              '${DateFormat('hh:mm a').format(heldFunds?.createdAt.toLocal() ?? DateTime.now())}',
+                              DateFormat('hh:mm a').format(heldFunds?.createdAt.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -214,14 +214,14 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                           desc: 'حجز عربون على ' +
                               (heldFunds?.enrollment.auction.title ?? ''),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: ElevatedButton(
@@ -288,7 +288,7 @@ class WithdrawDetailsScreen extends StatelessWidget {
                       color: AppColors.typographyHeading(context),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
@@ -299,7 +299,7 @@ class WithdrawDetailsScreen extends StatelessWidget {
                       ),
                       ConstrainedBox(
                         constraints:
-                            BoxConstraints(maxHeight: 30, maxWidth: 30),
+                            const BoxConstraints(maxHeight: 30, maxWidth: 30),
                         child: SvgPicture.asset(
                           Assets.imagesCurrencyIcon,
                           color: AppColors.typographyHeading(context),
@@ -307,11 +307,11 @@ class WithdrawDetailsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Container(
                     width: double.infinity,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
@@ -321,11 +321,11 @@ class WithdrawDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
                           desc:
-                              '${DateFormat('dd, MMMM, yyyy').format(withdrawRequest?.createdAt.toLocal() ?? DateTime.now())}',
+                              DateFormat('dd, MMMM, yyyy').format(withdrawRequest?.createdAt.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -334,7 +334,7 @@ class WithdrawDetailsScreen extends StatelessWidget {
                         TransactionDetailsCardWidget(
                           title: 'وقت المعاملة',
                           desc:
-                              '${DateFormat('hh:mm a').format(withdrawRequest?.createdAt.toLocal() ?? DateTime.now())}',
+                              DateFormat('hh:mm a').format(withdrawRequest?.createdAt.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -376,14 +376,14 @@ class WithdrawDetailsScreen extends StatelessWidget {
                                       ? 'عملية مرفوضة'
                                       : 'تم التحويل'),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: ElevatedButton(
@@ -454,7 +454,7 @@ class InvoiceDetailsScreen extends StatelessWidget {
                       color: AppColors.typographyHeading(context),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
@@ -465,7 +465,7 @@ class InvoiceDetailsScreen extends StatelessWidget {
                       ),
                       ConstrainedBox(
                         constraints:
-                            BoxConstraints(maxHeight: 30, maxWidth: 30),
+                            const BoxConstraints(maxHeight: 30, maxWidth: 30),
                         child: SvgPicture.asset(
                           Assets.imagesCurrencyIcon,
                           color: AppColors.typographyHeading(context),
@@ -473,11 +473,11 @@ class InvoiceDetailsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Container(
                     width: double.infinity,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
@@ -487,11 +487,11 @@ class InvoiceDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
                           desc:
-                              '${DateFormat('dd, MMMM, yyyy').format(invoiceRequest?.issueDate.toLocal() ?? DateTime.now())}',
+                              DateFormat('dd, MMMM, yyyy').format(invoiceRequest?.issueDate.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -500,7 +500,7 @@ class InvoiceDetailsScreen extends StatelessWidget {
                         TransactionDetailsCardWidget(
                           title: 'وقت المعاملة',
                           desc:
-                              '${DateFormat('hh:mm a').format(invoiceRequest?.issueDate.toLocal() ?? DateTime.now())}',
+                              DateFormat('hh:mm a').format(invoiceRequest?.issueDate.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -549,14 +549,14 @@ class InvoiceDetailsScreen extends StatelessWidget {
                                       ? 'فشلت العملية'
                                       : 'عملية ناجحة'),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: ElevatedButton(
@@ -624,7 +624,7 @@ class TransactionDetailsCardWidget extends StatelessWidget {
               color: AppColors.typographySubTitle(context),
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             desc,
             style: AppStyles.styleMedium16(context).copyWith(
@@ -655,7 +655,7 @@ class IntroTrunsactonDetailsScreenWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               Row(
                 children: [
                   GestureDetector(
@@ -663,11 +663,11 @@ class IntroTrunsactonDetailsScreenWidget extends StatelessWidget {
                       context.pop();
                     },
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 24, maxWidth: 24),
+                      constraints: const BoxConstraints(maxHeight: 24, maxWidth: 24),
                       child: SvgPicture.asset(Assets.imagesArrowLeftLong),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(

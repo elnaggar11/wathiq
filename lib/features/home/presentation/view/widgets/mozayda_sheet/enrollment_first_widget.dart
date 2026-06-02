@@ -58,7 +58,7 @@ class enrollmentFirstWidget extends StatelessWidget {
                     color: AppColors.primary(context),
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   'أنت غير مسجل بالمنصة.. يرجى تسجيل الدخول أولا',
                   textAlign: TextAlign.start,
@@ -69,7 +69,7 @@ class enrollmentFirstWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ElevatedButton(
             onPressed: () {
               context.navigateTo(Routes.login);

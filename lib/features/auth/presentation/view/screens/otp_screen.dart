@@ -6,17 +6,17 @@ import 'package:lottie/lottie.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/timer_widget.dart';
 
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/utils/app_animations.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/my_snackbar.dart';
-import '../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
-import '../../view_model/auth/auth_cubit.dart';
-import '../widgets/otp/pin_code_widget.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/otp/pin_code_widget.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({
@@ -113,7 +113,7 @@ class OTPScreenMobileLayoutWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               children: [
                 48.verticalSpace,
@@ -149,9 +149,9 @@ class OTPScreenMobileLayoutWidget extends StatelessWidget {
                   ],
                 ),
                 32.verticalSpace,
-                pinCodeWidget(),
+                const PinCodeWidget(),
                 24.verticalSpace,
-                TimerWidget(),
+                const TimerWidget(),
                 24.verticalSpace,
                 VerifyButtonWidget(
                   nextRoute: nextRoute,

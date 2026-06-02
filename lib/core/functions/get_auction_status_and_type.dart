@@ -1,4 +1,4 @@
-import '../utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
 
 String getAuctionStatusText(String? status) {
   if (status == AppStrings.auctionsOnGoing) {

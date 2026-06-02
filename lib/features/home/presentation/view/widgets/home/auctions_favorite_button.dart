@@ -6,9 +6,9 @@ import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_status_timer_widget.dart';
 
-import '../../../../data/models/auctions_model/auctions_model.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../mazad_details/location_and_intro_image._widgets.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/location_and_intro_image._widgets.dart';
 
 bool KisFromFav = false;
 

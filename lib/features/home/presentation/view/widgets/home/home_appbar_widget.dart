@@ -10,12 +10,12 @@ import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view/screens/assets_details_screen.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../paegs/presentation/view_model/pages_cubit.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class HomeAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   const HomeAppBarWidget({
@@ -31,7 +31,7 @@ class HomeAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   State<HomeAppBarWidget> createState() => _HomeAppBarWidgetState();
 
   @override
-  Size get preferredSize => Size.fromHeight(115);
+  Size get preferredSize => const Size.fromHeight(115);
 }
 
 class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
@@ -82,7 +82,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
       ),
       toolbarHeight: 64.h,
       leading: Padding(
-        padding: EdgeInsetsDirectional.only(start: 16),
+        padding: const EdgeInsetsDirectional.only(start: 16),
         child: InkWell(
           onTap: widget.toggleDrawer,
           child: FittedBox(
@@ -91,9 +91,9 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
               decoration: ShapeDecoration(
                 color: const Color(0xFFFAFAFA),
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(
+                  side: const BorderSide(
                     width: 1,
-                    color: const Color(0xFFE1E1E2),
+                    color: Color(0xFFE1E1E2),
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -113,8 +113,8 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                 onTap: () {
                   showPopover(
                       context: context,
-                      bodyBuilder: (context) => Padding(
-                            padding: const EdgeInsets.only(right: 0),
+                      bodyBuilder: (context) => const Padding(
+                            padding: EdgeInsets.only(right: 0),
                             child: ListItems(),
                           ),
                       onPop: () => print('Popover was popped!'),
@@ -135,9 +135,9 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                   decoration: ShapeDecoration(
                     color: const Color(0xFF18365F),
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(
+                      side: const BorderSide(
                         width: 1,
-                        color: const Color(0xFFE1E1E2),
+                        color: Color(0xFFE1E1E2),
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -172,9 +172,9 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                           decoration: ShapeDecoration(
                             color: const Color(0xFFFAFAFA),
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(
+                              side: const BorderSide(
                                 width: 1,
-                                color: const Color(0xFFE1E1E2),
+                                color: Color(0xFFE1E1E2),
                               ),
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -197,10 +197,10 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                                   shape: BoxShape.circle,
                                   color: AppColors.mainColor(context),
                                 ),
-                                padding: EdgeInsets.all(4),
+                                padding: const EdgeInsets.all(4),
                                 child: Center(
                                   child: Text(
-                                    '${count}',
+                                    '$count',
                                     style:
                                         AppStyles.stylBold12(context).copyWith(
                                       color:
@@ -216,7 +216,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
             ],
@@ -224,7 +224,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(115);
+  Size get preferredSize => const Size.fromHeight(115);
 }
 
 class ListItems extends StatelessWidget {
@@ -245,7 +245,7 @@ class ListItems extends StatelessWidget {
               // Your action here
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           MenuItemCard(
@@ -256,7 +256,7 @@ class ListItems extends StatelessWidget {
               // Your action here
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           MenuItemCard(
@@ -379,7 +379,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
           ),
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: EdgeInsets.all(0),
+          labelPadding: const EdgeInsets.all(0),
           tabs: List<Widget>.generate(
             tapsName.length,
             (index) => InkWell(
@@ -392,7 +392,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
               child: SizedBox(
                 height: 44,
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -420,7 +420,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
                               RequestState.loaded) {
                             return Row(
                               children: [
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 2),
@@ -456,7 +456,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
                               ],
                             );
                           } else {
-                            return SizedBox.shrink();
+                            return const SizedBox.shrink();
                           }
                         },
                       ),

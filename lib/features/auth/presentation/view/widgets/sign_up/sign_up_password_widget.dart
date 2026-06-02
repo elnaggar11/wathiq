@@ -5,10 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../view_model/auth/auth_cubit.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 
 class SignUpPasswordWidget extends StatefulWidget {
   const SignUpPasswordWidget({
@@ -72,12 +72,12 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
             return null; // كلمة المرور صالحة
           },
           prefix: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 12,
               horizontal: 14,
             ),
             child: ConstrainedBox(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 24,
                 maxHeight: 24,
               ),
@@ -142,12 +142,12 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
             return null; // كلمة المرور صالحة
           },
           prefix: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 12,
               horizontal: 14,
             ),
             child: ConstrainedBox(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 20,
                 maxHeight: 20,
               ),

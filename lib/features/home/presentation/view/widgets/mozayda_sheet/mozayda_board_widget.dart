@@ -9,9 +9,9 @@ import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/auc
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/enrollment_first_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/mozayda_sheet.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class MozaydaBoardWidget extends StatelessWidget {
   const MozaydaBoardWidget({
@@ -26,14 +26,14 @@ class MozaydaBoardWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            TopMozaydaWidget(),
-            SizedBox(height: 16),
-            AuctionPriceWidegt(),
-            SizedBox(height: 16),
+            const TopMozaydaWidget(),
+            const SizedBox(height: 16),
+            const AuctionPriceWidegt(),
+            const SizedBox(height: 16),
             !homeCubit.auctionOrigin!.isEnrolled!
-                ? CalculatorWidget()
-                : SizedBox.shrink(),
-            SizedBox(height: 16),
+                ? const CalculatorWidget()
+                : const SizedBox.shrink(),
+            const SizedBox(height: 16),
             Container(
               alignment: Alignment.center,
               width: double.infinity,
@@ -50,7 +50,7 @@ class MozaydaBoardWidget extends StatelessWidget {
                 ),
               ),
               child: KisGuest == true
-                  ? enrollmentFirstWidget()
+                  ? const enrollmentFirstWidget()
                   : homeCubit.auctionOrigin!.isEnrolled == false
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +62,7 @@ class MozaydaBoardWidget extends StatelessWidget {
                                 color: AppColors.typographyBody(context),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 6,
                             ),
                             Text(
@@ -74,7 +74,7 @@ class MozaydaBoardWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w900,
                               ),
                             ),
-                            SizedBox(height: 32),
+                            const SizedBox(height: 32),
                             ElevatedButton(
                               onPressed: () {
                                 context.read<HomeCubit>().type =
@@ -91,9 +91,9 @@ class MozaydaBoardWidget extends StatelessWidget {
                             )
                           ],
                         )
-                      : AddMozaydaWidget(),
+                      : const AddMozaydaWidget(),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
         ),
       ),

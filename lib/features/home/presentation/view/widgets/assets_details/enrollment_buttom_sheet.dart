@@ -11,25 +11,25 @@ import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/enrollment_first_widget.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../../app/app.dart';
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../../../profile/presentation/view_model/profile/profile_cubit.dart';
-import '../../../../../wallet/presentation/view/widgets/add_balance_sheet.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/features/wallet/presentation/view/widgets/add_balance_sheet.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 Future<void> enrollmentSheetBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
-      return EnrollmentSheetBottomSheetBodyWidget();
+      return const EnrollmentSheetBottomSheetBodyWidget();
     },
   );
 }
@@ -76,7 +76,7 @@ class _EnrollmentSheetBottomSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.white(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -86,7 +86,7 @@ class _EnrollmentSheetBottomSheetBodyWidgetState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -107,10 +107,10 @@ class _EnrollmentSheetBottomSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: AppColors.borderPrimary(context),
@@ -134,7 +134,7 @@ class _EnrollmentSheetBottomSheetBodyWidgetState
                   ],
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Text(
                 'المشاركة ك',
                 textAlign: TextAlign.start,
@@ -142,14 +142,14 @@ class _EnrollmentSheetBottomSheetBodyWidgetState
                   color: AppColors.typographyHeading(context),
                 ),
               ),
-              SizedBox(height: 16),
-              SelectSharAsRadioButton(),
+              const SizedBox(height: 16),
+              const SelectSharAsRadioButton(),
               // SizedBox(height: 16),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                 decoration: ShapeDecoration(
-                  color: Color(0xFFF7F7F8),
+                  color: const Color(0xFFF7F7F8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -167,15 +167,15 @@ class _EnrollmentSheetBottomSheetBodyWidgetState
                 ),
               ),
               KisGuest
-                  ? enrollmentFirstWidget(
+                  ? const enrollmentFirstWidget(
                       padding: 16,
                     )
-                  : EnrollMentCallToAction(),
+                  : const EnrollMentCallToAction(),
               KisGuest
-                  ? SizedBox(
+                  ? const SizedBox(
                       height: 16,
                     )
-                  : SizedBox.shrink()
+                  : const SizedBox.shrink()
             ],
           ),
         ),
@@ -198,11 +198,11 @@ class EnrollMentCallToAction extends StatelessWidget {
           borderRadius: BorderRadius.circular(16)),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          EnrollmentWalletWidget(),
-          SizedBox(
+          const EnrollmentWalletWidget(),
+          const SizedBox(
             height: 16,
           ),
           SizedBox(
@@ -222,7 +222,7 @@ class EnrollMentCallToAction extends StatelessWidget {
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(
+                        side: const BorderSide(
                           width: 0.84,
                           strokeAlign: BorderSide.strokeAlignCenter,
                           color: Color(0xFFEBEEF3),
@@ -239,7 +239,7 @@ class EnrollMentCallToAction extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
@@ -326,13 +326,13 @@ class EnrollmentWalletWidget extends StatelessWidget {
           );
         } else {
           return Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             width: double.infinity,
             decoration: BoxDecoration(
               color: ((state.getWalletModel?.data.balance ?? 0) <
                       homeCubit.auctionOrigin!.entryDeposit)
                   ? AppColors.error(context).withOpacity(0.05)
-                  : Color(0xFF2E9C95).withOpacity(0.05),
+                  : const Color(0xFF2E9C95).withOpacity(0.05),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(
@@ -344,9 +344,9 @@ class EnrollmentWalletWidget extends StatelessWidget {
                       color: ((state.getWalletModel?.data.balance ?? 0) <
                               homeCubit.auctionOrigin!.entryDeposit)
                           ? AppColors.error(context)
-                          : Color(0xFF2E9C95),
+                          : const Color(0xFF2E9C95),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -357,24 +357,24 @@ class EnrollmentWalletWidget extends StatelessWidget {
                             color: AppColors.typographyBody(context),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               state.getWalletModel?.data.balance
                                       .toStringAsFixed(2) ??
-                                  "0",
+                                  '0',
                               textAlign: TextAlign.start,
                               style: AppStyles.styleBold16(context).copyWith(
                                 color: ((state.getWalletModel?.data.balance ??
                                             0) <
                                         homeCubit.auctionOrigin!.entryDeposit)
                                     ? AppColors.error(context)
-                                    : Color(0xFF2E9C95),
+                                    : const Color(0xFF2E9C95),
                               ),
                             ),
-                            SizedBox(width: 2),
+                            const SizedBox(width: 2),
                             CurrancyLogoWidget(
                               maxHeight: 20,
                               maxWidth: 20,
@@ -382,7 +382,7 @@ class EnrollmentWalletWidget extends StatelessWidget {
                                   ((state.getWalletModel?.data.balance ?? 0) <
                                           homeCubit.auctionOrigin!.entryDeposit)
                                       ? AppColors.error(context)
-                                      : Color(0xFF2E9C95),
+                                      : const Color(0xFF2E9C95),
                             ),
                           ],
                         ),
@@ -412,7 +412,7 @@ class EnrollmentWalletWidget extends StatelessWidget {
                           ),
                         ),
                       )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
               ],
             ),
           );
@@ -452,7 +452,7 @@ class _SelectSharAsRadioButtonState extends State<SelectSharAsRadioButton> {
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                   child: RadioListTile(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     visualDensity: VisualDensity.compact,
@@ -469,10 +469,10 @@ class _SelectSharAsRadioButtonState extends State<SelectSharAsRadioButton> {
                   ),
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                   child: RadioListTile(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     visualDensity: VisualDensity.compact,
@@ -495,8 +495,8 @@ class _SelectSharAsRadioButtonState extends State<SelectSharAsRadioButton> {
             height: AppStrings.enrollShareAsAgent == _selectedValue ? 8 : 0,
           ),
           AppStrings.enrollShareAsAgent == _selectedValue
-              ? ActiveAgenciesDropdownButtonFormFieldWidget()
-              : SizedBox.shrink(),
+              ? const ActiveAgenciesDropdownButtonFormFieldWidget()
+              : const SizedBox.shrink(),
         ],
       ),
     );
@@ -524,7 +524,7 @@ class _ActiveAgenciesDropdownButtonFormFieldWidgetState
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         return DropdownButtonFormField<String>(
-          value: selectedValue,
+          initialValue: selectedValue,
           menuMaxHeight: 600,
           dropdownColor: AppColors.white(context),
           style: AppStyles.styleBold16(context).copyWith(),
@@ -540,7 +540,7 @@ class _ActiveAgenciesDropdownButtonFormFieldWidgetState
                     enabled: false,
                     onTap: null,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Text(
                         'لا يوجد لديك وكالات مقبولة',
                         style: AppStyles.styleBold16(context).copyWith(
@@ -556,7 +556,7 @@ class _ActiveAgenciesDropdownButtonFormFieldWidgetState
                           homeCubit.agencyId = agency.id;
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 24),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: Text(
                             agency.agencyName,
                             style: AppStyles.styleBold16(context).copyWith(
@@ -604,14 +604,14 @@ class _ActiveAgenciesDropdownButtonFormFieldWidgetState
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.red, // Border color when there's an error
                 width: 1,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.red, // Border color when focused with an error
                 width: 1.5,
               ),

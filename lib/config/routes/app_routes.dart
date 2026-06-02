@@ -2,38 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:wathiq/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:wathiq/features/paegs/presentation/view/screens/contact_us_screen.dart';
 
-import '../../features/auth/presentation/view/screens/complete_signup_screen.dart';
-import '../../features/auth/presentation/view/screens/forget_password_screen.dart.dart';
-import '../../features/auth/presentation/view/screens/otp_screen.dart';
-import '../../features/auth/presentation/view/screens/reset_password_screen.dart.dart';
-import '../../features/auth/presentation/view/screens/sign_up_screen.dart';
-import '../../features/auth/presentation/view/screens/splash_screen.dart';
-import '../../features/home/presentation/view/screens/assets_details_screen.dart';
-import '../../features/home/presentation/view/screens/home_screen.dart';
-import '../../features/home/presentation/view/screens/mazad_details_screen.dart';
-import '../../features/home/presentation/view/screens/mazadat_menu_screen.dart';
-import '../../features/home/presentation/view/screens/my_mazadat.dart';
-import '../../features/home/presentation/view/screens/policy_screen.dart';
-import '../../features/home/presentation/view/screens/saved_mazade_screen.dart';
-import '../../features/home/presentation/view/screens/wallet.dart';
-import '../../features/layout/presentation/view/screens/layout_screen.dart';
-import '../../features/paegs/presentation/view/screens/add_real_state_screen.dart';
-import '../../features/paegs/presentation/view/screens/notification_screen.dart';
-import '../../features/paegs/presentation/view/screens/properity_managment.dart';
-import '../../features/paegs/presentation/view/screens/question_screen.dart';
-import '../../features/paegs/presentation/view/screens/sales_agent/add_sales_agent.dart';
-import '../../features/paegs/presentation/view/screens/sales_agent/sales_agent_intro_screen.dart';
-import '../../features/profile/presentation/view/screens/agencies_details_screen.dart';
-import '../../features/profile/presentation/view/screens/agencies_screen.dart';
-import '../../features/profile/presentation/view/screens/change_email_screen.dart';
-import '../../features/profile/presentation/view/screens/change_password_screen.dart';
-import '../../features/profile/presentation/view/screens/change_phone_number.dart';
-import '../../features/profile/presentation/view/screens/profile_screen.dart';
-import '../../features/profile/presentation/view/screens/user_info_screen.dart';
-import '../../features/wallet/presentation/view/screens/transaction_details_screen.dart';
-import '../../features/wallet/presentation/view/screens/trunsaction_history_screen.dart';
-import '../../features/wallet/presentation/view/screens/wallet_screen.dart';
-import '../../features/wallet/presentation/view/screens/withdraw_screen.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/complete_signup_screen.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/forget_password_screen.dart.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/otp_screen.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/reset_password_screen.dart.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/sign_up_screen.dart';
+import 'package:wathiq/features/auth/presentation/view/screens/splash_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/assets_details_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/home_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/mazad_details_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/mazadat_menu_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/my_mazadat.dart';
+import 'package:wathiq/features/home/presentation/view/screens/policy_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/saved_mazade_screen.dart';
+import 'package:wathiq/features/home/presentation/view/screens/wallet.dart';
+import 'package:wathiq/features/layout/presentation/view/screens/layout_screen.dart';
+import 'package:wathiq/features/paegs/presentation/view/screens/add_real_state_screen.dart';
+import 'package:wathiq/features/paegs/presentation/view/screens/notification_screen.dart';
+import 'package:wathiq/features/paegs/presentation/view/screens/properity_managment.dart';
+import 'package:wathiq/features/paegs/presentation/view/screens/question_screen.dart';
+import 'package:wathiq/features/paegs/presentation/view/screens/sales_agent/add_sales_agent.dart';
+import 'package:wathiq/features/paegs/presentation/view/screens/sales_agent/sales_agent_intro_screen.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/agencies_details_screen.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/agencies_screen.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/change_email_screen.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/change_password_screen.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/change_phone_number.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/profile_screen.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/user_info_screen.dart';
+import 'package:wathiq/features/wallet/presentation/view/screens/transaction_details_screen.dart';
+import 'package:wathiq/features/wallet/presentation/view/screens/trunsaction_history_screen.dart';
+import 'package:wathiq/features/wallet/presentation/view/screens/wallet_screen.dart';
+import 'package:wathiq/features/wallet/presentation/view/screens/withdraw_screen.dart';
 
 class Routes {
   //auth
@@ -82,9 +82,9 @@ class Routes {
 class AppRoutes {
   static final List<Widget> layoutScreenBody = [
     const HomeScreen(),
-    MyMazadatScreen(),
-    WalletScreen(),
-    ProfileScreen(),
+    const MyMazadatScreen(),
+    const WalletScreen(),
+    const ProfileScreen(),
   ];
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -94,15 +94,15 @@ class AppRoutes {
         );
       case Routes.login:
         return MaterialPageRoute(
-          builder: (_) => LoginScreen(),
+          builder: (_) => const LoginScreen(),
         );
       case Routes.signUpScreen:
         return MaterialPageRoute(
-          builder: (_) => SignUpScreen(),
+          builder: (_) => const SignUpScreen(),
         );
       case Routes.completeSignUpScreen:
         return MaterialPageRoute(
-          builder: (_) => CompleteSignUpScreen(),
+          builder: (_) => const CompleteSignUpScreen(),
         );
       case Routes.oTPScreen:
         return MaterialPageRoute(
@@ -126,15 +126,15 @@ class AppRoutes {
         );
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
-          builder: (_) => ForgetPasswordScreen(),
+          builder: (_) => const ForgetPasswordScreen(),
         );
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
-          builder: (_) => ResetePasswordScreen(),
+          builder: (_) => const ResetePasswordScreen(),
         );
       case Routes.layoutScreen:
         return MaterialPageRoute(
-          builder: (_) => LayoutScreen(),
+          builder: (_) => const LayoutScreen(),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -146,39 +146,39 @@ class AppRoutes {
         );
       case Routes.profileScreen:
         return MaterialPageRoute(
-          builder: (_) => ProfileScreen(),
+          builder: (_) => const ProfileScreen(),
         );
       case Routes.userInfoScreen:
         return MaterialPageRoute(
-          builder: (_) => UserInfoScreen(),
+          builder: (_) => const UserInfoScreen(),
         );
       case Routes.AgenciesDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => AgenciesDetailsScreen(),
+          builder: (_) => const AgenciesDetailsScreen(),
         );
       case Routes.savedMazadeScreen:
         return MaterialPageRoute(
-          builder: (_) => SavedMazadeScreen(),
+          builder: (_) => const SavedMazadeScreen(),
         );
       case Routes.changePasswordScreen:
         return MaterialPageRoute(
-          builder: (_) => ChangePasswordScreen(),
+          builder: (_) => const ChangePasswordScreen(),
         );
       case Routes.qustionScreen:
         return MaterialPageRoute(
-          builder: (_) => QustionScreen(),
+          builder: (_) => const QustionScreen(),
         );
       case Routes.contactUsScreen:
         return MaterialPageRoute(
-          builder: (_) => ContactUsScreen(),
+          builder: (_) => const ContactUsScreen(),
         );
       case Routes.addSalesAgent:
         return MaterialPageRoute(
-          builder: (_) => AddSalesAgentScreen(),
+          builder: (_) => const AddSalesAgentScreen(),
         );
       case Routes.SalesAgentIntroScreen:
         return MaterialPageRoute(
-          builder: (_) => SalesAgentIntroScreen(),
+          builder: (_) => const SalesAgentIntroScreen(),
         );
       case Routes.notificationScreen:
         return MaterialPageRoute(
@@ -186,83 +186,83 @@ class AppRoutes {
         );
       case Routes.mazadatMenuScreen:
         return MaterialPageRoute(
-          builder: (_) => MazadatMenuScreen(),
+          builder: (_) => const MazadatMenuScreen(),
         );
       case Routes.changeEmailScreen:
         return MaterialPageRoute(
-          builder: (_) => ChangeEmailScreen(),
+          builder: (_) => const ChangeEmailScreen(),
         );
       case Routes.Wallet:
         return MaterialPageRoute(
-          builder: (_) => MyMazadatScreen(),
+          builder: (_) => const MyMazadatScreen(),
         );
       case Routes.MyMazadat:
         return MaterialPageRoute(
-          builder: (_) => Wallet(),
+          builder: (_) => const Wallet(),
         );
       case Routes.assetsDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => AssetsDetailsScreen(),
+          builder: (_) => const AssetsDetailsScreen(),
         );
       case Routes.policyScreen:
         return MaterialPageRoute(
-          builder: (_) => PolicyScreen(),
+          builder: (_) => const PolicyScreen(),
         );
       case Routes.changePhoneNumberScreen:
         return MaterialPageRoute(
-          builder: (_) => ChangePhoneNumberScreen(),
+          builder: (_) => const ChangePhoneNumberScreen(),
         );
       case Routes.agenciesScreen:
         return MaterialPageRoute(
-          builder: (_) => AgenciesScreen(),
+          builder: (_) => const AgenciesScreen(),
         );
       case Routes.walletScreen:
         return MaterialPageRoute(
-          builder: (_) => WalletScreen(),
+          builder: (_) => const WalletScreen(),
         );
       case Routes.TrunsactionHistoryScreen:
         return MaterialPageRoute(
-          builder: (_) => TrunsactionHistoryScreen(),
+          builder: (_) => const TrunsactionHistoryScreen(),
         );
       case Routes.TransactionDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => TransactionDetailsScreen(),
+          builder: (_) => const TransactionDetailsScreen(),
         );
       case Routes.WithdrawScreen:
         return MaterialPageRoute(
-          builder: (_) => WithdrawScreen(),
+          builder: (_) => const WithdrawScreen(),
         );
       case Routes.HeldFundsDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => HeldFundsDetailsScreen(),
+          builder: (_) => const HeldFundsDetailsScreen(),
         );
       case Routes.WithdrawDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => WithdrawDetailsScreen(),
+          builder: (_) => const WithdrawDetailsScreen(),
         );
       case Routes.InvoiceDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => InvoiceDetailsScreen(),
+          builder: (_) => const InvoiceDetailsScreen(),
         );
       case Routes.WithdrawBodyScreen:
         return MaterialPageRoute(
-          builder: (_) => WithdrawBodyScreen(),
+          builder: (_) => const WithdrawBodyScreen(),
         );
       case Routes.HeldFundsBodyScreen:
         return MaterialPageRoute(
-          builder: (_) => HeldFundsBodyScreen(),
+          builder: (_) => const HeldFundsBodyScreen(),
         );
       case Routes.InvoicesBodyScreen:
         return MaterialPageRoute(
-          builder: (_) => InvoicesBodyScreen(),
+          builder: (_) => const InvoicesBodyScreen(),
         );
       case Routes.AddRealStateScreen:
         return MaterialPageRoute(
-          builder: (_) => AddRealStateScreen(),
+          builder: (_) => const AddRealStateScreen(),
         );
       case Routes.ProperityManagment:
         return MaterialPageRoute(
-          builder: (_) => ProperityManagmentScreen(),
+          builder: (_) => const ProperityManagmentScreen(),
         );
     }
     return null;

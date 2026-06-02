@@ -5,10 +5,10 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../core/functions/url_luncher.dart';
+import 'package:wathiq/core/functions/url_luncher.dart';
 
 class ContactUsCardWidget extends StatelessWidget {
-  ContactUsCardWidget({
+  const ContactUsCardWidget({
     super.key,
     required this.text,
     this.icon,
@@ -33,7 +33,7 @@ class ContactUsCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           icon == null
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: SvgPicture.asset(icon!),
@@ -42,18 +42,18 @@ class ContactUsCardWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              instagram == null ? SizedBox(height: 8) : SizedBox.shrink(),
+              instagram == null ? const SizedBox(height: 8) : const SizedBox.shrink(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    text ?? "",
+                    text ?? '',
                     textAlign: TextAlign.start,
                     style: AppStyles.styleBold16(context),
                   ),
                 ],
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               subText != null
                   ? Row(
                       children: [
@@ -68,11 +68,11 @@ class ContactUsCardWidget extends StatelessWidget {
                         ),
                         subtextIcon != null
                             ? SvgPicture.asset(subtextIcon!)
-                            : SizedBox.shrink()
+                            : const SizedBox.shrink()
                       ],
                     )
-                  : SizedBox.shrink(),
-              subText != null ? SizedBox(height: 12) : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
+              subText != null ? const SizedBox(height: 12) : const SizedBox.shrink(),
               Row(
                 children: [
                   instagram != null
@@ -84,8 +84,8 @@ class ContactUsCardWidget extends StatelessWidget {
                             AppAssets.app_imagesInsta,
                           ),
                         )
-                      : SizedBox.shrink(),
-                  SizedBox(width: 12),
+                      : const SizedBox.shrink(),
+                  const SizedBox(width: 12),
                   youtube != null
                       ? InkWell(
                           onTap: () {
@@ -95,8 +95,8 @@ class ContactUsCardWidget extends StatelessWidget {
                             AppAssets.app_imagesYoutube,
                           ),
                         )
-                      : SizedBox.shrink(),
-                  SizedBox(width: 12),
+                      : const SizedBox.shrink(),
+                  const SizedBox(width: 12),
                   linkedin != null
                       ? InkWell(
                           onTap: () {
@@ -106,8 +106,8 @@ class ContactUsCardWidget extends StatelessWidget {
                             AppAssets.app_imagesLinkedin,
                           ),
                         )
-                      : SizedBox.shrink(),
-                  SizedBox(width: 12),
+                      : const SizedBox.shrink(),
+                  const SizedBox(width: 12),
                   twitter != null
                       ? InkWell(
                           onTap: () {
@@ -117,7 +117,7 @@ class ContactUsCardWidget extends StatelessWidget {
                             AppAssets.app_imagesX,
                           ),
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                 ],
               ),
             ],

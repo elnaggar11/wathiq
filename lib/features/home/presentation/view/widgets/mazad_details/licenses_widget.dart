@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../core/functions/url_luncher.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_title_and_location_widget.dart';
+import 'package:wathiq/core/functions/url_luncher.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_title_and_location_widget.dart';
 
 class LicensesWidget extends StatelessWidget {
   const LicensesWidget({
@@ -19,14 +19,14 @@ class LicensesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white(context),
       ),
       child: Column(
         children: [
-          RealEstateOrganizationWidget(),
-          SizedBox(height: 24),
+          const RealEstateOrganizationWidget(),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Divider(
@@ -35,9 +35,9 @@ class LicensesWidget extends StatelessWidget {
               color: AppColors.inputBorder(context),
             ),
           ),
-          SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+          const SizedBox(height: 24),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12),
             child: AuctionBrochureChiledWidget(),
           ),
         ],
@@ -62,7 +62,7 @@ class RealEstateOrganizationWidget extends StatelessWidget {
           children: [
             homeCubit.auctionData!.logos.length > 0
                 ? ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 56,
                       maxHeight: 56,
                     ),
@@ -70,13 +70,13 @@ class RealEstateOrganizationWidget extends StatelessWidget {
                       imageUrl: homeCubit.auctionData!.logos[0].logo ?? '',
                     ),
                   )
-                : SizedBox.shrink(),
-            SizedBox(
+                : const SizedBox.shrink(),
+            const SizedBox(
               width: 12,
             ),
             homeCubit.auctionData!.logos.length > 1
                 ? ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 56,
                       maxHeight: 56,
                     ),
@@ -84,10 +84,10 @@ class RealEstateOrganizationWidget extends StatelessWidget {
                       imageUrl: homeCubit.auctionData!.logos[1].logo ?? '',
                     ),
                   )
-                : SizedBox.shrink(),
-            Spacer(),
+                : const SizedBox.shrink(),
+            const Spacer(),
             ConstrainedBox(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 155,
                 maxHeight: 43,
               ),
@@ -98,21 +98,21 @@ class RealEstateOrganizationWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Text(
           'وكيل البيع',
           style: AppStyles.styleMedium12(context).copyWith(
             color: AppColors.typographyHeading(context),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           homeCubit.auctionData?.provider.companyName ?? 'وثيق للمزادات',
           style: AppStyles.styleMedium16(context).copyWith(
             color: AppColors.typographyHeading(context),
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -127,8 +127,8 @@ class RealEstateOrganizationWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 16),
-        WhatsAppAndCallButtonWidget(),
+        const SizedBox(height: 16),
+        const WhatsAppAndCallButtonWidget(),
       ],
     );
   }
@@ -153,14 +153,14 @@ class AuctionBrochureChiledWidget extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Text(
             'برشور المزاد',
             style: AppStyles.styleBold16(context).copyWith(
               color: AppColors.typographyBody(context),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           BlocConsumer<HomeCubit, HomeState>(
             listenWhen: (previous, current) =>
                 previous.auctionBrochureRequestState !=
@@ -185,7 +185,7 @@ class AuctionBrochureChiledWidget extends StatelessWidget {
             builder: (context, state) {
               if (state.auctionBrochureRequestState == RequestState.loading) {
                 return Container(
-                  child: CustomCircularProgressIndicatorWidget(),
+                  child: const CustomCircularProgressIndicatorWidget(),
                 );
               } else {
                 return Container(
@@ -217,7 +217,7 @@ class ValTextColumWidget extends StatelessWidget {
           title,
           style: AppStyles.styleMedium14(context),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           desc,
           style: AppStyles.styleBold14(context).copyWith(
@@ -252,7 +252,7 @@ class WhatsAppAndCallButtonWidget extends StatelessWidget {
           child: OutlinedButton.icon(
             onPressed: () {
               if (whatsappNumber != null) {
-                openLink('https://wa.me/${whatsappNumber}');
+                openLink('https://wa.me/$whatsappNumber');
                 print(
                     homeCubit.auctionData?.provider.auctionPhoneNumber?.number);
               } else {
@@ -269,19 +269,19 @@ class WhatsAppAndCallButtonWidget extends StatelessWidget {
               color: AppColors.typographyHeadingWhite(context),
             ),
             style: OutlinedButton.styleFrom(
-              minimumSize: Size(double.infinity, 48),
-              side: BorderSide(
+              minimumSize: const Size(double.infinity, 48),
+              side: const BorderSide(
                 color: Color(0xFF549D78),
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              foregroundColor: Color(0xFF549D78),
-              backgroundColor: Color(0xFF549D78),
+              foregroundColor: const Color(0xFF549D78),
+              backgroundColor: const Color(0xFF549D78),
             ),
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         GestureDetector(
           onTap: () {
             if (whatsappNumber != null) {
@@ -293,19 +293,19 @@ class WhatsAppAndCallButtonWidget extends StatelessWidget {
           child: Container(
             width: 48,
             height: 48,
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 1,
-                  color: const Color(0xFF549D78),
+                  color: Color(0xFF549D78),
                 ),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
             child: SvgPicture.asset(
               AppAssets.app_imagesCall,
-              color: Color(0xFF549D78),
+              color: const Color(0xFF549D78),
               fit: BoxFit.contain,
             ),
           ),

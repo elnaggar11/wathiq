@@ -5,16 +5,16 @@ import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/empty_widget.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../../../../core/widgets/error_app_widget.dart';
-import '../../../data/models/categories_model.dart';
-import '../widgets/qustions/question_answer_widget.dart';
-import '../widgets/qustions/qustion_search_filed.dart';
-import '../widgets/qustions/shimmer_question_answer_list.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/error_app_widget.dart';
+import 'package:wathiq/features/paegs/data/models/categories_model.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/qustions/question_answer_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/qustions/qustion_search_filed.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/qustions/shimmer_question_answer_list.dart';
 
 class QustionScreen extends StatefulWidget {
-  QustionScreen({super.key});
+  const QustionScreen({super.key});
 
   @override
   State<QustionScreen> createState() => _QustionScreenState();
@@ -37,7 +37,7 @@ class _QustionScreenState extends State<QustionScreen> {
         backgroundColor: AppColors.primarySurface(context),
         appBar: CoustomAppBarWidget(
           title: ' الأسئلة الشائعة',
-          bottom: QustionSearchFiled(),
+          bottom: const QustionSearchFiled(),
           hight: 117,
         ),
         body: SingleChildScrollView(
@@ -46,7 +46,7 @@ class _QustionScreenState extends State<QustionScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 BlocBuilder<PagesCubit, PagesState>(
                   buildWhen: (previous, current) =>
                       previous.qestionsCategoriesRequestState !=
@@ -55,7 +55,7 @@ class _QustionScreenState extends State<QustionScreen> {
                     switch (state.qestionsCategoriesRequestState) {
                       case RequestState.ideal:
                       case RequestState.loading:
-                        return SizedBox();
+                        return const SizedBox();
                       case RequestState.loaded:
                         return HorizontalCategorySelector(
                           qestionsCategoriesModel:
@@ -72,7 +72,7 @@ class _QustionScreenState extends State<QustionScreen> {
                     }
                   },
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: BlocBuilder<PagesCubit, PagesState>(
@@ -80,9 +80,9 @@ class _QustionScreenState extends State<QustionScreen> {
                       switch (state.qestionsRequestState) {
                         case RequestState.ideal:
                         case RequestState.loading:
-                          return ShimmerQuestionAnswerList();
+                          return const ShimmerQuestionAnswerList();
                         case RequestState.error:
-                          return SizedBox.shrink();
+                          return const SizedBox.shrink();
                         case RequestState.loaded:
                           return Column(
                             children: [
@@ -101,16 +101,16 @@ class _QustionScreenState extends State<QustionScreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               state.qestionsModel!.data.isEmpty
-                                  ? EmptyWidget(
+                                  ? const EmptyWidget(
                                       title: 'لم يتم العثور على البحث',
                                     )
                                   : ListView.builder(
                                       shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       itemCount:
                                           state.qestionsModel!.data.length,
                                       itemBuilder: (context, index) {
@@ -180,7 +180,7 @@ class _HorizontalCategorySelectorState
               });
             },
             child: Container(
-              margin: EdgeInsets.only(right: 8),
+              margin: const EdgeInsets.only(right: 8),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
               decoration: ShapeDecoration(
                 color: isSelected

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../../../../core/network/socket/socket_end_points.dart';
-import '../../../../core/network/socket/socket_service.dart';
-import '../../../../core/notifications/local_notifications.dart';
-import '../models/notification_model.dart';
+import 'package:wathiq/core/network/socket/socket_end_points.dart';
+import 'package:wathiq/core/network/socket/socket_service.dart';
+import 'package:wathiq/core/notifications/local_notifications.dart';
+import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 
 class NotificationsSocket {
   static final NotificationsSocket _instance = NotificationsSocket._internal();

@@ -5,11 +5,11 @@ import 'package:wathiq/features/home/presentation/view/screens/assets_details_sc
 import 'package:wathiq/features/home/presentation/view/widgets/home/home_appbar_widget.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../paegs/presentation/view_model/pages_cubit.dart';
-import '../widgets/home/auctions_favorite_button.dart';
-import '../widgets/home/home_body_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/auctions_favorite_button.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/home_body_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

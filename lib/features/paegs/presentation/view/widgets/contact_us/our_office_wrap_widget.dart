@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../core/functions/url_luncher.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../data/models/social_model.dart';
+import 'package:wathiq/core/functions/url_luncher.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/paegs/data/models/social_model.dart';
 
 class OurOfficeWrap extends StatelessWidget {
   final List<Office> offices;
@@ -32,7 +32,7 @@ class OurOfficeWrap extends StatelessWidget {
                     style: AppStyles.styleMedium16(context)
                         .copyWith(color: AppColors.primary(context)),
                   ),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   SvgPicture.asset(AppAssets.app_imagesOurofficeIcon),
                 ],
               ),

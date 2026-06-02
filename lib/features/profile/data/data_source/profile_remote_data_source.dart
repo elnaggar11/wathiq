@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../../../../core/api/api_consumer.dart';
-import '../../../../core/api/end_point.dart';
-import '../../../../core/params/profile/change_password_params.dart';
-import '../../../../core/params/profile/create_agency_params.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/end_point.dart';
+import 'package:wathiq/core/params/profile/change_password_params.dart';
+import 'package:wathiq/core/params/profile/create_agency_params.dart';
 
 class ProfileRemoteDataSource {
   final ApiConsumer apiConsumer;
@@ -26,7 +26,7 @@ class ProfileRemoteDataSource {
 
     FormData formData = FormData.fromMap({
       if (imageFile != null)
-        "profileImage": await MultipartFile.fromFile(
+        'profileImage': await MultipartFile.fromFile(
           imageFile.path,
           filename: imageFile.path.split('/').last,
           contentType: DioMediaType(
@@ -34,7 +34,7 @@ class ProfileRemoteDataSource {
             extensionName!,
           ).change(mimeType: 'image/$extensionName', parameters: {}),
         ),
-      if (countryID != null) "country": countryID
+      if (countryID != null) 'country': countryID
     });
     final response = await apiConsumer.patch(
       EndPoint.changeProfileImage,
@@ -71,9 +71,9 @@ class ProfileRemoteDataSource {
     final response = await apiConsumer.patch(
       EndPoint.phone,
       body: {
-        "phoneNumber": {
-          "number": phone,
-          "key": "+966",
+        'phoneNumber': {
+          'number': phone,
+          'key': '+966',
         }
       },
     );

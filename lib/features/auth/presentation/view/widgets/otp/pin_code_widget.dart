@@ -6,8 +6,8 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 
-class pinCodeWidget extends StatelessWidget {
-  const pinCodeWidget({
+class PinCodeWidget extends StatelessWidget {
+  const PinCodeWidget({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class pinCodeWidget extends StatelessWidget {
           child: Directionality(
             textDirection: TextDirection.ltr,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 0),
               child: PinCodeTextField(
                 appContext: context,
                 hintCharacter: '-',

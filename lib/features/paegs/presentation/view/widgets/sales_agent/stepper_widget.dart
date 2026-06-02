@@ -26,7 +26,7 @@ class StepperWidget extends StatelessWidget {
 }
 
 class StepperCard extends StatelessWidget {
-  StepperCard({
+  const StepperCard({
     super.key,
     required this.title,
     required this.isCompleted,
@@ -133,7 +133,7 @@ class SteperLineWidegt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         color: isActive
             ? AppColors.darkBlue(context)
             : AppColors.borderPrimary(context),
@@ -168,11 +168,11 @@ class BuildStep extends StatelessWidget {
             )
             .scale()
             .shimmer(
-              delay: Duration(seconds: 1),
+              delay: const Duration(seconds: 1),
             )
             .then(delay: 500.ms)
             .shimmer(
-              delay: Duration(seconds: 1),
+              delay: const Duration(seconds: 1),
             )
         : StepperCard(
             isActive: isActive,

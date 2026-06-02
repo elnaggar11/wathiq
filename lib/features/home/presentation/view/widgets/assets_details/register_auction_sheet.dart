@@ -10,18 +10,18 @@ import 'package:wathiq/features/home/presentation/view/widgets/assets_details/en
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/mozayda_sheet.dart';
 
-import '../../../../../profile/presentation/view_model/profile/profile_cubit.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 Future<void> registerAuctionSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
-      return RegisterAuctionSheetBodyWidget();
+      return const RegisterAuctionSheetBodyWidget();
     },
   );
 }
@@ -54,7 +54,7 @@ class _RegisterAuctionSheetBodyWidgetState
       if (_tabController.indexIsChanging) {
         _pageController.animateToPage(
           _tabController.index,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
 
@@ -86,7 +86,7 @@ class _RegisterAuctionSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.white(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -95,7 +95,7 @@ class _RegisterAuctionSheetBodyWidgetState
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -114,7 +114,7 @@ class _RegisterAuctionSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 children: [
                   Expanded(
@@ -139,9 +139,9 @@ class _RegisterAuctionSheetBodyWidgetState
                           color: const Color(0xFFF9F9F8),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 1,
-                              color: const Color(0xFF22A06B) /* Color-2 */,
+                              color: Color(0xFF22A06B) /* Color-2 */,
                             ),
                           ),
                         ),
@@ -149,7 +149,7 @@ class _RegisterAuctionSheetBodyWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(AppAssets.app_imagesSmartphone),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             Text(
@@ -164,7 +164,7 @@ class _RegisterAuctionSheetBodyWidgetState
                       ),
                     ),
                   ),
-                  SizedBox(width: 24),
+                  const SizedBox(width: 24),
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -185,9 +185,9 @@ class _RegisterAuctionSheetBodyWidgetState
                         decoration: ShapeDecoration(
                           color: const Color(0xFFF9F9F8),
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 1,
-                              color: const Color(0xFF22A06B) /* Color-2 */,
+                              color: Color(0xFF22A06B) /* Color-2 */,
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -196,7 +196,7 @@ class _RegisterAuctionSheetBodyWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(AppAssets.app_imagesUserHandUp),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             Text(
@@ -213,7 +213,7 @@ class _RegisterAuctionSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 16)
+              const SizedBox(height: 16)
             ],
           ),
         ),

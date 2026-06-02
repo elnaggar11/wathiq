@@ -1,4 +1,4 @@
-import 'auction_detail.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auction_detail.dart';
 
 class Detail {
   String? title;

@@ -7,11 +7,11 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/select_tax_status_radio_button.dart';
 
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
-import '../../../view_model/pages_cubit.dart';
-import '../../widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
 
 class BuildStepOneWidget extends StatefulWidget {
   const BuildStepOneWidget({super.key});
@@ -33,7 +33,7 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              StepperWidget(
+              const StepperWidget(
                 stepperList: [
                   BuildStep(
                     title: 'بيانات الشركة',
@@ -79,7 +79,7 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                       'إنشاء حساب وكلاء البيع',
                       style: AppStyles.styleBold24(context),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                     TextFormFieldWithTitleWidget(
@@ -104,7 +104,7 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                       style: AppStyles.styleSemiBold18(context),
                     ),
                     const SizedBox(height: 8),
-                    SelectNafathApprovedRadioButton(),
+                    const SelectNafathApprovedRadioButton(),
                     const SizedBox(height: 24),
                     TextFormFieldWithTitleWidget(
                       filled: true,
@@ -237,13 +237,13 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Text(
                       'الضريبة',
                       style: AppStyles.styleBold16(context),
                     ),
                     const SizedBox(height: 8),
-                    SelectTaxStatusRadioButton(),
+                    const SelectTaxStatusRadioButton(),
                     const SizedBox(height: 24),
                     GestureDetector(
                       onTap: () {
@@ -293,7 +293,7 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     TextFormFieldWithTitleWidget(
                       filled: true,
                       fillColor: AppColors.primarySurface(context),

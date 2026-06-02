@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../core/utils/enums.dart';
-import '../../../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../../core/widgets/show_success_bottom_sheet.dart';
-import '../../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../view_model/pages_cubit.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
 class AddRealStateScreen extends StatefulWidget {
   const AddRealStateScreen({super.key});
@@ -50,7 +50,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
               key: cubit.addRealFormKey,
               child: Column(
                 children: [
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   TextFormFieldWithTitleWidget(
                     controller: cubit.realStateNameController,
                     label: 'الإسم بالكامل',
@@ -63,7 +63,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                     },
                     keyboardType: TextInputType.text,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   TextFormFieldWithTitleWidget(
                     controller: cubit.realStatephoneNumberController,
                     label: 'رقم الجوال',
@@ -108,7 +108,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   TextFormFieldWithTitleWidget(
                     controller: cubit.areaController,
                     label: 'المساحة',
@@ -121,7 +121,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                     },
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   SizedBox(
                     height: 95,
                     child: Row(
@@ -140,7 +140,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                             keyboardType: TextInputType.text,
                           ),
                         ),
-                        SizedBox(width: 24),
+                        const SizedBox(width: 24),
                         Expanded(
                           child: TextFormFieldWithTitleWidget(
                             controller: cubit.neighborhoodController,
@@ -158,7 +158,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
                   TextFormFieldWithTitleWidget(
                     controller: cubit.descriptionController,
                     label: 'وصف العقار',
@@ -171,7 +171,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                     },
                     keyboardType: TextInputType.text,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Row(
                     children: [
                       Text(
@@ -182,13 +182,13 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
-                  SelectRealEstateStatusRadioButton(),
-                  SizedBox(height: 24),
-                  AddRealStateButtonWidget(),
-                  SizedBox(height: 24),
+                  const SelectRealEstateStatusRadioButton(),
+                  const SizedBox(height: 24),
+                  const AddRealStateButtonWidget(),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),

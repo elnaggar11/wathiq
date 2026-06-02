@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wathiq/config/routes/app_routes.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class TermsAndConditionsWidget extends StatefulWidget {
   const TermsAndConditionsWidget({super.key});

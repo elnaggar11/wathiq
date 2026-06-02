@@ -5,20 +5,20 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/auth/presentation/view/screens/splash_screen.dart';
 
-import '../../../../../app/injector.dart';
-import '../../../../../core/storage/i_app_local_storage.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/utils/images.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/images.dart';
 
 Future<void> changeAppDateSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
-      return ChangeAppDateSheetBodyWidget();
+      return const ChangeAppDateSheetBodyWidget();
     },
   );
 }
@@ -58,7 +58,7 @@ class _ChangeAppDateSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.backgroundPrimary(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -67,7 +67,7 @@ class _ChangeAppDateSheetBodyWidgetState
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -90,7 +90,7 @@ class _ChangeAppDateSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 children: [
                   Expanded(
@@ -104,7 +104,7 @@ class _ChangeAppDateSheetBodyWidgetState
                             side: BorderSide(
                               width: 2, // Thicker border for selection
                               color: isHijri
-                                  ? Color(0xFFD6D9E1)
+                                  ? const Color(0xFFD6D9E1)
                                   : AppColors.primary(context),
                             ),
                             borderRadius: BorderRadius.circular(16),
@@ -123,7 +123,7 @@ class _ChangeAppDateSheetBodyWidgetState
                       ),
                     ),
                   ),
-                  SizedBox(width: 24),
+                  const SizedBox(width: 24),
                   Expanded(
                     child: GestureDetector(
                       onTap: () => toggleDateFormat(true),
@@ -136,7 +136,7 @@ class _ChangeAppDateSheetBodyWidgetState
                               width: 2,
                               color: isHijri
                                   ? AppColors.primary(context)
-                                  : Color(0xFFD6D9E1),
+                                  : const Color(0xFFD6D9E1),
                             ),
                             borderRadius: BorderRadius.circular(16),
                           ),
@@ -156,7 +156,7 @@ class _ChangeAppDateSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),

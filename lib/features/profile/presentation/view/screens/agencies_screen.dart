@@ -5,12 +5,12 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../view_model/profile/profile_cubit.dart';
-import '../widgets/agencies/show_add_agencies_bottom_sheet.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/agencies/show_add_agencies_bottom_sheet.dart';
 
 class AgenciesScreen extends StatelessWidget {
   const AgenciesScreen({super.key});
@@ -50,7 +50,7 @@ class AgenciesScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               AgenciesCardWidegt(
@@ -62,7 +62,7 @@ class AgenciesScreen extends StatelessWidget {
                 icon: AppAssets.app_imagesActiveSvg,
                 title: 'النشطة',
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               AgenciesCardWidegt(
                 onTap: () {
                   context.read<ProfileCubit>().status = AppStrings.pending;
@@ -72,7 +72,7 @@ class AgenciesScreen extends StatelessWidget {
                 icon: AppAssets.app_imagesPindding,
                 title: 'تحت الإجراء',
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               AgenciesCardWidegt(
                 onTap: () {
                   context.read<ProfileCubit>().status = AppStrings.blocked;
@@ -82,7 +82,7 @@ class AgenciesScreen extends StatelessWidget {
                 icon: AppAssets.app_imagesCanceled,
                 title: 'الملغية',
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               AgenciesCardWidegt(
                 onTap: () {
                   context.read<ProfileCubit>().status = AppStrings.rejected;
@@ -92,7 +92,7 @@ class AgenciesScreen extends StatelessWidget {
                 icon: AppAssets.app_imagesRejected,
                 title: 'المرفوضة',
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               AgenciesCardWidegt(
                 onTap: () {
                   context.read<ProfileCubit>().status =
@@ -103,7 +103,7 @@ class AgenciesScreen extends StatelessWidget {
                 icon: AppAssets.app_imagesTerminated,
                 title: 'منتهية',
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -141,7 +141,7 @@ class AgenciesCardWidegt extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
                 color: boxColor,
@@ -151,13 +151,13 @@ class AgenciesCardWidegt extends StatelessWidget {
               child: SizedBox(
                   height: 24, width: 24, child: SvgPicture.asset(icon)),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Text(
               title,
               style: AppStyles.styleBold16(context)
                   .copyWith(color: AppColors.typographyHeading(context)),
             ),
-            Spacer(),
+            const Spacer(),
             SvgPicture.asset(AppAssets.app_imagesArrowAgencies),
           ],
         ),

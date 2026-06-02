@@ -7,10 +7,10 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/bank_names_dropdown_button_form_field_widget.dart';
 
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../view_model/pages_cubit.dart';
-import '../../widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
 
 class BuildStepTwoWidget extends StatefulWidget {
   const BuildStepTwoWidget({super.key});
@@ -31,7 +31,7 @@ class _BuildStepTwoWidgetState extends State<BuildStepTwoWidget> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              StepperWidget(
+              const StepperWidget(
                 stepperList: [
                   BuildStep(
                     title: 'بيانات الشركة',
@@ -72,7 +72,7 @@ class _BuildStepTwoWidgetState extends State<BuildStepTwoWidget> {
                 ),
                 child: Column(
                   children: [
-                    BankNamesDropdownButtonFormFieldWidget(),
+                    const BankNamesDropdownButtonFormFieldWidget(),
                     const SizedBox(height: 16),
                     TextFormFieldWithTitleWidget(
                       controller: pagesCubit.bankAccountNumberController,
@@ -96,8 +96,8 @@ class _BuildStepTwoWidgetState extends State<BuildStepTwoWidget> {
                       ],
                       onChanged: (value) {
                         if (value != null) {
-                          if (!value.startsWith("SA")) {
-                            pagesCubit.bankAccountNumberController.text = "SA";
+                          if (!value.startsWith('SA')) {
+                            pagesCubit.bankAccountNumberController.text = 'SA';
                             pagesCubit.bankAccountNumberController.selection =
                                 TextSelection.fromPosition(
                               TextPosition(

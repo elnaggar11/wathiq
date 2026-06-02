@@ -6,13 +6,13 @@ import 'package:wathiq/core/functions/get_auction_status_and_type.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/asset_card_widget.dart';
 
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
-import '../home/mazad_status_timer_widget.dart';
-import '../home/timer_home_widget.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_status_timer_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/timer_home_widget.dart';
 
 class EndedMazadTimerWidget extends StatelessWidget {
   const EndedMazadTimerWidget({
@@ -45,7 +45,7 @@ class CommingMazadTimerWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: ShapeDecoration(
         color: AppColors.white(context),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           side: BorderSide(width: 1, color: Color(0xFFEBEEF3)),
         ),
       ),
@@ -88,18 +88,18 @@ class CurrentMazadTimerWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: homeCubit.auctionData!.status == AppStrings.auctionsOnGoing
-                  ? Color(0xFFEEF5F1)
+                  ? const Color(0xFFEEF5F1)
                   : homeCubit.auctionData!.status ==
                           AppStrings.auctionsInProgress
-                      ? Color(0xFFF2F2F2)
-                      : Color(0xFFF8F0EE),
+                      ? const Color(0xFFF2F2F2)
+                      : const Color(0xFFF8F0EE),
             ),
             child: getKTapIndex(context, homeCubit.auctionData!.status) == 3
-                ? CompletedAuctionStutesWidget()
+                ? const CompletedAuctionStutesWidget()
                 : FittedBox(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,7 +119,7 @@ class CurrentMazadTimerWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         TimerHomeWidget(auctionData: homeCubit.auctionData!)
                       ],
                     ),

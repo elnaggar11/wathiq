@@ -9,9 +9,9 @@ import 'package:wathiq/features/home/presentation/view/widgets/assets_details/lo
 import 'package:wathiq/features/home/presentation/view/widgets/assets_details/register_auction_sheet.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/mozayda_sheet.dart';
 
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
   const CurrentAndCommingActionForAssetsWidget({
@@ -26,11 +26,11 @@ class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
         return Column(
           children: [
             getKTapIndex(context) == 1
-                ? AssetsCommingStatusTimerWidget()
-                : SizedBox.shrink(),
+                ? const AssetsCommingStatusTimerWidget()
+                : const SizedBox.shrink(),
             SizedBox(height: getKTapIndex(context) == 2 ? 16 : 0),
             (homeCubit.auctionOrigin!.isEnrolled! && getKTapIndex(context) != 2)
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : Column(
                     children: [
                       ElevatedButton(
@@ -52,7 +52,7 @@ class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
                             homeCubit.auctionOrigin!.isEnrolled!
                                 ? SvgPicture.asset(
                                     AppAssets.app_imagesEnrolledMazadtrue)
-                                : SizedBox.shrink(),
+                                : const SizedBox.shrink(),
                             SizedBox(
                                 width: homeCubit.auctionOrigin!.isEnrolled!
                                     ? 12
@@ -71,8 +71,8 @@ class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
                         ),
                       ),
                       homeCubit.auctionOrigin!.isEnrolled!
-                          ? SizedBox(height: 16)
-                          : SizedBox.shrink(),
+                          ? const SizedBox(height: 16)
+                          : const SizedBox.shrink(),
                       homeCubit.auctionOrigin!.isEnrolled!
                           ? ElevatedButton(
                               onPressed: () {
@@ -86,7 +86,7 @@ class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
                                 children: [
                                   SvgPicture.asset(
                                       AppAssets.app_imagesLogoutFromAuction),
-                                  SizedBox(width: 12),
+                                  const SizedBox(width: 12),
                                   Text(
                                     'الخروج من المزاد',
                                     style: AppStyles.styleMedium18(context)
@@ -97,7 +97,7 @@ class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : SizedBox.shrink(),
+                          : const SizedBox.shrink(),
                     ],
                   ),
             SizedBox(height: getKTapIndex(context) == 1 ? 16 : 0),
@@ -117,15 +117,15 @@ class CurrentAndCommingActionForAssetsWidget extends StatelessWidget {
                       AppAssets.app_imagesDocument,
                     ),
                     style: OutlinedButton.styleFrom(
-                      minimumSize: Size.fromHeight(54),
-                      side: BorderSide(width: 0),
+                      minimumSize: const Size.fromHeight(54),
+                      side: const BorderSide(width: 0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       backgroundColor: AppColors.color2(context),
                     ),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ],
         );
       },

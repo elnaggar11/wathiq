@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/features/home/presentation/view/screens/assets_details_screen.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../../core/widgets/error_app_widget.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/tabBar_view_body_widget.dart';
-import '../mazad_card_shimmer.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/error_app_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/tabBar_view_body_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_card_shimmer.dart';
 
 class MyMazadatTabBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
@@ -88,7 +88,7 @@ class _MyMazadatTabBarWidgetState extends State<MyMazadatTabBarWidget> {
           },
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: EdgeInsets.all(0),
+          labelPadding: const EdgeInsets.all(0),
           tabs: List<Widget>.generate(
             widget.tapsName.length,
             (index) => InkWell(
@@ -100,7 +100,7 @@ class _MyMazadatTabBarWidgetState extends State<MyMazadatTabBarWidget> {
               child: SizedBox(
                 height: 44,
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -123,7 +123,7 @@ class _MyMazadatTabBarWidgetState extends State<MyMazadatTabBarWidget> {
                               : AppColors.typographyHeading(context),
                         ),
                       ),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                     ],
                   ),
                 ),
@@ -149,8 +149,8 @@ class MazadatyTabBarViewBodyWidget extends StatelessWidget {
         end: 16,
       ),
       child: AdaptiveLayout(
-          mobileLayout: (context) => MazadatyMobileLayoute(),
-          tabletLayout: (context) => MazadatyMobileLayoute()),
+          mobileLayout: (context) => const MazadatyMobileLayoute(),
+          tabletLayout: (context) => const MazadatyMobileLayoute()),
     );
   }
 }
@@ -167,7 +167,7 @@ class MazadatyMobileLayoute extends StatelessWidget {
         switch (state.getUserAuctionsRequestState) {
           case RequestState.ideal:
           case RequestState.loading:
-            return MazadCardShimmer();
+            return const MazadCardShimmer();
           case RequestState.error:
             return ErrorAppWidget(
               onTap: () {

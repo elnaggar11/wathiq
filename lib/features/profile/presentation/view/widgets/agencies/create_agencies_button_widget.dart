@@ -6,10 +6,10 @@ import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 class CreateAgenciesButtonWidget extends StatelessWidget {
   const CreateAgenciesButtonWidget({

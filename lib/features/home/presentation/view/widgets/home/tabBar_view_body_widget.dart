@@ -8,8 +8,8 @@ import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_widget.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../data/models/auctions_model/auctions_model.dart';
-import '../mazad_card_shimmer.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_card_shimmer.dart';
 
 class TabBarViewBodyWidget extends StatelessWidget {
   const TabBarViewBodyWidget({
@@ -24,8 +24,8 @@ class TabBarViewBodyWidget extends StatelessWidget {
         end: 16,
       ),
       child: AdaptiveLayout(
-          mobileLayout: (context) => HomeMobileLayoute(),
-          tabletLayout: (context) => HomeMobileLayoute()),
+          mobileLayout: (context) => const HomeMobileLayoute(),
+          tabletLayout: (context) => const HomeMobileLayoute()),
     );
   }
 }
@@ -42,7 +42,7 @@ class HomeTapletLayoute extends StatelessWidget {
         switch (state.auctionsRequestState) {
           case RequestState.ideal:
           case RequestState.loading:
-            return MazadCardShimmer();
+            return const MazadCardShimmer();
           case RequestState.error:
             return ErrorAppWidget(
               onTap: () {
@@ -100,7 +100,7 @@ class HomeMobileLayoute extends StatelessWidget {
         switch (state.auctionsRequestState) {
           case RequestState.ideal:
           case RequestState.loading:
-            return MazadCardShimmer();
+            return const MazadCardShimmer();
           case RequestState.error:
             return ErrorAppWidget(
               onTap: () {
@@ -130,7 +130,7 @@ class LoadedMobileActionHomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return auctionsModel.data.isEmpty
-        ? Center(child: EmptyWidget(title: 'لا توجد مزادات '))
+        ? const Center(child: EmptyWidget(title: 'لا توجد مزادات '))
         : ListView.builder(
             itemBuilder: (context, index) {
               return MazadCardWidget(

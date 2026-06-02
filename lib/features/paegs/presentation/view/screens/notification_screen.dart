@@ -10,13 +10,13 @@ import 'package:wathiq/core/widgets/my_snackbar.dart';
 import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../core/functions/calculate_defrent_betwen_times.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/utils/images.dart';
-import '../../../../../core/widgets/empty_widget.dart';
-import '../../../../../core/widgets/error_app_widget.dart';
-import '../../../../../core/widgets/guest_widget.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/functions/calculate_defrent_betwen_times.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/empty_widget.dart';
+import 'package:wathiq/core/widgets/error_app_widget.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -48,17 +48,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       AppAssets.app_imagesSetting,
                     ),
                   ),
-                  SizedBox(width: 16)
+                  const SizedBox(width: 16)
                 ],
         ),
         body: KisGuest == true
-            ? GuestWidget()
+            ? const GuestWidget()
             : BlocBuilder<PagesCubit, PagesState>(
                 builder: (context, state) {
                   switch (state.getNotificationsRequestState) {
                     case RequestState.ideal:
                     case RequestState.loading:
-                      return ShimmerNotificationList();
+                      return const ShimmerNotificationList();
                     case RequestState.error:
                       return ErrorAppWidget(
                         text: state.notificationsError?.message ?? 'حدث خطا',
@@ -69,7 +69,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       );
                     case RequestState.loaded:
                       return context.read<PagesCubit>().notifications.isEmpty
-                          ? Center(
+                          ? const Center(
                               child: EmptyWidget(title: 'لا يوجد اشعارات '))
                           : ListView.builder(
                               itemCount: context
@@ -91,7 +91,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               },
                             );
                     case null:
-                      return SizedBox();
+                      return const SizedBox();
                   }
                 },
                 // builder: (context, state) {
@@ -107,7 +107,7 @@ Future<void> showNotificationSettingBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -116,7 +116,7 @@ Future<void> showNotificationSettingBottomSheet(BuildContext context) async {
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.white(context),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(24),
               topRight: Radius.circular(24),
             ),
@@ -152,7 +152,7 @@ Future<void> showNotificationSettingBottomSheet(BuildContext context) async {
                     context.read<PagesCubit>().deleteNotifications();
                   },
                   child: Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: AppColors.backgroundPrimary(context),
                       borderRadius: BorderRadius.circular(12),
@@ -201,7 +201,7 @@ Future<void> showNotificationSettingBottomSheet(BuildContext context) async {
                             }
                           },
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(
                           'حذف الكل',
                           style: AppStyles.styleSemiBold16(context).copyWith(
@@ -234,7 +234,7 @@ class NotificationCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
           right: 16, left: 16, top: 24, bottom: isLastItem ? 24 : 0),
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -247,9 +247,9 @@ class NotificationCard extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(
+                    side: const BorderSide(
                       width: 1,
-                      color: const Color(
+                      color: Color(
                           0xFFEEEEEE) /* Stroke-Border-Full-Stroke-Light */,
                     ),
                     borderRadius: BorderRadius.circular(1000),
@@ -259,14 +259,14 @@ class NotificationCard extends StatelessWidget {
                   AppAssets.app_imagesNotificationcardIcon,
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: 220,
                     child: Text(
-                      notification.title ?? "No Title",
+                      notification.title ?? 'No Title',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
@@ -274,11 +274,11 @@ class NotificationCard extends StatelessWidget {
                           color: AppColors.typographyHeading(context)),
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(height: 6),
                   SizedBox(
                     width: 220,
                     child: Text(
-                      notification.message ?? "NO Desc",
+                      notification.message ?? 'NO Desc',
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
@@ -286,7 +286,7 @@ class NotificationCard extends StatelessWidget {
                           color: AppColors.typographySubTitle(context)),
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(height: 6),
                   Text(
                     calculateTimeDifference(
                         notification.createdAt ?? ''), // Format DateTime
@@ -294,8 +294,8 @@ class NotificationCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(),
-              Column(
+              const Spacer(),
+              const Column(
                 children: [
                   // SvgPicture.asset(
                   //   Assets.imagesReadNotification,
@@ -305,7 +305,7 @@ class NotificationCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
         ],
       ),
     );

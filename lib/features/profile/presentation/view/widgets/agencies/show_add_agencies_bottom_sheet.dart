@@ -9,17 +9,17 @@ import 'package:wathiq/features/profile/presentation/view/widgets/agencies/creat
 import 'package:wathiq/features/profile/presentation/view/widgets/agencies/picked_agency_attachment_widget.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
 
 Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -28,7 +28,7 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.white(context),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(24),
               topRight: Radius.circular(24),
             ),
@@ -55,7 +55,7 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
                             color: AppColors.typographyHeading(context),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         GestureDetector(
                           onTap: () {
                             context.pop();
@@ -65,7 +65,7 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     TextFormFieldWithTitleWidget(
@@ -80,7 +80,7 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
                         return null;
                       },
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     TextFormFieldWithTitleWidget(
                       controller:
                           context.read<ProfileCubit>().agencyNumberController,
@@ -93,7 +93,7 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
                         return null;
                       },
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     TextFormFieldWithTitleWidget(
                       controller: context
                           .read<ProfileCubit>()
@@ -126,7 +126,7 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
                         child: SvgPicture.asset(AppAssets.app_imagesNationalId),
                       ),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     DatePickerWidegt(
                       text: 'تاريخ اصدار الوكالة',
                       controller: context
@@ -134,11 +134,11 @@ Future<void> showAddAgenciesBottomSheet(BuildContext context) async {
                           .agencyIssuedDateController,
                       filled: false,
                     ),
-                    SizedBox(height: 24),
-                    PickedAgencyAttachmentWidget(),
-                    SizedBox(height: 24),
-                    AgenciesTermsAndConditionsWidget(),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
+                    const PickedAgencyAttachmentWidget(),
+                    const SizedBox(height: 24),
+                    const AgenciesTermsAndConditionsWidget(),
+                    const SizedBox(height: 24),
                     CreateAgenciesButtonWidget(
                       profileCubit: context.read<ProfileCubit>(),
                     ),

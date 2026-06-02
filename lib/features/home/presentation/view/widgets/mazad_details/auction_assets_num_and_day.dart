@@ -17,8 +17,8 @@ class AuctionAssetsNumAndDay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: padding ?? 16),
-      padding: EdgeInsets.all(24),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(24),
+      decoration: const BoxDecoration(
         color: Color(0xFFF9F9F8),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(12),
@@ -33,7 +33,7 @@ class AuctionAssetsNumAndDay extends StatelessWidget {
             child: Row(
               children: [
                 SvgPicture.asset(AppAssets.app_imagesBuildin),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -58,7 +58,7 @@ class AuctionAssetsNumAndDay extends StatelessWidget {
             child: Row(
               children: [
                 SvgPicture.asset(AppAssets.app_imagesClockAuction),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

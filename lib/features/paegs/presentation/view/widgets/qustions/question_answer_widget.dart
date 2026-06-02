@@ -3,9 +3,9 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../data/models/question_model.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/paegs/data/models/question_model.dart';
 
 class QuestionAnswerWidget extends StatefulWidget {
   final QuestionsModel questionsModel;
@@ -59,7 +59,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget>
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       color: AppColors.backgroundPrimary(context),
       shadowColor: Colors.transparent,
       child: InkWell(
@@ -125,9 +125,9 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget>
                   child: Html(
                     data: widget.questionsModel.data[widget.index].answer,
                     style: {
-                      "body": Style(
+                      'body': Style(
                         fontFamily: 'Lama Sans',
-                        lineHeight: LineHeight(1.7),
+                        lineHeight: const LineHeight(1.7),
                         color: AppColors.typographyBody(context),
                       ),
                     },

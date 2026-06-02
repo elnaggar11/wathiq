@@ -6,7 +6,7 @@ import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 
 class PolicyScreen extends StatefulWidget {
   const PolicyScreen({super.key});
@@ -33,7 +33,7 @@ class _PolicyScreenState extends State<PolicyScreen> {
             switch (state.privacyPolicyRequestState) {
               case RequestState.loading:
               case RequestState.ideal:
-                return ShimmerPolicyContent();
+                return const ShimmerPolicyContent();
               case RequestState.loaded:
                 return SingleChildScrollView(
                   child: Padding(
@@ -44,11 +44,11 @@ class _PolicyScreenState extends State<PolicyScreen> {
                         Html(
                           data: state.privacyPolicyModel!.data.content,
                           style: {
-                            "body": Style(
+                            'body': Style(
                               fontFamily: 'Lama Sans',
                               // fontSize: FontSize(16),
                               // fontWeight: FontWeight.w500,
-                              lineHeight: LineHeight(1.7),
+                              lineHeight: const LineHeight(1.7),
                             ),
                           },
                         ),

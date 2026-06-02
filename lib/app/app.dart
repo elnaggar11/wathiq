@@ -11,9 +11,9 @@ import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dar
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../config/routes/app_routes.dart';
-import '../core/utils/app_colors.dart';
-import '../features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
 bool KisGuest = false;
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

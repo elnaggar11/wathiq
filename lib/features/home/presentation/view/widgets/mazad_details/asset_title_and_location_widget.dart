@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class AssetTitleAndLocationWidget extends StatelessWidget {
   const AssetTitleAndLocationWidget({
@@ -40,7 +40,7 @@ class AssetTitleAndLocationWidget extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         SizedBox(
           width: 230,
           child: Text(

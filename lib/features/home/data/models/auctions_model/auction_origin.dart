@@ -1,4 +1,4 @@
-import 'detail.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/detail.dart';
 
 class AuctionOrigin {
   String? id;

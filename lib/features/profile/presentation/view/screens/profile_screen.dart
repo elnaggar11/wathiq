@@ -10,15 +10,15 @@ import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/change_date_sheet.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../app/injector.dart';
-import '../../../../../core/functions/local_auth.dart';
-import '../../../../../core/storage/i_app_local_storage.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../../../../../core/widgets/my_snackbar.dart';
-import '../widgets/profile/profile_cart_widget.dart';
-import '../widgets/profile/show_log_out_bottom_sheet.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/functions/local_auth.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/profile/profile_cart_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/profile/show_log_out_bottom_sheet.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         systemNavigationBarColor: AppColors.white(context),
       ),
     );
-    Future.delayed(Duration(milliseconds: 100)).then((v) {
+    Future.delayed(const Duration(milliseconds: 100)).then((v) {
       setState(() {});
     });
   }
@@ -61,13 +61,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         //   title: 'الملف الشخصي',
         // ),
         body: KisGuest == true
-            ? GuestWidget()
+            ? const GuestWidget()
             : Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 42,
                       ),
                       Container(
@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               thickness: 1,
                               color: AppColors.separatingBorder(context),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             ProfileCartWidget(
                               image: AppAssets.app_imagesHeart,
                               onTap: () {
@@ -101,13 +101,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               text: 'المفضلة',
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Divider(
                               height: 0,
                               thickness: 1,
                               color: AppColors.separatingBorder(context),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             ProfileCartWidget(
                               image: AppAssets.app_imagesAgencies,
                               onTap: () {
@@ -115,13 +115,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               text: 'الوكالات',
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Divider(
                               height: 0,
                               thickness: 1,
                               color: AppColors.separatingBorder(context),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             ProfileCartWidget(
                               image: AppAssets.app_imagesCalendar,
                               onTap: () {
@@ -129,13 +129,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               text: 'تاريخ التطبيق',
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Divider(
                               height: 0,
                               thickness: 1,
                               color: AppColors.separatingBorder(context),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             ProfileCartWidget(
                               image: AppAssets.app_imagesChangePassword,
                               onTap: () {
@@ -146,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       ProfileCartWidget(
                         image: Platform.isAndroid
                             ? AppAssets.app_imagesFingerprint
@@ -186,7 +186,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ? 'الغاء القفل بالبصمة'
                             : 'قفل التطبيق بالبصمة',
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       GestureDetector(
                         onTap: () {
                           showLogOutBottomSheet(context);
@@ -211,7 +211,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 child: SvgPicture.asset(
                                     AppAssets.app_imagesLogout),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 12,
                               ),
                               Text(
@@ -219,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 style: AppStyles.styleMedium16(context)
                                     .copyWith(color: AppColors.danger(context)),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               SvgPicture.asset(
                                 AppAssets.app_imagesProfileArrow,
                               ),

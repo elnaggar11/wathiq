@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/auction_price_and_add_widegts.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class CalculatorWidget extends StatefulWidget {
   const CalculatorWidget({
@@ -70,7 +70,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget>
                 shape: RoundedRectangleBorder(
                   // if expanded remove border ridies from buttom and remove border from buttom
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(12),
+                    top: const Radius.circular(12),
                     bottom: Radius.circular(_isExpanded ? 2 : 12),
                   ),
 
@@ -93,15 +93,15 @@ class _CalculatorWidgetState extends State<CalculatorWidget>
                   ),
                   Icon(
                     _isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                    color: Color(0xFF727A90),
+                    color: const Color(0xFF727A90),
                   ),
                 ],
               ),
             ),
             SizeTransition(
               sizeFactor: _expandAnimation,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 16),
+              child: const Padding(
+                padding: EdgeInsets.only(top: 16),
                 child: PriceingWidget(),
               ),
             ),

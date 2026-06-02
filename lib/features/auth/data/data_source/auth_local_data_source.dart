@@ -1,5 +1,5 @@
-import '../../../../core/storage/i_app_local_storage.dart';
-import '../../../../core/utils/constant.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/constant.dart';
 
 class AuthLocalDataSource {
   final IAppLocalStorage localStorage;

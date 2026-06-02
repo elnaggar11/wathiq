@@ -8,7 +8,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:permission_handler/permission_handler.dart';
 
-import '../widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 class PdfService {
   static Future<void> generateAndDownloadInvoice({
@@ -27,7 +27,7 @@ class PdfService {
     if (!await Permission.manageExternalStorage.request().isGranted) {
       FloatingSnackBar.show(
         context,
-        "تم رفض صلاحية التخزين",
+        'تم رفض صلاحية التخزين',
         isError: true,
       );
       return;
@@ -36,7 +36,7 @@ class PdfService {
     try {
       // تحميل الخط العربي
       final arabicFont =
-          await rootBundle.load("assets/fonts/LamaSans-Regular.ttf");
+          await rootBundle.load('assets/fonts/LamaSans-Regular.ttf');
       final ttf = pw.Font.ttf(arabicFont);
 
       // إنشاء مستند PDF
@@ -84,8 +84,8 @@ class PdfService {
       );
 
       // حفظ الملف في مجلد التنزيلات
-      String fileName = "invoice_${DateTime.now().millisecondsSinceEpoch}.pdf";
-      String filePath = "/storage/emulated/0/Download/$fileName";
+      String fileName = 'invoice_${DateTime.now().millisecondsSinceEpoch}.pdf';
+      String filePath = '/storage/emulated/0/Download/$fileName';
 
       final file = File(filePath);
       await file.writeAsBytes(await pdf.save());
@@ -99,20 +99,20 @@ class PdfService {
       if (result.type == ResultType.done) {
         FloatingSnackBar.show(
           context,
-          "تم حفظ الفاتورة بنجاح",
+          'تم حفظ الفاتورة بنجاح',
           isError: false,
         );
       } else {
         FloatingSnackBar.show(
           context,
-          "فشل في فتح الملف: ${result.message}",
+          'فشل في فتح الملف: ${result.message}',
           isError: true,
         );
       }
     } catch (e) {
       FloatingSnackBar.show(
         context,
-        "فشل في إنشاء الفاتورة: $e",
+        'فشل في إنشاء الفاتورة: $e',
         isError: true,
       );
     }
@@ -121,8 +121,8 @@ class PdfService {
   static pw.Widget _buildInvoiceItem(pw.Font font, String label, String value) {
     return pw.Container(
       width: double.infinity,
-      padding: pw.EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      decoration: pw.BoxDecoration(
+      padding: const pw.EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      decoration: const pw.BoxDecoration(
         border: pw.Border(
           bottom: pw.BorderSide(width: 1, color: PdfColors.grey300),
         ),

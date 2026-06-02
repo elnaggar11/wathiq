@@ -5,13 +5,13 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/Mazadenroll_and_show_more_widget.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
-import '../home/mazad_status_timer_widget.dart';
-import '../mozayda_sheet/mozayda_sheet.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_status_timer_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/mozayda_sheet.dart';
 
 class OnGoingAssetsCardBodyWidget extends StatelessWidget {
   const OnGoingAssetsCardBodyWidget({super.key, required this.index});
@@ -40,7 +40,7 @@ class OnGoingAssetsCardBodyWidget extends StatelessWidget {
                 showCurrancyLogo: true,
                 icon: AppAssets.app_imagesBanknote,
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               AssetsDetailsCardColumWidget(
                 dateLabel: 'عربون الدخول',
                 date: formatNumber(homeCubit.originList[index].entryDeposit)
@@ -50,13 +50,13 @@ class OnGoingAssetsCardBodyWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           TimerContainerWidget(
             auctionData: context.read<HomeCubit>().auctionData!,
             textStyle: AppStyles.styleBold16(context)
                 .copyWith(color: AppColors.typographyHeading(context)),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           MazadEnrollAndShowMoreWidget(
             textButton1: 'لوحة المزايدة',
             index: index,

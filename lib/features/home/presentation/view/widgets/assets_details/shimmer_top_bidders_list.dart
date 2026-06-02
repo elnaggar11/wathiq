@@ -8,7 +8,7 @@ class ShimmerTopBiddersList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       itemCount: 3, // Simulating 5 shimmer items
       separatorBuilder: (context, index) => const SizedBox(height: 12),

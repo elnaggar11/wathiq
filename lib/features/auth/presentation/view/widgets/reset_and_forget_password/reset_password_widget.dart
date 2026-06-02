@@ -5,9 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../view_model/auth/auth_cubit.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 
 class ResetPasswordWidget extends StatefulWidget {
   const ResetPasswordWidget({

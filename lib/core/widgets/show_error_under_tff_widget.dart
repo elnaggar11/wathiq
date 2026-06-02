@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class ShowErrorUnderTFFWidget extends StatelessWidget {
   const ShowErrorUnderTFFWidget(

@@ -39,8 +39,8 @@ class ContactUsParams extends Equatable {
     print('sanitizedPhoneNumbern $sanitizedPhoneNumber');
     return <String, dynamic>{
       'phoneNumber': {
-        "number": sanitizedPhoneNumber,
-        "key": '+966',
+        'number': sanitizedPhoneNumber,
+        'key': '+966',
       },
       'email': email,
       'type': type,

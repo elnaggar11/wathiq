@@ -5,8 +5,8 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../../wallet/presentation/view_model/wallet/wallet_cubit.dart';
-import '../../../view_model/pages_cubit.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
 class BankNamesDropdownButtonFormFieldWidget extends StatefulWidget {
   const BankNamesDropdownButtonFormFieldWidget({
@@ -50,7 +50,7 @@ class _BankNamesDropdownButtonFormFieldWidgetState
       children: [
         DropdownButtonFormField<String>(
           isExpanded: true,
-          value: selectedValue,
+          initialValue: selectedValue,
           menuMaxHeight: 600,
           dropdownColor: AppColors.white(context),
           style: AppStyles.styleBold16(context).copyWith(),
@@ -67,7 +67,7 @@ class _BankNamesDropdownButtonFormFieldWidgetState
                       walletCubit.bankNameController.text = option;
                     },
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Flexible(
                         // or Expanded
                         child: Text(
@@ -88,7 +88,7 @@ class _BankNamesDropdownButtonFormFieldWidgetState
             return null;
           },
           decoration: InputDecoration(
-            label: Text(
+            label: const Text(
               'إسم البنك',
             ),
             labelStyle: AppStyles.styleRegular16(context).copyWith(
@@ -128,14 +128,14 @@ class _BankNamesDropdownButtonFormFieldWidgetState
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.red, // Border color when there's an error
                 width: 1,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.red, // Border color when focused with an error
                 width: 1.5,
               ),

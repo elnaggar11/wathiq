@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../core/network/socket/socket_end_points.dart';
-import '../../../../core/network/socket/socket_service.dart';
-import '../models/enrolle/auction_board_model.dart';
+import 'package:wathiq/core/network/socket/socket_end_points.dart';
+import 'package:wathiq/core/network/socket/socket_service.dart';
+import 'package:wathiq/features/home/data/models/enrolle/auction_board_model.dart';
 
 class AuctionBoardSocket {
   static final AuctionBoardSocket _instance = AuctionBoardSocket._internal();

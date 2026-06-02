@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorageServices extends FlutterSecureStorage {
-  static const String cookieToken = "cookie";
+  static const String cookieToken = 'cookie';
   final FlutterSecureStorage storage = const FlutterSecureStorage();
   String? _cookie;
 

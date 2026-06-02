@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/widgets/my_snackbar.dart';
-import '../../view_model/auth/auth_cubit.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});

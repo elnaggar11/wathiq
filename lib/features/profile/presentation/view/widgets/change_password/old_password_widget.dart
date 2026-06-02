@@ -6,8 +6,8 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 
 class OldPasswordWidget extends StatefulWidget {
   const OldPasswordWidget({

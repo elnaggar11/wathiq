@@ -1,4 +1,4 @@
-import 'company_phone_number.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/company_phone_number.dart';
 
 class Provider {
   String? id;

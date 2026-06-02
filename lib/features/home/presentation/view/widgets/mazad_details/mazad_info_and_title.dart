@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 
-import '../../../../../../core/functions/url_luncher.dart';
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/functions/url_luncher.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class MazadInfoAndTitle extends StatelessWidget {
   const MazadInfoAndTitle({
@@ -20,7 +20,7 @@ class MazadInfoAndTitle extends StatelessWidget {
     HomeCubit homeCubit = context.read<HomeCubit>();
 
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white(context),
         borderRadius: BorderRadius.circular(12.r),
@@ -40,22 +40,22 @@ class MazadInfoAndTitle extends StatelessWidget {
                       .copyWith(color: AppColors.typographyHeading(context)),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               homeCubit.auctionData!.logos.length > 0
                   ? MazadCompanyLogoWidget(
                       imageURl: homeCubit.auctionData!.logos[0].logo ?? '',
                     )
-                  : SizedBox.shrink(),
-              SizedBox(width: 16),
+                  : const SizedBox.shrink(),
+              const SizedBox(width: 16),
               homeCubit.auctionData!.logos.length > 1
                   ? MazadCompanyLogoWidget(
                       imageURl: homeCubit.auctionData!.logos[1].logo ?? '',
                     )
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
             ],
           ),
-          SizedBox(height: 16),
-          WhatsAppButtonWidget(),
+          const SizedBox(height: 16),
+          const WhatsAppButtonWidget(),
         ],
       ),
     );
@@ -78,7 +78,7 @@ class WhatsAppButtonWidget extends StatelessWidget {
                 (homeCubit.auctionData?.provider.companyPhoneNumber?.number ??
                     '');
 
-        openLink('https://wa.me/${whatsappNumber}');
+        openLink('https://wa.me/$whatsappNumber');
       },
       label: Text(
         (homeCubit.auctionData?.provider.companyPhoneNumber?.key ?? '') +
@@ -90,7 +90,7 @@ class WhatsAppButtonWidget extends StatelessWidget {
         Assets.imagesWhatsapp,
       ),
       style: OutlinedButton.styleFrom(
-        minimumSize: Size(double.infinity, 40),
+        minimumSize: const Size(double.infinity, 40),
         side: BorderSide(
           color: AppColors.success(context),
         ),

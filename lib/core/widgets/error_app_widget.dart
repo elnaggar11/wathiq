@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../utils/app_colors.dart';
-import '../utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class ErrorAppWidget extends StatelessWidget {
   const ErrorAppWidget({
@@ -19,7 +19,7 @@ class ErrorAppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 18.0),
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: text!.toLowerCase().contains('nointernet')
             ? NoInterNetErrorWidget(onTap: onTap)
             : ErrorTextWidget(text: text, onTap: onTap),
@@ -41,9 +41,9 @@ class NoInterNetErrorWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          SizedBox(height: 105),
+          const SizedBox(height: 105),
           SvgPicture.asset(AppAssets.app_imagesNoInterNetIcon),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Text(
             'يرجى التحقق من اتصالك بالإنترنت!',
             maxLines: 3,
@@ -53,7 +53,7 @@ class NoInterNetErrorWidget extends StatelessWidget {
               color: AppColors.typographyHeading(context),
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'تأكد من توافر خدمة الأنترنت وأعد المحاولة',
             maxLines: 3,
@@ -63,7 +63,7 @@ class NoInterNetErrorWidget extends StatelessWidget {
               color: AppColors.typographySubTitle(context),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           OutlinedButton(
             onPressed: onTap,
             child: Text(
@@ -74,7 +74,7 @@ class NoInterNetErrorWidget extends StatelessWidget {
               ),
             ),
             style: OutlinedButton.styleFrom(
-              fixedSize: Size(180, 54),
+              fixedSize: const Size(180, 54),
               side: BorderSide(
                 width: 1,
                 color: AppColors.primary(context),
@@ -123,7 +123,7 @@ class ErrorTextWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         ElevatedButton(
           onPressed: onTap,
           child: Text(

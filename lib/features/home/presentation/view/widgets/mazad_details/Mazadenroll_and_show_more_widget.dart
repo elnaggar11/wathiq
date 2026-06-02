@@ -5,9 +5,9 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class MazadEnrollAndShowMoreWidget extends StatelessWidget {
   const MazadEnrollAndShowMoreWidget({
@@ -55,8 +55,8 @@ class MazadEnrollAndShowMoreWidget extends StatelessWidget {
                   color: AppColors.iconsSecondary(
                       context), // <-- Border color here
                 ),
-                padding: EdgeInsets.all(0),
-                minimumSize: Size(double.infinity, double.infinity),
+                padding: const EdgeInsets.all(0),
+                minimumSize: const Size(double.infinity, double.infinity),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.r),
                   side: BorderSide(
@@ -68,7 +68,7 @@ class MazadEnrollAndShowMoreWidget extends StatelessWidget {
               ),
             ),
           ),
-          textButton1 != null ? SizedBox(width: 12) : SizedBox.shrink(),
+          textButton1 != null ? const SizedBox(width: 12) : const SizedBox.shrink(),
           textButton1 != null
               ? Expanded(
                   flex: flexButton ?? 5,
@@ -82,7 +82,7 @@ class MazadEnrollAndShowMoreWidget extends StatelessWidget {
                     ),
                     icon: icon,
                     style: OutlinedButton.styleFrom(
-                      minimumSize: Size(double.infinity, double.infinity),
+                      minimumSize: const Size(double.infinity, double.infinity),
                       side: BorderSide(
                         width: 1,
                         color: (homeCubit.auctionData!.auctionOrigins[index]
@@ -102,7 +102,7 @@ class MazadEnrollAndShowMoreWidget extends StatelessWidget {
                     ),
                   ),
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );

@@ -73,11 +73,11 @@ class _TimerHomeWidgetState extends State<TimerHomeWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _timeBox(context, time['seconds']!, 'ثانية'),
-        TimerDividerLineWidget(),
+        const TimerDividerLineWidget(),
         _timeBox(context, time['minutes']!, 'دقيقة'),
-        TimerDividerLineWidget(),
+        const TimerDividerLineWidget(),
         _timeBox(context, time['hours']!, 'ساعه'),
-        TimerDividerLineWidget(),
+        const TimerDividerLineWidget(),
         _timeBox(context, time['days']!, 'يوم'),
       ],
     );
@@ -124,12 +124,12 @@ class TimerDividerLineWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 35,
-      decoration: ShapeDecoration(
+      decoration: const ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: BorderSide(
             width: 1,
             strokeAlign: BorderSide.strokeAlignCenter,
-            color: const Color(0xFFE6E6E6),
+            color: Color(0xFFE6E6E6),
           ),
         ),
       ),

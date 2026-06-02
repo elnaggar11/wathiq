@@ -8,23 +8,23 @@ import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dar
 import 'package:wathiq/features/profile/data/data_source/profile_remote_data_source.dart';
 import 'package:wathiq/features/profile/data/repository/profile_repo.dart';
 
-import '../core/api/api_consumer.dart';
-import '../core/api/app_interceptor.dart';
-import '../core/api/dio_consumer.dart';
-import '../core/network/network.dart';
-import '../core/storage/i_app_local_storage.dart';
-import '../core/storage/shared_preference.dart';
-import '../features/auth/data/data_source/auth_local_data_source.dart';
-import '../features/auth/data/data_source/auth_remote_data_source.dart';
-import '../features/auth/data/repository/auth_repo.dart';
-import '../features/auth/presentation/view_model/auth/auth_cubit.dart';
-import '../features/paegs/data/data_source/pages_remote_data_source.dart';
-import '../features/paegs/data/repository/pages_repo.dart';
-import '../features/paegs/presentation/view_model/pages_cubit.dart';
-import '../features/profile/presentation/view_model/profile/profile_cubit.dart';
-import '../features/wallet/data/data_source/wallet_data_source.dart';
-import '../features/wallet/data/repository/wallet_repo.dart';
-import '../features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/app_interceptor.dart';
+import 'package:wathiq/core/api/dio_consumer.dart';
+import 'package:wathiq/core/network/network.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/storage/shared_preference.dart';
+import 'package:wathiq/features/auth/data/data_source/auth_local_data_source.dart';
+import 'package:wathiq/features/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:wathiq/features/auth/data/repository/auth_repo.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/paegs/data/data_source/pages_remote_data_source.dart';
+import 'package:wathiq/features/paegs/data/repository/pages_repo.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/features/wallet/data/data_source/wallet_data_source.dart';
+import 'package:wathiq/features/wallet/data/repository/wallet_repo.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
 final serviceLocator = GetIt.instance;
 

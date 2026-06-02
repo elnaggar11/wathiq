@@ -9,9 +9,9 @@ import 'package:wathiq/features/profile/presentation/view/widgets/agencies/inact
 import 'package:wathiq/features/profile/presentation/view/widgets/agencies/show_reson_bottom_sheet.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../data/models/agencies_model.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/profile/data/models/agencies_model.dart';
 
 class LoadedAgenciesWidget extends StatelessWidget {
   const LoadedAgenciesWidget({
@@ -25,7 +25,7 @@ class LoadedAgenciesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileCubit profileCubit = context.read<ProfileCubit>();
     return agencies.isEmpty
-        ? Center(
+        ? const Center(
             child: EmptyWidget(
               title: 'لا توجد وكالات ',
               // textButton:
@@ -59,7 +59,7 @@ class LoadedAgenciesWidget extends StatelessWidget {
                         }
                       : null,
                   child: Container(
-                    margin: EdgeInsetsDirectional.only(
+                    margin: const EdgeInsetsDirectional.only(
                         top: 16, start: 8, end: 8, bottom: 16),
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
@@ -91,18 +91,18 @@ class LoadedAgenciesWidget extends StatelessWidget {
                               decoration: ShapeDecoration(
                                 color: (profileCubit.status ==
                                         AppStrings.rejected)
-                                    ? Color(0xFFC21818).withOpacity(0.1)
+                                    ? const Color(0xFFC21818).withOpacity(0.1)
                                     : (profileCubit.status ==
                                             AppStrings.pending)
-                                        ? Color(0xFF9E5C21).withOpacity(0.1)
+                                        ? const Color(0xFF9E5C21).withOpacity(0.1)
                                         : (profileCubit.status ==
                                                 AppStrings.blocked)
-                                            ? Color(0xFF7A7B7A).withOpacity(0.1)
+                                            ? const Color(0xFF7A7B7A).withOpacity(0.1)
                                             : (profileCubit.status ==
                                                     AppStrings.approved)
-                                                ? Color(0xFF219653)
+                                                ? const Color(0xFF219653)
                                                     .withOpacity(0.1)
-                                                : Color(0xFFC21818)
+                                                : const Color(0xFFC21818)
                                                     .withOpacity(0.1),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100),
@@ -124,46 +124,46 @@ class LoadedAgenciesWidget extends StatelessWidget {
                                 style: AppStyles.styleBold14(context).copyWith(
                                   color: (profileCubit.status ==
                                           AppStrings.rejected)
-                                      ? Color(0xFFC21818)
+                                      ? const Color(0xFFC21818)
                                       : (profileCubit.status ==
                                               AppStrings.pending)
-                                          ? Color(0xFF9E5C21)
+                                          ? const Color(0xFF9E5C21)
                                           : (profileCubit.status ==
                                                   AppStrings.blocked)
-                                              ? Color(0xFF7A7B7A)
+                                              ? const Color(0xFF7A7B7A)
                                               : (profileCubit.status ==
                                                       AppStrings.approved)
-                                                  ? Color(0xFF219653)
-                                                  : Color(0xFFC21818),
+                                                  ? const Color(0xFF219653)
+                                                  : const Color(0xFFC21818),
                                 ),
                               ),
                             )
                           ],
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         AgencyRowTextWidget(
                           title: agencies[index].agencyName,
                           desc: '',
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         AgencyRowTextWidget(
                           title: 'رقم الوكالة :',
                           desc: agencies[index].agencyNumber,
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         AgencyRowTextWidget(
                           title: (profileCubit.status == AppStrings.pending)
                               ? 'تاريخ إصدار الوكالة :'
                               : 'تاريخ انتهاء الوكالة :',
                           desc: (profileCubit.status == AppStrings.pending)
-                              ? DateFormat("yyyy-MM-dd")
+                              ? DateFormat('yyyy-MM-dd')
                                   .format(agencies[index].agencyIssuedDate)
                               : (agencies[index].expireAt == null)
                                   ? 'غير موجود'
-                                  : DateFormat("yyyy-MM-dd")
+                                  : DateFormat('yyyy-MM-dd')
                                       .format(agencies[index].expireAt!),
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         Row(
                           children: [
                             SizedBox(
@@ -172,7 +172,7 @@ class LoadedAgenciesWidget extends StatelessWidget {
                               child:
                                   SvgPicture.asset(AppAssets.app_imagesPdfIcon),
                             ),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Text(
                               'مرفق الوكالة.${agencies[index].agencyAttachment.split('.').last}',
                               style:
@@ -182,9 +182,9 @@ class LoadedAgenciesWidget extends StatelessWidget {
                             )
                           ],
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         // (profileCubit.status == AppStrings.pending) != 0 ? Divider() : SizedBox.shrink(),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         (profileCubit.status == AppStrings.approved) == 0
                             ? ActiveAgenciesRowWidget(
                                 isActive: agencies[index].active,
@@ -222,7 +222,7 @@ class AgencyRowTextWidget extends StatelessWidget {
             color: AppColors.typographyHeading(context),
           ),
         ),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
           desc,
           style: AppStyles.styleSemiBold16(context).copyWith(

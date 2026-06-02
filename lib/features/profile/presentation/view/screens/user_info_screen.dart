@@ -6,14 +6,14 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../core/utils/app_animations.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/error_app_widget.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../widgets/user_info/loaded_user_info_widget.dart';
-import '../widgets/user_info/shimmer_user_info_widget .dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/error_app_widget.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/user_info/loaded_user_info_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/user_info/shimmer_user_info_widget%20.dart';
 
 class UserInfoScreen extends StatefulWidget {
   const UserInfoScreen({super.key});
@@ -40,7 +40,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
         systemNavigationBarColor: AppColors.white(context),
       ),
     );
-    Future.delayed(Duration(milliseconds: 500)).then((v) {
+    Future.delayed(const Duration(milliseconds: 500)).then((v) {
       setState(() {});
     });
   }
@@ -55,9 +55,9 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           builder: (context, state) {
             return (profileCubit.imageFile == null &&
                     profileCubit.editUserInfoCountryID == null)
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     color: AppColors.white(context),
                     child: ElevatedButton(
                       onPressed: () {
@@ -81,13 +81,13 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           title: 'البيانات الشخصية',
         ),
         body: KisGuest == true
-            ? GuestWidget()
+            ? const GuestWidget()
             : BlocBuilder<ProfileCubit, ProfileState>(
                 builder: (context, state) {
                   switch (state.profileRequestState) {
                     case RequestState.loading:
                     case RequestState.ideal:
-                      return ShimmerUserInfoWidget();
+                      return const ShimmerUserInfoWidget();
                     case RequestState.error:
                       return ErrorAppWidget(
                         text: state.profileError?.message ?? 'حدث شئ ما خطأ',

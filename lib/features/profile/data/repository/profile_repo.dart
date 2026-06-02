@@ -5,13 +5,13 @@ import 'package:dartz/dartz.dart';
 import 'package:wathiq/core/params/profile/create_agency_params.dart';
 import 'package:wathiq/features/profile/data/models/profile_model.dart';
 
-import '../../../../app/injector.dart';
-import '../../../../core/error/failure.dart';
-import '../../../../core/params/profile/change_password_params.dart';
-import '../../../../core/storage/i_app_local_storage.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../data_source/profile_remote_data_source.dart';
-import '../models/agencies_model.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/profile/change_password_params.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/features/profile/data/data_source/profile_remote_data_source.dart';
+import 'package:wathiq/features/profile/data/models/agencies_model.dart';
 
 class ProfileRepository {
   final ProfileRemoteDataSource remoteDataSource;
@@ -201,7 +201,7 @@ class ProfileRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 204) {
         log('Register Status code is 200');
 
-        return Right('تم حذف الحساب بنجاح');
+        return const Right('تم حذف الحساب بنجاح');
       } else {
         log('Register Status code is 422');
         return Left(
@@ -309,7 +309,7 @@ class ProfileRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 204) {
         log('Register Status code is 200');
 
-        return Right('تم تسجيل الخروج بنجاح');
+        return const Right('تم تسجيل الخروج بنجاح');
       } else {
         log('Register Status code is 422');
         return Left(

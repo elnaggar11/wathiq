@@ -8,25 +8,25 @@ import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 import 'package:wathiq/features/paegs/data/models/question_model.dart';
 import 'package:wathiq/features/paegs/data/models/social_model.dart';
 
-import '../../../../app/injector.dart';
-import '../../../../core/error/failure.dart';
-import '../../../../core/functions/pick_images_and_files.dart';
-import '../../../../core/params/add_real_state_params.dart';
-import '../../../../core/params/contact_us_params.dart';
-import '../../../../core/params/get_questions_params.dart';
-import '../../../../core/params/profile/sales_agent_params.dart';
-import '../../../../core/params/properity_managment.dart';
-import '../../../../core/storage/i_app_local_storage.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/utils/enums.dart';
-import '../../data/models/categories_model.dart';
-import '../../data/repository/pages_repo.dart';
-import '../../data/socket/notifications_socket.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/functions/pick_images_and_files.dart';
+import 'package:wathiq/core/params/add_real_state_params.dart';
+import 'package:wathiq/core/params/contact_us_params.dart';
+import 'package:wathiq/core/params/get_questions_params.dart';
+import 'package:wathiq/core/params/profile/sales_agent_params.dart';
+import 'package:wathiq/core/params/properity_managment.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/features/paegs/data/models/categories_model.dart';
+import 'package:wathiq/features/paegs/data/repository/pages_repo.dart';
+import 'package:wathiq/features/paegs/data/socket/notifications_socket.dart';
 
 part 'pages_state.dart';
 
 class PagesCubit extends Cubit<PagesState> {
-  PagesCubit(this._pageRepository) : super(PagesState());
+  PagesCubit(this._pageRepository) : super(const PagesState());
 
   final PagesRepository _pageRepository;
   QestionsCategory? category;
@@ -186,11 +186,11 @@ class PagesCubit extends Cubit<PagesState> {
     descriptionController.clear();
   }
 
-  getUserCashedData() {
+  void getUserCashedData() {
     dynamic Useremail =
         serviceLocator<IAppLocalStorage>().getValue(AppStrings.Useremail) ?? '';
     dynamic userName =
-        serviceLocator<IAppLocalStorage>().getValue(AppStrings.userName) ?? "";
+        serviceLocator<IAppLocalStorage>().getValue(AppStrings.userName) ?? '';
     dynamic phoneNum =
         serviceLocator<IAppLocalStorage>().getValue(AppStrings.phoneNum) ?? '';
     emailController.text = Useremail;
@@ -214,7 +214,7 @@ class PagesCubit extends Cubit<PagesState> {
       );
     });
     notificationsSocket.emitUnReadCount();
-    log("unread cont is ${state.notificationCount}");
+    log('unread cont is ${state.notificationCount}');
     emit(
       state.copyWith(
         getNotificationsRequestState: RequestState.loaded,
@@ -419,7 +419,7 @@ class PagesCubit extends Cubit<PagesState> {
         if (endDate.isBefore(startDate)) {
           emit(state.copyWith(
             createSalesAgentRequestState: RequestState.error,
-            createSalesAgentError: AppFailure(
+            createSalesAgentError: const AppFailure(
                 message: 'تاريخ الانتهاء يجب أن يكون بعد تاريخ الإصدار'),
           ));
           return false;
@@ -427,7 +427,7 @@ class PagesCubit extends Cubit<PagesState> {
       } catch (e) {
         emit(state.copyWith(
           createSalesAgentRequestState: RequestState.error,
-          createSalesAgentError: AppFailure(message: 'تنسيق التاريخ غير صحيح'),
+          createSalesAgentError: const AppFailure(message: 'تنسيق التاريخ غير صحيح'),
         ));
         return false;
       }

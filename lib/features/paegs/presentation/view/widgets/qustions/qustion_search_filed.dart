@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 
 class QustionSearchFiled extends StatelessWidget
     implements PreferredSizeWidget {
@@ -45,7 +45,7 @@ class QustionSearchFiled extends StatelessWidget
         //       cubit.state.loginError!.data!.containsKey('password'),
         // ),
         prefix: Padding(
-          padding: EdgeInsetsDirectional.only(end: 8, start: 16),
+          padding: const EdgeInsetsDirectional.only(end: 8, start: 16),
           child: SizedBox(
             width: 20,
             height: 20,
@@ -64,5 +64,5 @@ class QustionSearchFiled extends StatelessWidget
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(54);
+  Size get preferredSize => const Size.fromHeight(54);
 }

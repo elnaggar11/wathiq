@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 
 class PickedAgencyAttachmentWidget extends StatefulWidget {
   const PickedAgencyAttachmentWidget({
@@ -48,9 +48,9 @@ class _PickedAgencyAttachmentWidgetState
             enabled: false,
             keyboardType: TextInputType.number,
             prefix: Container(
-              margin: EdgeInsetsDirectional.only(
+              margin: const EdgeInsetsDirectional.only(
                   top: 8, bottom: 8, start: 8, end: 8),
-              padding: EdgeInsets.all(6),
+              padding: const EdgeInsets.all(6),
               child: SvgPicture.asset(
                 AppAssets.app_imagesDocumentUpload,
                 fit: BoxFit.fill,

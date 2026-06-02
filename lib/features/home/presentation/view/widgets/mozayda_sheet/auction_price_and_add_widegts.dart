@@ -5,11 +5,11 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/call_to_action_add_mozayda_widget.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../assets_details/logout_auction_sheet.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/assets_details/logout_auction_sheet.dart';
 
 class AuctionPriceWidegt extends StatelessWidget {
   const AuctionPriceWidegt({
@@ -43,28 +43,28 @@ class AuctionPriceWidegt extends StatelessWidget {
                 ? PriceingRowTextWidget(
                     title: 'سعر المتر',
                     price:
-                        '${formatNumber(propertyPrice / int.parse(homeCubit.auctionOrigin!.details[1].auctionDetails[0].description!))}',
+                        formatNumber(propertyPrice / int.parse(homeCubit.auctionOrigin!.details[1].auctionDetails[0].description!)),
                   )
-                : SizedBox.shrink(),
-            SizedBox(height: 8),
+                : const SizedBox.shrink(),
+            const SizedBox(height: 8),
             PriceingRowTextWidget(
               titleIcon: AppAssets.app_imagesSale,
               title: 'مبلغ السعي',
-              price: '${formatNumber(commission)}',
+              price: formatNumber(commission),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             PriceingRowTextWidget(
               titleIcon: AppAssets.app_imagesWadOfMoney,
               title: 'ضريبة السعي',
-              price: '${formatNumber(commissionTax)}',
+              price: formatNumber(commissionTax),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             PriceingRowTextWidget(
               titleIcon: AppAssets.app_imagesAqartax,
               title: 'التصرفات العقارية',
-              price: '${formatNumber(transactionFee)}',
+              price: formatNumber(transactionFee),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Column(
@@ -77,18 +77,18 @@ class AuctionPriceWidegt extends StatelessWidget {
                         color: AppColors.typographyBody(context),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          '${formatNumber(total)}',
+                          formatNumber(total),
                           textAlign: TextAlign.start,
                           style: AppStyles.styleBold20(context).copyWith(
                             color: AppColors.typographyHeading(context),
                           ),
                         ),
-                        SizedBox(width: 2),
+                        const SizedBox(width: 2),
                         CurrancyLogoWidget(
                           color: AppColors.typographyHeading(context),
                           maxHeight: 20,
@@ -98,7 +98,7 @@ class AuctionPriceWidegt extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -109,7 +109,7 @@ class AuctionPriceWidegt extends StatelessWidget {
                         color: AppColors.typographyBody(context),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -121,7 +121,7 @@ class AuctionPriceWidegt extends StatelessWidget {
                             color: AppColors.typographyHeading(context),
                           ),
                         ),
-                        SizedBox(width: 2),
+                        const SizedBox(width: 2),
                         CurrancyLogoWidget(
                           color: AppColors.typographyHeading(context),
                           maxHeight: 20,
@@ -163,25 +163,25 @@ class PriceingWidget extends StatelessWidget {
                   ? PriceingRowTextWidget(
                       title: 'سعر المتر',
                       price:
-                          '${formatNumber(state.propertyPrice / int.parse(homeCubit.auctionOrigin!.details[1].auctionDetails[0].description!))}',
+                          formatNumber(state.propertyPrice / int.parse(homeCubit.auctionOrigin!.details[1].auctionDetails[0].description!)),
                     )
-                  : SizedBox.shrink(),
-              CalculatorDividerWidget(),
+                  : const SizedBox.shrink(),
+              const CalculatorDividerWidget(),
               PriceingRowTextWidget(
                 title: 'السعي',
-                price: '${formatNumber(state.commission)}',
+                price: formatNumber(state.commission),
               ),
-              CalculatorDividerWidget(),
+              const CalculatorDividerWidget(),
               PriceingRowTextWidget(
                 title: 'ضريبة السعي',
-                price: '${formatNumber(state.commissionTax)}',
+                price: formatNumber(state.commissionTax),
               ),
-              CalculatorDividerWidget(),
+              const CalculatorDividerWidget(),
               PriceingRowTextWidget(
                 title: 'التصرفات العقارية',
-                price: '${formatNumber(state.transactionFee)}',
+                price: formatNumber(state.transactionFee),
               ),
-              CalculatorDividerWidget(),
+              const CalculatorDividerWidget(),
               Container(
                 width: double.infinity,
                 height: 72,
@@ -196,7 +196,7 @@ class PriceingWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     SvgPicture.asset(AppAssets.app_imagesLawIconCalculator),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -207,18 +207,18 @@ class PriceingWidget extends StatelessWidget {
                             color: AppColors.typographyBody(context),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              '${formatNumber(state.total)}',
+                              formatNumber(state.total),
                               textAlign: TextAlign.start,
                               style: AppStyles.styleBold20(context).copyWith(
                                 color: AppColors.typographyHeading(context),
                               ),
                             ),
-                            SizedBox(width: 2),
+                            const SizedBox(width: 2),
                             CurrancyLogoWidget(
                               color: AppColors.typographyHeading(context),
                               maxHeight: 20,
@@ -231,7 +231,7 @@ class PriceingWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         );
@@ -281,7 +281,7 @@ class PriceingRowTextWidget extends StatelessWidget {
                       titleIcon!,
                     ),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             SizedBox(width: titleIcon != null ? 8 : 0),
             Text(
               title,
@@ -304,7 +304,7 @@ class PriceingRowTextWidget extends StatelessWidget {
                     color: AppColors.typographyHeading(context),
                   ),
             ),
-            SizedBox(width: 2),
+            const SizedBox(width: 2),
             CurrancyLogoWidget(
               color: priceStyle != null
                   ? priceStyle!.color
@@ -368,7 +368,7 @@ class AddMozaydaWidget extends StatelessWidget {
                           ),
                           child: Container(
                             padding: const EdgeInsets.all(4),
-                            margin: EdgeInsets.all(1),
+                            margin: const EdgeInsets.all(1),
                             decoration: ShapeDecoration(
                               shape: CircleBorder(
                                   side: BorderSide(
@@ -401,7 +401,7 @@ class AddMozaydaWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Container(
                         width: 130,
                         height: 56,
@@ -410,9 +410,9 @@ class AddMozaydaWidget extends StatelessWidget {
                         decoration: ShapeDecoration(
                           color: Colors.white /* Input-BG */,
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 0.50,
-                              color: const Color(0xFFE6E6E6) /* Input-Border */,
+                              color: Color(0xFFE6E6E6) /* Input-Border */,
                             ),
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -429,7 +429,7 @@ class AddMozaydaWidget extends StatelessWidget {
                                   color: AppColors.typographyHeading(context),
                                 ),
                               ),
-                              SizedBox(width: 2),
+                              const SizedBox(width: 2),
                               CurrancyLogoWidget(
                                 color: AppColors.typographyHeading(context),
                                 maxHeight: 22,
@@ -439,7 +439,7 @@ class AddMozaydaWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       GestureDetector(
                         onTap: () {
                           homeCubit.increaseBid();
@@ -461,12 +461,12 @@ class AddMozaydaWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
-                  CallToActionAddMozaydaWidget(),
+                  const SizedBox(height: 24),
+                  const CallToActionAddMozaydaWidget(),
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
                 LogOutFromAuctionSheetBottomSheet(context);
@@ -487,7 +487,7 @@ class AddMozaydaWidget extends StatelessWidget {
                       AppAssets.app_imagesLogioutMAuction,
                       color: AppColors.danger(context),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                       'مغادرة المزاد',
                       style: AppStyles.styleBold14(context).copyWith(
@@ -498,7 +498,7 @@ class AddMozaydaWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
         );
       },

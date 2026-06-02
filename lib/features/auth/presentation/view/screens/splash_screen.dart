@@ -8,15 +8,15 @@ import 'package:wathiq/app/app.dart';
 import 'package:wathiq/core/utils/app_strings.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../app/injector.dart';
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/functions/local_auth.dart';
-import '../../../../../core/storage/flutter_secure_storage.dart';
-import '../../../../../core/storage/i_app_local_storage.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../../../../core/utils/images.dart';
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/functions/local_auth.dart';
+import 'package:wathiq/core/storage/flutter_secure_storage.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 
 bool KisHijri = false;
 
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _logoScaleAnimation;
   late Timer timer;
 
-  final String text = "0.1 V";
+  final String text = '0.1 V';
 
   @override
   void initState() {
@@ -235,7 +235,7 @@ class SplashScreenMobileLayoutWidget extends StatelessWidget {
                         color: AppColors.typographyHeadingWhite(context)),
                   ),
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );

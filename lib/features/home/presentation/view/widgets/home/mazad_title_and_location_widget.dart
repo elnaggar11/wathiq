@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
 
 class MazadTitleAndLocationWidget extends StatelessWidget {
   const MazadTitleAndLocationWidget({
@@ -50,8 +50,8 @@ class CachedNetworkImageWidegt extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       fit: BoxFit.fill,
-      placeholder: (context, url) => CustomCircularProgressIndicatorWidget(),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      placeholder: (context, url) => const CustomCircularProgressIndicatorWidget(),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

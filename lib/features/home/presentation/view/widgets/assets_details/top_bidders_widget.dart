@@ -6,10 +6,10 @@ import 'package:wathiq/core/widgets/empty_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/assets_details/shimmer_top_bidders_list.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/assets_details/top_bidders_card_widget.dart';
 
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/error_app_widget.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/error_app_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 class TopBiddersWidget extends StatelessWidget {
   const TopBiddersWidget({
@@ -38,7 +38,7 @@ class TopBiddersWidget extends StatelessWidget {
                   color: AppColors.typographyHeading(context),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   return Text(
@@ -54,8 +54,8 @@ class TopBiddersWidget extends StatelessWidget {
             ],
           ),
           getKTapIndex(context) == 2
-              ? Padding(
-                  padding: const EdgeInsets.only(top: 24),
+              ? const Padding(
+                  padding: EdgeInsets.only(top: 24),
                   child: EmptyWidget(
                     title: 'المزاد لم يبدأ بعد',
                     subTitle: null,
@@ -68,7 +68,7 @@ class TopBiddersWidget extends StatelessWidget {
                     switch (state.getAuctionBoardRequestState) {
                       case RequestState.ideal:
                       case RequestState.loading:
-                        return ShimmerTopBiddersList();
+                        return const ShimmerTopBiddersList();
                       case RequestState.error:
                         return ErrorAppWidget(
                           text: 'حدث شئ ما خطأ',
@@ -78,7 +78,7 @@ class TopBiddersWidget extends StatelessWidget {
                         );
                       case RequestState.loaded:
                         return homeCubit.boardAuctionData.isEmpty
-                            ? Column(
+                            ? const Column(
                                 children: [
                                   SizedBox(
                                     height: 40,
@@ -93,7 +93,7 @@ class TopBiddersWidget extends StatelessWidget {
                               )
                             : ListView.builder(
                                 itemCount: homeCubit.boardAuctionData.length,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return TopBiddersCardWidget(

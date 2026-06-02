@@ -35,7 +35,7 @@ class ProfileCartWidget extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Text(
@@ -45,7 +45,7 @@ class ProfileCartWidget extends StatelessWidget {
                 color: AppColors.typographyHeading(context),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             SvgPicture.asset(
               AppAssets.app_imagesProfileArrow,
             ),

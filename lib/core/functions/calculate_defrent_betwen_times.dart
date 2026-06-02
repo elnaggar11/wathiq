@@ -5,7 +5,7 @@ String calculateTimeDifference(String timestampStr) {
     Duration difference = now.difference(timestamp);
 
     if (difference.isNegative) {
-      return "في المستقبل";
+      return 'في المستقبل';
     }
 
     int days = difference.inDays;
@@ -14,39 +14,39 @@ String calculateTimeDifference(String timestampStr) {
 
     if (days > 0) {
       if (days == 1) {
-        return "منذ يوم واحد";
+        return 'منذ يوم واحد';
       } else if (days == 2) {
-        return "منذ يومين";
+        return 'منذ يومين';
       } else if (days >= 3 && days <= 10) {
-        return "منذ $days أيام";
+        return 'منذ $days أيام';
       } else {
-        return "منذ $days يوم";
+        return 'منذ $days يوم';
       }
     } else if (hours > 0) {
       if (hours == 1) {
-        return "منذ ساعة واحدة";
+        return 'منذ ساعة واحدة';
       } else if (hours == 2) {
-        return "منذ ساعتين";
+        return 'منذ ساعتين';
       } else if (hours >= 3 && hours <= 10) {
-        return "منذ $hours ساعات";
+        return 'منذ $hours ساعات';
       } else {
-        return "منذ $hours ساعة";
+        return 'منذ $hours ساعة';
       }
     } else if (minutes > 0) {
       if (minutes == 1) {
-        return "منذ دقيقة واحدة";
+        return 'منذ دقيقة واحدة';
       } else if (minutes == 2) {
-        return "منذ دقيقتين";
+        return 'منذ دقيقتين';
       } else if (minutes >= 3 && minutes <= 10) {
-        return "منذ $minutes دقائق";
+        return 'منذ $minutes دقائق';
       } else {
-        return "منذ $minutes دقيقة";
+        return 'منذ $minutes دقيقة';
       }
     } else {
-      return "الآن";
+      return 'الآن';
     }
   } catch (e) {
-    print("Error parsing timestamp: $e");
-    return "خطأ في الوقت";
+    print('Error parsing timestamp: $e');
+    return 'خطأ في الوقت';
   }
 }

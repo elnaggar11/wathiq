@@ -13,14 +13,14 @@ import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_title_
 import 'package:wathiq/features/home/presentation/view/widgets/home/show_more_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/timer_home_widget.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/functions/get_auction_status_and_type.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../../data/models/auctions_model/auctions_model.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../mazad_details/auction_assets_num_and_day.dart';
-import 'auctions_favorite_button.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/functions/get_auction_status_and_type.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/auction_assets_num_and_day.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/auctions_favorite_button.dart';
 
 class MazadCardWidget extends StatefulWidget {
   const MazadCardWidget({
@@ -56,14 +56,14 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
           top: widget.index == 0 ? 24 : 0,
           bottom: 24,
         ),
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         width: double.infinity,
         decoration: ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          shadows: [
+          shadows: const [
             BoxShadow(
               color: Color(0x07000000),
               blurRadius: 40,
@@ -84,7 +84,7 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                     image: DecorationImage(
                       image: CachedNetworkImageProvider(
                         widget.auctionsModel.data[widget.index].cover ?? '',
-                        errorListener: (error) => Icon(Icons.error),
+                        errorListener: (error) => const Icon(Icons.error),
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -116,7 +116,7 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                 Container(
                   width: double.infinity,
                   height: 213,
-                  padding: EdgeInsets.only(top: 8, bottom: 8),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8),
                   decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -138,7 +138,7 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                             decoration: ShapeDecoration(
                               color: AppColors.color2(
                                   context) /* Surface-action-primary-hover */,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(12),
                                   bottomLeft: Radius.circular(12),
@@ -160,32 +160,32 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                               ),
                             ),
                           ),
-                          Spacer(),
-                          MazadIconWidget(
+                          const Spacer(),
+                          const MazadIconWidget(
                             image: AppAssets.app_imagesShareAndroidW,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8,
                           ),
                           KisGuest
-                              ? SizedBox.shrink()
+                              ? const SizedBox.shrink()
                               : AuctionsFavoriteButton(
                                   homeCubit: homeCubit,
                                   auctionData:
                                       widget.auctionsModel.data[widget.index],
                                   isFromFav: widget.isFromFav,
                                 ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           SvgPicture.asset(
                             AppAssets.app_imagesLocationDot,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
                           SizedBox(
@@ -193,7 +193,7 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                             child: Text(
                               widget.auctionsModel.data[widget.index].location
                                       .title ??
-                                  "",
+                                  '',
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: AppStyles.styleBold16(context).copyWith(
@@ -209,11 +209,11 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             MazadTitleAndLocationWidget(
               auctionData: widget.auctionsModel.data[widget.index],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             // getKTapIndex(context,
             //             widget.auctionsModel.data[widget.index].status) ==
             //         3
@@ -249,25 +249,25 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
             Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(12),
                       bottomRight: Radius.circular(12),
                     ),
                     color: widget.auctionsModel.data[widget.index].status ==
                             AppStrings.auctionsOnGoing
-                        ? Color(0xFFEEF5F1)
+                        ? const Color(0xFFEEF5F1)
                         : widget.auctionsModel.data[widget.index].status ==
                                 AppStrings.auctionsInProgress
-                            ? Color(0xFFF2F2F2)
-                            : Color(0xFFF8F0EE),
+                            ? const Color(0xFFF2F2F2)
+                            : const Color(0xFFF8F0EE),
                   ),
                   child: getKTapIndex(context,
                               widget.auctionsModel.data[widget.index].status) ==
                           3
-                      ? CompletedAuctionStutesWidget()
+                      ? const CompletedAuctionStutesWidget()
                       : FittedBox(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -290,7 +290,7 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                                   ),
                                 ],
                               ),
-                              SizedBox(width: 16),
+                              const SizedBox(width: 16),
                               TimerHomeWidget(
                                   auctionData:
                                       widget.auctionsModel.data[widget.index])
@@ -300,7 +300,7 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
                 )
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ShowMoreWidget(
               auctionOriginsNum:
                   widget.auctionsModel.data[widget.index].auctionOrigins.length,

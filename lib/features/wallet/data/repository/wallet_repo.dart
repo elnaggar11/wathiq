@@ -3,13 +3,13 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:wathiq/features/wallet/data/data_source/wallet_data_source.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/params/wallet/psot_withdraw_params.dart';
-import '../../../home/data/models/enrolle/privacy_model.dart';
-import '../model/add_wallet_balance.dart';
-import '../model/held_model.dart';
-import '../model/invoice_model.dart';
-import '../model/withdraw_model.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/wallet/psot_withdraw_params.dart';
+import 'package:wathiq/features/home/data/models/enrolle/privacy_model.dart';
+import 'package:wathiq/features/wallet/data/model/add_wallet_balance.dart';
+import 'package:wathiq/features/wallet/data/model/held_model.dart';
+import 'package:wathiq/features/wallet/data/model/invoice_model.dart';
+import 'package:wathiq/features/wallet/data/model/withdraw_model.dart';
 
 class WalletRepository {
   final WalletRemoteDataSource remoteDataSource;
@@ -163,7 +163,7 @@ class WalletRepository {
       final response = await remoteDataSource.submitWithdrawRequest(params);
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('submitWithdrawRequest Status code is 200');
-        return Right("تم إرسال طلب السحب بنجاح");
+        return const Right('تم إرسال طلب السحب بنجاح');
       } else {
         log('submitWithdrawRequest Status code is 422');
         return Left(

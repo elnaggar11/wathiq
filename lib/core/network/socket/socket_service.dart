@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
-import '../../../app/injector.dart';
-import '../../../features/home/data/socket/auction_board_socket.dart';
-import '../../../features/paegs/data/socket/notifications_socket.dart';
-import '../../storage/flutter_secure_storage.dart';
-import '../../storage/i_app_local_storage.dart';
-import '../../utils/app_strings.dart';
-import 'socket_end_points.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/features/home/data/socket/auction_board_socket.dart';
+import 'package:wathiq/features/paegs/data/socket/notifications_socket.dart';
+import 'package:wathiq/core/storage/flutter_secure_storage.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/network/socket/socket_end_points.dart';
 
 class SocketService {
   static final SocketService _instance = SocketService._internal();
@@ -55,7 +55,7 @@ class SocketService {
           .enableAutoConnect()
           .enableReconnection()
           .setReconnectionAttempts(5)
-          .setQuery({if (_lang != null) "lang": _lang})
+          .setQuery({if (_lang != null) 'lang': _lang})
           .setExtraHeaders({if (_token != null) 'Cookie': _token})
           .build(),
     );
@@ -69,7 +69,7 @@ class SocketService {
   /// Setter for token
   set token(String? newToken) {
     _token = newToken;
-    debugPrint("Token updated: $_token");
+    debugPrint('Token updated: $_token');
     _setupSocket();
   }
 
@@ -77,7 +77,7 @@ class SocketService {
   Future<void> connect() async {
     if (_socket == null || !_socket!.connected) {
       await _setupSocket();
-      debugPrint("Connecting socket...");
+      debugPrint('Connecting socket...');
     }
   }
 
@@ -91,7 +91,7 @@ class SocketService {
         NotificationsSocket().listenEvents();
         AuctionBoardSocket().listenEvents();
       } else {
-        debugPrint("Token is not available.");
+        debugPrint('Token is not available.');
       }
     });
     _socket?.onDisconnect(
@@ -107,10 +107,10 @@ class SocketService {
 
   /// Listen to specific socket events
   void onEvent(String event, Function(dynamic data) handler) {
-    debugPrint("Listening to event ---> $event");
+    debugPrint('Listening to event ---> $event');
     _socket?.on(event, (data) {
       handler(data);
-      debugPrint("$event received ---> $data");
+      debugPrint('$event received ---> $data');
     });
   }
 
@@ -118,7 +118,7 @@ class SocketService {
   Future<void> emitEvent(String event, {Map<String, dynamic>? data}) async {
     if (_socket == null || !_socket!.connected) await connect();
     _socket?.emit(event, data);
-    debugPrint("Event emitted: $event with data: $data");
+    debugPrint('Event emitted: $event with data: $data');
   }
 
   /// Disconnect the socket and clear listeners
@@ -126,7 +126,7 @@ class SocketService {
     if (_socket != null) {
       _socket?.clearListeners();
       _socket?.disconnect();
-      debugPrint("Socket disconnected and listeners cleared");
+      debugPrint('Socket disconnected and listeners cleared');
     }
   }
 
@@ -135,6 +135,6 @@ class SocketService {
     disconnect();
     _socket?.destroy();
     _socket = null;
-    debugPrint("Socket completely disposed");
+    debugPrint('Socket completely disposed');
   }
 }

@@ -15,13 +15,13 @@ import 'package:wathiq/core/widgets/empty_widget.dart';
 import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/functions/format_number.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../../../../profile/presentation/view/screens/agencies_screen.dart';
-import '../widgets/add_balance_sheet.dart';
-import '../widgets/cards_widgets.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/screens/agencies_screen.dart';
+import 'package:wathiq/features/wallet/presentation/view/widgets/add_balance_sheet.dart';
+import 'package:wathiq/features/wallet/presentation/view/widgets/cards_widgets.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
@@ -40,7 +40,7 @@ class _WalletScreenState extends State<WalletScreen>
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Color(0xffF9F2DD),
+        statusBarColor: const Color(0xffF9F2DD),
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: AppColors.white(context),
       ),
@@ -69,14 +69,14 @@ class _WalletScreenState extends State<WalletScreen>
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Color(0xffF9F2DD),
+        statusBarColor: const Color(0xffF9F2DD),
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: AppColors.white(context),
       ),
     );
     WalletCubit walletCubit = context.read<WalletCubit>();
     return KisGuest == true
-        ? GuestWidget()
+        ? const GuestWidget()
         : DefaultTabController(
             length: 3,
             child: Scaffold(
@@ -86,7 +86,7 @@ class _WalletScreenState extends State<WalletScreen>
                     Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IntroWalletWidget(),
+                const IntroWalletWidget(),
                 const SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -175,7 +175,7 @@ class WithdrawBodyScreen extends StatelessWidget {
         switch (state.getWithdrawRequestState) {
           case RequestState.loading:
           case RequestState.ideal:
-            return LoadingWalletShimmer();
+            return const LoadingWalletShimmer();
           case RequestState.error:
             return ErrorAppWidget(
               text: state.getWithdrawError.toString(),
@@ -185,7 +185,7 @@ class WithdrawBodyScreen extends StatelessWidget {
             );
           case RequestState.loaded:
             return state.getWithdrawModel?.data.isEmpty ?? true
-                ? EmptyWidget(title: 'لا يوجد مسحوبات')
+                ? const EmptyWidget(title: 'لا يوجد مسحوبات')
                 : Padding(
                     padding: const EdgeInsets.only(top: 12),
                     child: Expanded(
@@ -217,7 +217,7 @@ class LoadingWalletShimmer extends StatelessWidget {
       itemCount: 10,
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 16),
@@ -262,7 +262,7 @@ class InvoicesBodyScreen extends StatelessWidget {
           switch (state.getUserInvoicesRequestState) {
             case RequestState.loading:
             case RequestState.ideal:
-              return LoadingWalletShimmer();
+              return const LoadingWalletShimmer();
             case RequestState.error:
               return ErrorAppWidget(
                 text: state.getUserInvoicesError.toString(),
@@ -272,7 +272,7 @@ class InvoicesBodyScreen extends StatelessWidget {
               );
             case RequestState.loaded:
               return state.getUserInvoicesModel?.data.isEmpty ?? true
-                  ? EmptyWidget(title: 'لا يوجد فواتير')
+                  ? const EmptyWidget(title: 'لا يوجد فواتير')
                   : Padding(
                       padding: const EdgeInsets.only(top: 12),
                       child: Expanded(
@@ -318,7 +318,7 @@ class HeldFundsBodyScreen extends StatelessWidget {
         switch (state.getHeldFundsRequestState) {
           case RequestState.loading:
           case RequestState.ideal:
-            return LoadingWalletShimmer();
+            return const LoadingWalletShimmer();
           case RequestState.error:
             return ErrorAppWidget(
               text: state.getHeldFundsError.toString(),
@@ -328,7 +328,7 @@ class HeldFundsBodyScreen extends StatelessWidget {
             );
           case RequestState.loaded:
             return state.getHeldFundsModel?.data.isEmpty ?? true
-                ? EmptyWidget(title: 'لا يوجد مبالغ محجوزة')
+                ? const EmptyWidget(title: 'لا يوجد مبالغ محجوزة')
                 : Padding(
                     padding: const EdgeInsets.only(top: 12),
                     child: Expanded(
@@ -400,11 +400,11 @@ class _WalletTabBarWidgetState extends State<WalletTabBarWidget> {
       width: double.infinity,
       color: AppColors.backgroundPrimary(context),
       child: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: 8,
           horizontal: 8,
         ),
-        margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 20),
+        margin: const EdgeInsetsDirectional.only(start: 16, end: 16, top: 20),
         decoration: BoxDecoration(
           color: AppColors.backgroundPrimary(context),
           border: Border.all(
@@ -426,13 +426,13 @@ class _WalletTabBarWidgetState extends State<WalletTabBarWidget> {
           },
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: EdgeInsets.all(0),
+          labelPadding: const EdgeInsets.all(0),
           tabs: List<Widget>.generate(
             widget.tapsName.length,
             (index) => SizedBox(
               height: 40,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 1, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 8),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
@@ -452,7 +452,7 @@ class _WalletTabBarWidgetState extends State<WalletTabBarWidget> {
                             : AppColors.typographyHeading(context),
                       ),
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                   ],
                 ),
               ),
@@ -476,31 +476,31 @@ class IntroWalletWidget extends StatelessWidget {
         Container(
           height: 280,
           width: double.infinity,
-          color: Color(0xFFF9F2DD),
+          color: const Color(0xFFF9F2DD),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 40),
-              BalanceWidget(),
-              SizedBox(height: 8),
+              const SizedBox(height: 40),
+              const BalanceWidget(),
+              const SizedBox(height: 8),
               Text(
                 'الرصيد المتاح',
                 style: AppStyles.styleMedium14(context).copyWith(
                   color: AppColors.color2(context),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Divider(
                 color: AppColors.borderPrimary(context),
                 height: 0,
                 thickness: 2,
               ),
-              SizedBox(height: 16),
-              PinddingMonyWidget(),
-              SizedBox(height: 32),
+              const SizedBox(height: 16),
+              const PinddingMonyWidget(),
+              const SizedBox(height: 32),
               Row(
                 children: [
                   Flexible(
@@ -556,7 +556,7 @@ class WalletButtonWidget extends StatelessWidget {
         decoration: ShapeDecoration(
           color: color,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               width: 0,
             ),
             borderRadius: BorderRadius.circular(16),
@@ -566,10 +566,10 @@ class WalletButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: 32, maxWidth: 32),
+              constraints: const BoxConstraints(maxHeight: 32, maxWidth: 32),
               child: SvgPicture.asset(icon),
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Text(
@@ -606,7 +606,7 @@ class _BalanceWidgetState extends State<BalanceWidget> {
           child: BlocBuilder<WalletCubit, WalletState>(
             builder: (context, state) {
               return ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 250),
+                constraints: const BoxConstraints(maxWidth: 250),
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
@@ -621,9 +621,9 @@ class _BalanceWidgetState extends State<BalanceWidget> {
             },
           ),
         ),
-        SizedBox(width: 0),
+        const SizedBox(width: 0),
         ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: 25, maxWidth: 25),
+          constraints: const BoxConstraints(maxHeight: 25, maxWidth: 25),
           child: SvgPicture.asset(
             Assets.imagesCurrencyIcon,
             color: AppColors.typographyHeading(context),
@@ -727,7 +727,7 @@ class PinddingMonyWidget extends StatelessWidget {
             },
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 17, maxWidth: 16),
+            constraints: const BoxConstraints(maxHeight: 17, maxWidth: 16),
             child: SvgPicture.asset(
               Assets.imagesCurrencyIcon,
               color: AppColors.typographyHeading(context),

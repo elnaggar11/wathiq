@@ -14,13 +14,13 @@ void mySnackBar(String message, BuildContext ctx, {bool isError = true}) {
         color: Colors.transparent,
         child: AnimatedOpacity(
           opacity: 1.0,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
               color: isError ? AppColors.danger(ctx) : Colors.green,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 2,
@@ -34,11 +34,11 @@ void mySnackBar(String message, BuildContext ctx, {bool isError = true}) {
               children: [
                 Icon(isError ? Icons.error : Icons.check_circle,
                     color: Colors.white),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     message,
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
               ],
@@ -51,7 +51,7 @@ void mySnackBar(String message, BuildContext ctx, {bool isError = true}) {
 
   overlayState.insert(overlayEntry);
 
-  Future.delayed(Duration(seconds: 3), () {
+  Future.delayed(const Duration(seconds: 3), () {
     overlayEntry.remove();
   });
 }
@@ -75,13 +75,13 @@ class FloatingSnackBar {
           color: Colors.transparent,
           child: AnimatedOpacity(
             opacity: 1.0,
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
                 color: isError ? AppColors.danger(context) : Colors.green,
                 borderRadius: BorderRadius.circular(10),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12, // Softer shadow color
                     blurRadius: 2, // Slight blur for a subtle effect
@@ -97,26 +97,26 @@ class FloatingSnackBar {
                     children: [
                       Icon(isError ? Icons.error : Icons.check_circle,
                           color: Colors.white),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: Text(
                           message,
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          style: const TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ),
                     ],
                   ),
                   if (progress != null) ...[
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     LinearProgressIndicator(
                       value: progress / 100,
                       backgroundColor: Colors.white24,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
-                      "${progress.toStringAsFixed(1)}%",
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      '${progress.toStringAsFixed(1)}%',
+                      style: const TextStyle(color: Colors.white, fontSize: 14),
                     ),
                   ]
                 ],
@@ -131,7 +131,7 @@ class FloatingSnackBar {
     overlayState.insert(overlayEntry);
 
     // Auto-dismiss after 3 seconds
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       overlayEntry.remove();
     });
   }

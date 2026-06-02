@@ -4,15 +4,15 @@ import 'package:dartz/dartz.dart';
 import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 import 'package:wathiq/features/paegs/data/models/question_model.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/params/add_real_state_params.dart';
-import '../../../../core/params/contact_us_params.dart';
-import '../../../../core/params/get_questions_params.dart';
-import '../../../../core/params/profile/sales_agent_params.dart';
-import '../../../../core/params/properity_managment.dart';
-import '../data_source/pages_remote_data_source.dart';
-import '../models/categories_model.dart';
-import '../models/social_model.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/add_real_state_params.dart';
+import 'package:wathiq/core/params/contact_us_params.dart';
+import 'package:wathiq/core/params/get_questions_params.dart';
+import 'package:wathiq/core/params/profile/sales_agent_params.dart';
+import 'package:wathiq/core/params/properity_managment.dart';
+import 'package:wathiq/features/paegs/data/data_source/pages_remote_data_source.dart';
+import 'package:wathiq/features/paegs/data/models/categories_model.dart';
+import 'package:wathiq/features/paegs/data/models/social_model.dart';
 
 class PagesRepository {
   final PagesRemoteDataSource remoteDataSource;
@@ -28,7 +28,7 @@ class PagesRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        return Right('تم تقديم الطلب بنجاح');
+        return const Right('تم تقديم الطلب بنجاح');
       } else {
         log('Register Status code is 422');
         return Left(
@@ -50,7 +50,7 @@ class PagesRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        return Right('تم تقديم الطلب بنجاح');
+        return const Right('تم تقديم الطلب بنجاح');
       } else {
         log('Register Status code is 422');
         return Left(
@@ -183,7 +183,7 @@ class PagesRepository {
         log('Register Status code is 200');
 
         return Right(
-            NotificationModel.notificationListFromJson(response.data["data"]));
+            NotificationModel.notificationListFromJson(response.data['data']));
       } else {
         return Left(
           AppFailure(
@@ -203,7 +203,7 @@ class PagesRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 204) {
         log('Register Status code is 200');
 
-        return Right('تم حذف جميع الاشعارات بنجاح');
+        return const Right('تم حذف جميع الاشعارات بنجاح');
       } else {
         return Left(
           AppFailure(

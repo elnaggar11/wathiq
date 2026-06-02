@@ -9,18 +9,18 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/utils/app_animations.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
-import '../../view_model/auth/auth_cubit.dart';
-import '../widgets/contact_us_auth_widget.dart';
-import '../widgets/nav_to_another_screen_row.dart';
-import '../widgets/sign_up/terms_and_conditions_widget.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/contact_us_auth_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/nav_to_another_screen_row.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/terms_and_conditions_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -30,16 +30,16 @@ class SignUpScreen extends StatelessWidget {
     context.read<AuthCubit>();
     return SafeArea(
       child: Scaffold(
-        bottomSheet: ContactUsAuthWidget(),
+        bottomSheet: const ContactUsAuthWidget(),
         backgroundColor: AppColors.white(context),
         appBar: CoustomAppBarWidget(),
         body: AdaptiveLayout(
-          mobileLayout: (context) => SignUpScreenMobileLayoutWidget(),
+          mobileLayout: (context) => const SignUpScreenMobileLayoutWidget(),
           tabletLayout: (context) => Center(
             child: SizedBox(
               height: 1.sw,
               width: 600,
-              child: SignUpScreenMobileLayoutWidget(),
+              child: const SignUpScreenMobileLayoutWidget(),
             ),
           ),
         ),
@@ -61,13 +61,13 @@ class SignUpScreenMobileLayoutWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   child: StepperWidget(
                     stepperList: [
                       BuildStep(
@@ -132,12 +132,12 @@ class SignUpScreenMobileLayoutWidget extends StatelessWidget {
                   ],
                   keyboardType: TextInputType.number,
                   prefix: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 12,
                       horizontal: 16,
                     ),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 24,
                         maxHeight: 24,
                       ),
@@ -149,9 +149,9 @@ class SignUpScreenMobileLayoutWidget extends StatelessWidget {
                   ),
                 ),
                 12.verticalSpace,
-                TermsAndConditionsWidget(),
+                const TermsAndConditionsWidget(),
                 31.verticalSpace,
-                SignUpButtonWidget(),
+                const SignUpButtonWidget(),
                 31.verticalSpace,
                 NavToAnotherScreenRow(
                   onTap: () {

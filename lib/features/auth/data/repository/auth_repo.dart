@@ -4,16 +4,16 @@ import 'package:dartz/dartz.dart';
 import 'package:wathiq/core/params/auth/verify_params.dart';
 import 'package:wathiq/features/auth/data/models/sign_up_model.dart';
 
-import '../../../../app/injector.dart';
-import '../../../../core/error/failure.dart';
-import '../../../../core/params/auth/complete_sign_up.dart';
-import '../../../../core/params/auth/login.dart';
-import '../../../../core/params/auth/reset_password.dart';
-import '../../../../core/storage/i_app_local_storage.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../data_source/auth_local_data_source.dart';
-import '../data_source/auth_remote_data_source.dart';
-import '../models/countries_model.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/auth/complete_sign_up.dart';
+import 'package:wathiq/core/params/auth/login.dart';
+import 'package:wathiq/core/params/auth/reset_password.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/features/auth/data/data_source/auth_local_data_source.dart';
+import 'package:wathiq/features/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:wathiq/features/auth/data/models/countries_model.dart';
 
 class AuthRepository {
   final AuthRemoteDataSource remoteDataSource;

@@ -5,22 +5,22 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/error/failure.dart';
-import '../../../../../core/functions/format_number.dart';
-import '../../../../../core/functions/pick_images_and_files.dart';
-import '../../../../../core/params/wallet/psot_withdraw_params.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../home/data/models/enrolle/privacy_model.dart';
-import '../../../data/model/add_wallet_balance.dart';
-import '../../../data/model/held_model.dart';
-import '../../../data/model/invoice_model.dart';
-import '../../../data/model/withdraw_model.dart';
-import '../../../data/repository/wallet_repo.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/functions/pick_images_and_files.dart';
+import 'package:wathiq/core/params/wallet/psot_withdraw_params.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/features/home/data/models/enrolle/privacy_model.dart';
+import 'package:wathiq/features/wallet/data/model/add_wallet_balance.dart';
+import 'package:wathiq/features/wallet/data/model/held_model.dart';
+import 'package:wathiq/features/wallet/data/model/invoice_model.dart';
+import 'package:wathiq/features/wallet/data/model/withdraw_model.dart';
+import 'package:wathiq/features/wallet/data/repository/wallet_repo.dart';
 
 part 'wallet_state.dart';
 
 class WalletCubit extends Cubit<WalletState> {
-  WalletCubit(this._walletRepository) : super(WalletState());
+  WalletCubit(this._walletRepository) : super(const WalletState());
   final WalletRepository _walletRepository;
   final contactNumberController = TextEditingController();
   final bankNameController = TextEditingController();

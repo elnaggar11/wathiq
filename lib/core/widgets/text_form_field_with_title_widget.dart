@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../utils/app_colors.dart';
-import '../utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 // ignore: must_be_immutable
 class TextFormFieldWithTitleWidget extends StatelessWidget {
@@ -79,12 +79,12 @@ class TextFormFieldWithTitleWidget extends StatelessWidget {
                 title ?? '',
                 style: AppStyles.styleSemiBold18(context),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
         title != null
-            ? SizedBox(
+            ? const SizedBox(
                 height: 4,
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
         SizedBox(
           child: TextFormField(
             onTap: onTap,

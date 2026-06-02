@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../app/app.dart';
-import '../../config/routes/app_routes.dart';
-import '../utils/app_colors.dart';
-import '../utils/app_styles.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 OverlayEntry? _guestDialogOverlayEntry;
 

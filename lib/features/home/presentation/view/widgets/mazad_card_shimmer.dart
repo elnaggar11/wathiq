@@ -8,7 +8,7 @@ class MazadCardShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 5,
       itemBuilder: (context, index) {
         return Container(
@@ -16,12 +16,12 @@ class MazadCardShimmer extends StatelessWidget {
             top: index == 0 ? 24 : 0,
             bottom: 24,
           ),
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Color(0x19000000),
                 blurRadius: 10,
@@ -45,7 +45,7 @@ class MazadCardShimmer extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
@@ -58,7 +58,7 @@ class MazadCardShimmer extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
@@ -71,7 +71,7 @@ class MazadCardShimmer extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,

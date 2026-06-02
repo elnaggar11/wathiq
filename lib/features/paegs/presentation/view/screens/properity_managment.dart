@@ -4,15 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../../core/utils/enums.dart';
-import '../../../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../../core/widgets/show_success_bottom_sheet.dart';
-import '../../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../view_model/pages_cubit.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
 class ProperityManagmentScreen extends StatefulWidget {
   const ProperityManagmentScreen({super.key});
@@ -53,7 +53,7 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
               key: cubit.properityFormKey,
               child: Column(
                 children: [
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   Row(
                     children: [
                       Text(
@@ -63,10 +63,10 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   CustomDropdownField(
                     label: 'المنطقة',
-                    items: [
+                    items: const [
                       'البنك الأهلي السعودي',
                       'مصرف الراجحي',
                       'بنك الرياض',
@@ -81,7 +81,7 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                       print('Tapped item: $item');
                     },
                   ),
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
                   SizedBox(
                     height: 90,
                     child: Row(
@@ -89,7 +89,7 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                         Expanded(
                           child: CustomDropdownField(
                             label: 'المدينة',
-                            items: [
+                            items: const [
                               'البنك الأهلي السعودي',
                               'مصرف الراجحي',
                               'بنك الرياض',
@@ -105,11 +105,11 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                             },
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Expanded(
                           child: CustomDropdownField(
                             label: 'الحي',
-                            items: [
+                            items: const [
                               'البنك الأهلي السعودي',
                               'مصرف الراجحي',
                               'بنك الرياض',
@@ -128,10 +128,10 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
                   CustomDropdownField(
                     label: 'نوع العقار',
-                    items: [
+                    items: const [
                       'البنك الأهلي السعودي',
                       'مصرف الراجحي',
                       'بنك الرياض',
@@ -146,10 +146,10 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                       print('Tapped item: $item');
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   CustomDropdownField(
                     label: 'فئة العقار',
-                    items: [
+                    items: const [
                       'البنك الأهلي السعودي',
                       'مصرف الراجحي',
                       'بنك الرياض',
@@ -164,7 +164,7 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                       print('Tapped item: $item');
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   TextFormFieldWithTitleWidget(
                     controller: cubit.realStatephoneNumberController,
                     label: 'رقم الجوال',
@@ -209,9 +209,9 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
-                  AddProperityManagmentButtonWidget(),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
+                  const AddProperityManagmentButtonWidget(),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),
@@ -389,7 +389,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
       isExpanded: true,
-      value: selectedValue,
+      initialValue: selectedValue,
       menuMaxHeight: 600,
       onChanged: (value) {
         setState(() {

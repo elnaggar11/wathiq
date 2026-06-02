@@ -140,7 +140,7 @@ ThemeData get lightTheme => ThemeData(
           fixedSize: const Size.fromHeight(56),
           minimumSize: const Size.fromHeight(56),
           elevation: 0.0,
-          backgroundColor: Color(0xFF0C3F82),
+          backgroundColor: const Color(0xFF0C3F82),
         ),
       ),
       // //! Check Box Theme
@@ -158,7 +158,7 @@ ThemeData get lightTheme => ThemeData(
         overlayColor:
             WidgetStateProperty.all(Colors.white), // Ripple effect color
         shape: RoundedRectangleBorder(
-          side: BorderSide(
+          side: const BorderSide(
             color: Color(0xFFE9E9E9),
           ),
           borderRadius: BorderRadius.circular(5), // Rounded corners

@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 
-import '../../../../../core/utils/images.dart';
+import 'package:wathiq/core/utils/images.dart';
 
 class AuthAppLogoWidget extends StatelessWidget {
   const AuthAppLogoWidget({
@@ -13,7 +13,7 @@ class AuthAppLogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxHeight: 34,
       ),
       child: SvgPicture.asset(

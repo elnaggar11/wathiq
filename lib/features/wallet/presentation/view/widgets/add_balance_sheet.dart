@@ -9,12 +9,12 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../core/functions/format_number.dart';
-import '../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../view_model/wallet/wallet_cubit.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cubit.dart';
 
 Future<void> addBalanceSheetBottomSheet(BuildContext context) async {
   showModalBottomSheet(
@@ -22,7 +22,7 @@ Future<void> addBalanceSheetBottomSheet(BuildContext context) async {
     context: context,
     backgroundColor: Colors.transparent, // important to allow rounded corners
 
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -30,24 +30,24 @@ Future<void> addBalanceSheetBottomSheet(BuildContext context) async {
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
-        child: addBalanceSheetBottomSheetBodyWidget(),
+        child: const AddBalanceSheetBottomSheetBodyWidget(),
       );
     },
   );
 }
 
-class addBalanceSheetBottomSheetBodyWidget extends StatefulWidget {
-  const addBalanceSheetBottomSheetBodyWidget({
+class AddBalanceSheetBottomSheetBodyWidget extends StatefulWidget {
+  const AddBalanceSheetBottomSheetBodyWidget({
     super.key,
   });
 
   @override
-  State<addBalanceSheetBottomSheetBodyWidget> createState() =>
-      _addBalanceSheetBottomSheetBodyWidgetState();
+  State<AddBalanceSheetBottomSheetBodyWidget> createState() =>
+      _AddBalanceSheetBottomSheetBodyWidgetState();
 }
 
-class _addBalanceSheetBottomSheetBodyWidgetState
-    extends State<addBalanceSheetBottomSheetBodyWidget>
+class _AddBalanceSheetBottomSheetBodyWidgetState
+    extends State<AddBalanceSheetBottomSheetBodyWidget>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
@@ -67,7 +67,7 @@ class _addBalanceSheetBottomSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.white(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -75,7 +75,7 @@ class _addBalanceSheetBottomSheetBodyWidgetState
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 24,
               right: 24,
               top: 4,
@@ -88,7 +88,7 @@ class _addBalanceSheetBottomSheetBodyWidgetState
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -109,7 +109,7 @@ class _addBalanceSheetBottomSheetBodyWidgetState
                       ),
                     ],
                   ),
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -148,9 +148,9 @@ class _addBalanceSheetBottomSheetBodyWidgetState
                           ),
                         ),
                       ),
-                      SizedBox(height: 48),
-                      AddBalanceButtonWidget(),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 48),
+                      const AddBalanceButtonWidget(),
+                      const SizedBox(height: 24),
                     ],
                   )
                 ],
@@ -188,7 +188,7 @@ class AddBalanceButtonWidget extends StatelessWidget {
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(
+                  side: const BorderSide(
                     width: 0.84,
                     strokeAlign: BorderSide.strokeAlignCenter,
                     color: Color(0xFFEBEEF3),
@@ -205,7 +205,7 @@ class AddBalanceButtonWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
             child: ElevatedButton(
               onPressed: () {

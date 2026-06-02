@@ -6,14 +6,14 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../../../../core/widgets/show_success_bottom_sheet.dart';
-import '../../../view_model/pages_cubit.dart';
-import '../../widgets/sales_agent/build_step_one.dart';
-import '../../widgets/sales_agent/build_step_three.dart';
-import '../../widgets/sales_agent/build_step_two.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/build_step_one.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/build_step_three.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/build_step_two.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentPage;
@@ -33,7 +33,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           // color: AppColors.white(context),
           // boxShadow: [
           //   BoxShadow(
@@ -47,7 +47,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       child: Row(
         children: [
           currentPage == 0
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : Expanded(
                   flex: 2,
                   child: OutlinedButton(
@@ -202,7 +202,7 @@ class _AddSalesAgentScreenState extends State<AddSalesAgentScreen> {
                   case 0:
                     return ListView(
                       children: [
-                        BuildStepOneWidget(),
+                        const BuildStepOneWidget(),
                         CustomBottomNavigationBar(
                           currentPage: _currentPage,
                           onPrevious: _onPrevious,
@@ -235,7 +235,7 @@ class _AddSalesAgentScreenState extends State<AddSalesAgentScreen> {
                   case 1:
                     return ListView(
                       children: [
-                        BuildStepTwoWidget(),
+                        const BuildStepTwoWidget(),
                         Padding(
                           padding: EdgeInsets.only(top: 220.h),
                           child: CustomBottomNavigationBar(
@@ -256,7 +256,7 @@ class _AddSalesAgentScreenState extends State<AddSalesAgentScreen> {
                   case 2:
                     return ListView(
                       children: [
-                        BuildStepThreeWidget(),
+                        const BuildStepThreeWidget(),
                         CustomBottomNavigationBar(
                           currentPage: _currentPage,
                           onPrevious: _onPrevious,

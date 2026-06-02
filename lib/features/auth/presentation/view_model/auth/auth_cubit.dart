@@ -6,18 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:wathiq/features/auth/data/models/auth_model.dart';
 import 'package:wathiq/features/auth/data/models/sign_up_model.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../app/injector.dart';
-import '../../../../../core/error/failure.dart';
-import '../../../../../core/params/auth/complete_sign_up.dart';
-import '../../../../../core/params/auth/login.dart';
-import '../../../../../core/params/auth/reset_password.dart';
-import '../../../../../core/params/auth/verify_params.dart';
-import '../../../../../core/storage/i_app_local_storage.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../data/models/countries_model.dart';
-import '../../../data/repository/auth_repo.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/auth/complete_sign_up.dart';
+import 'package:wathiq/core/params/auth/login.dart';
+import 'package:wathiq/core/params/auth/reset_password.dart';
+import 'package:wathiq/core/params/auth/verify_params.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/features/auth/data/models/countries_model.dart';
+import 'package:wathiq/features/auth/data/repository/auth_repo.dart';
 
 part 'auth_state.dart';
 

@@ -3,11 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../core/functions/calculate_defrent_betwen_times.dart';
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../../data/models/enrolle/auction_board_model.dart';
+import 'package:wathiq/core/functions/calculate_defrent_betwen_times.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/home/data/models/enrolle/auction_board_model.dart';
 
 class TopBiddersCardWidget extends StatelessWidget {
   const TopBiddersCardWidget({
@@ -22,10 +22,10 @@ class TopBiddersCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        margin: EdgeInsets.only(top: 12),
+        margin: const EdgeInsets.only(top: 12),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: ShapeDecoration(
-          color: index != 0 ? AppColors.white(context) : Color(0x0C22A06B),
+          color: index != 0 ? AppColors.white(context) : const Color(0x0C22A06B),
           shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 1,
@@ -46,7 +46,7 @@ class TopBiddersCardWidget extends StatelessWidget {
                   ? AppColors.color2(context)
                   : AppColors.typographyHeading(context),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -63,12 +63,12 @@ class TopBiddersCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 105),
+                      constraints: const BoxConstraints(maxWidth: 105),
                       child: Text(
                         formatNumber(boardAuctionData[index].bidAmount),
                         style: AppStyles.styleBold14(context).copyWith(
@@ -76,7 +76,7 @@ class TopBiddersCardWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 2,
                     ),
                     CurrancyLogoWidget(
@@ -86,12 +86,12 @@ class TopBiddersCardWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 1,
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               padding: const EdgeInsets.all(8),
               decoration: ShapeDecoration(
@@ -101,7 +101,7 @@ class TopBiddersCardWidget extends StatelessWidget {
                 ),
               ),
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 70),
+                constraints: const BoxConstraints(maxWidth: 70),
                 child: Text(
                   calculateTimeDifference(boardAuctionData[index].bidAt),
                   overflow: TextOverflow.ellipsis,

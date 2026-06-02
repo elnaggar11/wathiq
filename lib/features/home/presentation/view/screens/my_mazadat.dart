@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../app/app.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../../view_model/home/home_cubit.dart';
-import '../widgets/home/auctions_favorite_button.dart';
-import '../widgets/my_mazadat/my_mazadat_tab_bar_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/auctions_favorite_button.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/my_mazadat/my_mazadat_tab_bar_widget.dart';
 
 class MyMazadatScreen extends StatefulWidget {
   const MyMazadatScreen({super.key});
@@ -84,18 +84,18 @@ class _MyMazadatScreenState extends State<MyMazadatScreen>
         //   leading: SizedBox.shrink(),
         // ),
         body: KisGuest == true
-            ? GuestWidget()
+            ? const GuestWidget()
             : Column(
                 children: [
                   MyMazadatTabBarWidget(
                     tabController: _tabController,
-                    tapsName: [
+                    tapsName: const [
                       'إشتراكاتي',
                       'مزاداتي الرابحة',
                       'مزاداتي الخاسرة',
                     ],
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Expanded(
                     // Ensure TabBarView has space to expand
                     child: Padding(
@@ -107,7 +107,7 @@ class _MyMazadatScreenState extends State<MyMazadatScreen>
                             _tabController.animateTo(index);
                           }
                         },
-                        children: [
+                        children: const [
                           MazadatyTabBarViewBodyWidget(),
                           MazadatyTabBarViewBodyWidget(),
                           MazadatyTabBarViewBodyWidget(),

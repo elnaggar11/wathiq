@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../../screens/assets_details_screen.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/screens/assets_details_screen.dart';
 
 class comingMazadTimeWidget extends StatelessWidget {
   const comingMazadTimeWidget({
@@ -35,7 +35,7 @@ class comingMazadTimeWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Color(0xFFEBEEF3)),
+          side: const BorderSide(width: 1, color: Color(0xFFEBEEF3)),
           borderRadius: BorderRadius.circular(12),
         ),
       ),
@@ -62,7 +62,7 @@ class comingMazadTimeWidget extends StatelessWidget {
               ),
             ],
           ),
-          text3 != null ? SizedBox(height: 12) : SizedBox.shrink(),
+          text3 != null ? const SizedBox(height: 12) : const SizedBox.shrink(),
           text3 != null
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -84,7 +84,7 @@ class comingMazadTimeWidget extends StatelessWidget {
                     ),
                   ],
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );
@@ -108,7 +108,7 @@ class EndAssetsTimeWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Color(0xFFEBEEF3)),
+          side: const BorderSide(width: 1, color: Color(0xFFEBEEF3)),
           borderRadius: BorderRadius.circular(12),
         ),
       ),
@@ -118,9 +118,9 @@ class EndAssetsTimeWidget extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: ShapeDecoration(
-              color: Color(0xFFF5FFFC),
+              color: const Color(0xFFF5FFFC),
               shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: Color(0x19EBEEF3)),
+                side: const BorderSide(width: 1, color: Color(0x19EBEEF3)),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
@@ -129,14 +129,14 @@ class EndAssetsTimeWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: ShapeDecoration(
-                    color: Color(0x190E8340),
+                    color: const Color(0x190E8340),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   child: SvgPicture.asset(Assets.imagesTopUsers),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -146,7 +146,7 @@ class EndAssetsTimeWidget extends StatelessWidget {
                         color: AppColors.typographySubTitle(context),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -157,7 +157,7 @@ class EndAssetsTimeWidget extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                           ),
                         ),
-                        SizedBox(width: 2),
+                        const SizedBox(width: 2),
                         CurrancyLogoWidget(
                           maxHeight: 22,
                           maxWidth: 22,
@@ -170,7 +170,7 @@ class EndAssetsTimeWidget extends StatelessWidget {
               ],
             ),
           ),
-          text3 != null ? SizedBox(height: 12) : SizedBox.shrink(),
+          text3 != null ? const SizedBox(height: 12) : const SizedBox.shrink(),
           text3 != null
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -192,7 +192,7 @@ class EndAssetsTimeWidget extends StatelessWidget {
                     ),
                   ],
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );
@@ -220,13 +220,13 @@ class DateTimeColumWidget extends StatelessWidget {
             color: AppColors.typographySubTitle(context),
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 90),
+              constraints: const BoxConstraints(maxWidth: 90),
               child: Text(
                 date,
                 maxLines: 3,
@@ -245,7 +245,7 @@ class DateTimeColumWidget extends StatelessWidget {
                     maxWidth: 20,
                     color: AppColors.typographyHeading(context),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ],
         ),
       ],
@@ -275,7 +275,7 @@ class AssetsDetailsCardColumWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(icon),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -295,7 +295,7 @@ class AssetsDetailsCardColumWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -318,7 +318,7 @@ class AssetsDetailsCardColumWidget extends StatelessWidget {
                           maxWidth: 20,
                           color: AppColors.typographyHeading(context),
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                 ],
               ),
             ],
@@ -329,7 +329,7 @@ class AssetsDetailsCardColumWidget extends StatelessWidget {
   }
 }
 
-getKTapIndex(BuildContext context, [String? status]) {
+int getKTapIndex(BuildContext context, [String? status]) {
   print('getKTapIndex $status');
   if (status == null) {
     status = context.read<HomeCubit>().auctionData!.status;

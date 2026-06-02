@@ -6,12 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/app/app.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../../../home/presentation/view/screens/home_screen.dart';
-import '../../../../home/presentation/view/widgets/home/drawer_widget.dart';
-import '../../../../profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/home/presentation/view/screens/home_screen.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/drawer_widget.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
       ),
     );
 
-    Future.delayed(Duration(milliseconds: 500)).then((v) {
+    Future.delayed(const Duration(milliseconds: 500)).then((v) {
       setState(() {});
     });
   }
@@ -63,11 +63,11 @@ class _LayoutScreenState extends State<LayoutScreen> {
     return SafeArea(
       child: Scaffold(
         key: homeScaffoldKey,
-        drawer: DrawerWidget(),
+        drawer: const DrawerWidget(),
 
         bottomNavigationBar: Container(
           height: 84,
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -137,7 +137,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             child: SvgPicture.asset(
               iconPath,
               color: KcurrentIndex == index
@@ -145,7 +145,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                   : AppColors.typographyHeading(context), // Unselected color
             ),
           ),
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Text(
             label,
             style: AppStyles.styleRegular14(context).copyWith(
@@ -154,10 +154,10 @@ class _LayoutScreenState extends State<LayoutScreen> {
                   : AppColors.typographyHeading(context), // Unselected color
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           KcurrentIndex == index
               ? SvgPicture.asset(AppAssets.app_imagesUnion)
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );

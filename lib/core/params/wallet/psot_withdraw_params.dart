@@ -14,7 +14,7 @@ class PsotWithdrawParams extends Equatable {
   final String phoneNumber;
   final File? ibanCertificate;
 
-  PsotWithdrawParams({
+  const PsotWithdrawParams({
     required this.name,
     required this.bankName,
     required this.iban,

@@ -4,9 +4,9 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/assets_details/confirm_add_bid_sheet.dart';
 
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 class CallToActionAddMozaydaWidget extends StatelessWidget {
   const CallToActionAddMozaydaWidget({

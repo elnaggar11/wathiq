@@ -8,8 +8,8 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/timer_home_widget.dart';
 
-import '../../../../../../core/utils/images.dart';
-import '../../../../data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
 
 class MazadStatusTimerWidget extends StatelessWidget {
   const MazadStatusTimerWidget({
@@ -30,9 +30,9 @@ class MazadStatusTimerWidget extends StatelessWidget {
                 ? const Color(0xFFF4FAF8)
                 : const Color(0xFFFEF6F5),
         shape: RoundedRectangleBorder(
-          side: BorderSide(
+          side: const BorderSide(
             width: 1,
-            color: const Color(0xFFE0E0E0),
+            color: Color(0xFFE0E0E0),
           ),
           borderRadius: BorderRadius.circular(6),
         ),
@@ -40,27 +40,27 @@ class MazadStatusTimerWidget extends StatelessWidget {
       child: Column(
         children: [
           getKTapIndex(context, auctionData.status) == 3
-              ? CompletedAuctionStutesWidget()
+              ? const CompletedAuctionStutesWidget()
               : TimerContainerWidget(auctionData: auctionData),
-          SizedBox(height: 16),
-          Divider(
-            color: const Color(0xFFE0E0E0),
+          const SizedBox(height: 16),
+          const Divider(
+            color: Color(0xFFE0E0E0),
             height: 0,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             children: [
-              SizedBox(width: 36),
+              const SizedBox(width: 36),
               RowAssetsNumberCardWidget(
                 text: 'الاصول ${auctionData.auctionOrigins.length}',
                 image: AppAssets.app_imagesBriefcase,
               ),
-              Spacer(),
+              const Spacer(),
               RowAssetsNumberCardWidget(
                 text: auctionData.numberOfDays.toString() + ' يوم',
                 image: AppAssets.app_imagesClock,
               ),
-              SizedBox(width: 36),
+              const SizedBox(width: 36),
             ],
           ),
         ],
@@ -116,7 +116,7 @@ class RowAssetsNumberCardWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SvgPicture.asset(image),
-        SizedBox(width: 14),
+        const SizedBox(width: 14),
         Text(
           text,
           style: AppStyles.styleBold16(context).copyWith(
@@ -163,7 +163,7 @@ class TimerContainerWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             TimerHomeWidget(
@@ -185,7 +185,7 @@ class MazadDateAndTimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRect(
       child: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 8,
         ),
@@ -199,14 +199,14 @@ class MazadDateAndTimeWidget extends StatelessWidget {
               SvgPicture.asset(
                 Assets.imagesClockCircle,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Text(
                 'يبدأالأحد 09:00 صباحاً',
                 style: AppStyles.styleBold14(context),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 '2024/12/08',
                 style: AppStyles.styleBold14(context).copyWith(
@@ -233,7 +233,7 @@ class MazadIconWidget extends StatelessWidget {
     return Container(
       width: 46,
       height: 46,
-      padding: EdgeInsets.all(9),
+      padding: const EdgeInsets.all(9),
       decoration: ShapeDecoration(
         color: const Color(0x5E0C0C0C),
         shape: RoundedRectangleBorder(

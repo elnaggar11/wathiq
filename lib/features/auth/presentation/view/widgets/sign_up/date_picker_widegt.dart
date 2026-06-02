@@ -5,7 +5,7 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 
 class DatePickerWidegt extends StatefulWidget {
   const DatePickerWidegt({
@@ -49,10 +49,9 @@ class _DatePickerWidegtState extends State<DatePickerWidegt> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               ),
-            ),
-            dialogBackgroundColor: Colors.grey[100],
+            ), dialogTheme: DialogThemeData(backgroundColor: Colors.grey[100]),
           ),
           child: child!,
         );
@@ -67,9 +66,9 @@ class _DatePickerWidegtState extends State<DatePickerWidegt> {
       // Add a default timezone if none exists
       selectedDate = selectedDate.isUtc
           ? selectedDate
-          : selectedDate.toUtc().add(Duration(hours: 0)); // Default to -05:00
+          : selectedDate.toUtc().add(const Duration(hours: 0)); // Default to -05:00
 
-      final formattedDate = DateFormat("yyyy-MM-dd").format(selectedDate);
+      final formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
       final isoFormattedDate =
           DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(selectedDate);
       print(isoFormattedDate);
@@ -122,12 +121,12 @@ class _DatePickerWidegtState extends State<DatePickerWidegt> {
         enabled: false,
         keyboardType: TextInputType.emailAddress,
         prefix: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 12,
             horizontal: 16,
           ),
           child: ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 24,
               maxHeight: 24,
             ),

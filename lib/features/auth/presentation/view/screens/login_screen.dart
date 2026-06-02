@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 
-import '../../view_model/auth/auth_cubit.dart';
-import '../widgets/login/login_mobile_layout_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/login/login_mobile_layout_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -47,12 +47,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         body: AdaptiveLayout(
-          mobileLayout: (context) => LoginMobileLayoutWidget(),
+          mobileLayout: (context) => const LoginMobileLayoutWidget(),
           tabletLayout: (context) => Center(
             child: SizedBox(
               height: 1.sw,
               width: 600,
-              child: LoginMobileLayoutWidget(),
+              child: const LoginMobileLayoutWidget(),
             ),
           ),
         ),

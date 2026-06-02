@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../config/themes/light_theme.dart';
+import 'package:wathiq/config/themes/light_theme.dart';
 
 part 'theme_manager_state.dart';
 

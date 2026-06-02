@@ -6,9 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../view_model/pages_cubit.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 
 class SelectTaxStatusRadioButton extends StatefulWidget {
   const SelectTaxStatusRadioButton({super.key});
@@ -50,7 +50,7 @@ class _SelectTaxStatusRadioButtonState
                       groupValue: _selectedValue,
                       onChanged: _handleRadioValueChange,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      visualDensity: VisualDensity(horizontal: -3, vertical: 0),
+                      visualDensity: const VisualDensity(horizontal: -3, vertical: 0),
                       activeColor: AppColors.darkBlue(context),
                     ),
                     Text(
@@ -73,7 +73,7 @@ class _SelectTaxStatusRadioButtonState
                       groupValue: _selectedValue,
                       onChanged: _handleRadioValueChange,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      visualDensity: VisualDensity(horizontal: -3, vertical: 0),
+                      visualDensity: const VisualDensity(horizontal: -3, vertical: 0),
                       activeColor: AppColors.darkBlue(context),
                     ),
                     Text(
@@ -156,7 +156,7 @@ class _SelectTaxStatusRadioButtonState
                   ),
                 ],
               )
-            : SizedBox.shrink()
+            : const SizedBox.shrink()
       ],
     );
   }
@@ -220,7 +220,7 @@ class _SelectNafathApprovedRadioButtonState
                       groupValue: _selectedValue,
                       onChanged: _handleRadioValueChange,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      visualDensity: VisualDensity(horizontal: -3, vertical: 0),
+                      visualDensity: const VisualDensity(horizontal: -3, vertical: 0),
                       activeColor: AppColors.darkBlue(context),
                     ),
                     Text(
@@ -244,7 +244,7 @@ class _SelectNafathApprovedRadioButtonState
                         onChanged: _handleRadioValueChange,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         visualDensity:
-                            VisualDensity(horizontal: -3, vertical: 0),
+                            const VisualDensity(horizontal: -3, vertical: 0),
                         activeColor: AppColors.darkBlue(context),
                       ),
                       Text(
@@ -264,7 +264,7 @@ class _SelectNafathApprovedRadioButtonState
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   Text(
@@ -292,7 +292,7 @@ class _SelectNafathApprovedRadioButtonState
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.shrinkWrap,
                                 visualDensity:
-                                    VisualDensity(horizontal: -3, vertical: 0),
+                                    const VisualDensity(horizontal: -3, vertical: 0),
                                 activeColor: AppColors.darkBlue(context),
                               ),
                               Text(
@@ -319,7 +319,7 @@ class _SelectNafathApprovedRadioButtonState
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.shrinkWrap,
                                 visualDensity:
-                                    VisualDensity(horizontal: -3, vertical: 0),
+                                    const VisualDensity(horizontal: -3, vertical: 0),
                                 activeColor: AppColors.darkBlue(context),
                               ),
                               Text(
@@ -336,7 +336,7 @@ class _SelectNafathApprovedRadioButtonState
                   ),
                 ],
               )
-            : SizedBox.shrink()
+            : const SizedBox.shrink()
       ],
     );
   }

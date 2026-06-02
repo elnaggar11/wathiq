@@ -5,14 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/features/home/presentation/view/screens/assets_details_screen.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../view_model/home/home_cubit.dart';
-import '../widgets/home/auctions_favorite_button.dart';
-import '../widgets/home/tabBar_view_body_widget.dart';
-import '../widgets/mazad_menue/filter_buttom_sheet.dart';
-import '../widgets/mazad_menue/mazad_menu_tab_bar_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/auctions_favorite_button.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/tabBar_view_body_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_menue/filter_buttom_sheet.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_menue/mazad_menu_tab_bar_widget.dart';
 
 class MazadatMenuScreen extends StatefulWidget {
   const MazadatMenuScreen({super.key});
@@ -91,23 +91,23 @@ class _MazadatMenuScreenState extends State<MazadatMenuScreen>
                 Assets.imagesSearchMenuIcon,
               ),
             ),
-            SizedBox(width: 12)
+            const SizedBox(width: 12)
           ],
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             MazadMenuTabBarWidget(
               tabController: _tabController,
-              tapsName: [
+              tapsName: const [
                 'قائمة',
                 'مستقبلية',
                 'منتهية',
               ],
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Expanded(
               // Ensure TabBarView has space to expand
               child: Padding(
@@ -117,7 +117,7 @@ class _MazadatMenuScreenState extends State<MazadatMenuScreen>
                   onPageChanged: (index) {
                     _tabController.animateTo(index);
                   },
-                  children: [
+                  children: const [
                     TabBarViewBodyWidget(),
                     TabBarViewBodyWidget(),
                     TabBarViewBodyWidget(),

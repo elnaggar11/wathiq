@@ -6,14 +6,14 @@ import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../config/routes/app_routes.dart';
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../widgets/change_password/change_password_button_widget.dart';
-import '../widgets/change_password/new_password_widget.dart';
-import '../widgets/change_password/old_password_widget.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/change_password/change_password_button_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/change_password/new_password_widget.dart';
+import 'package:wathiq/features/profile/presentation/view/widgets/change_password/old_password_widget.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
@@ -24,25 +24,25 @@ class ChangePasswordScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.primarySurface(context),
         bottomSheet: KisGuest == true
-            ? SizedBox.shrink()
+            ? const SizedBox.shrink()
             : Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 color: AppColors.white(context),
-                child: ChangePasswordButtonWidget(),
+                child: const ChangePasswordButtonWidget(),
               ),
         appBar: CoustomAppBarWidget(
           title: 'تغيير كلمه المرور',
         ),
         body: KisGuest == true
-            ? GuestWidget()
+            ? const GuestWidget()
             : AdaptiveLayout(
                 mobileLayout: (context) =>
-                    ChangePasswordScreenMobileLayoutWidget(),
+                    const ChangePasswordScreenMobileLayoutWidget(),
                 tabletLayout: (context) => Center(
                   child: SizedBox(
                     height: 1.sw,
                     width: 600,
-                    child: ChangePasswordScreenMobileLayoutWidget(),
+                    child: const ChangePasswordScreenMobileLayoutWidget(),
                   ),
                 ),
               ),
@@ -64,7 +64,7 @@ class ChangePasswordScreenMobileLayoutWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: ShapeDecoration(
@@ -82,11 +82,11 @@ class ChangePasswordScreenMobileLayoutWidget extends StatelessWidget {
                         .copyWith(color: AppColors.typographyHeading(context)),
                   ),
                   20.verticalSpace,
-                  OldPasswordWidget(),
+                  const OldPasswordWidget(),
                   20.verticalSpace,
-                  NewPasswordWidget(),
+                  const NewPasswordWidget(),
                   20.verticalSpace,
-                  ConfirmNewPasswordWidget(),
+                  const ConfirmNewPasswordWidget(),
                   20.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

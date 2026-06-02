@@ -1,11 +1,11 @@
-import 'auction_origin.dart';
-import 'auction_review_status.dart';
-import 'created_by.dart';
-import 'location.dart';
-import 'logo.dart';
-import 'provider.dart';
-import 'timer.dart';
-import 'updated.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auction_origin.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auction_review_status.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/created_by.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/location.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/logo.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/provider.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/timer.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/updated.dart';
 
 class Datum {
   String? id;

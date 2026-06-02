@@ -15,7 +15,7 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('اختبار معالجة أخطاء الخريطة'),
+        title: const Text('اختبار معالجة أخطاء الخريطة'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
@@ -23,11 +23,11 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
         children: [
           // أزرار الاختبار
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   'اختر نوع الخطأ لاختباره:',
                   style: TextStyle(
                     fontSize: 18,
@@ -35,7 +35,7 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _buildTestButton('لا يوجد موقع متاح', MapErrorType.noLocation),
                 _buildTestButton(
                     'مشكلة في مفتاح الخرائط', MapErrorType.apiKeyError),
@@ -43,14 +43,14 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
                 _buildTestButton(
                     'مشكلة في الصلاحيات', MapErrorType.permissionError),
                 _buildTestButton('خطأ عام', MapErrorType.generalError),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
                       currentErrorType = null;
                     });
                   },
-                  child: Text('إعادة تعيين'),
+                  child: const Text('إعادة تعيين'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
@@ -70,7 +70,7 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
                         : null,
                     onRetry: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                           content: Text('تم الضغط على إعادة المحاولة'),
                           backgroundColor: Colors.blue,
                         ),
@@ -80,7 +80,7 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
                         currentErrorType == MapErrorType.permissionError
                             ? () {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('سيتم فتح إعدادات التطبيق'),
                                     backgroundColor: Colors.orange,
                                   ),
@@ -99,7 +99,7 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
                             size: 64,
                             color: Colors.grey[600],
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Text(
                             'اختر نوع خطأ من القائمة أعلاه لاختباره',
                             style: TextStyle(
@@ -120,7 +120,7 @@ class _MapErrorTestWidgetState extends State<MapErrorTestWidget> {
 
   Widget _buildTestButton(String title, MapErrorType errorType) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: ElevatedButton(
         onPressed: () {
           setState(() {

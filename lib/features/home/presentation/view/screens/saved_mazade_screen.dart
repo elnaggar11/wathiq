@@ -5,12 +5,12 @@ import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/guest_widget.dart';
-import '../widgets/home/auctions_favorite_button.dart';
-import '../widgets/home/tabBar_view_body_widget.dart';
-import '../widgets/mazad_card_shimmer.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/auctions_favorite_button.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/tabBar_view_body_widget.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/mazad_card_shimmer.dart';
 
 class SavedMazadeScreen extends StatefulWidget {
   const SavedMazadeScreen({super.key});
@@ -42,7 +42,7 @@ class _SavedMazadeScreenState extends State<SavedMazadeScreen>
         appBar: CoustomAppBarWidget(
           title: 'المزادات المحفوظة',
         ),
-        body: KisGuest == true ? GuestWidget() : SavedMazadBodyWidget(),
+        body: KisGuest == true ? const GuestWidget() : const SavedMazadBodyWidget(),
       ),
     );
   }
@@ -61,8 +61,8 @@ class SavedMazadBodyWidget extends StatelessWidget {
         end: 16,
       ),
       child: AdaptiveLayout(
-          mobileLayout: (context) => SavedMazadHomeMobileLayoute(),
-          tabletLayout: (context) => SavedMazadHomeMobileLayoute()),
+          mobileLayout: (context) => const SavedMazadHomeMobileLayoute(),
+          tabletLayout: (context) => const SavedMazadHomeMobileLayoute()),
     );
   }
 }
@@ -79,7 +79,7 @@ class SavedMazadHomeMobileLayoute extends StatelessWidget {
         switch (state.getFavoriteRequestState) {
           case RequestState.ideal:
           case RequestState.loading:
-            return MazadCardShimmer();
+            return const MazadCardShimmer();
           case RequestState.error:
             return ErrorAppWidget(
               onTap: () {

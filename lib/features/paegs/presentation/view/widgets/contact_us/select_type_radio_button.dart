@@ -35,7 +35,7 @@ class _SelectTypeRadioButtonState extends State<SelectTypeRadioButton> {
             onChanged: _handleRadioValueChange,
             context: context,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           RadioItem(
             label: 'سؤال',
             value: 'question',
@@ -43,7 +43,7 @@ class _SelectTypeRadioButtonState extends State<SelectTypeRadioButton> {
             onChanged: _handleRadioValueChange,
             context: context,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           RadioItem(
             label: 'شكوى',
             value: 'complaint',
@@ -51,7 +51,7 @@ class _SelectTypeRadioButtonState extends State<SelectTypeRadioButton> {
             onChanged: _handleRadioValueChange,
             context: context,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           RadioItem(
             label: 'اخرى',
             value: 'other',
@@ -69,7 +69,7 @@ class DashedLinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = Color(0xFFE9E9E9)
+      ..color = const Color(0xFFE9E9E9)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 

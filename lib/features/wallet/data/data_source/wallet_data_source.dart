@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-import '../../../../core/api/api_consumer.dart';
-import '../../../../core/api/end_point.dart';
-import '../../../../core/params/wallet/psot_withdraw_params.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/end_point.dart';
+import 'package:wathiq/core/params/wallet/psot_withdraw_params.dart';
 
 class WalletRemoteDataSource {
   final ApiConsumer apiConsumer;

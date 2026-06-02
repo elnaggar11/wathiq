@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class AssetsDetailsWidget extends StatefulWidget {
   final int index;
@@ -69,7 +69,7 @@ class _AssetsDetailsWidgetState extends State<AssetsDetailsWidget>
         highlightColor: Colors.transparent,
         onTap: _toggleExpansion,
         child: Container(
-          padding: EdgeInsetsDirectional.only(
+          padding: const EdgeInsetsDirectional.only(
               top: 14, bottom: 14, start: 20, end: 16),
           decoration: ShapeDecoration(
             color: AppColors.white(context),
@@ -126,9 +126,9 @@ class _AssetsDetailsWidgetState extends State<AssetsDetailsWidget>
                 child: Padding(
                   padding: const EdgeInsets.only(top: 12),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     decoration: BoxDecoration(
-                        color: Color(0xFFF9F9F8),
+                        color: const Color(0xFFF9F9F8),
                         borderRadius: BorderRadius.circular(12)),
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -148,7 +148,7 @@ class _AssetsDetailsWidgetState extends State<AssetsDetailsWidget>
                               child: Row(
                                 children: [
                                   ConstrainedBox(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 135,
                                     ),
                                     child: Text(

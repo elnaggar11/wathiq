@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../app/app.dart';
-import '../../../../../core/widgets/guest_widget.dart';
+import 'package:wathiq/app/app.dart';
+import 'package:wathiq/core/widgets/guest_widget.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return KisGuest == true ? GuestWidget() : SizedBox();
+    return KisGuest == true ? const GuestWidget() : const SizedBox();
   }
 }

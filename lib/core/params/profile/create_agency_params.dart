@@ -11,7 +11,7 @@ class CreateAgencyParams extends Equatable {
   final String agencyNumber;
   final String agencyIssuedDate;
   final String identityNumber;
-  CreateAgencyParams({
+  const CreateAgencyParams({
     required this.agencyName,
     required this.agencyNumber,
     required this.agencyIssuedDate,
@@ -59,8 +59,8 @@ class CreateAgencyParams extends Equatable {
       'agencyName': agencyName,
       'agencyNumber': agencyNumber,
       'agencyIssuedDate': agencyIssuedDate,
-      "agencyAttachment": await _createMultipartFile(agencyAttachment),
-      "identityNumber": identityNumber,
+      'agencyAttachment': await _createMultipartFile(agencyAttachment),
+      'identityNumber': identityNumber,
     });
 
     return formData;

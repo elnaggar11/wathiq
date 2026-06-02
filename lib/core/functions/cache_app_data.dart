@@ -4,8 +4,8 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../app/injector.dart';
-import '../storage/i_app_local_storage.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
 
 Future<void> cacheAppData() async {
   try {

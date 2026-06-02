@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class SumDifferenceWidget extends StatelessWidget {
   const SumDifferenceWidget({
@@ -39,7 +39,7 @@ class SumDifferenceWidget extends StatelessWidget {
               color: AppColors.typographyBody(context),
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -51,7 +51,7 @@ class SumDifferenceWidget extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              SizedBox(width: 2),
+              const SizedBox(width: 2),
               CurrancyLogoWidget(
                 color: AppColors.appBarBackground(context),
                 maxHeight: 20,

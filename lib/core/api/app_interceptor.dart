@@ -6,14 +6,14 @@ import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:wathiq/core/api/end_point.dart';
 
-import '../../app/injector.dart';
-import '../network/socket/socket_service.dart';
-import '../storage/flutter_secure_storage.dart';
-import '../storage/i_app_local_storage.dart';
-import '../utils/app_strings.dart';
-import '../utils/utils.dart';
-import '../widgets/guest_dialog.dart';
-import 'status_code.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/network/socket/socket_service.dart';
+import 'package:wathiq/core/storage/flutter_secure_storage.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/utils.dart';
+import 'package:wathiq/core/widgets/guest_dialog.dart';
+import 'package:wathiq/core/api/status_code.dart';
 
 class AppInterceptor extends Interceptor {
   @override
@@ -80,7 +80,7 @@ class AppInterceptor extends Interceptor {
     final String? cookie =
         await SecureStorageServices().getCookie().then((value) => value);
     // if (cookie != null) {
-    options.headers["Cookie"] =
+    options.headers['Cookie'] =
         'broker_sa_session=s%3Ae_z_Ls6ATqfqLzXaPRWCCkJMTQppZ_kZ.1dREktv%2BQoygPQbMDP4jhKeG39fr%2FyOI0e%2Fk0MU6V9M'; //cookie;
     print('cashed coocke $cookie');
     // }

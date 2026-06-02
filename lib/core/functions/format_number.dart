@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
 String formatNumber(num value) {
-  final formatter = NumberFormat("#,##0");
+  final formatter = NumberFormat('#,##0');
   return formatter.format(value);
 }
 

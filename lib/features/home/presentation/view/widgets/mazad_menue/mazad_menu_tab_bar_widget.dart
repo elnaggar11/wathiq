@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/features/home/presentation/view/screens/assets_details_screen.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class MazadMenuTabBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
@@ -82,7 +82,7 @@ class _MazadMenuTabBarWidgetState extends State<MazadMenuTabBarWidget> {
           },
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: EdgeInsets.all(0),
+          labelPadding: const EdgeInsets.all(0),
           tabs: List<Widget>.generate(
             widget.tapsName.length,
             (index) => InkWell(
@@ -94,7 +94,7 @@ class _MazadMenuTabBarWidgetState extends State<MazadMenuTabBarWidget> {
               child: SizedBox(
                 height: 44,
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -122,7 +122,7 @@ class _MazadMenuTabBarWidgetState extends State<MazadMenuTabBarWidget> {
                               RequestState.loaded) {
                             return Row(
                               children: [
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 2),
@@ -159,7 +159,7 @@ class _MazadMenuTabBarWidgetState extends State<MazadMenuTabBarWidget> {
                               ],
                             );
                           } else {
-                            return SizedBox.shrink();
+                            return const SizedBox.shrink();
                           }
                         },
                       ),

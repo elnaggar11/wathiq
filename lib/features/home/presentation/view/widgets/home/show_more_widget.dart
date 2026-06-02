@@ -7,8 +7,8 @@ import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_title_and_location_widget.dart';
 
-import '../../../../data/models/auctions_model/auctions_model.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 class ShowMoreWidget extends StatelessWidget {
   const ShowMoreWidget({
@@ -25,7 +25,7 @@ class ShowMoreWidget extends StatelessWidget {
       children: [
         auctionData.logos.length > 0
             ? ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 56,
                   maxHeight: 56,
                 ),
@@ -33,13 +33,13 @@ class ShowMoreWidget extends StatelessWidget {
                   imageUrl: auctionData.logos[0].logo ?? '',
                 ),
               )
-            : SizedBox.shrink(),
-        SizedBox(
+            : const SizedBox.shrink(),
+        const SizedBox(
           width: 12,
         ),
         auctionData.logos.length > 1
             ? ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 56,
                   maxHeight: 56,
                 ),
@@ -47,8 +47,8 @@ class ShowMoreWidget extends StatelessWidget {
                   imageUrl: auctionData.logos[1].logo ?? '',
                 ),
               )
-            : SizedBox.shrink(),
-        Spacer(),
+            : const SizedBox.shrink(),
+        const Spacer(),
         GestureDetector(
           onTap: () {
             context.read<HomeCubit>().auctionData = auctionData;

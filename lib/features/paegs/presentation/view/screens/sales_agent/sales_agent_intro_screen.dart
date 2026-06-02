@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:wathiq/config/routes/app_routes.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../auth/presentation/view/widgets/contact_us_auth_widget.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/contact_us_auth_widget.dart';
 
 class SalesAgentIntroScreen extends StatelessWidget {
   const SalesAgentIntroScreen({super.key});
@@ -40,7 +40,7 @@ class SalesAgentIntroScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Text(
@@ -49,7 +49,7 @@ class SalesAgentIntroScreen extends StatelessWidget {
                   color: AppColors.typographySubTitle(context),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 44,
               ),
               ElevatedButton(
@@ -63,8 +63,8 @@ class SalesAgentIntroScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
-              ContactUsAuthWidget(),
+              const Spacer(),
+              const ContactUsAuthWidget(),
             ],
           ),
         ),

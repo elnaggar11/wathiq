@@ -23,7 +23,7 @@ class EmptyWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(Assets.imagesEmpty),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         Text(
           title,
           style: AppStyles.styleBold18(context).copyWith(
@@ -38,7 +38,7 @@ class EmptyWidget extends StatelessWidget {
                   color: AppColors.typographySubTitle(context),
                 ),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
         SizedBox(height: textButton != null ? 40 : 0),
         textButton != null
             ? ElevatedButton(
@@ -50,7 +50,7 @@ class EmptyWidget extends StatelessWidget {
                   ),
                 ),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
       ],
     );
   }

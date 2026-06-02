@@ -6,8 +6,8 @@ import 'package:open_file/open_file.dart' as file;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../error/failure.dart';
-import '../widgets/my_snackbar.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 Future<void> openLink(String? url) async {
   if (url == null) return;
@@ -58,19 +58,19 @@ Future<Either<Failure, String>> downloadFile(
   BuildContext context,
 ) async {
   if (url.isEmpty) {
-    return Left(AppFailure(message: "الرابط فارغ"));
+    return const Left(AppFailure(message: 'الرابط فارغ'));
   }
 
   // ✅ اطلب صلاحية التخزين
   if (!await Permission.manageExternalStorage.request().isGranted) {
-    return Left(AppFailure(message: "تم رفض صلاحية التخزين"));
+    return const Left(AppFailure(message: 'تم رفض صلاحية التخزين'));
   }
 
   Dio dio = Dio();
 
   try {
     String fileName = getFileNameFromUrl(url);
-    String filePath = "/storage/emulated/0/Download/$fileName";
+    String filePath = '/storage/emulated/0/Download/$fileName';
 
     await dio.download(
       url,
@@ -78,10 +78,10 @@ Future<Either<Failure, String>> downloadFile(
       onReceiveProgress: (received, total) {
         if (total != -1) {
           double progress = (received / total) * 100;
-          debugPrint("Download Progress: ${progress.toStringAsFixed(2)}%");
+          debugPrint('Download Progress: ${progress.toStringAsFixed(2)}%');
           FloatingSnackBar.show(
             context,
-            "جاري التحميل",
+            'جاري التحميل',
             progress: progress,
             isError: false,
           );
@@ -96,11 +96,11 @@ Future<Either<Failure, String>> downloadFile(
     final result = await file.OpenFile.open(filePath);
 
     if (result.type == file.ResultType.done) {
-      return Right("تم فتح الملف: $filePath");
+      return Right('تم فتح الملف: $filePath');
     } else {
-      return Left(AppFailure(message: "فشل في فتح الملف: ${result.message}"));
+      return Left(AppFailure(message: 'فشل في فتح الملف: ${result.message}'));
     }
   } catch (e) {
-    return Left(AppFailure(message: "فشل التحميل: $e"));
+    return Left(AppFailure(message: 'فشل التحميل: $e'));
   }
 }

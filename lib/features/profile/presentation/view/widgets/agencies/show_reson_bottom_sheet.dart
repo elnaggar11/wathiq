@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 Future<void> showResonBottomSheet(
   BuildContext context,
@@ -14,7 +14,7 @@ Future<void> showResonBottomSheet(
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -23,7 +23,7 @@ Future<void> showResonBottomSheet(
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.white(context),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(24),
               topRight: Radius.circular(24),
             ),
@@ -49,7 +49,7 @@ Future<void> showResonBottomSheet(
                     ),
                   ],
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 SizedBox(
                   width: 0.9.sw,
                   child: Text(reson, // Format DateTime
@@ -57,7 +57,7 @@ Future<void> showResonBottomSheet(
                         color: AppColors.typographyBody(context),
                       )),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 // SizedBox(
                 //   height: 48,
                 //   child: Row(

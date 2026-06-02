@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:wathiq/core/params/home/auctions_params.dart';
 import 'package:wathiq/features/home/data/models/enrolle/privacy_model.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/params/home/add_favorite_params.dart';
-import '../../../../core/params/home/auction_enrollment_params.dart';
-import '../../../wallet/data/model/add_wallet_balance.dart';
-import '../data_source/home_remote_data_source.dart';
-import '../models/auctions_model/auctions_model.dart';
-import '../models/enrolle/auction_board_model.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/params/home/add_favorite_params.dart';
+import 'package:wathiq/core/params/home/auction_enrollment_params.dart';
+import 'package:wathiq/features/wallet/data/model/add_wallet_balance.dart';
+import 'package:wathiq/features/home/data/data_source/home_remote_data_source.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/data/models/enrolle/auction_board_model.dart';
 
 class HomeRepository {
   final HomeRemoteDataSource remoteDataSource;
@@ -98,7 +98,7 @@ class HomeRepository {
         log('addFavorite Status code is 200');
         // log(response.data);
 
-        return Right("تم إضافة المزاد إلى المفضلة");
+        return const Right('تم إضافة المزاد إلى المفضلة');
       } else {
         log('addFavorite Status code is 422');
         return Left(
@@ -121,7 +121,7 @@ class HomeRepository {
         log('addFavorite Status code is 200');
         // log(response.data);
 
-        return Right("تم ازالة المزاد من المفضلة");
+        return const Right('تم ازالة المزاد من المفضلة');
       } else {
         log('addFavorite Status code is 422');
         return Left(
@@ -144,7 +144,7 @@ class HomeRepository {
         log('addFavorite Status code is 200');
         // log(response.data);
 
-        return Right("تم ازالة المزاد من المفضلة");
+        return const Right('تم ازالة المزاد من المفضلة');
       } else {
         log('addFavorite Status code is 422');
         return Left(
@@ -167,7 +167,7 @@ class HomeRepository {
         log('auctionEnrollment Status code is 200');
         // log(response.data);
 
-        return Right('تم التسجيل في المزاد بنجاح');
+        return const Right('تم التسجيل في المزاد بنجاح');
       } else {
         log('auctionEnrollment Status code is 422');
         return Left(
@@ -190,7 +190,7 @@ class HomeRepository {
         log('deleteAuctionEnrollment Status code is 200');
         // log(response.data);
 
-        return Right('تم الغاء تسجيلك في المزاد');
+        return const Right('تم الغاء تسجيلك في المزاد');
       } else {
         log('deleteAuctionEnrollment Status code is 422');
         return Left(
@@ -236,7 +236,7 @@ class HomeRepository {
         log('addAuctionBid Status code is 200');
         // log(response.data);
 
-        return Right('تم اضافة مزايدتك بنجاح');
+        return const Right('تم اضافة مزايدتك بنجاح');
       } else {
         log('addAuctionBid Status code is 422');
         return Left(

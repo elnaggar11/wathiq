@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:wathiq/core/params/auth/complete_sign_up.dart';
 import 'package:wathiq/core/params/auth/verify_params.dart';
 
-import '../../../../core/api/api_consumer.dart';
-import '../../../../core/api/end_point.dart';
-import '../../../../core/params/auth/login.dart';
-import '../../../../core/params/auth/reset_password.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/end_point.dart';
+import 'package:wathiq/core/params/auth/login.dart';
+import 'package:wathiq/core/params/auth/reset_password.dart';
 
 class AuthRemoteDataSource {
   final ApiConsumer apiConsumer;
@@ -16,7 +16,7 @@ class AuthRemoteDataSource {
     final response = await apiConsumer.post(
       EndPoint.signUp,
       body: {
-        "identityNumber": nationalID,
+        'identityNumber': nationalID,
       },
     );
     return response;
@@ -42,7 +42,7 @@ class AuthRemoteDataSource {
     final response = await apiConsumer.post(
       EndPoint.forgetPassword,
       body: {
-        "identityNumber": identityNumber,
+        'identityNumber': identityNumber,
       },
     );
     return response;
@@ -67,7 +67,7 @@ class AuthRemoteDataSource {
   Future<Response> resendCode(String identityNumber) async {
     final response = await apiConsumer.post(
       EndPoint.resendCode,
-      body: {"identityNumber": identityNumber},
+      body: {'identityNumber': identityNumber},
     );
     return response;
   }

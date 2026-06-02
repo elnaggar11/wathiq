@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:wathiq/core/params/home/auctions_params.dart';
 
-import '../../../../core/api/api_consumer.dart';
-import '../../../../core/api/end_point.dart';
-import '../../../../core/params/home/add_favorite_params.dart';
-import '../../../../core/params/home/auction_enrollment_params.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/end_point.dart';
+import 'package:wathiq/core/params/home/add_favorite_params.dart';
+import 'package:wathiq/core/params/home/auction_enrollment_params.dart';
 
 class HomeRemoteDataSource {
   final ApiConsumer apiConsumer;

@@ -1,4 +1,4 @@
-import 'by.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/by.dart';
 
 class Updated {
   By? by;

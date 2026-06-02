@@ -4,8 +4,8 @@ import 'package:wathiq/app/app.dart';
 import 'package:wathiq/app/injector.dart';
 import 'package:wathiq/core/functions/cache_app_data.dart';
 
-import 'core/network/socket/socket_service.dart';
-import 'core/notifications/local_notifications.dart';
+import 'package:wathiq/core/network/socket/socket_service.dart';
+import 'package:wathiq/core/notifications/local_notifications.dart';
 
 void main() async {
   try {

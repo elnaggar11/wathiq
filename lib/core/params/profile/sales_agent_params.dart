@@ -40,7 +40,7 @@ class SalesAgentParams extends Equatable {
   final bool approvedByNafath;
   final bool accreditationRequest;
 
-  SalesAgentParams({
+  const SalesAgentParams({
     required this.approvedByNafath,
     required this.accreditationRequest,
     required this.valAttachment,

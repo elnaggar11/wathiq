@@ -6,11 +6,11 @@ import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/Mazadenroll_and_show_more_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/asset_card_widget.dart';
 
-import '../../../../../../config/routes/app_routes.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
 
 class CompletedAssetsCardBodyWidget extends StatelessWidget {
   const CompletedAssetsCardBodyWidget({super.key, required this.index});
@@ -30,7 +30,7 @@ class CompletedAssetsCardBodyWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          AssetsDetailsCardColumWidget(
+          const AssetsDetailsCardColumWidget(
             dateLabel: 'أعلى مزايدة',
             date: '55,505',
             showCurrancyLogo: true,
@@ -46,7 +46,7 @@ class CompletedAssetsCardBodyWidget extends StatelessWidget {
                 showCurrancyLogo: false,
                 icon: AppAssets.app_imagesCalendar,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               AssetsDetailsCardColumWidget(
                 maxWidth: 100,
                 dateLabel: 'وقت بداية المزاد',
@@ -57,7 +57,7 @@ class CompletedAssetsCardBodyWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           SizedBox(
             height: 48,
             child: Row(
@@ -82,8 +82,8 @@ class CompletedAssetsCardBodyWidget extends StatelessWidget {
                           color: AppColors.danger(
                               context), // <-- Border color here
                         ),
-                        padding: EdgeInsets.all(0),
-                        minimumSize: Size(double.infinity, double.infinity),
+                        padding: const EdgeInsets.all(0),
+                        minimumSize: const Size(double.infinity, double.infinity),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r),
                           side: BorderSide(
@@ -92,10 +92,10 @@ class CompletedAssetsCardBodyWidget extends StatelessWidget {
                           ),
                         ),
                         foregroundColor: AppColors.danger(context),
-                        backgroundColor: Color(0xFFFCE8E8)),
+                        backgroundColor: const Color(0xFFFCE8E8)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 Expanded(

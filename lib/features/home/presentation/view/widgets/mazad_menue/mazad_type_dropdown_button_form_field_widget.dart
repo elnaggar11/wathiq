@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 class MazadtypeDropdownButtonFormFieldWidget extends StatefulWidget {
   const MazadtypeDropdownButtonFormFieldWidget({
@@ -32,7 +32,7 @@ class _MazadtypeDropdownButtonFormFieldWidgetState
     HomeCubit homeCubit = context.read<HomeCubit>();
     selectedValue = homeCubit.filterAuctiontypeAr;
     return DropdownButtonFormField<String>(
-      value: selectedValue,
+      initialValue: selectedValue,
       menuMaxHeight: 600,
       dropdownColor: AppColors.white(context),
       style: AppStyles.styleBold16(context).copyWith(),
@@ -59,7 +59,7 @@ class _MazadtypeDropdownButtonFormFieldWidgetState
                   }
                 },
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
                     type,
                     style: AppStyles.styleBold16(context)
@@ -103,14 +103,14 @@ class _MazadtypeDropdownButtonFormFieldWidgetState
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.red, // Border color when there's an error
             width: 1,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.red, // Border color when focused with an error
             width: 1.5,
           ),

@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/agencies/delete_agency_widget.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/agencies/delete_and_swich_buttons.dart';
 
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../view_model/profile/profile_cubit.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 class InActiveAgenciesRowWidget extends StatelessWidget {
   const InActiveAgenciesRowWidget({
@@ -27,9 +27,9 @@ class InActiveAgenciesRowWidget extends StatelessWidget {
             color: AppColors.typographySubTitle(context),
           ),
         ),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
-          DateFormat("yyyy-MM-dd").format(dateTime),
+          DateFormat('yyyy-MM-dd').format(dateTime),
           style: AppStyles.styleSemiBold12(context).copyWith(
             color: AppColors.typographySubTitle(context),
           ),
@@ -56,7 +56,7 @@ class ActiveAgenciesRowWidget extends StatelessWidget {
           isActive: isActive,
           agencyId: agencyId,
         ),
-        Spacer(),
+        const Spacer(),
         DeleteAgencyWidget(
           agencyId: agencyId,
         ),

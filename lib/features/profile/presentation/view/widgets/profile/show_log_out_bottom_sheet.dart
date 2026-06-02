@@ -8,17 +8,17 @@ import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
-import '../../../../../../core/utils/app_animations.dart';
-import '../../../../../../core/utils/enums.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../../../../core/widgets/my_snackbar.dart';
-import '../../../view_model/profile/profile_cubit.dart';
+import 'package:wathiq/core/utils/app_animations.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 Future<void> showLogOutBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -27,7 +27,7 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.white(context),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(24),
               topRight: Radius.circular(24),
             ),
@@ -41,7 +41,7 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                   width: 48,
                   AppAssets.app_imagesLogout,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 SizedBox(
                   width: 340,
                   height: 64,
@@ -51,7 +51,7 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                         color: AppColors.typographyHeading(context),
                       )),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 SizedBox(
                   height: 48,
                   child: Row(
@@ -70,7 +70,7 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                             Assets.imagesClose,
                           ),
                           style: OutlinedButton.styleFrom(
-                              minimumSize: Size(double.infinity, 46),
+                              minimumSize: const Size(double.infinity, 46),
                               side: BorderSide(
                                 color: AppColors.iconsTertiary(context),
                               ),
@@ -81,7 +81,7 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                               backgroundColor: AppColors.white(context)),
                         ),
                       ),
-                      SizedBox(width: 15),
+                      const SizedBox(width: 15),
                       Expanded(
                         child: Builder(builder: (context) {
                           return ElevatedButton(
@@ -127,7 +127,7 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                                         Assets.imagesLogout,
                                         color: AppColors.white(context),
                                       ),
-                                      SizedBox(width: 4),
+                                      const SizedBox(width: 4),
                                       Text(
                                         'تسجيل الخروج', // Format DateTime
                                         style: AppStyles.styleMedium16(context)

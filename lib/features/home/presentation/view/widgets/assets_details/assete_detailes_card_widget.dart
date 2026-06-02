@@ -5,12 +5,12 @@ import 'package:wathiq/features/home/presentation/view/widgets/assets_details/as
 import 'package:wathiq/features/home/presentation/view/widgets/assets_details/current_and_comming_action_for_assets_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_details/asset_card_widget.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../../core/functions/time_zon_fun.dart';
-import '../../../../../../core/utils/images.dart';
-import '../../../view_model/home/home_cubit.dart';
-import '../home/mazad_card_time_widgets.dart';
-import '../home/mazad_status_timer_widget.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/functions/time_zon_fun.dart';
+import 'package:wathiq/core/utils/images.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_card_time_widgets.dart';
+import 'package:wathiq/features/home/presentation/view/widgets/home/mazad_status_timer_widget.dart';
 
 class AsseteDetailesCardWidget extends StatelessWidget {
   const AsseteDetailesCardWidget({
@@ -30,10 +30,10 @@ class AsseteDetailesCardWidget extends StatelessWidget {
             color: const Color(0xFFF9F9F8),
             borderRadius: BorderRadius.only(
               topLeft: getKTapIndex(context) != 1
-                  ? Radius.circular(12)
+                  ? const Radius.circular(12)
                   : Radius.zero,
               topRight: getKTapIndex(context) != 1
-                  ? Radius.circular(12)
+                  ? const Radius.circular(12)
                   : Radius.zero,
             ),
           ),
@@ -46,7 +46,7 @@ class AsseteDetailesCardWidget extends StatelessWidget {
                 showCurrancyLogo: true,
                 icon: AppAssets.app_imagesBanknote,
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               AssetsDetailsCardColumWidget(
                 maxWidth: 100,
                 dateLabel: 'عربون الدخول',
@@ -61,8 +61,8 @@ class AsseteDetailesCardWidget extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF2F2F2),
+          decoration: const BoxDecoration(
+            color: Color(0xFFF2F2F2),
           ),
           child: Row(
             children: [
@@ -74,7 +74,7 @@ class AsseteDetailesCardWidget extends StatelessWidget {
                 showCurrancyLogo: false,
                 icon: AppAssets.app_imagesAlarm,
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               AssetsDetailsCardColumWidget(
                 maxWidth: 100,
                 dateLabel: 'تاريخ بداية المزاد',
@@ -89,8 +89,8 @@ class AsseteDetailesCardWidget extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF9F9F8),
+          decoration: const BoxDecoration(
+            color: Color(0xFFF9F9F8),
           ),
           child: RowAssetsDateWidget(
             lable: 'مدة المزاد:',
@@ -103,8 +103,8 @@ class AsseteDetailesCardWidget extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF8F0EE),
+          decoration: const BoxDecoration(
+            color: Color(0xFFF8F0EE),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12),
               bottomRight: Radius.circular(12),
@@ -113,7 +113,7 @@ class AsseteDetailesCardWidget extends StatelessWidget {
           child: RowAssetsDateWidget(
             lable: ' تاريخ ويوم نهاية المزاد ',
             description:
-                '${getDayNameArabic(homeCubit.auctionData!.startDate.toString())}' +
+                getDayNameArabic(homeCubit.auctionData!.startDate.toString()) +
                     ' ' +
                     formatDateFunction(
                         homeCubit.auctionData!.endDate.toString()),
@@ -121,10 +121,10 @@ class AsseteDetailesCardWidget extends StatelessWidget {
             iconColor: AppColors.error(context),
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         getKTapIndex(context) == 3
-            ? CompletedAuctionStutesWidget()
-            : CurrentAndCommingActionForAssetsWidget(),
+            ? const CompletedAuctionStutesWidget()
+            : const CurrentAndCommingActionForAssetsWidget(),
       ],
     );
   }

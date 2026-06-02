@@ -7,12 +7,12 @@ import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 
-import '../../../../../core/widgets/adaptive_layout_widget.dart';
-import '../../../../../core/widgets/coustom_app_bar_widget.dart';
-import '../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
-import '../../view_model/auth/auth_cubit.dart';
-import '../widgets/reset_and_forget_password/forget_password_button_widget.dart';
+import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/reset_and_forget_password/forget_password_button_widget.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -23,12 +23,12 @@ class ForgetPasswordScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CoustomAppBarWidget(),
         body: AdaptiveLayout(
-          mobileLayout: (context) => ForgetPasswordMobileLayoutWidget(),
+          mobileLayout: (context) => const ForgetPasswordMobileLayoutWidget(),
           tabletLayout: (context) => Center(
             child: SizedBox(
               height: 1.sw,
               width: 600,
-              child: ForgetPasswordMobileLayoutWidget(),
+              child: const ForgetPasswordMobileLayoutWidget(),
             ),
           ),
         ),
@@ -51,13 +51,13 @@ class ForgetPasswordMobileLayoutWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   child: StepperWidget(
                     stepperList: [
                       BuildStep(
@@ -145,7 +145,7 @@ class ForgetPasswordMobileLayoutWidget extends StatelessWidget {
                   ),
                 ),
                 32.verticalSpace,
-                ForgetPasswordButtonWidget(),
+                const ForgetPasswordButtonWidget(),
                 31.verticalSpace,
               ],
             ),

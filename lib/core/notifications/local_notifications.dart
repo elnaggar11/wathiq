@@ -7,8 +7,8 @@ import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import '../../config/routes/app_routes.dart';
-import '../../features/paegs/data/models/notification_model.dart';
+import 'package:wathiq/config/routes/app_routes.dart';
+import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 
 class LocalNotificationService {
   static final _notificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -34,9 +34,9 @@ class LocalNotificationService {
         onDidReceiveNotificationResponse: receiveNotification,
         onDidReceiveBackgroundNotificationResponse: receiveNotification,
       );
-      log("Notification service initialized successfully.");
+      log('Notification service initialized successfully.');
     } catch (e) {
-      log("Error initializing notification service: $e");
+      log('Error initializing notification service: $e');
     }
   }
 
@@ -57,7 +57,7 @@ class LocalNotificationService {
   }
 
   static void navigateNotification(Map<String, dynamic> data) {
-    log("Navigating with data: $data");
+    log('Navigating with data: $data');
     navigatorKey.currentState?.context.navigateTo(Routes.notificationScreen);
   }
 

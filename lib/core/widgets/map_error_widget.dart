@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
-import '../utils/app_styles.dart';
+import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
 
 enum MapErrorType {
   noLocation, // لا يوجد موقع متاح
@@ -36,11 +36,11 @@ class MapErrorWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildErrorIcon(context),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               _buildErrorTitle(context),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               _buildErrorDescription(context),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               _buildActionButtons(context),
             ],
           ),
@@ -174,7 +174,7 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: OutlinedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             side: BorderSide(color: AppColors.primary(context)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -191,7 +191,7 @@ class MapErrorWidget extends StatelessWidget {
         if (onRetry != null)
           ElevatedButton.icon(
             onPressed: onRetry,
-            icon: Icon(Icons.refresh, color: Colors.white),
+            icon: const Icon(Icons.refresh, color: Colors.white),
             label: Text(
               'إعادة المحاولة',
               style: AppStyles.styleBold16(context).copyWith(
@@ -199,14 +199,14 @@ class MapErrorWidget extends StatelessWidget {
               ),
             ),
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(200, 48),
+              minimumSize: const Size(200, 48),
               backgroundColor: AppColors.primary(context),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
           ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: () {
             Navigator.of(context).pop();
@@ -219,7 +219,7 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: OutlinedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             side: BorderSide(color: AppColors.primary(context)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -235,7 +235,7 @@ class MapErrorWidget extends StatelessWidget {
       children: [
         ElevatedButton.icon(
           onPressed: onRetry,
-          icon: Icon(Icons.refresh, color: Colors.white),
+          icon: const Icon(Icons.refresh, color: Colors.white),
           label: Text(
             'إعادة المحاولة',
             style: AppStyles.styleBold16(context).copyWith(
@@ -243,14 +243,14 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             backgroundColor: AppColors.primary(context),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: () {
             Navigator.of(context).pop();
@@ -263,7 +263,7 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: OutlinedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             side: BorderSide(color: AppColors.primary(context)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -279,7 +279,7 @@ class MapErrorWidget extends StatelessWidget {
       children: [
         ElevatedButton.icon(
           onPressed: onOpenSettings,
-          icon: Icon(Icons.settings, color: Colors.white),
+          icon: const Icon(Icons.settings, color: Colors.white),
           label: Text(
             'فتح الإعدادات',
             style: AppStyles.styleBold16(context).copyWith(
@@ -287,14 +287,14 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             backgroundColor: AppColors.primary(context),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: onRetry,
           icon: Icon(Icons.refresh, color: AppColors.primary(context)),
@@ -305,14 +305,14 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: OutlinedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             side: BorderSide(color: AppColors.primary(context)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: () {
             Navigator.of(context).pop();
@@ -325,7 +325,7 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: OutlinedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             side: BorderSide(color: AppColors.primary(context)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -341,7 +341,7 @@ class MapErrorWidget extends StatelessWidget {
       children: [
         ElevatedButton.icon(
           onPressed: onRetry,
-          icon: Icon(Icons.refresh, color: Colors.white),
+          icon: const Icon(Icons.refresh, color: Colors.white),
           label: Text(
             'إعادة المحاولة',
             style: AppStyles.styleBold16(context).copyWith(
@@ -349,14 +349,14 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             backgroundColor: AppColors.primary(context),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: () {
             Navigator.of(context).pop();
@@ -369,7 +369,7 @@ class MapErrorWidget extends StatelessWidget {
             ),
           ),
           style: OutlinedButton.styleFrom(
-            minimumSize: Size(200, 48),
+            minimumSize: const Size(200, 48),
             side: BorderSide(color: AppColors.primary(context)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

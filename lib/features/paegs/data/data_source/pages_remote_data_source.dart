@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 
-import '../../../../core/api/api_consumer.dart';
-import '../../../../core/api/end_point.dart';
-import '../../../../core/params/add_real_state_params.dart';
-import '../../../../core/params/contact_us_params.dart';
-import '../../../../core/params/get_questions_params.dart';
-import '../../../../core/params/profile/sales_agent_params.dart';
-import '../../../../core/params/properity_managment.dart';
+import 'package:wathiq/core/api/api_consumer.dart';
+import 'package:wathiq/core/api/end_point.dart';
+import 'package:wathiq/core/params/add_real_state_params.dart';
+import 'package:wathiq/core/params/contact_us_params.dart';
+import 'package:wathiq/core/params/get_questions_params.dart';
+import 'package:wathiq/core/params/profile/sales_agent_params.dart';
+import 'package:wathiq/core/params/properity_managment.dart';
 
 class PagesRemoteDataSource {
   final ApiConsumer apiConsumer;

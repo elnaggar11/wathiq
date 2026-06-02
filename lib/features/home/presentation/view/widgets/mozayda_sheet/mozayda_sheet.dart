@@ -9,10 +9,10 @@ import 'package:wathiq/features/home/presentation/view/widgets/assets_details/to
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/mozayda_board_tab_bar_widget.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mozayda_sheet/mozayda_board_widget.dart';
 
-import '../../../../../../core/functions/format_number.dart';
-import '../../../../../auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import '../../../../../profile/presentation/view_model/profile/profile_cubit.dart';
-import '../../../view_model/home/home_cubit.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
 Future<void> mozaydaSheetBottomSheet(BuildContext context) async {
   showModalBottomSheet(
@@ -20,7 +20,7 @@ Future<void> mozaydaSheetBottomSheet(BuildContext context) async {
     backgroundColor: Colors.transparent,
     context: context,
     isDismissible: true,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -67,7 +67,7 @@ class _mozaydaSheetBottomSheetBodyWidgetState
       if (_tabController.indexIsChanging) {
         _pageController.animateToPage(
           _tabController.index,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
 
@@ -101,7 +101,7 @@ class _mozaydaSheetBottomSheetBodyWidgetState
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppColors.white(context),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(24),
                 topRight: Radius.circular(24),
               ),
@@ -114,7 +114,7 @@ class _mozaydaSheetBottomSheetBodyWidgetState
 
                 child: Column(
                   children: [
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -138,17 +138,17 @@ class _mozaydaSheetBottomSheetBodyWidgetState
                     MozaydaBoardTabBarWidget(
                       tabController: _tabController,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     SizedBox(
                       height: 700,
                       width: double.infinity,
                       child: PageView(
                         controller: _pageController,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         onPageChanged: (index) {
                           _tabController.animateTo(index);
                         },
-                        children: [
+                        children: const [
                           MozaydaBoardWidget(),
                           SingleChildScrollView(
                             child: Column(
@@ -192,7 +192,7 @@ class TopMozaydaWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(AppAssets.app_imagesSquareDoublAltArrowUp),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return Row(
@@ -204,7 +204,7 @@ class TopMozaydaWidget extends StatelessWidget {
                       color: AppColors.typographyBody(context),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -221,7 +221,7 @@ class TopMozaydaWidget extends StatelessWidget {
                       SizedBox(
                           width: homeCubit.boardAuctionData.isEmpty ? 0 : 2),
                       homeCubit.boardAuctionData.isEmpty
-                          ? SizedBox.shrink()
+                          ? const SizedBox.shrink()
                           : CurrancyLogoWidget(
                               color: AppColors.typographyHeading(context),
                             ),

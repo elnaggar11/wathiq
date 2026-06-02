@@ -8,17 +8,17 @@ import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/features/home/presentation/view/widgets/mazad_menue/mazad_type_dropdown_button_form_field_widget.dart';
 import 'package:wathiq/features/home/presentation/view_model/home/home_cubit.dart';
 
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/widgets/text_form_field_with_title_widget.dart';
-import '../../../../../profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_strings.dart';
+import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 Future<void> filterSheetBottomSheet(BuildContext context) async {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
     builder: (context) {
@@ -26,7 +26,7 @@ Future<void> filterSheetBottomSheet(BuildContext context) async {
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
-        child: FilterSheetBottomSheetBodyWidget(),
+        child: const FilterSheetBottomSheetBodyWidget(),
       );
     },
   );
@@ -66,7 +66,7 @@ class _FilterSheetBottomSheetBodyWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.backgroundPrimary(context),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
@@ -75,7 +75,7 @@ class _FilterSheetBottomSheetBodyWidgetState
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -96,7 +96,7 @@ class _FilterSheetBottomSheetBodyWidgetState
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               TextFormFieldWithTitleWidget(
                 label: 'اسم المزاد',
                 controller: homeCubit.auctionFilterSearch,
@@ -114,9 +114,9 @@ class _FilterSheetBottomSheetBodyWidgetState
                   ),
                 ),
               ),
-              SizedBox(height: 16),
-              MazadtypeDropdownButtonFormFieldWidget(),
-              SizedBox(height: 38),
+              const SizedBox(height: 16),
+              const MazadtypeDropdownButtonFormFieldWidget(),
+              const SizedBox(height: 38),
               SizedBox(
                 height: 54,
                 child: Row(
@@ -136,7 +136,7 @@ class _FilterSheetBottomSheetBodyWidgetState
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 0.84,
                               strokeAlign: BorderSide.strokeAlignCenter,
                               color: Color(0xFFEBEEF3),
@@ -153,7 +153,7 @@ class _FilterSheetBottomSheetBodyWidgetState
                         ),
                       ),
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
@@ -171,7 +171,7 @@ class _FilterSheetBottomSheetBodyWidgetState
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),

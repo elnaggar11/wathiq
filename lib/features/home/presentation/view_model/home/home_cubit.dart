@@ -8,25 +8,25 @@ import 'package:wathiq/core/utils/app_strings.dart';
 import 'package:wathiq/features/home/data/models/enrolle/privacy_model.dart';
 import 'package:wathiq/features/home/data/repository/home_repo.dart';
 
-import '../../../../../app/injector.dart';
-import '../../../../../core/error/failure.dart';
-import '../../../../../core/functions/format_number.dart';
-import '../../../../../core/functions/url_luncher.dart';
-import '../../../../../core/params/home/add_favorite_params.dart';
-import '../../../../../core/params/home/auction_enrollment_params.dart';
-import '../../../../../core/storage/i_app_local_storage.dart';
-import '../../../../../core/utils/enums.dart';
-import '../../../../wallet/data/model/add_wallet_balance.dart';
-import '../../../data/models/auctions_model/auctions_model.dart';
-import '../../../data/models/enrolle/auction_board_model.dart';
-import '../../../data/socket/auction_board_socket.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/error/failure.dart';
+import 'package:wathiq/core/functions/format_number.dart';
+import 'package:wathiq/core/functions/url_luncher.dart';
+import 'package:wathiq/core/params/home/add_favorite_params.dart';
+import 'package:wathiq/core/params/home/auction_enrollment_params.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
+import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/features/wallet/data/model/add_wallet_balance.dart';
+import 'package:wathiq/features/home/data/models/auctions_model/auctions_model.dart';
+import 'package:wathiq/features/home/data/models/enrolle/auction_board_model.dart';
+import 'package:wathiq/features/home/data/socket/auction_board_socket.dart';
 
 part 'home_state.dart';
 
 String KoriginId = '';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._homeRepository) : super(HomeState());
+  HomeCubit(this._homeRepository) : super(const HomeState());
 
   final HomeRepository _homeRepository;
 
@@ -125,7 +125,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   // New method: get user auctions with cache
   Future<void> getUserAuctions() async {
-    String cacheKey = '${winner}_${loss}'; // simple unique key per tab
+    String cacheKey = '${winner}_$loss'; // simple unique key per tab
 
     // Check if data is cached
     if (userAuctionsCache.containsKey(cacheKey)) {
@@ -165,12 +165,12 @@ class HomeCubit extends Cubit<HomeState> {
 
   // Optional: force refresh if needed
   Future<void> refreshUserAuctions() async {
-    String cacheKey = '${winner}_${loss}';
+    String cacheKey = '${winner}_$loss';
     userAuctionsCache.remove(cacheKey);
     await getUserAuctions();
   }
 
-  searchAuctionOrigins(String? query) {
+  void searchAuctionOrigins(String? query) {
     emit(state.copyWith(auctionsRequestState: RequestState.loading));
 
     if (query == null || query.isEmpty) {
@@ -489,7 +489,7 @@ class HomeCubit extends Cubit<HomeState> {
       print(
           'boardAuctionData.first.bidAmount${boardAuctionData.first.bidAmount} ');
       print('userBid.bidAmount${userBid.bidAmount} ');
-      print('garlicDifferencetotalAmount${garlicDifferencetotalAmount} ');
+      print('garlicDifferencetotalAmount$garlicDifferencetotalAmount ');
       print(
           'boardAuctionData.first.bidAmount${boardAuctionData.first.bidAmount} ');
       dynamic amount = ((boardAuctionData.first.bidAmount - userBid.bidAmount) +
@@ -642,7 +642,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  addNewBidValue() {
+  void addNewBidValue() {
     emit(
       state.copyWith(
         topBid: boardAuctionData.isEmpty
