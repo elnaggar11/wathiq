@@ -118,7 +118,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                                 child: Text(
                                   '966+',
                                   style:
-                                      AppStyles.styleBold16(context).copyWith(
+                                      AppStyles.styleBold14(context).copyWith(
                                     color: AppColors.typographyHeading(context),
                                   ),
                                 ),

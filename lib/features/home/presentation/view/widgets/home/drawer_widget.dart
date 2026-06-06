@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
-
 import 'package:wathiq/app/app.dart';
 import 'package:wathiq/app/injector.dart';
 import 'package:wathiq/config/routes/app_routes.dart';
@@ -51,20 +51,13 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           });
         },
       },
-      {
-        'text': 'المزادات المحفوظة',
-        'image': AppAssets.app_imagesFavoriteAuction,
-        'onTap': () {
-          context.navigateTo(Routes.savedMazadeScreen);
-        },
-      },
       if (!KisGuest)
         {
-          'text': 'وكلاء البيع',
-          'image': AppAssets.app_imagesAddSales,
+          'image': AppAssets.app_imagesHeart,
           'onTap': () {
-            context.navigateTo(Routes.SalesAgentIntroScreen);
+            context.navigateTo(Routes.savedMazadeScreen);
           },
+          'text': 'المفضلة',
         },
       {
         'text': 'تواصل معنا',
@@ -80,27 +73,6 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           context.navigateTo(Routes.qustionScreen);
         },
       },
-      {
-        'text': 'الشروط و الاحكام',
-        'image': AppAssets.app_imagesDocument,
-        'onTap': () {
-          context.navigateTo(Routes.policyScreen);
-        },
-      },
-      {
-        'text': 'أضف عقارك',
-        'image': AppAssets.app_imagesAddReal,
-        'onTap': () {
-          context.navigateTo(Routes.AddRealStateScreen);
-        },
-      },
-      {
-        'text': 'إدارة أملاكك',
-        'image': AppAssets.app_imagesProretuMana,
-        'onTap': () {
-          context.navigateTo(Routes.ProperityManagment);
-        },
-      }
     ];
 
     return Drawer(
@@ -193,106 +165,15 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                       ),
                                     ),
                                   ),
-                                  // SizedBox(height: 4),
-                                  // Text(
-                                  //   userName?.split(' ').first ?? 'مستخدم',
-                                  //   style: AppStyles.styleMedium14(context)
-                                  //       .copyWith(
-                                  //     color: AppColors.typographyBody(
-                                  //       context,
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                  // SizedBox(height: 8),
-                                  // Row(
-                                  //   children: [
-                                  //     SvgPicture.asset(Assets.imagesDrawerWalet),
-                                  //     SizedBox(width: 8),
-                                  //     Text(
-                                  //       '500,000 ر.س',
-                                  //       style: AppStyles.styleBold18(context)
-                                  //           .copyWith(
-                                  //         fontWeight: FontWeight.w800,
-                                  //         color: AppColors.primary(
-                                  //           context,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //   ],
-                                  // ),
                                 ],
                               )
                             ],
                           ),
                         ),
-                      )
+                      ),
               ],
             ),
           ),
-
-          // SizedBox(height: 16),
-          // Container(
-          //   width: 279,
-          //   padding: const EdgeInsets.all(16),
-          //   decoration: ShapeDecoration(
-          //     color: Colors.white /* Neutral-White */,
-          //     shape: RoundedRectangleBorder(
-          //       side: BorderSide(
-          //         width: 1,
-          //         color: const Color(0xFFE5E5E5) /* Grayscale-200 */,
-          //       ),
-          //       borderRadius: BorderRadius.circular(12),
-          //     ),
-          //   ),
-          //   child: OutlinedButton(
-          //     onPressed: () {
-          //       // context.navigateTo(Routes.add);
-          //     },
-          //     style: OutlinedButton.styleFrom(
-          //       side: BorderSide(color: AppColors.primary(context)),
-          //       backgroundColor: KisGuest
-          //           ? AppColors.white(context)
-          //           : AppColors.primary(context),
-          //       overlayColor: AppColors.primary(context),
-          //       foregroundColor: AppColors.primary(context),
-          //       surfaceTintColor: AppColors.primary(context),
-          //       fixedSize: Size(double.infinity, 52),
-          //       shape: RoundedRectangleBorder(
-          //         borderRadius: BorderRadius.circular(12),
-          //       ),
-          //     ),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Text(
-          //           'اضف عقارك',
-          //           style: AppStyles.styleBold16(context).copyWith(
-          //             color: KisGuest
-          //                 ? AppColors.primary(context)
-          //                 : AppColors.white(context),
-          //           ),
-          //         ),
-          //         SizedBox(width: 8),
-          //         Container(
-          //           padding: EdgeInsets.all(4),
-          //           decoration: ShapeDecoration(
-          //             color: const Color(
-          //                 0xFFFAFAFA) /* [-Tokens-]-_Background-primary */,
-          //             shape: RoundedRectangleBorder(
-          //               side: BorderSide(
-          //                 width: 1.50,
-          //                 color: const Color(
-          //                     0xFF023936) /* [-Tokens-]-Main-primary */,
-          //               ),
-          //               borderRadius: BorderRadius.circular(32),
-          //             ),
-          //           ),
-          //           child: SvgPicture.asset(Assets.imagesShareAndroid),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
           const SizedBox(height: 16),
           Expanded(
             child: ListView.builder(
@@ -303,11 +184,22 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   image: drawerList[index]['image'],
                   text: drawerList[index]['text'],
                   onTap: drawerList[index]['onTap'],
-                );
+                )
+                    .animate()
+                    .slideX(
+                      begin: 0.5,
+                      end: 0,
+                      delay: Duration(milliseconds: 100 * index),
+                      duration: const Duration(milliseconds: 100),
+                      curve: Curves.easeOutCubic,
+                    )
+                    .fadeIn(
+                      delay: Duration(milliseconds: 100 * index),
+                      duration: const Duration(milliseconds: 100),
+                    );
               },
             ),
           ),
-
           const SizedBox(height: 16),
         ],
       ),

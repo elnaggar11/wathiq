@@ -260,83 +260,105 @@ class _SelectNafathApprovedRadioButtonState
             ],
           ),
         ),
-        _selectedValue == 'لا'
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 24,
+      ],
+    );
+  }
+}
+
+class SelectAccreditationRequestRadioButton extends StatefulWidget {
+  const SelectAccreditationRequestRadioButton({super.key});
+
+  @override
+  State<SelectAccreditationRequestRadioButton> createState() =>
+      _SelectAccreditationRequestRadioButtonState();
+}
+
+class _SelectAccreditationRequestRadioButtonState
+    extends State<SelectAccreditationRequestRadioButton> {
+  String? _selectedAccreditationRequestValue = 'لا';
+
+  void _handleAccreditationRequestRadioValueChange(String? value) {
+    setState(() {
+      _selectedAccreditationRequestValue = value;
+      if (value == 'نعم') {
+        context.read<PagesCubit>().accreditationRequest = true;
+      } else {
+        context.read<PagesCubit>().accreditationRequest = false;
+      }
+
+      print(_selectedAccreditationRequestValue);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          ' هل ترغب بتقديم طلب الاعتماد',
+          style: AppStyles.styleBold16(context),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 40,
+          child: Row(
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () =>
+                      _handleAccreditationRequestRadioValueChange('نعم'),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Radio(
+                        value: 'نعم',
+                        groupValue: _selectedAccreditationRequestValue,
+                        onChanged: _handleAccreditationRequestRadioValueChange,
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        visualDensity:
+                            const VisualDensity(horizontal: -3, vertical: 0),
+                        activeColor: AppColors.darkBlue(context),
+                      ),
+                      Text(
+                        'نعم',
+                        style: AppStyles.styleBold16(context).copyWith(
+                          color: AppColors.typographySubTitle(context),
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    ' هل ترغب بتقديم طلب الاعتماد',
-                    style: AppStyles.styleBold16(context),
+                ),
+              ),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () =>
+                      _handleAccreditationRequestRadioValueChange('لا'),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Radio(
+                        value: 'لا',
+                        groupValue: _selectedAccreditationRequestValue,
+                        onChanged: _handleAccreditationRequestRadioValueChange,
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        visualDensity:
+                            const VisualDensity(horizontal: -3, vertical: 0),
+                        activeColor: AppColors.darkBlue(context),
+                      ),
+                      Text(
+                        'لا',
+                        style: AppStyles.styleBold16(context).copyWith(
+                          color: AppColors.typographySubTitle(context),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 8),
-                  SizedBox(
-                    height: 40,
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: GestureDetector(
-                          onTap: () =>
-                              _handleAccreditationRequestRadioValueChange(
-                                  'نعم'),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Radio(
-                                value: 'نعم',
-                                groupValue: _selectedAccreditationRequestValue,
-                                onChanged:
-                                    _handleAccreditationRequestRadioValueChange,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
-                                visualDensity:
-                                    const VisualDensity(horizontal: -3, vertical: 0),
-                                activeColor: AppColors.darkBlue(context),
-                              ),
-                              Text(
-                                'نعم',
-                                style: AppStyles.styleBold16(context).copyWith(
-                                  color: AppColors.typographySubTitle(context),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )),
-                        Expanded(
-                            child: GestureDetector(
-                          onTap: () =>
-                              _handleAccreditationRequestRadioValueChange('لا'),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Radio(
-                                value: 'لا',
-                                groupValue: _selectedAccreditationRequestValue,
-                                onChanged:
-                                    _handleAccreditationRequestRadioValueChange,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
-                                visualDensity:
-                                    const VisualDensity(horizontal: -3, vertical: 0),
-                                activeColor: AppColors.darkBlue(context),
-                              ),
-                              Text(
-                                'لا',
-                                style: AppStyles.styleBold16(context).copyWith(
-                                  color: AppColors.typographySubTitle(context),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )),
-                      ],
-                    ),
-                  ),
-                ],
-              )
-            : const SizedBox.shrink()
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

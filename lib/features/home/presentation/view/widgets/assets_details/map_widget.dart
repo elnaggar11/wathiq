@@ -154,30 +154,21 @@ class _MapLocationWidgetState extends State<MapLocationWidget>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'الموقع',
-                        textAlign: TextAlign.start,
-                        style: AppStyles.styleBold22(context).copyWith(
-                          color: AppColors.typographyHeading(context),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    'الموقع',
+                    textAlign: TextAlign.start,
+                    style: AppStyles.styleBold22(context).copyWith(
+                      color: AppColors.typographyHeading(context),
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        homeCubit.auctionOrigin?.location.title ?? '',
-                        textAlign: TextAlign.start,
-                        style: AppStyles.styleMedium14(context).copyWith(
-                          color: AppColors.typographySubTitle(context),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    homeCubit.auctionOrigin?.location.title ?? '',
+                    textAlign: TextAlign.start,
+                    maxLines: 2,
+                    style: AppStyles.styleMedium14(context).copyWith(
+                      color: AppColors.typographySubTitle(context),
+                    ),
                   ),
                   const SizedBox(height: 16),
                 ],

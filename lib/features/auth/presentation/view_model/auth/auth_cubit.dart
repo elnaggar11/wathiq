@@ -40,9 +40,9 @@ class AuthCubit extends Cubit<AuthState> {
   final resetPasswordFormKey = GlobalKey<FormState>();
 
   // Controllers
-  final identityNumberController = TextEditingController();
+  final identityNumberController = TextEditingController(text: '1234567890');
   //
-  final loginPasswordController = TextEditingController();
+  final loginPasswordController = TextEditingController(text: 'Mohamed@1');
   //
   final verifyController = TextEditingController();
 
@@ -220,7 +220,6 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void _cleareControllers() {
-    identityNumberController.clear();
     loginPasswordController.clear();
     verifyController.clear();
     resetPasswordNewController.clear();
@@ -281,6 +280,10 @@ class AuthCubit extends Cubit<AuthState> {
         log(failure.toString());
       },
       (message) {
+        // clear the identity number after successful reset
+        identityNumberController.clear();
+        _cleareControllers(); // to ensure other controllers are clean
+
         emit(state.copyWith(
           resetPasswordRequestState: RequestState.loaded,
         ));

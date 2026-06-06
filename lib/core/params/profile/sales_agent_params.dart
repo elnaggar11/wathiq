@@ -161,26 +161,30 @@ class SalesAgentParams extends Equatable {
     print('bankCertificate' + bankCertificate!.path);
     // Construct FormData
     return FormData.fromMap({
-      'letterOfAuthorization':
-          await _createMultipartFile(letterOfAuthorization!),
-      'articlesOfAssociation':
-          await _createMultipartFile(articlesOfAssociation!),
-      'identityAttachment': await _createMultipartFile(identityAttachment!),
+      if (letterOfAuthorization != null)
+        'letterOfAuthorization': await _createMultipartFile(letterOfAuthorization!),
+      if (articlesOfAssociation != null)
+        'articlesOfAssociation': await _createMultipartFile(articlesOfAssociation!),
+      if (identityAttachment != null)
+        'identityAttachment': await _createMultipartFile(identityAttachment!),
       //
-      'bankCertificate': await _createMultipartFile(bankCertificate!),
+      if (bankCertificate != null)
+        'bankCertificate': await _createMultipartFile(bankCertificate!),
       //
-      'commercialAttachment': await _createMultipartFile(commercialAttachment!),
+      if (commercialAttachment != null)
+        'commercialAttachment': await _createMultipartFile(commercialAttachment!),
       if (taxAttachment != null)
         'taxAttachment': await _createMultipartFile(taxAttachment!),
-      'valAttachment': await _createMultipartFile(valAttachment!),
+      if (valAttachment != null)
+        'valAttachment': await _createMultipartFile(valAttachment!),
       //
       'companyName': companyName,
       'companyEmail': companyEmail,
       'companyPhoneNumber[number]': companyPhoneNumber,
-      'companyPhoneNumber[key]': '+966',
+      'companyPhoneNumber[key]': companyPhoneKey,
       'bankAccountInformation[accountNumber]': bankAccountNumber,
       'bankAccountInformation[bankName]': bankName,
-      'realEstateActivity': 'النشاط العقارى',
+      'realEstateActivity': realEstateActivity,
       'valAuctionsLicense[number]': valAuctionsLicenseNumber,
       'tax[type]': taxType,
       if (taxType == 'خاضع للضريبة') 'tax[number]': taxNumber,
@@ -188,10 +192,10 @@ class SalesAgentParams extends Equatable {
       'commercialRegistration[endDate]': commercialRegEndDate,
       'commercialRegistration[startDate]': commercialRegStartDate,
       'user[name]': userName,
-      'user[phoneNumber][key]': '+966',
+      'user[phoneNumber][key]': userPhoneKey,
       'user[phoneNumber][number]': userPhoneNumber,
       'user[email]': userEmail,
-      'user[birthDay]': commercialRegStartDate,
+      'user[birthDay]': userBirthDay,
       'user[identityNumber]': userIdentityNumber,
       'approvedByNafath': approvedByNafath,
       'accreditationRequest': accreditationRequest,

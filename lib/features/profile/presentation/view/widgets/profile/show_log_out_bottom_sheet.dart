@@ -12,6 +12,7 @@ import 'package:wathiq/core/utils/app_animations.dart';
 import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/features/layout/presentation/view/screens/layout_screen.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 Future<void> showLogOutBottomSheet(BuildContext context) async {
@@ -94,9 +95,10 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                               listener: (context, state) {
                                 if (state.logOutRequestState ==
                                     RequestState.loaded) {
+                                  KcurrentIndex = 0;
                                   context
                                       .navigateToWithReplacementAndClearStack(
-                                    Routes.login,
+                                    Routes.layoutScreen,
                                   );
                                   mySnackBar(
                                     state.logOutMsg ?? 'تم تسجيل الخروج بنجاح',
@@ -129,8 +131,8 @@ Future<void> showLogOutBottomSheet(BuildContext context) async {
                                       ),
                                       const SizedBox(width: 4),
                                       Text(
-                                        'تسجيل الخروج', // Format DateTime
-                                        style: AppStyles.styleMedium16(context)
+                                        'تسجيل الخروج',
+                                        style: AppStyles.styleMedium14(context)
                                             .copyWith(
                                           color: AppColors.white(context),
                                         ),

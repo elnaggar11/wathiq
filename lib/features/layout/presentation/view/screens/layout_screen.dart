@@ -133,32 +133,35 @@ class _LayoutScreenState extends State<LayoutScreen> {
           KcurrentIndex = index;
         });
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-            child: SvgPicture.asset(
-              iconPath,
-              color: KcurrentIndex == index
-                  ? AppColors.primary(context) // Selected color
-                  : AppColors.typographyHeading(context), // Unselected color
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              child: SvgPicture.asset(
+                iconPath,
+                color: KcurrentIndex == index
+                    ? AppColors.primary(context) // Selected color
+                    : AppColors.typographyHeading(context), // Unselected color
+              ),
             ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            label,
-            style: AppStyles.styleRegular14(context).copyWith(
-              color: KcurrentIndex == index
-                  ? AppColors.primary(context) // Selected color
-                  : AppColors.typographyHeading(context), // Unselected color
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: AppStyles.styleRegular14(context).copyWith(
+                color: KcurrentIndex == index
+                    ? AppColors.primary(context) // Selected color
+                    : AppColors.typographyHeading(context), // Unselected color
+              ),
             ),
-          ),
-          const SizedBox(height: 4),
-          KcurrentIndex == index
-              ? SvgPicture.asset(AppAssets.app_imagesUnion)
-              : const SizedBox.shrink(),
-        ],
+            const SizedBox(height: 4),
+            KcurrentIndex == index
+                ? SvgPicture.asset(AppAssets.app_imagesUnion)
+                : const SizedBox.shrink(),
+          ],
+        ),
       ),
     );
   }

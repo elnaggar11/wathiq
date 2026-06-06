@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:wathiq/app/app.dart';
 import 'package:wathiq/core/functions/pick_images_and_files.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/profile/data/models/agencies_model.dart';
@@ -317,8 +318,13 @@ class ProfileCubit extends Cubit<ProfileState> {
         ));
         await SecureStorageServices().deleteCookie().then((value) => value);
         SocketService().token = null;
+        KisGuest = true;
         serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userImage);
         serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userName);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userIdentityNumber);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.phoneNum);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userId);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.Useremail);
       },
     );
   }
@@ -478,8 +484,13 @@ class ProfileCubit extends Cubit<ProfileState> {
         ));
         await SecureStorageServices().deleteCookie().then((value) => value);
         SocketService().token = null;
+        KisGuest = true;
         serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userImage);
         serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userName);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userIdentityNumber);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.phoneNum);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.userId);
+        serviceLocator<IAppLocalStorage>().deleteValue(AppStrings.Useremail);
       },
     );
   }

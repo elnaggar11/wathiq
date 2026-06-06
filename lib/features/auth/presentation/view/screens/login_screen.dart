@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/contact_us_auth_widget.dart';
 
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/login/login_mobile_layout_widget.dart';
@@ -46,6 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     var cubit = context.read<AuthCubit>();
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: const ContactUsAuthWidget(),
         body: AdaptiveLayout(
           mobileLayout: (context) => const LoginMobileLayoutWidget(),
           tabletLayout: (context) => Center(

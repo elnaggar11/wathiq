@@ -85,15 +85,15 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                                 ContactUsCardWidget(
                                   text: 'إتصل بنا',
                                   subText:
-                                      '966' + state.socialModel!.data!.phoneNumber!.number! + '+',
+                                      '966${state.socialModel?.data?.phoneNumber?.number ?? ''}+',
                                   subtextIcon: AppAssets.app_imagesCopy,
                                   icon: AppAssets.app_imagesPhoneNum,
                                   onTap: () {
-                                    String? phoneNumber = state.socialModel!
-                                            .data!.phoneNumber!.key! +
-                                        state.socialModel!.data!.phoneNumber!
-                                            .number!;
-                                    callPhoneNumber(phoneNumber);
+                                    String phoneNumber = (state.socialModel?.data?.phoneNumber?.key ?? '') +
+                                        (state.socialModel?.data?.phoneNumber?.number ?? '');
+                                    if (phoneNumber.isNotEmpty) {
+                                      callPhoneNumber(phoneNumber);
+                                    }
                                   },
                                 ),
                                 const SizedBox(height: 16),
@@ -101,24 +101,25 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                                   text: 'المحادثة المباشرة',
                                   icon: AppAssets.app_imagesWhatsapp,
                                   subText:
-                                      '966' + state.socialModel!.data!.whatsapp!.number! + '+',
+                                      '966${state.socialModel?.data?.whatsapp?.number ?? ''}+',
                                   onTap: () {
-                                    String? whatsappNumber = state
-                                            .socialModel!.data!.whatsapp!.key! +
-                                        state.socialModel!.data!.whatsapp!
-                                            .number!;
-                                    openLink('https://wa.me/$whatsappNumber');
+                                    String whatsappNumber = (state.socialModel?.data?.whatsapp?.key ?? '') +
+                                        (state.socialModel?.data?.whatsapp?.number ?? '');
+                                    if (whatsappNumber.isNotEmpty) {
+                                      openLink('https://wa.me/$whatsappNumber');
+                                    }
                                   },
                                 ),
                                 const SizedBox(height: 16),
                                 ContactUsCardWidget(
                                   text: 'البريد الالكتروني',
-                                  subText: '${state.socialModel!.data!.email}',
+                                  subText: '${state.socialModel?.data?.email ?? ''}',
                                   subtextIcon: AppAssets.app_imagesCopy,
                                   icon: AppAssets.app_imagesEmail,
                                   onTap: () {
-                                    openEmail(
-                                        email: state.socialModel!.data!.email);
+                                    if (state.socialModel?.data?.email != null) {
+                                      openEmail(email: state.socialModel!.data!.email);
+                                    }
                                   },
                                 ),
                                 const SizedBox(height: 16),
@@ -158,10 +159,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                                 ContactUsCardWidget(
                                   text: 'تابعنا على',
                                   onTap: null,
-                                  instagram: state.socialModel!.data!.instagram,
-                                  linkedin: state.socialModel!.data!.linkedin,
-                                  twitter: state.socialModel!.data!.twitter,
-                                  youtube: state.socialModel!.data!.facebook,
+                                  instagram: state.socialModel?.data?.instagram,
+                                  linkedin: state.socialModel?.data?.linkedin,
+                                  twitter: state.socialModel?.data?.twitter,
+                                  youtube: state.socialModel?.data?.facebook,
                                 ),
                                 const SizedBox(height: 16),
                               ],

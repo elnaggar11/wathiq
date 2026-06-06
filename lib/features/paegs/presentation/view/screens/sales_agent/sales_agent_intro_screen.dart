@@ -15,6 +15,7 @@ class SalesAgentIntroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: const ContactUsAuthWidget(),
         appBar: CoustomAppBarWidget(title: 'وكيل بيع'),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -63,8 +64,6 @@ class SalesAgentIntroScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
-              const ContactUsAuthWidget(),
             ],
           ),
         ),

@@ -24,11 +24,21 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  late final PagesCubit _pagesCubit;
+
   @override
   void initState() {
     super.initState();
-    context.read<PagesCubit>().getNotifications();
-    context.read<PagesCubit>().newNotifications();
+    _pagesCubit = context.read<PagesCubit>();
+    _pagesCubit.setViewingNotifications(true);
+    _pagesCubit.getNotifications();
+    _pagesCubit.newNotifications();
+  }
+
+  @override
+  void dispose() {
+    _pagesCubit.setViewingNotifications(false);
+    super.dispose();
   }
 
   @override
@@ -235,6 +245,21 @@ class NotificationCard extends StatelessWidget {
       margin: EdgeInsets.only(
           right: 16, left: 16, top: 24, bottom: isLastItem ? 24 : 0),
       padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.white(context),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppColors.separatingBorder(context),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -244,7 +269,7 @@ class NotificationCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(8),
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(
@@ -295,13 +320,16 @@ class NotificationCard extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              const Column(
-                children: [
-                  // SvgPicture.asset(
-                  //   Assets.imagesReadNotification,
-                  //   color: AppColors.backgroundTertiary(context),
-                  // ),
-                ],
+              Container(
+                margin: const EdgeInsets.only(top: 12),
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: (notification.readAt == null && notification.status != 'read')
+                      ? AppColors.primary(context)
+                      : Colors.grey[300],
+                ),
               ),
             ],
           ),

@@ -40,9 +40,11 @@ class _SavedMazadeScreenState extends State<SavedMazadeScreen>
     return SafeArea(
       child: Scaffold(
         appBar: CoustomAppBarWidget(
-          title: 'المزادات المحفوظة',
+          title: 'المفضلة',
         ),
-        body: KisGuest == true ? const GuestWidget() : const SavedMazadBodyWidget(),
+        body: KisGuest == true
+            ? const GuestWidget()
+            : const SavedMazadBodyWidget(),
       ),
     );
   }

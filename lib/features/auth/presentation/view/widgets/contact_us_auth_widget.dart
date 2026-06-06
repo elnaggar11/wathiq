@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
 import 'package:wathiq/config/routes/app_routes.dart';
@@ -13,26 +15,48 @@ class ContactUsAuthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         context.navigateTo(Routes.contactUsScreen);
       },
       child: Container(
-        color: AppColors.white(context),
-        height: 30,
-        width: 1.sw,
+        padding: EdgeInsets.symmetric(vertical: 14.h),
+        color: AppColors.color3(context),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SvgPicture.asset(AppAssets.app_imagesHeadset),
             Text(
-              'هل تحتاج إلى المساعدة ؟',
+              'تواصل معنا',
               style: AppStyles.styleMedium16(context).copyWith(
-                color: AppColors.typographyBody(context),
+                color: AppColors.white(context),
               ),
             ),
           ],
         ),
       ),
     );
+
+    //  GestureDetector(
+    //   onTap: () {
+    //     context.navigateTo(Routes.contactUsScreen);
+    //   },
+    //   child: Container(
+    //     color: AppColors.white(context),
+    //     height: 30,
+    //     width: 1.sw,
+    //     child: Row(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         Text(
+    //           'هل تحتاج إلى المساعدة ؟',
+    //           style: AppStyles.styleMedium16(context).copyWith(
+    //             color: AppColors.typographyBody(context),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }

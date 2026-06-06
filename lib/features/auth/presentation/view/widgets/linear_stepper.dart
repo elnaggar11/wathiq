@@ -16,8 +16,6 @@ class LinearStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stepWidth = width / totalSteps;
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

@@ -38,15 +38,12 @@ class CoustomAppBarWidget extends StatelessWidget
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 160,
-            child: Text(
-              title ?? '',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: AppStyles.styleBold16(context).copyWith(
-                color: AppColors.typographyHeading(context),
-              ),
+          Text(
+            title ?? '',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: AppStyles.styleBold16(context).copyWith(
+              color: AppColors.typographyHeading(context),
             ),
           ),
         ],

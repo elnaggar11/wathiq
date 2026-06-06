@@ -39,7 +39,9 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+        statusBarColor: AppColors.white(context),
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: AppColors.white(context),
       ),
@@ -66,7 +68,9 @@ class _SplashScreenState extends State<SplashScreen>
       bool authenticated =
           await authenticateUser('الرجاء المصادقة للوصول إلى التطبيق');
       if (authenticated) {
-        navigateToNextScreen(context);
+        if (mounted) {
+          navigateToNextScreen(context);
+        }
       }
     } else {
       navigateToNextScreen(context);
@@ -130,12 +134,6 @@ class _SplashScreenState extends State<SplashScreen>
       extendBody: true,
       body: Stack(
         children: [
-          // Positioned.fill(
-          //   child: Image.asset(
-          //     AppAssets.app_imagesSplashBg,
-          //     fit: BoxFit.fill,
-          //   ),
-          // ),
           AdaptiveLayout(
             mobileLayout: (context) => SplashScreenMobileLayoutWidget(
                 logoScaleAnimation: _logoScaleAnimation,
@@ -151,34 +149,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          // PositionedDirectional(
-          //   bottom: 40,
-          //   start: 0,
-          //   end: 0,
-          //   child: Align(
-          //     alignment: Alignment.center,
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: List.generate(
-          //         text.length,
-          //         (index) => AnimatedBuilder(
-          //           animation: _controller,
-          //           builder: (context, child) {
-          //             return SlideTransition(
-          //               position: _textAnimations[index],
-          //               child: Text(
-          //                 text[index],
-          //                 style: AppStyles.styleSemiBold16(context).copyWith(
-          //                   color: AppColors.white(context),
-          //                 ),
-          //               ),
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
@@ -200,44 +170,56 @@ class SplashScreenMobileLayoutWidget extends StatelessWidget {
     bool isAppLocked =
         serviceLocator<IAppLocalStorage>().getValue(AppStrings.isAppLocked) ??
             false;
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AnimatedBuilder(
-            animation: _logoScaleAnimation,
-            builder: (context, child) {
-              return Transform.scale(
-                scale: _logoScaleAnimation.value,
-                child: SizedBox(
-                  width: size.width * 0.55,
-                  height: size.height * 0.3,
-                  child: SvgPicture.asset(
-                    AppAssets.app_imagesVerticalLogo,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              );
-            },
+    return Stack(
+      children: [
+        Image.asset(
+          AppAssets.app_imagesSplashBg,
+          fit: BoxFit.cover,
+          width: size.width,
+          height: size.height,
+        ),
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedBuilder(
+                animation: _logoScaleAnimation,
+                builder: (context, child) {
+                  return Transform.scale(
+                    scale: _logoScaleAnimation.value,
+                    child: SizedBox(
+                      width: size.width * 0.35,
+                      height: size.height * 0.25,
+                      child: SvgPicture.asset(
+                        AppAssets.app_imagesLogoWithGreen,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              isAppLocked
+                  ? GestureDetector(
+                      onTap: () async {
+                        bool authenticated = await authenticateUser(
+                            'الرجاء المصادقة للوصول إلى التطبيق');
+                        if (authenticated) {
+                          if (context.mounted) {
+                            _SplashScreenState().navigateToNextScreen(context);
+                          }
+                        }
+                      },
+                      child: Text(
+                        'فتح القفل',
+                        style: AppStyles.styleMedium14(context).copyWith(
+                            color: AppColors.typographyHeadingWhite(context)),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            ],
           ),
-          isAppLocked
-              ? GestureDetector(
-                  onTap: () async {
-                    bool authenticated = await authenticateUser(
-                        'الرجاء المصادقة للوصول إلى التطبيق');
-                    if (authenticated) {
-                      _SplashScreenState().navigateToNextScreen(context);
-                    }
-                  },
-                  child: Text(
-                    'فتح القفل',
-                    style: AppStyles.styleMedium14(context).copyWith(
-                        color: AppColors.typographyHeadingWhite(context)),
-                  ),
-                )
-              : const SizedBox.shrink(),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

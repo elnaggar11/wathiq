@@ -105,6 +105,8 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                     ),
                     const SizedBox(height: 8),
                     const SelectNafathApprovedRadioButton(),
+                    const SizedBox(height: 16),
+                    const SelectAccreditationRequestRadioButton(),
                     const SizedBox(height: 24),
                     TextFormFieldWithTitleWidget(
                       filled: true,

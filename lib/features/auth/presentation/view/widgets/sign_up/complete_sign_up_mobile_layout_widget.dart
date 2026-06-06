@@ -11,15 +11,15 @@ import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/sign_up_password_widget.dart';
-import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 import 'package:wathiq/config/routes/app_routes.dart';
 import 'package:wathiq/core/utils/app_animations.dart';
 import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
 import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
-import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
+import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 class CompleteSignUpMobileLayoutWidget extends StatefulWidget {
   const CompleteSignUpMobileLayoutWidget({
@@ -55,33 +55,9 @@ class _CompleteSignUpMobileLayoutWidgetState
                 24.verticalSpace,
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: StepperWidget(
-                    stepperList: [
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: true,
-                        stepNum: '1',
-                      ),
-                      SteperLineWidegt(
-                        isActive: true,
-                      ),
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: false,
-                        stepNum: '2',
-                      ),
-                      SteperLineWidegt(
-                        isActive: false,
-                      ),
-                      BuildStep(
-                        title: '',
-                        isActive: false,
-                        isCompleted: false,
-                        stepNum: '3',
-                      ),
-                    ],
+                  child: CustomProgressBar(
+                    totalSteps: 3,
+                    currentStep: 2,
                   ),
                 ),
                 48.verticalSpace,
@@ -401,15 +377,15 @@ class _DropdownButtonFormFieldWidgetState
             selectedValue = null;
           }
 
-          // إذا كانت القائمة فارغة، نعرض رسالة
-          if (countries.isEmpty) {
-            return Center(
-              child: Text(
-                'جاري تحميل المدن...',
-                style: AppStyles.styleRegular16(context),
-              ),
-            );
-          }
+          // // إذا كانت القائمة فارغة، نعرض رسالة
+          // if (countries.isEmpty) {
+          //   return Center(
+          //     child: Text(
+          //       'جاري تحميل المدن...',
+          //       style: AppStyles.styleRegular16(context),
+          //     ),
+          //   );
+          // }
 
           return DropdownButtonFormField<String>(
             initialValue: selectedValue,

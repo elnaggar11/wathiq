@@ -109,44 +109,56 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
       leadingWidth: 60,
       actions: KisGuest
           ? [
-              GestureDetector(
-                onTap: () {
-                  showPopover(
+              Builder(
+                builder: (buttonContext) => GestureDetector(
+                  onTap: () {
+                    final RenderBox button =
+                        buttonContext.findRenderObject() as RenderBox;
+                    final RenderBox overlay = Navigator.of(context)
+                        .overlay!
+                        .context
+                        .findRenderObject() as RenderBox;
+                    final Offset buttonOffset =
+                        button.localToGlobal(Offset.zero, ancestor: overlay);
+
+                    final RelativeRect position = RelativeRect.fromLTRB(
+                      20.w,
+                      buttonOffset.dy + button.size.height + 8.h,
+                      20.w + 252.w,
+                      buttonOffset.dy + button.size.height + 8.h + 200.h,
+                    );
+
+                    showMenu(
                       context: context,
-                      bodyBuilder: (context) => const Padding(
-                            padding: EdgeInsets.only(right: 0),
-                            child: ListItems(),
-                          ),
-                      onPop: () => print('Popover was popped!'),
-                      direction: PopoverDirection.bottom,
-                      width: 252,
-                      height: 200,
-                      arrowHeight: 16,
-                      arrowDxOffset: -16,
-                      barrierColor: Colors.transparent,
-                      arrowDyOffset: -60,
-                      arrowWidth: 0,
-                      backgroundColor: const Color(0xFF2F4A6F));
-                },
-                child: Container(
-                  width: 44,
-                  height: 44,
-                  padding: const EdgeInsets.all(8),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFF18365F),
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                        width: 1,
-                        color: Color(0xFFE1E1E2),
+                      position: position,
+                      elevation: 0,
+                      color: const Color(0xFF18365F),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      borderRadius: BorderRadius.circular(10),
+                      items: [
+                        const CustomPopupContent(),
+                      ],
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF18365F),
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(
+                          width: 1,
+                          color: Color(0xFFE1E1E2),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                  ),
-                  child: FittedBox(
-                    child: SvgPicture.asset(
-                      Assets.imagesUser,
-                      fit: BoxFit.contain,
-                      color: AppColors.white(context),
+                    child: FittedBox(
+                      child: SvgPicture.asset(
+                        Assets.imagesUser,
+                        fit: BoxFit.contain,
+                        color: AppColors.white(context),
+                      ),
                     ),
                   ),
                 ),
@@ -166,9 +178,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                       clipBehavior: Clip.none,
                       children: [
                         Container(
-                          width: 44,
-                          height: 44,
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(6),
                           decoration: ShapeDecoration(
                             color: const Color(0xFFFAFAFA),
                             shape: RoundedRectangleBorder(
@@ -191,20 +201,30 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                           PositionedDirectional(
                             top: 0,
                             start: 0,
-                            child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.mainColor(context),
-                                ),
-                                padding: const EdgeInsets.all(4),
-                                child: Center(
-                                  child: Text(
-                                    '$count',
-                                    style:
-                                        AppStyles.stylBold12(context).copyWith(
-                                      color:
-                                          AppColors.typographyHeading(context),
+                            child: TweenAnimationBuilder<double>(
+                              tween: Tween<double>(begin: -20.0, end: 0.0),
+                              duration: const Duration(milliseconds: 1000),
+                              curve: Curves.bounceOut,
+                              builder: (context, value, child) {
+                                return Transform.translate(
+                                  offset: Offset(0, value),
+                                  child: child,
+                                );
+                              },
+                              child: Center(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.error(context),
+                                  ),
+                                  padding: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      '$count',
+                                      style: AppStyles.stylBold12(context)
+                                          .copyWith(
+                                        color: AppColors.white(context),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -223,7 +243,6 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
     );
   }
 
-  @override
   Size get preferredSize => const Size.fromHeight(115);
 }
 
@@ -233,9 +252,9 @@ class ListItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: ListView(
-        padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           MenuItemCard(
             iconAsset: AppAssets.app_imagesUserCheckRounded,
@@ -273,6 +292,26 @@ class ListItems extends StatelessWidget {
   }
 }
 
+class CustomPopupContent extends PopupMenuEntry<void> {
+  const CustomPopupContent({super.key});
+
+  @override
+  double get height => 200.h;
+
+  @override
+  bool represents(void value) => false;
+
+  @override
+  State<CustomPopupContent> createState() => _CustomPopupContentState();
+}
+
+class _CustomPopupContentState extends State<CustomPopupContent> {
+  @override
+  Widget build(BuildContext context) {
+    return const ListItems();
+  }
+}
+
 class MenuItemCard extends StatelessWidget {
   final String iconAsset;
   final String title;
@@ -293,7 +332,7 @@ class MenuItemCard extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(12),
         decoration: ShapeDecoration(
-          color: AppColors.primary(context),
+          color: AppColors.white(context).withValues(alpha: 0.1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -308,14 +347,6 @@ class MenuItemCard extends StatelessWidget {
               style: AppStyles.styleMedium14(context).copyWith(
                 color: AppColors.white(context),
               ),
-            ),
-            const SizedBox(width: 8),
-            Container(
-              width: 24,
-              height: 24,
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(),
-              child: const Stack(),
             ),
           ],
         ),
@@ -348,7 +379,6 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
       color: AppColors.backgroundPrimary(context),
       child: Container(
         padding: EdgeInsets.only(
@@ -414,52 +444,70 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
                               : AppColors.typographyBody(context),
                         ),
                       ),
-                      BlocBuilder<HomeCubit, HomeState>(
-                        builder: (context, state) {
-                          if (state.auctionsRequestState ==
-                              RequestState.loaded) {
-                            return Row(
-                              children: [
-                                const SizedBox(width: 10),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 2),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: widget._tabController.index == index
-                                        ? AppColors.primary(context)
-                                        : AppColors.backgroundPrimary(context),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(6)),
-                                  ),
-                                  child: Text(
-                                    index == 0
-                                        ? state
-                                            .auctionsModel!.counts!.onGoingCount
-                                            .toString()
-                                        : index == 1
+                      if (widget._tabController.index == index)
+                        BlocBuilder<HomeCubit, HomeState>(
+                          builder: (context, state) {
+                            if (state.auctionsRequestState ==
+                                RequestState.loaded) {
+                              return Row(
+                                children: [
+                                  const SizedBox(width: 10),
+                                  TweenAnimationBuilder<double>(
+                                    tween:
+                                        Tween<double>(begin: -20.0, end: 0.0),
+                                    duration:
+                                        const Duration(milliseconds: 1000),
+                                    curve: Curves.bounceOut,
+                                    builder: (context, value, child) {
+                                      return Transform.translate(
+                                        offset: Offset(0, value),
+                                        child: child,
+                                      );
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 2),
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: ShapeDecoration(
+                                        color:
+                                            widget._tabController.index == index
+                                                ? AppColors.primary(context)
+                                                : AppColors.backgroundPrimary(
+                                                    context),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(6)),
+                                      ),
+                                      child: Text(
+                                        index == 0
                                             ? state.auctionsModel!.counts!
-                                                .inProgressCount
+                                                .onGoingCount
                                                 .toString()
-                                            : state.auctionsModel!.counts!
-                                                .completedCount
-                                                .toString(),
-                                    style: AppStyles.styleMedium14(context)
-                                        .copyWith(
-                                      color: widget._tabController.index ==
-                                              index
-                                          ? AppColors.white(context)
-                                          : AppColors.typographyBody(context),
+                                            : index == 1
+                                                ? state.auctionsModel!.counts!
+                                                    .inProgressCount
+                                                    .toString()
+                                                : state.auctionsModel!.counts!
+                                                    .completedCount
+                                                    .toString(),
+                                        style: AppStyles.styleMedium14(context)
+                                            .copyWith(
+                                          color: widget._tabController.index ==
+                                                  index
+                                              ? AppColors.white(context)
+                                              : AppColors.typographyBody(
+                                                  context),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return const SizedBox.shrink();
-                          }
-                        },
-                      ),
+                                ],
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          },
+                        ),
                     ],
                   ),
                 ),

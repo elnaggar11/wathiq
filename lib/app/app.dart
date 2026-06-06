@@ -18,6 +18,14 @@ import 'package:wathiq/features/wallet/presentation/view_model/wallet/wallet_cub
 bool KisGuest = false;
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
+const SystemUiOverlayStyle _defaultSystemUiOverlayStyle = SystemUiOverlayStyle(
+  statusBarColor: Colors.white,
+  statusBarIconBrightness: Brightness.dark,
+  statusBarBrightness: Brightness.light,
+  systemNavigationBarColor: Colors.white,
+  systemNavigationBarIconBrightness: Brightness.dark,
+);
+
 class MyApp extends StatelessWidget {
   const MyApp._internal();
 
@@ -27,14 +35,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: AppColors.white(context),
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: AppColors.white(context),
-      ),
-    );
+    SystemChrome.setSystemUIOverlayStyle(_defaultSystemUiOverlayStyle);
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -80,7 +81,15 @@ class MyApp extends StatelessWidget {
                 theme: state.themeData,
                 debugShowCheckedModeBanner: false,
                 // locale: DevicePreview.locale(context),
-                builder: DevicePreview.appBuilder,
+                builder: (context, child) {
+                  return AnnotatedRegion<SystemUiOverlayStyle>(
+                    value: _defaultSystemUiOverlayStyle,
+                    child: ColoredBox(
+                      color: AppColors.white(context),
+                      child: DevicePreview.appBuilder(context, child),
+                    ),
+                  );
+                },
                 onGenerateRoute: (settings) =>
                     AppRoutes.onGenerateRoute(settings),
                 initialRoute: Routes.splash,

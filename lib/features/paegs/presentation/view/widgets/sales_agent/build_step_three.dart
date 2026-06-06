@@ -288,6 +288,41 @@ class _BuildStepThreeWidgetState extends State<BuildStepThreeWidget> {
                         ),
                       ),
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        pagesCubit.pickDelegationAttachment().then((val) {
+                          setState(() {});
+                        });
+                      },
+                      child: TextFormFieldWithTitleWidget(
+                        label: pagesCubit.DelegationAttachment == null
+                            ? 'إرفاق خطاب التفويض'
+                            : pagesCubit.DelegationAttachment!.path
+                                .split('/')
+                                .last,
+                        validator: (value) {
+                          if (pagesCubit.DelegationAttachment == null) {
+                            return ' إرفاق الخطاب مطلوب';
+                          }
+
+                          return null;
+                        },
+                        hintStyle: AppStyles.styleBold16(context),
+                        filled: true,
+                        fillColor: AppColors.backgroundPrimary(context),
+                        enabled: false,
+                        keyboardType: TextInputType.number,
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                            horizontal: 16.w,
+                          ),
+                          child: SvgPicture.asset(
+                            AppAssets.app_imagesUploadeFilesIcon,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

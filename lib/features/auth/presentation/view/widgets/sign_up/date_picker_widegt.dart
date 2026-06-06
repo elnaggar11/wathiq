@@ -23,8 +23,6 @@ class DatePickerWidegt extends StatefulWidget {
 }
 
 class _DatePickerWidegtState extends State<DatePickerWidegt> {
-  String? _selectedDateFormatted;
-
   Future<void> _showDatePicker() async {
     DateTime? selectedDate = await showDatePicker(
       context: context,
@@ -49,9 +47,11 @@ class _DatePickerWidegtState extends State<DatePickerWidegt> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               ),
-            ), dialogTheme: DialogThemeData(backgroundColor: Colors.grey[100]),
+            ),
+            dialogTheme: DialogThemeData(backgroundColor: Colors.grey[100]),
           ),
           child: child!,
         );
@@ -66,17 +66,17 @@ class _DatePickerWidegtState extends State<DatePickerWidegt> {
       // Add a default timezone if none exists
       selectedDate = selectedDate.isUtc
           ? selectedDate
-          : selectedDate.toUtc().add(const Duration(hours: 0)); // Default to -05:00
+          : selectedDate
+              .toUtc()
+              .add(const Duration(hours: 0)); // Default to -05:00
 
-      final formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+      DateFormat('yyyy-MM-dd').format(selectedDate);
       final isoFormattedDate =
           DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(selectedDate);
       print(isoFormattedDate);
 
       // Update UI state
-      setState(() {
-        _selectedDateFormatted = formattedDate;
-      });
+      setState(() {});
 
       // // Update cubit state outside of setState
       // context.read<AuthCubit>().completeSignUpCountryController.text =

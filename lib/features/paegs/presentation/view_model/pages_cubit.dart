@@ -85,6 +85,16 @@ class PagesCubit extends Cubit<PagesState> {
   List<NotificationModel> notifications = [];
 
   final notificationsSocket = NotificationsSocket();
+  bool isViewingNotifications = false;
+
+  void setViewingNotifications(bool isViewing) {
+    isViewingNotifications = isViewing;
+    if (isViewing) {
+      emit(state.copyWith(notificationCount: 0));
+    } else {
+      notificationsSocket.emitUnReadCount();
+    }
+  }
 
   final realStatephoneNumberController = TextEditingController();
   final realStateNameController = TextEditingController();
@@ -209,7 +219,7 @@ class PagesCubit extends Cubit<PagesState> {
       emit(
         state.copyWith(
           getNotificationsRequestState: RequestState.loaded,
-          notificationCount: count,
+          notificationCount: isViewingNotifications ? 0 : count,
         ),
       );
     });
@@ -222,16 +232,32 @@ class PagesCubit extends Cubit<PagesState> {
     );
   }
 
+  void markAllNotificationsAsRead() async {
+    for (var notification in notifications) {
+      if (notification.id != null && notification.readAt == null) {
+        notificationsSocket.readNotification(notification.id!);
+      }
+    }
+    emit(state.copyWith(
+      notificationCount: 0,
+      notifications: List.from(notifications),
+    ));
+  }
+
   void newNotifications() async {
     notificationsSocket.newNotificationStream.listen(
       (notification) {
         if (!notifications.contains(notification)) {
           notifications.insert(0, notification);
+          if (notification.id != null && notification.readAt == null) {
+            notificationsSocket.readNotification(notification.id!);
+          }
         }
         if (!isClosed)
           emit(state.copyWith(
             getNotificationsRequestState: RequestState.loaded,
-            notifications: notifications,
+            notifications: List.from(notifications),
+            notificationCount: 0,
           ));
       },
     );
@@ -255,6 +281,7 @@ class PagesCubit extends Cubit<PagesState> {
           getNotificationsRequestState: RequestState.loaded,
           notifications: r,
         ));
+        markAllNotificationsAsRead();
       },
     );
   }
@@ -427,7 +454,8 @@ class PagesCubit extends Cubit<PagesState> {
       } catch (e) {
         emit(state.copyWith(
           createSalesAgentRequestState: RequestState.error,
-          createSalesAgentError: const AppFailure(message: 'تنسيق التاريخ غير صحيح'),
+          createSalesAgentError:
+              const AppFailure(message: 'تنسيق التاريخ غير صحيح'),
         ));
         return false;
       }

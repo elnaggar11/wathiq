@@ -15,7 +15,7 @@ class NavToAnotherScreenRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
@@ -23,30 +23,50 @@ class NavToAnotherScreenRow extends StatelessWidget {
           style: AppStyles.styleMedium16(context)
               .copyWith(color: AppColors.typographyBody(context)),
         ),
-        8.verticalSpace,
+        8.horizontalSpace,
         InkWell(
           onTap: onTap,
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              minimumSize: const Size(double.infinity, 50),
-              side: BorderSide(
-                color: AppColors.primary(context),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              foregroundColor: AppColors.white(context),
-              backgroundColor: AppColors.white(context),
-            ),
-            onPressed: onTap,
-            child: Text(
-              text2,
-              style: AppStyles.styleBold16(context)
-                  .copyWith(color: AppColors.primary(context)),
-            ),
+          child: Text(
+            text2,
+            style: AppStyles.styleMedium16(context)
+                .copyWith(color: AppColors.primary(context)),
           ),
         ),
       ],
     );
+
+    // Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //     Text(
+    //       text1,
+    //       style: AppStyles.styleMedium16(context)
+    //           .copyWith(color: AppColors.typographyBody(context)),
+    //     ),
+    //     8.verticalSpace,
+    //     InkWell(
+    //       onTap: onTap,
+    //       child: OutlinedButton(
+    //         style: OutlinedButton.styleFrom(
+    //           minimumSize: const Size(double.infinity, 50),
+    //           side: BorderSide(
+    //             color: AppColors.primary(context),
+    //           ),
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(12),
+    //           ),
+    //           foregroundColor: AppColors.white(context),
+    //           backgroundColor: AppColors.white(context),
+    //         ),
+    //         onPressed: onTap,
+    //         child: Text(
+    //           text2,
+    //           style: AppStyles.styleBold16(context)
+    //               .copyWith(color: AppColors.primary(context)),
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 }

@@ -13,13 +13,8 @@ class StepperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 4,
-        ),
-        child: Row(
-          children: stepperList,
-        ),
+      child: Row(
+        children: stepperList,
       ),
     );
   }
@@ -44,17 +39,26 @@ class StepperCard extends StatelessWidget {
         Column(
           children: [
             Container(
-              height: 36,
-              width: (!isActive && !isCompleted) ? 36 : 36,
+              height: 44,
+              width: 44,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: (isActive && !isCompleted)
+                    ? AppColors.borderPrimary(context)
+                    : Colors.transparent,
+              ),
               child: (isActive && !isCompleted)
                   ? Container(
                       width: 34,
                       height: 34,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+                        shape: BoxShape.circle,
+                        color: AppColors.white(context),
                         border: Border.all(
                           color: AppColors.darkBlue(context),
+                          width: 1.5,
                         ),
                       ),
                       child: Text(
@@ -71,11 +75,8 @@ class StepperCard extends StatelessWidget {
                           height: 34,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            shape: BoxShape.circle,
                             color: AppColors.darkBlue(context),
-                            border: Border.all(
-                              color: AppColors.darkBlue(context),
-                            ),
                           ),
                           child: Text(
                             stepNum,
@@ -90,9 +91,11 @@ class StepperCard extends StatelessWidget {
                           height: 34,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            shape: BoxShape.circle,
+                            color: AppColors.white(context),
                             border: Border.all(
                               color: AppColors.borderPrimary(context),
+                              width: 1.5,
                             ),
                           ),
                           child: Text(

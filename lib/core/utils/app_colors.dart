@@ -22,6 +22,7 @@ class AppColors {
   static Color thirdColor(BuildContext context) => const Color(0xFFBC2A46);
   static Color mainColor(BuildContext context) => const Color(0xFF22A06B);
   static Color color2(BuildContext context) => const Color(0xFF22A06B);
+  static Color color3(BuildContext context) => const Color(0xFF2D9C95);
 
   // Typography
   static Color typographyHeading(BuildContext context) =>

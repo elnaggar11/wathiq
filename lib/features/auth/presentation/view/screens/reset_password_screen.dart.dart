@@ -12,7 +12,7 @@ import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
-import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/reset_and_forget_password/reset_password_widget.dart';
 
@@ -61,33 +61,9 @@ class ResetePasswordScreenMobileLayoutWidget extends StatelessWidget {
                 48.verticalSpace,
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: StepperWidget(
-                    stepperList: [
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: true,
-                        stepNum: '1',
-                      ),
-                      SteperLineWidegt(
-                        isActive: true,
-                      ),
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: true,
-                        stepNum: '2',
-                      ),
-                      SteperLineWidegt(
-                        isActive: true,
-                      ),
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: false,
-                        stepNum: '3',
-                      ),
-                    ],
+                  child: CustomProgressBar(
+                    totalSteps: 3,
+                    currentStep: 3,
                   ),
                 ),
                 32.verticalSpace,
@@ -139,7 +115,7 @@ class ResetPasswordButtonWidget extends StatelessWidget {
         listener: (context, state) {
           if (state.resetPasswordRequestState == RequestState.loaded) {
             context.navigateToWithReplacementAndClearStack(
-              Routes.layoutScreen,
+              Routes.login,
             );
             mySnackBar(
               'تم إعادة تعين كلمة المرور بنجاح',

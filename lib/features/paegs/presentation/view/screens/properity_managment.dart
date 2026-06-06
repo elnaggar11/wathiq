@@ -200,7 +200,7 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                             ),
                             child: Text(
                               '966+',
-                              style: AppStyles.styleBold16(context).copyWith(
+                              style: AppStyles.styleBold14(context).copyWith(
                                 color: AppColors.typographyHeading(context),
                               ),
                             ),

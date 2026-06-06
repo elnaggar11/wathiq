@@ -77,13 +77,11 @@ class AppInterceptor extends Interceptor {
         AppStrings.contentType: AppStrings.applicationJson,
         'Accept': 'application/json',
       };
-    final String? cookie =
-        await SecureStorageServices().getCookie().then((value) => value);
-    // if (cookie != null) {
-    options.headers['Cookie'] =
-        'broker_sa_session=s%3Ae_z_Ls6ATqfqLzXaPRWCCkJMTQppZ_kZ.1dREktv%2BQoygPQbMDP4jhKeG39fr%2FyOI0e%2Fk0MU6V9M'; //cookie;
-    print('cashed coocke $cookie');
-    // }
+    final String? cookie = await SecureStorageServices().getCookie();
+    if (cookie != null && cookie.isNotEmpty) {
+      options.headers['Cookie'] = cookie;
+    }
+    print('cashed cookie $cookie');
 
     /// 191353 / Aa@1235678
     options.headers.addAll({
@@ -106,30 +104,9 @@ class AppInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
-    // if ((response.statusCode == 401)) {
-    //   navigatorKey.currentState?.pushAndRemoveUntil(
-    //     MaterialPageRoute(builder: (_) => LoginScreen()),
-    //     (route) => false,
-    //   );
-    // }
     debugPrint(
         'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
     debugPrint('RESPONSE HEADERS: ${response.headers}');
-
-    // List<String>? cookies = response.headers['set-cookie'];
-    // print("response.headers['set-cookie'] ${response.headers['set-cookie']}");
-    // if (cookies != null && cookies.isNotEmpty) {
-    //   String? connectSid = cookies // cookies.first;
-    //       .firstWhere(
-    //         (cookie) => cookie.startsWith('connect.sid='),
-    //         orElse: () => '',
-    //       )
-    //       .split(';')
-    //       .firstWhere(
-    //         (segment) => segment.trim().startsWith('connect.sid='),
-    //         orElse: () => '',
-    //       )
-    //       .trim();
     if (response.headers['set-cookie'] != null) {
       await SecureStorageServices()
           .setCookie(cookie: response.headers['set-cookie']?.first);

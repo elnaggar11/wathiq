@@ -15,10 +15,9 @@ import 'package:wathiq/core/utils/app_animations.dart';
 import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
 import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
-import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
-import 'package:wathiq/features/auth/presentation/view/widgets/contact_us_auth_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/nav_to_another_screen_row.dart';
 
 class LoginMobileLayoutWidget extends StatelessWidget {
@@ -42,35 +41,16 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     20.verticalSpace,
-                    const Row(
-                      children: [
-                        AuthAppLogoWidget(),
-                      ],
-                    ),
+                    const AuthAppLogoWidget(),
                     48.verticalSpace,
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24),
-                      child: StepperWidget(
-                        stepperList: [
-                          BuildStep(
-                            title: '',
-                            isActive: true,
-                            isCompleted: true,
-                            stepNum: '1',
-                          ),
-                          SteperLineWidegt(
-                            isActive: false,
-                          ),
-                          BuildStep(
-                            title: '',
-                            isActive: false,
-                            isCompleted: false,
-                            stepNum: '2',
-                          ),
-                        ],
+                      child: CustomProgressBar(
+                        totalSteps: 2,
+                        currentStep: 1,
                       ),
                     ),
-                    16.verticalSpace,
+                    32.verticalSpace,
                     Row(
                       children: [
                         Text(
@@ -189,14 +169,12 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                       onTap: () {
                         context.navigateTo(Routes.signUpScreen);
                       },
-                      text1: 'لا يوجد لديك حساب ؟',
+                      text1: 'غير مسجل',
                       text2: 'إنشاء حساب جديد',
                     ),
-                    20.verticalSpace,
                   ],
                 ),
               ),
-              const ContactUsAuthWidget()
             ],
           ),
         ),

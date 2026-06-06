@@ -31,6 +31,8 @@ class AuthRepository {
         log('Register Status code is 200');
         serviceLocator<IAppLocalStorage>()
             .setValue(AppStrings.userName, response.data['data']['name']);
+        serviceLocator<IAppLocalStorage>()
+            .setValue(AppStrings.userIdentityNumber, nationalID);
         var data = SignUpModel.fromJson(response.data);
         return Right(data);
       } else {
@@ -101,6 +103,8 @@ class AuthRepository {
             response.data['data']['code']; //TODO : return msg at production
         serviceLocator<IAppLocalStorage>()
             .setValue(AppStrings.userName, response.data['data']['name']);
+        serviceLocator<IAppLocalStorage>()
+            .setValue(AppStrings.userIdentityNumber, params.identityNumber);
 
         return Right(code);
       } else if (response.statusCode == 401) {
@@ -128,6 +132,8 @@ class AuthRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         String code =
             response.data['data']['code']; //TODO : return msg at production
+        serviceLocator<IAppLocalStorage>()
+            .setValue(AppStrings.userIdentityNumber, identityNumber);
 
         return Right(code);
       } else {
