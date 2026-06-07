@@ -78,8 +78,11 @@ class _MyMazadatTabBarWidgetState extends State<MyMazadatTabBarWidget> {
           ),
         ),
         child: TabBar(
+          isScrollable: true,
+          tabAlignment: TabAlignment.start,
           controller: widget._tabController,
           indicatorColor: Colors.transparent,
+          labelPadding: const EdgeInsetsDirectional.symmetric(horizontal: 2),
           overlayColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) => Colors.transparent,
           ),
@@ -88,7 +91,6 @@ class _MyMazadatTabBarWidgetState extends State<MyMazadatTabBarWidget> {
           },
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: const EdgeInsets.all(0),
           tabs: List<Widget>.generate(
             widget.tapsName.length,
             (index) => InkWell(

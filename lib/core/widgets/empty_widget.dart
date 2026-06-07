@@ -11,9 +11,10 @@ class EmptyWidget extends StatelessWidget {
     this.subTitle,
     this.textButton,
     this.onPressed,
+    this.imagePath,
   });
   final String title;
-  final String? textButton, subTitle;
+  final String? textButton, subTitle, imagePath;
   final Function()? onPressed;
 
   @override
@@ -22,7 +23,7 @@ class EmptyWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(Assets.imagesEmpty),
+        SvgPicture.asset(imagePath ?? Assets.imagesEmpty),
         const SizedBox(height: 24),
         Text(
           title,

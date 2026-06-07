@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
 
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
@@ -39,7 +40,8 @@ class _ChangeEmailScreenState extends State<ChangeEmailScreen> {
           title: '',
         ),
         body: AdaptiveLayout(
-          mobileLayout: (context) => const ChangeEmailScreenMobileLayoutWidget(),
+          mobileLayout: (context) =>
+              const ChangeEmailScreenMobileLayoutWidget(),
           tabletLayout: (context) => Center(
             child: SizedBox(
               height: 1.sw,
@@ -72,36 +74,8 @@ class ChangeEmailScreenMobileLayoutWidget extends StatelessWidget {
               children: [
                 48.verticalSpace,
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: StepperWidget(
-                    stepperList: [
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: true,
-                        stepNum: '1',
-                      ),
-                      SteperLineWidegt(
-                        isActive: true,
-                      ),
-                      BuildStep(
-                        title: '',
-                        isActive: true,
-                        isCompleted: false,
-                        stepNum: '2',
-                      ),
-                      SteperLineWidegt(
-                        isActive: false,
-                      ),
-                      BuildStep(
-                        title: '',
-                        isActive: false,
-                        isCompleted: false,
-                        stepNum: '3',
-                      ),
-                    ],
-                  ),
-                ),
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: CustomProgressBar(totalSteps: 3, currentStep: 2)),
                 40.verticalSpace,
                 Row(
                   children: [

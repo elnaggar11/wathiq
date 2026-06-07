@@ -79,8 +79,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       );
                     case RequestState.loaded:
                       return context.read<PagesCubit>().notifications.isEmpty
-                          ? const Center(
-                              child: EmptyWidget(title: 'لا يوجد اشعارات '))
+                          ? const Center(child: EmptyNotificationWidget())
                           : ListView.builder(
                               itemCount: context
                                   .read<PagesCubit>()
@@ -326,8 +325,9 @@ class NotificationCard extends StatelessWidget {
                 height: 12,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: (notification.readAt == null && notification.status != 'read')
-                      ? AppColors.primary(context)
+                  color: (notification.readAt == null &&
+                          notification.status?.toLowerCase() != 'read')
+                      ? AppColors.success(context)
                       : Colors.grey[300],
                 ),
               ),
@@ -401,7 +401,7 @@ class ShimmerNotificationList extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
       ),
     );
@@ -411,10 +411,52 @@ class ShimmerNotificationList extends StatelessWidget {
     return Container(
       height: size,
       width: size,
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
+      decoration: const BoxDecoration(
+        color: Colors.white,
         shape: BoxShape.circle,
       ),
+    );
+  }
+}
+
+class EmptyNotificationWidget extends StatelessWidget {
+  const EmptyNotificationWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(48),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: AppColors.separatingBorder(context),
+              width: 1.5,
+            ),
+          ),
+          child: SvgPicture.asset(
+            AppAssets.app_imagesNotificationcardIcon,
+            width: 48,
+            height: 48,
+          ),
+        ),
+        const SizedBox(height: 32),
+        Text(
+          'لا يوجد إشعارات حتى الآن',
+          style: AppStyles.styleBold24(context).copyWith(
+            color: AppColors.typographyHeading(context),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'سنخبرك عندما تصل اشعارات جديدة!',
+          style: AppStyles.styleMedium16(context).copyWith(
+            color: AppColors.typographySubTitle(context),
+          ),
+        ),
+      ],
     );
   }
 }

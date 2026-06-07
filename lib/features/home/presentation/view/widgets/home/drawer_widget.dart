@@ -73,6 +73,29 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           context.navigateTo(Routes.qustionScreen);
         },
       },
+      {
+        'text': 'كن شريكا لنا',
+        'image': AppAssets.app_imagesAgencies,
+        'onTap': () {
+          context.navigateTo(Routes.SalesAgentIntroScreen);
+        },
+      },
+      if (!KisGuest)
+        {
+          'text': 'أضف عقارك',
+          'image': AppAssets.app_imagesAddReal,
+          'onTap': () {
+            context.navigateTo(Routes.AddRealStateScreen);
+          },
+        },
+      if (!KisGuest)
+        {
+          'text': 'إدارة أملاكك',
+          'image': AppAssets.app_imagesProretuMana,
+          'onTap': () {
+            context.navigateTo(Routes.ProperityManagment);
+          },
+        },
     ];
 
     return Drawer(
@@ -152,20 +175,29 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                       ),
                                     ),
                               const SizedBox(width: 8),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    userName ?? 'مستخدم',
-                                    style:
-                                        AppStyles.styleBold14(context).copyWith(
-                                      color: AppColors.typographyHeading(
-                                        context,
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'حياك الله ضيفنا.',
+                                      style: AppStyles.styleBold14(context)
+                                          .copyWith(
+                                        color: AppColors.typographyHeading(
+                                            context),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      userName ?? 'مستخدم',
+                                      style: AppStyles.styleRegular14(context)
+                                          .copyWith(
+                                        color: AppColors.typographySubTitle(
+                                            context),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               )
                             ],
                           ),

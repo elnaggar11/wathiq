@@ -244,18 +244,18 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const InvoiceDetailsScreen(),
         );
-      case Routes.WithdrawBodyScreen:
-        return MaterialPageRoute(
-          builder: (_) => const WithdrawBodyScreen(),
-        );
-      case Routes.HeldFundsBodyScreen:
-        return MaterialPageRoute(
-          builder: (_) => const HeldFundsBodyScreen(),
-        );
-      case Routes.InvoicesBodyScreen:
-        return MaterialPageRoute(
-          builder: (_) => const InvoicesBodyScreen(),
-        );
+      // case Routes.WithdrawBodyScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const WithdrawBodyScreen(),
+      //   );
+      // case Routes.HeldFundsBodyScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const HeldFundsBodyScreen(),
+      //   );
+      // case Routes.InvoicesBodyScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const InvoicesBodyScreen(),
+      //   );
       case Routes.AddRealStateScreen:
         return MaterialPageRoute(
           builder: (_) => const AddRealStateScreen(),

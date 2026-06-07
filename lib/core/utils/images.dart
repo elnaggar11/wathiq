@@ -74,6 +74,8 @@ class AppAssets {
 
   static const String app_imagesDocument = "assets/app_images/Document.svg";
 
+  static const String app_imagesParadse = 'assets/app_images/paradse.svg';
+
   static const String app_imagesDocumentUpload =
       "assets/app_images/document-upload.svg";
 

@@ -400,6 +400,8 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
           ),
         ),
         child: TabBar(
+          isScrollable: true,
+          tabAlignment: TabAlignment.start,
           controller: widget._tabController,
           indicatorColor: Colors.transparent,
           overlayColor: WidgetStateProperty.resolveWith<Color?>(
@@ -409,7 +411,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
           ),
           unselectedLabelColor: Colors.transparent,
           dividerColor: Colors.transparent,
-          labelPadding: const EdgeInsets.all(0),
+          labelPadding: const EdgeInsets.symmetric(horizontal: 10),
           tabs: List<Widget>.generate(
             tapsName.length,
             (index) => InkWell(
@@ -466,7 +468,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 2),
+                                          horizontal: 10, vertical: 2),
                                       clipBehavior: Clip.antiAlias,
                                       decoration: ShapeDecoration(
                                         color:
@@ -476,7 +478,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
                                                     context),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(6)),
+                                                BorderRadius.circular(12)),
                                       ),
                                       child: Text(
                                         index == 0
