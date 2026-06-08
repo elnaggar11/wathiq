@@ -57,26 +57,12 @@ class HomeCubit extends Cubit<HomeState> {
   List<BiderAuctionData> boardAuctionData = [];
   final auctionBoardSocket = AuctionBoardSocket();
   final addBalanceKey = GlobalKey<FormState>();
-  final Map<String, AuctionsModel> userAuctionsCache = {};
-  final Map<String, AuctionsModel> auctionsCache = {}; // status -> data
 
   Future<void> getAuctions() async {
-    final cachedModel = auctionsCache[auctionsStatus];
+    emit(state.copyWith(
+      auctionsRequestState: RequestState.loading,
+    ));
 
-    if (cachedModel != null) {
-      // 1. 🚀 Show cached data immediately without loading
-      emit(state.copyWith(
-        auctionsModel: cachedModel,
-        auctionsRequestState: RequestState.loaded,
-      ));
-    } else {
-      // 2. 🤔 No cache? then show loading state
-      emit(state.copyWith(
-        auctionsRequestState: RequestState.loading,
-      ));
-    }
-
-    // 3. 🔥 Always fetch from server in background
     AuctionsParams auctionsParams = AuctionsParams(
       status: auctionsStatus,
       search: auctionFilterSearch.text,
@@ -87,55 +73,26 @@ class HomeCubit extends Cubit<HomeState> {
 
     result.fold(
       (failure) {
-        // Only show error if no cache existed (first time)
-
         emit(state.copyWith(
           auctionsRequestState: RequestState.error,
           auctionsError: failure,
         ));
-
         log(failure.toString());
       },
       (freshModel) {
-        if (!_isAuctionsModelSame(cachedModel, freshModel)) {
-          // 4. ✨ If fresh data is different, update cache and UI
-          emit(state.copyWith(
-            auctionsRequestState: RequestState.loading,
-          ));
-          auctionsCache[auctionsStatus] = freshModel;
-          emit(state.copyWith(
-            auctionsRequestState: RequestState.loaded,
-            auctionsModel: freshModel,
-          ));
-        }
-        // else: if fresh data is same, do nothing! 🎯
+        emit(state.copyWith(
+          auctionsRequestState: RequestState.loaded,
+          auctionsModel: freshModel,
+        ));
       },
     );
   }
 
-  bool _isAuctionsModelSame(AuctionsModel? oldModel, AuctionsModel newModel) {
-    if (oldModel == null) return false;
-    return oldModel == newModel;
-  }
-
   Future<void> refreshAuctionsForTab() async {
-    auctionsCache.remove(auctionsStatus);
     await getAuctions();
   }
 
-  // New method: get user auctions with cache
   Future<void> getUserAuctions() async {
-    String cacheKey = '${winner}_$loss'; // simple unique key per tab
-
-    // Check if data is cached
-    if (userAuctionsCache.containsKey(cacheKey)) {
-      emit(state.copyWith(
-        getUserAuctionsModel: userAuctionsCache[cacheKey],
-        getUserAuctionsRequestState: RequestState.loaded,
-      ));
-      return;
-    }
-
     emit(state.copyWith(getUserAuctionsRequestState: RequestState.loading));
 
     UserAuctionsParams userAuctionsParams = UserAuctionsParams(
@@ -154,7 +111,6 @@ class HomeCubit extends Cubit<HomeState> {
         log(failure.toString());
       },
       (model) {
-        userAuctionsCache[cacheKey] = model; // 🛜 Save in cache
         emit(state.copyWith(
           getUserAuctionsRequestState: RequestState.loaded,
           getUserAuctionsModel: model,
@@ -165,8 +121,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   // Optional: force refresh if needed
   Future<void> refreshUserAuctions() async {
-    String cacheKey = '${winner}_$loss';
-    userAuctionsCache.remove(cacheKey);
     await getUserAuctions();
   }
 

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -123,6 +124,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
     required String label,
     required int index,
   }) {
+    final bool isSelected = KcurrentIndex == index;
     return InkWell(
       highlightColor: Colors.transparent,
       focusColor: Colors.transparent,
@@ -140,25 +142,44 @@ class _LayoutScreenState extends State<LayoutScreen> {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              child: SvgPicture.asset(
-                iconPath,
-                color: KcurrentIndex == index
-                    ? AppColors.primary(context) // Selected color
-                    : AppColors.typographyHeading(context), // Unselected color
-              ),
+              child: isSelected
+                  ? Pulse(
+                      duration: const Duration(milliseconds: 400),
+                      child: SvgPicture.asset(
+                        iconPath,
+                        color: AppColors.primary(context),
+                      ),
+                    )
+                  : SvgPicture.asset(
+                      iconPath,
+                      color: AppColors.typographyHeading(context),
+                    ),
             ),
             const SizedBox(height: 6),
-            Text(
-              label,
-              style: AppStyles.styleRegular14(context).copyWith(
-                color: KcurrentIndex == index
-                    ? AppColors.primary(context) // Selected color
-                    : AppColors.typographyHeading(context), // Unselected color
-              ),
-            ),
+            isSelected
+                ? SlideInUp(
+                    duration: const Duration(milliseconds: 250),
+                    from: 4,
+                    child: Text(
+                      label,
+                      style: AppStyles.styleRegular14(context).copyWith(
+                        color: AppColors.primary(context),
+                      ),
+                    ),
+                  )
+                : Text(
+                    label,
+                    style: AppStyles.styleRegular14(context).copyWith(
+                      color: AppColors.typographyHeading(context),
+                    ),
+                  ),
             const SizedBox(height: 4),
-            KcurrentIndex == index
-                ? SvgPicture.asset(AppAssets.app_imagesUnion)
+            isSelected
+                ? BounceInUp(
+                    duration: const Duration(milliseconds: 350),
+                    from: 8,
+                    child: SvgPicture.asset(AppAssets.app_imagesUnion),
+                  )
                 : const SizedBox.shrink(),
           ],
         ),

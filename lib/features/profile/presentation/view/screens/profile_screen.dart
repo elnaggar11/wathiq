@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,12 +78,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         child: Column(
                           children: [
-                            ProfileCartWidget(
-                              image: AppAssets.app_imagesProfilr,
-                              onTap: () {
-                                context.navigateTo(Routes.userInfoScreen);
-                              },
-                              text: 'المعلومات الشخصية',
+                            FadeInUp(
+                              duration: const Duration(milliseconds: 350),
+                              delay: const Duration(milliseconds: 100),
+                              from: 15,
+                              child: ProfileCartWidget(
+                                image: AppAssets.app_imagesProfilr,
+                                onTap: () {
+                                  context.navigateTo(Routes.userInfoScreen);
+                                },
+                                text: 'المعلومات الشخصية',
+                              ),
                             ),
                             Divider(
                               height: 0,
@@ -90,12 +96,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: AppColors.separatingBorder(context),
                             ),
                             const SizedBox(height: 8),
-                            ProfileCartWidget(
-                              image: AppAssets.app_imagesHeart,
-                              onTap: () {
-                                context.navigateTo(Routes.savedMazadeScreen);
-                              },
-                              text: 'المفضلة',
+                            FadeInUp(
+                              duration: const Duration(milliseconds: 350),
+                              delay: const Duration(milliseconds: 150),
+                              from: 15,
+                              child: ProfileCartWidget(
+                                image: AppAssets.app_imagesHeart,
+                                onTap: () {
+                                  context.navigateTo(Routes.savedMazadeScreen);
+                                },
+                                text: 'المفضلة',
+                              ),
                             ),
                             const SizedBox(height: 8),
                             Divider(
@@ -104,12 +115,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: AppColors.separatingBorder(context),
                             ),
                             const SizedBox(height: 8),
-                            ProfileCartWidget(
-                              image: AppAssets.app_imagesAgencies,
-                              onTap: () {
-                                context.navigateTo(Routes.agenciesScreen);
-                              },
-                              text: 'الوكالات',
+                            FadeInUp(
+                              duration: const Duration(milliseconds: 350),
+                              delay: const Duration(milliseconds: 200),
+                              from: 15,
+                              child: ProfileCartWidget(
+                                image: AppAssets.app_imagesAgencies,
+                                onTap: () {
+                                  context.navigateTo(Routes.agenciesScreen);
+                                },
+                                text: 'الوكالات',
+                              ),
                             ),
                             const SizedBox(height: 8),
                             Divider(
@@ -132,12 +148,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             //   color: AppColors.separatingBorder(context),
                             // ),
                             // const SizedBox(height: 8),
-                            ProfileCartWidget(
-                              image: AppAssets.app_imagesChangePassword,
-                              onTap: () {
-                                context.navigateTo(Routes.changePasswordScreen);
-                              },
-                              text: 'تغير كلمة المرور',
+                            FadeInUp(
+                              duration: const Duration(milliseconds: 350),
+                              delay: const Duration(milliseconds: 250),
+                              from: 15,
+                              child: ProfileCartWidget(
+                                image: AppAssets.app_imagesChangePassword,
+                                onTap: () {
+                                  context.navigateTo(Routes.changePasswordScreen);
+                                },
+                                text: 'تغير كلمة المرور',
+                              ),
                             ),
                           ],
                         ),
@@ -183,43 +204,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       //       : 'قفل التطبيق بالبصمة',
                       // ),
                       // const SizedBox(height: 16),
-                      GestureDetector(
-                        onTap: () {
-                          showLogOutBottomSheet(context);
-                        },
-                        child: Container(
-                          height: 64,
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 8),
-                          clipBehavior: Clip.antiAlias,
-                          decoration: ShapeDecoration(
-                            color: AppColors.white(context),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                      FadeInUp(
+                        duration: const Duration(milliseconds: 350),
+                        delay: const Duration(milliseconds: 300),
+                        from: 15,
+                        child: GestureDetector(
+                          onTap: () {
+                            showLogOutBottomSheet(context);
+                          },
+                          child: Container(
+                            height: 64,
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            clipBehavior: Clip.antiAlias,
+                            decoration: ShapeDecoration(
+                              color: AppColors.white(context),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
                             ),
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                height: 26,
-                                width: 26,
-                                child: SvgPicture.asset(
-                                    AppAssets.app_imagesLogout),
-                              ),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              Text(
-                                'تسجيل الخروج',
-                                style: AppStyles.styleMedium16(context)
-                                    .copyWith(color: AppColors.danger(context)),
-                              ),
-                              const Spacer(),
-                              SvgPicture.asset(
-                                AppAssets.app_imagesProfileArrow,
-                              ),
-                            ],
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 26,
+                                  child: SvgPicture.asset(
+                                      AppAssets.app_imagesLogout),
+                                ),
+                                const SizedBox(
+                                  width: 12,
+                                ),
+                                Text(
+                                  'تسجيل الخروج',
+                                  style: AppStyles.styleMedium16(context)
+                                      .copyWith(color: AppColors.danger(context)),
+                                ),
+                                const Spacer(),
+                                SvgPicture.asset(
+                                  AppAssets.app_imagesProfileArrow,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       )

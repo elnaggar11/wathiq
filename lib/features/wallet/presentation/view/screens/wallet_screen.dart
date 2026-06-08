@@ -81,33 +81,34 @@ class _WalletScreenState extends State<WalletScreen>
             length: 3,
             child: Scaffold(
                 body: NestedScrollView(
-                  headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                    return [
-                      const SliverToBoxAdapter(
-                        child: IntroWalletWidget(),
-                      ),
-                      const SliverToBoxAdapter(
-                        child: WalletTabBarWidget(
-                          tapsName: [
-                            'شحن المحفظة',
-                            'طلبات السحب',
-                            'المبالغ المحجوزة في المزادات',
-                          ],
-                        ),
-                      ),
-                    ];
-                  },
-                  body: Container(
-                    color: Colors.white,
-                    child: const TabBarView(
-                      children: [
-                        InvoicesListWidget(),
-                        WithdrawListWidget(),
-                        HeldFundsListWidget(),
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  const SliverToBoxAdapter(
+                    child: IntroWalletWidget(),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: WalletTabBarWidget(
+                      tapsName: [
+                        'شحن المحفظة',
+                        'طلبات السحب',
+                        'المبالغ المحجوزة في المزادات',
                       ],
                     ),
                   ),
-                )),
+                ];
+              },
+              body: Container(
+                color: Colors.white,
+                child: const TabBarView(
+                  children: [
+                    InvoicesListWidget(),
+                    WithdrawListWidget(),
+                    HeldFundsListWidget(),
+                  ],
+                ),
+              ),
+            )),
           );
   }
 }
@@ -137,7 +138,6 @@ class WithdrawListWidget extends StatelessWidget {
                     child: EmptyWidget(
                       title: 'لا توجد معاملات',
                       subTitle: 'لم تقم بأي معاملات.',
-                      imagePath: 'assets/app_images/empty_wallet.svg',
                     ),
                   ),
                 )
