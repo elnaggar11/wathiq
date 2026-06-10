@@ -9,6 +9,7 @@ import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
 import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:animate_do/animate_do.dart';
 
 import 'package:wathiq/app/app.dart';
 import 'package:wathiq/core/functions/calculate_defrent_betwen_times.dart';
@@ -61,7 +62,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   const SizedBox(width: 16)
                 ],
         ),
-        body: KisGuest == true
+        body: FadeInUp(
+          duration: const Duration(milliseconds: 800),
+          child: KisGuest == true
             ? const GuestWidget()
             : BlocBuilder<PagesCubit, PagesState>(
                 builder: (context, state) {
@@ -107,6 +110,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
                 // },
               ),
+        ),
       ),
     );
   }

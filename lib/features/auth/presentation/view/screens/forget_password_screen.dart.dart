@@ -13,6 +13,7 @@ import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/reset_and_forget_password/forget_password_button_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -56,15 +57,24 @@ class ForgetPasswordMobileLayoutWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: CustomProgressBar(
-                    totalSteps: 3,
-                    currentStep: 1,
+                FadeInDown(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 200),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: CustomProgressBar(
+                      totalSteps: 3,
+                      currentStep: 1,
+                    ),
                   ),
                 ),
-                40.verticalSpace,
-                Row(
+                FadeInUp(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      40.verticalSpace,
+                      Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -122,7 +132,10 @@ class ForgetPasswordMobileLayoutWidget extends StatelessWidget {
                 ),
                 32.verticalSpace,
                 const ForgetPasswordButtonWidget(),
-                31.verticalSpace,
+                      31.verticalSpace,
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

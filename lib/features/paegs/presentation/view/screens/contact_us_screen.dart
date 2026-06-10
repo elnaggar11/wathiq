@@ -14,6 +14,7 @@ import 'package:wathiq/features/paegs/presentation/view/widgets/contact_us/conta
 import 'package:wathiq/features/paegs/presentation/view/widgets/contact_us/contact_us_form_widget.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/contact_us/our_office_wrap_widget.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/contact_us/shimmer_contact_us.dart';
+import 'package:animate_do/animate_do.dart';
 
 class ContactUsScreen extends StatefulWidget {
   const ContactUsScreen({super.key});
@@ -45,13 +46,22 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 32),
-                  Text(
-                    'نسعد بتواصلكم معنا ونرحب بمقترحاتكم والإجابة على استفساراتكم',
-                    textAlign: TextAlign.start,
-                    style: AppStyles.styleMedium16(context)
-                        .copyWith(color: AppColors.typographyBody(context)),
+                  FadeInDown(
+                    duration: const Duration(milliseconds: 800),
+                    delay: const Duration(milliseconds: 200),
+                    child: Text(
+                      'نسعد بتواصلكم معنا ونرحب بمقترحاتكم والإجابة على استفساراتكم',
+                      textAlign: TextAlign.start,
+                      style: AppStyles.styleMedium16(context)
+                          .copyWith(color: AppColors.typographyBody(context)),
+                    ),
                   ),
-                  const SizedBox(height: 32),
+                  FadeInUp(
+                    duration: const Duration(milliseconds: 800),
+                    delay: const Duration(milliseconds: 400),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 32),
                   BlocBuilder<PagesCubit, PagesState>(
                     builder: (context, state) {
                       switch (state.getsocialRequestState) {
@@ -171,8 +181,11 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       }
                     },
                   ),
-                  ContactUsFormWidget(pagesCubit: pagesCubit),
-                  const SizedBox(height: 16)
+                        ContactUsFormWidget(pagesCubit: pagesCubit),
+                        const SizedBox(height: 16),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -15,8 +15,10 @@ import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
+import 'package:wathiq/core/widgets/loading_app_widget.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/otp/pin_code_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({
@@ -107,60 +109,92 @@ class OTPScreenMobileLayoutWidget extends StatelessWidget {
   final String? title;
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    return Form(
-      key: _formKey,
-      child: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                48.verticalSpace,
-                OTPStepperWidget(
-                  currentStep: currentStep,
-                  totalSteps: totalSteps,
-                ),
-                40.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'أدخل رمز التحقق',
-                      textAlign: TextAlign.start,
-                      style: AppStyles.styleBold24(context).copyWith(
-                        color: AppColors.typographyHeading(context),
-                      ),
+    AuthCubit cubit = context.read<AuthCubit>();
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (context, state) {
+        return Stack(
+          children: [
+            Form(
+              key: cubit.verifyFormKey,
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      children: [
+                        48.verticalSpace,
+                        FadeInDown(
+                          duration: const Duration(milliseconds: 800),
+                          delay: const Duration(milliseconds: 200),
+                          child: OTPStepperWidget(
+                            currentStep: currentStep,
+                            totalSteps: totalSteps,
+                          ),
+                        ),
+                        FadeInUp(
+                          duration: const Duration(milliseconds: 800),
+                          delay: const Duration(milliseconds: 400),
+                          child: Column(
+                            children: [
+                              40.verticalSpace,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'أدخل رمز التحقق',
+                                    textAlign: TextAlign.start,
+                                    style:
+                                        AppStyles.styleBold24(context).copyWith(
+                                      color:
+                                          AppColors.typographyHeading(context),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              16.verticalSpace,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    title ??
+                                        'فضلا ادخل الرمز المكون من 6 ارقام المرسل لك عبر رساله\n نصية',
+                                    textAlign: TextAlign.start,
+                                    style: AppStyles.styleSemiBold14(context)
+                                        .copyWith(
+                                      color: AppColors.typographyBody(context),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              32.verticalSpace,
+                              const PinCodeWidget(),
+                              24.verticalSpace,
+                              const TimerWidget(),
+                              24.verticalSpace,
+                              VerifyButtonWidget(
+                                nextRoute: nextRoute,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                16.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      title ??
-                          'فضلا ادخل الرمز المكون من 6 ارقام المرسل لك عبر رساله\n نصية',
-                      textAlign: TextAlign.start,
-                      style: AppStyles.styleSemiBold14(context).copyWith(
-                        color: AppColors.typographyBody(context),
-                      ),
-                    ),
-                  ],
-                ),
-                32.verticalSpace,
-                const PinCodeWidget(),
-                24.verticalSpace,
-                const TimerWidget(),
-                24.verticalSpace,
-                VerifyButtonWidget(
-                  nextRoute: nextRoute,
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
+            if (state.verifyRequestState == RequestState.loading)
+              Positioned.fill(
+                child: Container(
+                  color: Colors.white.withOpacity(0.6),
+                  child: const Center(
+                    child: LoadingAppWidget(),
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 }

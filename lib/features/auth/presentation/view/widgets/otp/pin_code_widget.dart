@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
+import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 
 class PinCodeWidget extends StatelessWidget {
@@ -38,6 +39,7 @@ class PinCodeWidget extends StatelessWidget {
                 length: 6,
                 obscureText: false,
                 autoFocus: true,
+                readOnly: state.verifyRequestState == RequestState.loading,
                 cursorColor: Colors.black,
                 keyboardType: TextInputType.number,
                 textStyle: AppStyles.styleSemiBold24(context)
@@ -59,6 +61,7 @@ class PinCodeWidget extends StatelessWidget {
                 animationDuration: const Duration(milliseconds: 300),
                 enableActiveFill: true,
                 onCompleted: (code) {
+                  FocusScope.of(context).unfocus();
                   cubit.verifyOtp();
                 },
                 onChanged: (code) {

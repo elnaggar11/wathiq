@@ -11,6 +11,7 @@ import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class BuildStepThreeWidget extends StatefulWidget {
   const BuildStepThreeWidget({super.key});
@@ -31,7 +32,10 @@ class _BuildStepThreeWidgetState extends State<BuildStepThreeWidget> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              const StepperWidget(
+              FadeInDown(
+                duration: const Duration(milliseconds: 800),
+                delay: const Duration(milliseconds: 200),
+                child: const StepperWidget(
                 stepperList: [
                   BuildStep(
                     title: 'بيانات الشركة',
@@ -59,8 +63,12 @@ class _BuildStepThreeWidgetState extends State<BuildStepThreeWidget> {
                   ),
                 ],
               ),
+              ),
               const SizedBox(height: 32),
-              Container(
+              FadeInUp(
+                duration: const Duration(milliseconds: 800),
+                delay: const Duration(milliseconds: 400),
+                child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 clipBehavior: Clip.antiAlias,
@@ -325,6 +333,7 @@ class _BuildStepThreeWidgetState extends State<BuildStepThreeWidget> {
                     ),
                   ],
                 ),
+              ),
               ),
               const SizedBox(height: 100),
             ],

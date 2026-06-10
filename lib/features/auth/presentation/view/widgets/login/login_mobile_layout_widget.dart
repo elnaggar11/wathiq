@@ -19,6 +19,7 @@ import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_b
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/auth_app_logo_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/nav_to_another_screen_row.dart';
+import 'package:animate_do/animate_do.dart';
 
 class LoginMobileLayoutWidget extends StatelessWidget {
   const LoginMobileLayoutWidget({
@@ -41,17 +42,29 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     20.verticalSpace,
-                    const AuthAppLogoWidget(),
+                    FadeInDown(
+                      duration: const Duration(milliseconds: 800),
+                      child: const AuthAppLogoWidget(),
+                    ),
                     48.verticalSpace,
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      child: CustomProgressBar(
-                        totalSteps: 2,
-                        currentStep: 1,
+                    FadeInDown(
+                      duration: const Duration(milliseconds: 800),
+                      delay: const Duration(milliseconds: 200),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        child: CustomProgressBar(
+                          totalSteps: 2,
+                          currentStep: 1,
+                        ),
                       ),
                     ),
-                    32.verticalSpace,
-                    Row(
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 800),
+                      delay: const Duration(milliseconds: 400),
+                      child: Column(
+                        children: [
+                          32.verticalSpace,
+                          Row(
                       children: [
                         Text(
                           'تسجيل الدخول',
@@ -169,8 +182,11 @@ class LoginMobileLayoutWidget extends StatelessWidget {
                       onTap: () {
                         context.navigateTo(Routes.signUpScreen);
                       },
-                      text1: 'غير مسجل',
-                      text2: 'إنشاء حساب جديد',
+                            text1: 'غير مسجل',
+                            text2: 'إنشاء حساب جديد',
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

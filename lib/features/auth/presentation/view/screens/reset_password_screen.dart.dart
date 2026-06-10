@@ -15,6 +15,7 @@ import 'package:wathiq/core/widgets/my_snackbar.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/reset_and_forget_password/reset_password_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class ResetePasswordScreen extends StatelessWidget {
   const ResetePasswordScreen({super.key});
@@ -59,15 +60,24 @@ class ResetePasswordScreenMobileLayoutWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: CustomProgressBar(
-                    totalSteps: 3,
-                    currentStep: 3,
+                FadeInDown(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 200),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: CustomProgressBar(
+                      totalSteps: 3,
+                      currentStep: 3,
+                    ),
                   ),
                 ),
-                32.verticalSpace,
-                Row(
+                FadeInUp(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      32.verticalSpace,
+                      Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -85,7 +95,10 @@ class ResetePasswordScreenMobileLayoutWidget extends StatelessWidget {
                 const ResetConfirmPasswordWidget(),
                 32.verticalSpace,
                 const ResetPasswordButtonWidget(),
-                32.verticalSpace,
+                      32.verticalSpace,
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

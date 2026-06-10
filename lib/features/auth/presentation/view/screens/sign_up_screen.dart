@@ -21,6 +21,7 @@ import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dar
 import 'package:wathiq/features/auth/presentation/view/widgets/contact_us_auth_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/nav_to_another_screen_row.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/terms_and_conditions_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -30,7 +31,10 @@ class SignUpScreen extends StatelessWidget {
     context.read<AuthCubit>();
     return SafeArea(
       child: Scaffold(
-        bottomSheet: const ContactUsAuthWidget(),
+        bottomSheet: FadeInDown(
+          delay: const Duration(milliseconds: 300),
+          child: const ContactUsAuthWidget(),
+        ),
         backgroundColor: AppColors.white(context),
         appBar: CoustomAppBarWidget(),
         body: AdaptiveLayout(
@@ -66,77 +70,89 @@ class SignUpScreenMobileLayoutWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 48.verticalSpace,
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: CustomProgressBar(
-                    totalSteps: 3,
-                    currentStep: 1,
-                  ),
-                ),
-                32.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      'إنشاء حساب',
-                      style: AppStyles.styleBold24(context).copyWith(
-                        color: AppColors.typographyHeading(context),
-                      ),
-                    ),
-                  ],
-                ),
-                24.verticalSpace,
-                TextFormFieldWithTitleWidget(
-                  controller: cubit.signUpNationalIDController,
-                  label: 'رقم الهوية الوطنة / الاقامة',
-                  validator: (value) {
-                    if (value == null) {
-                      return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
-                    }
-                    if (value.isEmpty) {
-                      return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
-                    }
-                    if (value.length != 10) {
-                      return 'رقم الهوية الوطنية يجب ان يتكون من 10 ارقام';
-                    }
-                    if (!value.startsWith('1') && !value.startsWith('2')) {
-                      return 'رقم الهوية الوطنية / الاقامة خطأ';
-                    }
-                    return null;
-                  },
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(10),
-                  ],
-                  keyboardType: TextInputType.number,
-                  prefix: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 16,
-                    ),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxWidth: 24,
-                        maxHeight: 24,
-                      ),
-                      child: SvgPicture.asset(
-                        AppAssets.app_imagesNationalId,
-                        fit: BoxFit.fill,
-                      ),
+                FadeInDown(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 200),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: CustomProgressBar(
+                      totalSteps: 3,
+                      currentStep: 1,
                     ),
                   ),
                 ),
-                12.verticalSpace,
-                const TermsAndConditionsWidget(),
-                31.verticalSpace,
-                const SignUpButtonWidget(),
-                31.verticalSpace,
-                NavToAnotherScreenRow(
-                  onTap: () {
-                    context.navigateTo(Routes.login);
-                  },
-                  text1: 'لديك حساب ؟',
-                  text2: 'تسجيل الدخول',
+                FadeInUp(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      32.verticalSpace,
+                      Row(
+                        children: [
+                          Text(
+                            'إنشاء حساب',
+                            style: AppStyles.styleBold24(context).copyWith(
+                              color: AppColors.typographyHeading(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                      24.verticalSpace,
+                      TextFormFieldWithTitleWidget(
+                        controller: cubit.signUpNationalIDController,
+                        label: 'رقم الهوية الوطنة / الاقامة',
+                        validator: (value) {
+                          if (value == null) {
+                            return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
+                          }
+                          if (value.isEmpty) {
+                            return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
+                          }
+                          if (value.length != 10) {
+                            return 'رقم الهوية الوطنية يجب ان يتكون من 10 ارقام';
+                          }
+                          if (!value.startsWith('1') && !value.startsWith('2')) {
+                            return 'رقم الهوية الوطنية / الاقامة خطأ';
+                          }
+                          return null;
+                        },
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(10),
+                        ],
+                        keyboardType: TextInputType.number,
+                        prefix: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 16,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 24,
+                              maxHeight: 24,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesNationalId,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      ),
+                      12.verticalSpace,
+                      const TermsAndConditionsWidget(),
+                      31.verticalSpace,
+                      const SignUpButtonWidget(),
+                      31.verticalSpace,
+                      NavToAnotherScreenRow(
+                        onTap: () {
+                          context.navigateTo(Routes.login);
+                        },
+                        text1: 'لديك حساب ؟',
+                        text2: 'تسجيل الدخول',
+                      ),
+                      100.verticalSpace,
+                    ],
+                  ),
                 ),
-                100.verticalSpace,
               ],
             ),
           ),

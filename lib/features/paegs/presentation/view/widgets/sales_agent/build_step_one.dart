@@ -12,6 +12,7 @@ import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/sign_up/date_picker_widegt.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class BuildStepOneWidget extends StatefulWidget {
   const BuildStepOneWidget({super.key});
@@ -33,12 +34,15 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              const StepperWidget(
-                stepperList: [
+              FadeInDown(
+                duration: const Duration(milliseconds: 800),
+                delay: const Duration(milliseconds: 200),
+                child: const StepperWidget(
+                  stepperList: [
                   BuildStep(
                     title: 'بيانات الشركة',
                     isActive: true,
-                    isCompleted: true,
+                    isCompleted: false,
                     stepNum: '1',
                   ),
                   SteperLineWidegt(
@@ -59,10 +63,14 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                     isCompleted: false,
                     stepNum: '3',
                   ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 32),
-              Container(
+              FadeInUp(
+                duration: const Duration(milliseconds: 800),
+                delay: const Duration(milliseconds: 400),
+                child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 clipBehavior: Clip.antiAlias,
@@ -356,6 +364,7 @@ class _BuildStepOneWidgetState extends State<BuildStepOneWidget> {
                     // const SizedBox(height: 24),
                   ],
                 ),
+              ),
               ),
               const SizedBox(height: 100),
             ],

@@ -11,8 +11,10 @@ import 'package:wathiq/core/widgets/show_success_bottom_sheet.dart';
 import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_images.dart';
+import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:animate_do/animate_do.dart';
 
 class ProperityManagmentScreen extends StatefulWidget {
   const ProperityManagmentScreen({super.key});
@@ -54,16 +56,25 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 32),
-                  Row(
-                    children: [
-                      Text(
-                        'ادخل تفاصيل الأملاك',
-                        style: AppStyles.styleBold20(context).copyWith(
-                            color: AppColors.typographyHeading(context)),
-                      ),
-                    ],
+                  FadeInDown(
+                    duration: const Duration(milliseconds: 800),
+                    delay: const Duration(milliseconds: 200),
+                    child: Row(
+                      children: [
+                        Text(
+                          'ادخل تفاصيل الأملاك',
+                          style: AppStyles.styleBold20(context).copyWith(
+                              color: AppColors.typographyHeading(context)),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16),
+                  FadeInUp(
+                    duration: const Duration(milliseconds: 800),
+                    delay: const Duration(milliseconds: 400),
+                    child: Column(
+                      children: [
                   CustomDropdownField(
                     label: 'المنطقة',
                     items: const [
@@ -212,6 +223,9 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                   const SizedBox(height: 24),
                   const AddProperityManagmentButtonWidget(),
                   const SizedBox(height: 24),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

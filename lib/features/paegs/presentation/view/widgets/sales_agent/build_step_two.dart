@@ -11,6 +11,7 @@ import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
+import 'package:animate_do/animate_do.dart';
 
 class BuildStepTwoWidget extends StatefulWidget {
   const BuildStepTwoWidget({super.key});
@@ -31,7 +32,10 @@ class _BuildStepTwoWidgetState extends State<BuildStepTwoWidget> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              const StepperWidget(
+              FadeInDown(
+                duration: const Duration(milliseconds: 800),
+                delay: const Duration(milliseconds: 200),
+                child: const StepperWidget(
                 stepperList: [
                   BuildStep(
                     title: 'بيانات الشركة',
@@ -59,8 +63,12 @@ class _BuildStepTwoWidgetState extends State<BuildStepTwoWidget> {
                   ),
                 ],
               ),
+              ),
               const SizedBox(height: 32),
-              Container(
+              FadeInUp(
+                duration: const Duration(milliseconds: 800),
+                delay: const Duration(milliseconds: 400),
+                child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 clipBehavior: Clip.antiAlias,
@@ -144,6 +152,7 @@ class _BuildStepTwoWidgetState extends State<BuildStepTwoWidget> {
                     ),
                   ],
                 ),
+              ),
               ),
               const SizedBox(height: 24),
             ],

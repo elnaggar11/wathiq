@@ -12,6 +12,7 @@ import 'package:wathiq/features/paegs/data/models/categories_model.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/qustions/question_answer_widget.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/qustions/qustion_search_filed.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/qustions/shimmer_question_answer_list.dart';
+import 'package:animate_do/animate_do.dart';
 
 class QustionScreen extends StatefulWidget {
   const QustionScreen({super.key});
@@ -47,8 +48,11 @@ class _QustionScreenState extends State<QustionScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 32),
-                BlocBuilder<PagesCubit, PagesState>(
-                  buildWhen: (previous, current) =>
+                FadeInDown(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 200),
+                  child: BlocBuilder<PagesCubit, PagesState>(
+                    buildWhen: (previous, current) =>
                       previous.qestionsCategoriesRequestState !=
                       current.qestionsCategoriesRequestState,
                   builder: (context, state) {
@@ -72,9 +76,15 @@ class _QustionScreenState extends State<QustionScreen> {
                     }
                   },
                 ),
-                const SizedBox(height: 32),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                ),
+                FadeInUp(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 32),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: BlocBuilder<PagesCubit, PagesState>(
                     builder: (context, state) {
                       switch (state.qestionsRequestState) {
@@ -124,6 +134,9 @@ class _QustionScreenState extends State<QustionScreen> {
                           );
                       }
                     },
+                  ),
+                  ),
+                    ],
                   ),
                 ),
               ],

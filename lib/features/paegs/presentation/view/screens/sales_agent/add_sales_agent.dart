@@ -14,6 +14,7 @@ import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/build_step_one.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/build_step_three.dart';
 import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/build_step_two.dart';
+import 'package:animate_do/animate_do.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentPage;
@@ -172,18 +173,6 @@ class _AddSalesAgentScreenState extends State<AddSalesAgentScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.primarySurface(context),
-        // bottomNavigationBar: CustomBottomNavigationBar(
-        //   currentPage: _currentPage,
-        //   onPrevious: _onPrevious,
-        //   onNext: () {
-        //     if (_currentPage == 2) {
-        //       pagesCubit.createSalesAgent();
-        //     } else {
-        //       _onNext();
-        //     }
-        //   },
-        //   pagesCubit: pagesCubit,
-        // ),
         appBar: CoustomAppBarWidget(title: 'وكيل بيع'),
         body: BlocBuilder<PagesCubit, PagesState>(
           builder: (context, state) {

@@ -11,6 +11,7 @@ import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:animate_do/animate_do.dart';
 
 class AddRealStateScreen extends StatefulWidget {
   const AddRealStateScreen({super.key});
@@ -46,8 +47,10 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SingleChildScrollView(
-            child: Form(
-              key: cubit.addRealFormKey,
+            child: FadeInUp(
+              duration: const Duration(milliseconds: 800),
+              child: Form(
+                key: cubit.addRealFormKey,
               child: Column(
                 children: [
                   const SizedBox(height: 32),
@@ -190,6 +193,7 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                   const AddRealStateButtonWidget(),
                   const SizedBox(height: 24),
                 ],
+              ),
               ),
             ),
           ),

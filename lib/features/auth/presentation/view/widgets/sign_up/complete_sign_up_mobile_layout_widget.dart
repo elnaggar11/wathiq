@@ -20,6 +20,7 @@ import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/features/auth/presentation/view/widgets/custom_progress_bar.dart';
 import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:wathiq/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:animate_do/animate_do.dart';
 
 class CompleteSignUpMobileLayoutWidget extends StatefulWidget {
   const CompleteSignUpMobileLayoutWidget({
@@ -53,15 +54,24 @@ class _CompleteSignUpMobileLayoutWidgetState
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 24.verticalSpace,
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: CustomProgressBar(
-                    totalSteps: 3,
-                    currentStep: 2,
+                FadeInDown(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 200),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: CustomProgressBar(
+                      totalSteps: 3,
+                      currentStep: 2,
+                    ),
                   ),
                 ),
-                48.verticalSpace,
-                Row(
+                FadeInUp(
+                  duration: const Duration(milliseconds: 800),
+                  delay: const Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      48.verticalSpace,
+                      Row(
                   children: [
                     Text(
                       'إنشاء حساب جديد',
@@ -241,7 +251,10 @@ class _CompleteSignUpMobileLayoutWidgetState
                 //         .completeSignUpBirthDateController),
                 43.verticalSpace,
                 const CompleteSignUpButtonWidget(),
-                24.verticalSpace,
+                      24.verticalSpace,
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
