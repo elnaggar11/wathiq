@@ -163,10 +163,19 @@ class PagesRepository {
 
         return Right(response.data['message']);
       } else {
-        log('Register Status code is 422');
+        log('Register Status code is ${response.statusCode}');
+        String errorMessage = 'حدث خطأ، يرجى المحاولة لاحقاً';
+        if (response.statusCode == 413) {
+          errorMessage =
+              'حجم الملفات المرفقة كبير جداً، يرجى تقليل حجم الملفات';
+        } else if (response.data is Map &&
+            response.data['errors'] != null &&
+            response.data['errors'].isNotEmpty) {
+          errorMessage = response.data['errors'][0]['message'];
+        }
         return Left(
           AppFailure(
-            message: response.data['errors'][0]['message'],
+            message: errorMessage,
           ),
         );
       }

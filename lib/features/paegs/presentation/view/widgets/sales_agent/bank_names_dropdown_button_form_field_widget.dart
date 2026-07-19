@@ -143,7 +143,7 @@ class _BankNamesDropdownButtonFormFieldWidgetState
           ),
           icon: selectedValue == null
               ? SvgPicture.asset(
-                  Assets.imagesArrowDown,
+                  Assets.imagesArrowDownIcon,
                 )
               : InkWell(
                   onTap: () {

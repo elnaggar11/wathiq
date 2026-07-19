@@ -452,10 +452,8 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
       ),
       iconSize: 20,
       icon: selectedValue == null
-          ? Icon(
-              Icons.arrow_drop_down,
-              color: AppColors.typographyBody(context),
-              size: 20,
+          ? SvgPicture.asset(
+              Assets.imagesArrowDownIcon,
             )
           : InkWell(
               onTap: () {

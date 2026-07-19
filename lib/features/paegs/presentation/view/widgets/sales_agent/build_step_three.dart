@@ -36,304 +36,308 @@ class _BuildStepThreeWidgetState extends State<BuildStepThreeWidget> {
                 duration: const Duration(milliseconds: 800),
                 delay: const Duration(milliseconds: 200),
                 child: const StepperWidget(
-                stepperList: [
-                  BuildStep(
-                    title: 'بيانات الشركة',
-                    isActive: true,
-                    isCompleted: true,
-                    stepNum: '1',
-                  ),
-                  SteperLineWidegt(
-                    isActive: true,
-                  ),
-                  BuildStep(
-                    title: 'البيانات المالية',
-                    isActive: true,
-                    isCompleted: true,
-                    stepNum: '2',
-                  ),
-                  SteperLineWidegt(
-                    isActive: true,
-                  ),
-                  BuildStep(
-                    title: 'بيانات المفوض',
-                    isActive: true,
-                    isCompleted: false,
-                    stepNum: '3',
-                  ),
-                ],
-              ),
+                  stepperList: [
+                    BuildStep(
+                      title: 'بيانات الشركة',
+                      isActive: true,
+                      isCompleted: true,
+                      stepNum: '1',
+                    ),
+                    SteperLineWidegt(
+                      isActive: true,
+                    ),
+                    BuildStep(
+                      title: 'البيانات المالية',
+                      isActive: true,
+                      isCompleted: true,
+                      stepNum: '2',
+                    ),
+                    SteperLineWidegt(
+                      isActive: true,
+                    ),
+                    BuildStep(
+                      title: 'بيانات المفوض',
+                      isActive: true,
+                      isCompleted: false,
+                      stepNum: '3',
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 32),
               FadeInUp(
                 duration: const Duration(milliseconds: 800),
                 delay: const Duration(milliseconds: 400),
                 child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Colors.white /* Surface-page */,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    color: Colors.white /* Surface-page */,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    TextFormFieldWithTitleWidget(
-                      filled: true,
-                      fillColor: AppColors.primarySurface(context),
-                      controller: pagesCubit.userNameController,
-                      label: 'الاسم',
-                      validator: (value) {
-                        if (value == null) {
-                          return ' الاسم مطلوب';
-                        }
-                        if (value.isEmpty) {
-                          return ' الاسم مطلوب';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.text,
-                      prefix: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        child: SvgPicture.asset(AppAssets.app_imagesPerson),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    TextFormFieldWithTitleWidget(
-                      filled: true,
-                      fillColor: AppColors.primarySurface(context),
-                      controller: pagesCubit.userIdentityNumberController,
-                      label: 'رقم الهوية الوطنة / الاقامة',
-                      validator: (value) {
-                        if (value == null) {
-                          return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
-                        }
-                        if (value.isEmpty) {
-                          return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
-                        }
-                        if (value.length != 10) {
-                          return 'رقم الهوية الوطنية يجب ان يتكون من 10 ارقام';
-                        }
-                        if (!value.startsWith('1') && !value.startsWith('2')) {
-                          return 'رقم الهوية الوطنية / الاقامة خطأ';
-                        }
-                        return null;
-                      },
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(10),
-                      ],
-                      keyboardType: TextInputType.number,
-                      prefix: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        child: SvgPicture.asset(AppAssets.app_imagesNationalId),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    DatePickerWidegt(
-                        text: 'تاريخ الميلاد',
-                        controller: pagesCubit.userBirthDayController),
-                    const SizedBox(height: 24),
-                    TextFormFieldWithTitleWidget(
-                      filled: true,
-                      fillColor: AppColors.primarySurface(context),
-                      controller: pagesCubit.userEmailController,
-                      label: 'البريد الالكتروني',
-                      validator: (value) {
-                        if (value == null) {
-                          return ' البريد الالكتروني مطلوب';
-                        }
-                        if (value.isEmpty) {
-                          return ' البريد الالكتروني مطلوب';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.text,
-                      prefix: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        child: SvgPicture.asset(
-                            AppAssets.app_imagesSealesEgentEmailIcn),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    TextFormFieldWithTitleWidget(
-                      filled: true,
-                      fillColor: AppColors.primarySurface(context),
-                      controller: pagesCubit.userPhoneNumberController,
-                      label: 'رقم الجوال',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'يرجى ادخال رقم الجوال';
-                        }
-                        if (!RegExp(r'^5\d{8}$').hasMatch(value)) {
-                          return 'يجب أن يبدأ رقم الجوال ب 5 ويتكون من 9 أرقام';
-                        }
-                        return null;
-                      },
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(9),
-                      ],
-                      keyboardType: TextInputType.number,
-                      prefix: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        child: SvgPicture.asset(
-                          AppAssets.app_imagesPhone,
-                        ),
-                      ),
-                      suffixIconSize: 70,
-                      suffix: Row(
-                        children: [
-                          Container(
-                            height: 50.h,
-                            width: 1.w,
-                            color: AppColors.separatingBorder(context),
+                  child: Column(
+                    children: [
+                      TextFormFieldWithTitleWidget(
+                        filled: true,
+                        fillColor: AppColors.primarySurface(context),
+                        controller: pagesCubit.userNameController,
+                        label: 'الاسم',
+                        validator: (value) {
+                          if (value == null) {
+                            return ' الاسم مطلوب';
+                          }
+                          if (value.isEmpty) {
+                            return ' الاسم مطلوب';
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.text,
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                            horizontal: 16.w,
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 12.h,
-                              horizontal: 0.w,
+                          child: SvgPicture.asset(AppAssets.app_imagesPerson),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      TextFormFieldWithTitleWidget(
+                        filled: true,
+                        fillColor: AppColors.primarySurface(context),
+                        controller: pagesCubit.userIdentityNumberController,
+                        label: 'رقم الهوية الوطنة / الاقامة',
+                        validator: (value) {
+                          if (value == null) {
+                            return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
+                          }
+                          if (value.isEmpty) {
+                            return 'يرجى إدخال رقم الهوية الوطنية / الاقامة';
+                          }
+                          if (value.length != 10) {
+                            return 'رقم الهوية الوطنية يجب ان يتكون من 10 ارقام';
+                          }
+                          if (!value.startsWith('1') &&
+                              !value.startsWith('2')) {
+                            return 'رقم الهوية الوطنية / الاقامة خطأ';
+                          }
+                          return null;
+                        },
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(10),
+                        ],
+                        keyboardType: TextInputType.number,
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                            horizontal: 16.w,
+                          ),
+                          child:
+                              SvgPicture.asset(AppAssets.app_imagesNationalId),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      DatePickerWidegt(
+                          text: 'تاريخ الميلاد',
+                          controller: pagesCubit.userBirthDayController),
+                      const SizedBox(height: 24),
+                      TextFormFieldWithTitleWidget(
+                        filled: true,
+                        fillColor: AppColors.primarySurface(context),
+                        controller: pagesCubit.userEmailController,
+                        label: 'البريد الالكتروني',
+                        validator: (value) {
+                          if (value == null) {
+                            return ' البريد الالكتروني مطلوب';
+                          }
+                          if (value.isEmpty) {
+                            return ' البريد الالكتروني مطلوب';
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.text,
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                            horizontal: 16.w,
+                          ),
+                          child: SvgPicture.asset(
+                              AppAssets.app_imagesSealesEgentEmailIcn),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      TextFormFieldWithTitleWidget(
+                        filled: true,
+                        fillColor: AppColors.primarySurface(context),
+                        controller: pagesCubit.userPhoneNumberController,
+                        label: 'رقم الجوال',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'يرجى ادخال رقم الجوال';
+                          }
+                          if (!RegExp(r'^5\d{8}$').hasMatch(value)) {
+                            return 'يجب أن يبدأ رقم الجوال ب 5 ويتكون من 9 أرقام';
+                          }
+                          return null;
+                        },
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(9),
+                        ],
+                        keyboardType: TextInputType.number,
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                            horizontal: 16.w,
+                          ),
+                          child: SvgPicture.asset(
+                            AppAssets.app_imagesPhone,
+                          ),
+                        ),
+                        suffixIconSize: 70,
+                        suffix: Row(
+                          children: [
+                            Container(
+                              height: 50.h,
+                              width: 1.w,
+                              color: AppColors.separatingBorder(context),
                             ),
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(horizontal: 16.w),
-                              height: 24.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6.r),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 12.h,
+                                horizontal: 0.w,
                               ),
-                              child: Text(
-                                '966+',
-                                style: AppStyles.styleBold16(context).copyWith(
-                                  color: AppColors.typographyHeading(context),
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                height: 24.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6.r),
+                                ),
+                                child: Text(
+                                  '966+',
+                                  style:
+                                      AppStyles.styleBold14(context).copyWith(
+                                    color: AppColors.typographyHeading(context),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-                    GestureDetector(
-                      onTap: () {
-                        pagesCubit.pickNationalIDAttachment().then((val) {
-                          setState(() {});
-                        });
-                      },
-                      child: TextFormFieldWithTitleWidget(
-                        label: pagesCubit.NationalIDAttachment == null
-                            ? 'إرفاق هوية المفوض'
-                            : pagesCubit.NationalIDAttachment!.path
-                                .split('/')
-                                .last,
-                        validator: (value) {
-                          if (pagesCubit.NationalIDAttachment == null) {
-                            return ' إرفاق الهوية مطلوب';
-                          }
-
-                          return null;
+                      const SizedBox(height: 24),
+                      GestureDetector(
+                        onTap: () {
+                          pagesCubit.pickNationalIDAttachment().then((val) {
+                            setState(() {});
+                          });
                         },
-                        hintStyle: AppStyles.styleBold16(context),
-                        filled: true,
-                        fillColor: AppColors.backgroundPrimary(context),
-                        enabled: false,
-                        keyboardType: TextInputType.number,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                            horizontal: 16.w,
-                          ),
-                          child: SvgPicture.asset(
-                            AppAssets.app_imagesUploadeFilesIcon,
+                        child: TextFormFieldWithTitleWidget(
+                          label: pagesCubit.NationalIDAttachment == null
+                              ? 'إرفاق هوية المفوض'
+                              : pagesCubit.NationalIDAttachment!.path
+                                  .split('/')
+                                  .last,
+                          validator: (value) {
+                            if (pagesCubit.NationalIDAttachment == null) {
+                              return ' إرفاق الهوية مطلوب';
+                            }
+
+                            return null;
+                          },
+                          hintStyle: AppStyles.styleBold16(context),
+                          filled: true,
+                          fillColor: AppColors.backgroundPrimary(context),
+                          enabled: false,
+                          keyboardType: TextInputType.number,
+                          prefix: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 12.h,
+                              horizontal: 16.w,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesUploadeFilesIcon,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-                    GestureDetector(
-                      onTap: () {
-                        pagesCubit.pickDelegationAttachment().then((val) {
-                          setState(() {});
-                        });
-                      },
-                      child: TextFormFieldWithTitleWidget(
-                        label: pagesCubit.DelegationAttachment == null
-                            ? 'إرفاق خطاب التفويض'
-                            : pagesCubit.DelegationAttachment!.path
-                                .split('/')
-                                .last,
-                        validator: (value) {
-                          if (pagesCubit.DelegationAttachment == null) {
-                            return ' إرفاق الخطاب مطلوب';
-                          }
-
-                          return null;
+                      const SizedBox(height: 24),
+                      GestureDetector(
+                        onTap: () {
+                          pagesCubit.pickDelegationAttachment().then((val) {
+                            setState(() {});
+                          });
                         },
-                        hintStyle: AppStyles.styleBold16(context),
-                        filled: true,
-                        fillColor: AppColors.backgroundPrimary(context),
-                        enabled: false,
-                        keyboardType: TextInputType.number,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                            horizontal: 16.w,
-                          ),
-                          child: SvgPicture.asset(
-                            AppAssets.app_imagesUploadeFilesIcon,
+                        child: TextFormFieldWithTitleWidget(
+                          label: pagesCubit.DelegationAttachment == null
+                              ? 'إرفاق خطاب التفويض'
+                              : pagesCubit.DelegationAttachment!.path
+                                  .split('/')
+                                  .last,
+                          validator: (value) {
+                            if (pagesCubit.DelegationAttachment == null) {
+                              return ' إرفاق الخطاب مطلوب';
+                            }
+
+                            return null;
+                          },
+                          hintStyle: AppStyles.styleBold16(context),
+                          filled: true,
+                          fillColor: AppColors.backgroundPrimary(context),
+                          enabled: false,
+                          keyboardType: TextInputType.number,
+                          prefix: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 12.h,
+                              horizontal: 16.w,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesUploadeFilesIcon,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        pagesCubit.pickDelegationAttachment().then((val) {
-                          setState(() {});
-                        });
-                      },
-                      child: TextFormFieldWithTitleWidget(
-                        label: pagesCubit.DelegationAttachment == null
-                            ? 'إرفاق خطاب التفويض'
-                            : pagesCubit.DelegationAttachment!.path
-                                .split('/')
-                                .last,
-                        validator: (value) {
-                          if (pagesCubit.DelegationAttachment == null) {
-                            return ' إرفاق الخطاب مطلوب';
-                          }
-
-                          return null;
+                      const SizedBox(height: 24),
+                      GestureDetector(
+                        onTap: () {
+                          pagesCubit.pickAssociationAttachment().then((val) {
+                            setState(() {});
+                          });
                         },
-                        hintStyle: AppStyles.styleBold16(context),
-                        filled: true,
-                        fillColor: AppColors.backgroundPrimary(context),
-                        enabled: false,
-                        keyboardType: TextInputType.number,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                            horizontal: 16.w,
-                          ),
-                          child: SvgPicture.asset(
-                            AppAssets.app_imagesUploadeFilesIcon,
+                        child: TextFormFieldWithTitleWidget(
+                          label: pagesCubit.AssociationAttachment == null
+                              ? 'إرفاق عقد التأسيس'
+                              : pagesCubit.AssociationAttachment!.path
+                                  .split('/')
+                                  .last,
+                          validator: (value) {
+                            if (pagesCubit.AssociationAttachment == null) {
+                              return ' إرفاق العقد مطلوب';
+                            }
+
+                            return null;
+                          },
+                          hintStyle: AppStyles.styleBold16(context),
+                          filled: true,
+                          fillColor: AppColors.backgroundPrimary(context),
+                          enabled: false,
+                          keyboardType: TextInputType.number,
+                          prefix: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 12.h,
+                              horizontal: 16.w,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesUploadeFilesIcon,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
               ),
               const SizedBox(height: 100),
             ],

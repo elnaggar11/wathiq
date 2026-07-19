@@ -72,185 +72,187 @@ class _CompleteSignUpMobileLayoutWidgetState
                     children: [
                       48.verticalSpace,
                       Row(
-                  children: [
-                    Text(
-                      'إنشاء حساب جديد',
-                      style: AppStyles.styleBold24(context).copyWith(
-                        color: AppColors.typographyHeading(context),
-                      ),
-                    ),
-                  ],
-                ),
-                24.verticalSpace,
-                const SignUpPasswordWidget(),
-                20.verticalSpace,
-                const CitiesDropdownButtonFormFieldWidget(), 20.verticalSpace,
-                TextFormFieldWithTitleWidget(
-                  controller: cubit.completeSignUpPhoneController,
-                  label: 'رقم الجوال',
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'يرجى ادخال رقم الجوال';
-                    }
-                    if (!RegExp(r'^5\d{8}$').hasMatch(value)) {
-                      return 'يجب أن يبدأ رقم الجوال ب 5 ويتكون من 9 أرقام';
-                    }
-                    return null;
-                  },
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(9),
-                  ],
-                  keyboardType: TextInputType.number,
-                  suffixIconSize: 70,
-                  suffix: Row(
-                    children: [
-                      Container(
-                        height: 50.h,
-                        width: 1.w,
-                        color: AppColors.separatingBorder(context),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 0.w,
-                        ),
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          height: 24.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.r),
-                          ),
-                          child: Text(
-                            '966+',
-                            style: AppStyles.styleBold16(context).copyWith(
+                        children: [
+                          Text(
+                            'إنشاء حساب جديد',
+                            style: AppStyles.styleBold24(context).copyWith(
                               color: AppColors.typographyHeading(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                      24.verticalSpace,
+                      const SignUpPasswordWidget(),
+                      20.verticalSpace,
+                      const CitiesDropdownButtonFormFieldWidget(),
+                      20.verticalSpace,
+                      TextFormFieldWithTitleWidget(
+                        controller: cubit.completeSignUpPhoneController,
+                        label: 'رقم الجوال',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'يرجى ادخال رقم الجوال';
+                          }
+                          if (!RegExp(r'^5\d{8}$').hasMatch(value)) {
+                            return 'يجب أن يبدأ رقم الجوال ب 5 ويتكون من 9 أرقام';
+                          }
+                          return null;
+                        },
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(9),
+                        ],
+                        keyboardType: TextInputType.number,
+                        suffixIconSize: 70,
+                        suffix: Row(
+                          children: [
+                            Container(
+                              height: 50.h,
+                              width: 1.w,
+                              color: AppColors.separatingBorder(context),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 12.h,
+                                horizontal: 0.w,
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                height: 24.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6.r),
+                                ),
+                                child: Text(
+                                  '966+',
+                                  style:
+                                      AppStyles.styleBold16(context).copyWith(
+                                    color: AppColors.typographyHeading(context),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        prefix: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 16,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 24,
+                              maxHeight: 24,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesPhone,
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  prefix: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 16,
-                    ),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxWidth: 24,
-                        maxHeight: 24,
+                      32.verticalSpace,
+                      Divider(
+                        color: AppColors.disabled(context),
+                        thickness: 2,
+                        height: 0,
                       ),
-                      child: SvgPicture.asset(
-                        AppAssets.app_imagesPhone,
-                        fit: BoxFit.fill,
+                      32.verticalSpace,
+                      TextFormFieldWithTitleWidget(
+                        // controller: cubit.completeSignUpNameController,
+                        label: 'الاسم الكامل',
+                        controller: cubit.completeSignUpNameController,
+
+                        fillColor: AppColors.backgroundPrimary(context),
+                        enabled: true,
+                        keyboardType: TextInputType.name,
+                        prefix: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 16,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 24,
+                              maxHeight: 24,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesPerson,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                32.verticalSpace,
-                Divider(
-                  color: AppColors.disabled(context),
-                  thickness: 2,
-                  height: 0,
-                ),
-                32.verticalSpace,
-                TextFormFieldWithTitleWidget(
-                  // controller: cubit.completeSignUpNameController,
-                  label: 'الاسم الكامل',
-                  controller: cubit.completeSignUpNameController,
+                      20.verticalSpace,
+                      TextFormFieldWithTitleWidget(
+                        // controller: cubit.loginUserIDController,
+                        label: 'رقم الهوية الوطنة / الاقامة',
+                        controller: cubit.completeSignUpNationalIDController,
 
-                  fillColor: AppColors.success05(context),
-                  enabled: false,
-                  keyboardType: TextInputType.number,
-                  prefix: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 16,
-                    ),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxWidth: 24,
-                        maxHeight: 24,
+                        fillColor: AppColors.backgroundPrimary(context),
+                        enabled: true,
+                        keyboardType: TextInputType.number,
+
+                        prefix: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 16,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 24,
+                              maxHeight: 24,
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.app_imagesNationalId,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
                       ),
-                      child: SvgPicture.asset(
-                        AppAssets.app_imagesPerson,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-                20.verticalSpace,
-                TextFormFieldWithTitleWidget(
-                  // controller: cubit.loginUserIDController,
-                  label: 'رقم الهوية الوطنة / الاقامة',
-                  controller: cubit.completeSignUpNationalIDController,
 
-                  fillColor: AppColors.success05(context),
-                  enabled: false,
-                  keyboardType: TextInputType.number,
+                      20.verticalSpace,
 
-                  prefix: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 16,
-                    ),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxWidth: 24,
-                        maxHeight: 24,
-                      ),
-                      child: SvgPicture.asset(
-                        AppAssets.app_imagesNationalId,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
+                      // TextFormFieldWithTitleWidget(
+                      //   // controller: cubit.loginUserIDController,
+                      //  label: 'البريد الاليكتروني',
+                      //   hint: 'ادخل البريد الاليكتروني',
 
-                20.verticalSpace,
+                      //   validator: (value) {
+                      //     if (value == null) {
+                      //       return 'يرجى ادخال الرقم ';
+                      //     }
+                      //     if (value.isEmpty) {
+                      //       return 'يرجى ادخال الرقم ';
+                      //     }
+                      //     return null;
+                      //   },
 
-                // TextFormFieldWithTitleWidget(
-                //   // controller: cubit.loginUserIDController,
-                //  label: 'البريد الاليكتروني',
-                //   hint: 'ادخل البريد الاليكتروني',
-
-                //   validator: (value) {
-                //     if (value == null) {
-                //       return 'يرجى ادخال الرقم ';
-                //     }
-                //     if (value.isEmpty) {
-                //       return 'يرجى ادخال الرقم ';
-                //     }
-                //     return null;
-                //   },
-
-                //   keyboardType: TextInputType.emailAddress,
-                //   prefix: Padding(
-                //     padding: EdgeInsets.symmetric(
-                //       vertical: 12,
-                //       horizontal: 16,
-                //     ),
-                //     child: ConstrainedBox(
-                //       constraints: BoxConstraints(
-                //         maxWidth: 24,
-                //         maxHeight: 24,
-                //       ),
-                //       child: SvgPicture.asset(
-                //         Assets.imagesLetter,
-                //         fit: BoxFit.fill,
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // 20.verticalSpace,
-                // DatePickerWidegt(
-                //     text: 'تاريخ الميلاد',
-                //     controller: context
-                //         .read<AuthCubit>()
-                //         .completeSignUpBirthDateController),
-                43.verticalSpace,
-                const CompleteSignUpButtonWidget(),
+                      //   keyboardType: TextInputType.emailAddress,
+                      //   prefix: Padding(
+                      //     padding: EdgeInsets.symmetric(
+                      //       vertical: 12,
+                      //       horizontal: 16,
+                      //     ),
+                      //     child: ConstrainedBox(
+                      //       constraints: BoxConstraints(
+                      //         maxWidth: 24,
+                      //         maxHeight: 24,
+                      //       ),
+                      //       child: SvgPicture.asset(
+                      //         Assets.imagesLetter,
+                      //         fit: BoxFit.fill,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      // 20.verticalSpace,
+                      // DatePickerWidegt(
+                      //     text: 'تاريخ الميلاد',
+                      //     controller: context
+                      //         .read<AuthCubit>()
+                      //         .completeSignUpBirthDateController),
+                      43.verticalSpace,
+                      const CompleteSignUpButtonWidget(),
                       24.verticalSpace,
                     ],
                   ),
@@ -275,14 +277,13 @@ class CompleteSignUpButtonWidget extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: () {
-        cubit.completeSignUp();
+        cubit.signUp();
       },
       child: BlocConsumer<AuthCubit, AuthState>(
         listenWhen: (previous, current) =>
-            previous.completeSignUpRequestState !=
-            current.completeSignUpRequestState,
+            previous.signUpRequestState != current.signUpRequestState,
         listener: (context, state) {
-          if (state.completeSignUpRequestState == RequestState.loaded) {
+          if (state.signUpRequestState == RequestState.loaded) {
             context.navigateToWithArguments(Routes.oTPScreen, {
               'nextRoute': Routes.layoutScreen,
               'totalSteps': 3,
@@ -290,30 +291,33 @@ class CompleteSignUpButtonWidget extends StatelessWidget {
               'width': 95.0,
             });
             mySnackBar(
-              state.completeSignUpMsg ?? 'هناك شئ ما خطأ حاول مجددا',
+              'تم إنشاء الحساب بنجاح، يرجى تفعيل الحساب',
               context,
               isError: false,
             );
-          } else if (state.completeSignUpRequestState == RequestState.error) {
+          } else if (state.signUpRequestState == RequestState.error) {
             mySnackBar(
-              state.completeSignUpError?.message ?? 'هناك شئ ما خطأ حاول مجددا',
+              state.signUpError?.message ?? 'هناك شئ ما خطأ حاول مجددا',
               context,
               isError: true,
             );
           }
         },
         builder: (context, state) {
-          if (state.completeSignUpRequestState == RequestState.loading) {
+          if (state.signUpRequestState == RequestState.loading) {
             return Lottie.asset(
               AppAnimationAssets.loading,
-            );
-          } else {
-            return Text(
-              'التالي',
-              style: AppStyles.styleBold18(context)
-                  .copyWith(color: AppColors.white(context)),
+              height: 50,
             );
           }
+          return Center(
+            child: Text(
+              'انشاء حساب',
+              style: AppStyles.styleBold16(context).copyWith(
+                color: AppColors.white(context),
+              ),
+            ),
+          );
         },
       ),
     );
@@ -337,6 +341,11 @@ class _DropdownButtonFormFieldWidgetState
   void initState() {
     super.initState();
     selectedValue = widget.selectedValue;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (context.read<AuthCubit>().state.getCountriesModel == null) {
+        context.read<AuthCubit>().getCountries();
+      }
+    });
   }
 
   @override
@@ -365,7 +374,15 @@ class _DropdownButtonFormFieldWidgetState
           }
 
           // إنشاء قائمة فريدة من العناصر
+          final uniqueCountryNames = <String>{};
           final uniqueItems = countries
+              .where((country) {
+                if (uniqueCountryNames.contains(country.name)) {
+                  return false;
+                }
+                uniqueCountryNames.add(country.name);
+                return true;
+              })
               .map((country) => DropdownMenuItem<String>(
                     value: country.name,
                     onTap: () {
@@ -386,19 +403,23 @@ class _DropdownButtonFormFieldWidgetState
 
           // التحقق من وجود القيمة المحددة في القائمة
           if (selectedValue != null &&
+              uniqueItems.isNotEmpty &&
               !uniqueItems.any((item) => item.value == selectedValue)) {
             selectedValue = null;
           }
 
-          // // إذا كانت القائمة فارغة، نعرض رسالة
-          // if (countries.isEmpty) {
-          //   return Center(
-          //     child: Text(
-          //       'جاري تحميل المدن...',
-          //       style: AppStyles.styleRegular16(context),
-          //     ),
-          //   );
-          // }
+          // إذا كانت القائمة فارغة، نعرض رسالة
+          if (countries.isEmpty) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text(
+                  'جاري تحميل المدن...',
+                  style: AppStyles.styleRegular16(context),
+                ),
+              ),
+            );
+          }
 
           return DropdownButtonFormField<String>(
             initialValue: selectedValue,
@@ -478,7 +499,7 @@ class _DropdownButtonFormFieldWidgetState
             ),
             icon: selectedValue == null
                 ? SvgPicture.asset(
-                    Assets.imagesArrowDown,
+                    Assets.imagesArrowDownIcon,
                   )
                 : InkWell(
                     onTap: () {

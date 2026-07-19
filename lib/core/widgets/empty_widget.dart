@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
-import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

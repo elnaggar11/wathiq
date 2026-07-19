@@ -8,40 +8,64 @@ void mySnackBar(String message, BuildContext ctx, {bool isError = true}) {
   overlayEntry = OverlayEntry(
     builder: (context) => Positioned(
       top: MediaQuery.of(context).size.height * 0.05,
-      left: 20,
-      right: 20,
+      left: 16,
+      right: 16,
       child: Material(
         color: Colors.transparent,
-        child: AnimatedOpacity(
-          opacity: 1.0,
-          duration: const Duration(milliseconds: 300),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: isError ? AppColors.danger(ctx) : Colors.green,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 2,
-                  spreadRadius: 0.1,
-                  offset: Offset(0, 1),
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(isError ? Icons.error : Icons.check_circle,
-                    color: Colors.white),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    message,
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: -50, end: 0),
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeOutCubic,
+          builder: (context, value, child) {
+            return Transform.translate(
+              offset: Offset(0, value),
+              child: AnimatedOpacity(
+                opacity: value == -50 ? 0.0 : 1.0,
+                duration: const Duration(milliseconds: 300),
+                child: child,
+              ),
+            );
+          },
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              decoration: BoxDecoration(
+                color: isError ? AppColors.danger(ctx) : AppColors.success(ctx),
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.15),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                    offset: const Offset(0, 8),
                   ),
-                ),
-              ],
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    isError
+                        ? Icons.error_outline_rounded
+                        : Icons.check_circle_outline_rounded,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      message,
+                      style: const TextStyle(
+                        fontFamily: 'Lama Sans',
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -68,58 +92,95 @@ class FloatingSnackBar {
 
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
-        top: MediaQuery.of(context).size.height * 0.05, // Adjust height
-        left: 20,
-        right: 20,
+        top: MediaQuery.of(context).size.height * 0.05,
+        left: 16,
+        right: 16,
         child: Material(
           color: Colors.transparent,
-          child: AnimatedOpacity(
-            opacity: 1.0,
-            duration: const Duration(milliseconds: 300),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                color: isError ? AppColors.danger(context) : Colors.green,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12, // Softer shadow color
-                    blurRadius: 2, // Slight blur for a subtle effect
-                    spreadRadius: 0.1, // Minimal spread
-                    offset: Offset(0, 1), // Light bottom shadow for depth
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(isError ? Icons.error : Icons.check_circle,
-                          color: Colors.white),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          message,
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+          child: TweenAnimationBuilder<double>(
+            tween: Tween<double>(begin: -50, end: 0),
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeOutCubic,
+            builder: (context, value, child) {
+              return Transform.translate(
+                offset: Offset(0, value),
+                child: AnimatedOpacity(
+                  opacity: value == -50 ? 0.0 : 1.0,
+                  duration: const Duration(milliseconds: 300),
+                  child: child,
+                ),
+              );
+            },
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                decoration: BoxDecoration(
+                  color: isError
+                      ? AppColors.danger(context)
+                      : AppColors.success(context),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.15),
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          isError
+                              ? Icons.error_outline_rounded
+                              : Icons.check_circle_outline_rounded,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            message,
+                            style: const TextStyle(
+                              fontFamily: 'Lama Sans',
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    if (progress != null) ...[
+                      const SizedBox(height: 12),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: LinearProgressIndicator(
+                          value: progress / 100,
+                          backgroundColor: Colors.white.withValues(alpha: 0.2),
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(Colors.white),
+                          minHeight: 6,
                         ),
                       ),
-                    ],
-                  ),
-                  if (progress != null) ...[
-                    const SizedBox(height: 8),
-                    LinearProgressIndicator(
-                      value: progress / 100,
-                      backgroundColor: Colors.white24,
-                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '${progress.toStringAsFixed(1)}%',
-                      style: const TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                  ]
-                ],
+                      const SizedBox(height: 6),
+                      Text(
+                        '${progress.toStringAsFixed(1)}%',
+                        style: const TextStyle(
+                          fontFamily: 'Lama Sans',
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ]
+                  ],
+                ),
               ),
             ),
           ),
@@ -127,10 +188,8 @@ class FloatingSnackBar {
       ),
     );
 
-    // Insert Overlay
     overlayState.insert(overlayEntry);
 
-    // Auto-dismiss after 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
       overlayEntry.remove();
     });

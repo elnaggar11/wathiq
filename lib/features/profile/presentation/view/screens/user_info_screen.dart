@@ -14,6 +14,7 @@ import 'package:wathiq/core/widgets/error_app_widget.dart';
 import 'package:wathiq/core/widgets/guest_widget.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/user_info/loaded_user_info_widget.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/user_info/shimmer_user_info_widget%20.dart';
+import 'package:wathiq/core/widgets/my_snackbar.dart';
 
 class UserInfoScreen extends StatefulWidget {
   const UserInfoScreen({super.key});
@@ -82,25 +83,48 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
         ),
         body: KisGuest == true
             ? const GuestWidget()
-            : BlocBuilder<ProfileCubit, ProfileState>(
-                builder: (context, state) {
-                  switch (state.profileRequestState) {
-                    case RequestState.loading:
-                    case RequestState.ideal:
-                      return const ShimmerUserInfoWidget();
-                    case RequestState.error:
-                      return ErrorAppWidget(
-                        text: state.profileError?.message ?? 'حدث شئ ما خطأ',
-                        onTap: () {
-                          profileCubit.getProfile();
-                        },
-                      );
-                    case RequestState.loaded:
-                      return LoadedUserInfoWidget(
-                        profileModel: state.profileModel!,
-                      );
+            : BlocListener<ProfileCubit, ProfileState>(
+                listenWhen: (previous, current) =>
+                    previous.changeProfileImageRequestState !=
+                    current.changeProfileImageRequestState,
+                listener: (context, state) {
+                  if (state.changeProfileImageRequestState ==
+                      RequestState.loaded) {
+                    mySnackBar(
+                      'تم تغيير البيانات الشخصيه',
+                      context,
+                      isError: false,
+                    );
+                  } else if (state.changeProfileImageRequestState ==
+                      RequestState.error) {
+                    mySnackBar(
+                      state.changeProfileImageError?.message ??
+                          'حدث شئ ما خطأ',
+                      context,
+                      isError: true,
+                    );
                   }
                 },
+                child: BlocBuilder<ProfileCubit, ProfileState>(
+                  builder: (context, state) {
+                    switch (state.profileRequestState) {
+                      case RequestState.loading:
+                      case RequestState.ideal:
+                        return const ShimmerUserInfoWidget();
+                      case RequestState.error:
+                        return ErrorAppWidget(
+                          text: state.profileError?.message ?? 'حدث شئ ما خطأ',
+                          onTap: () {
+                            profileCubit.getProfile();
+                          },
+                        );
+                      case RequestState.loaded:
+                        return LoadedUserInfoWidget(
+                          profileModel: state.profileModel!,
+                        );
+                    }
+                  },
+                ),
               ),
       ),
     );

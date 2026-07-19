@@ -238,67 +238,84 @@ class _MazadCardWidgetState extends State<MazadCardWidget> {
             // MazadStatusTimerWidget(
             //   auctionData: widget.auctionsModel.data[widget.index],
             // ),
-            AuctionAssetsNumAndDay(
-              NumOfAssets: widget
-                  .auctionsModel.data[widget.index].auctionOrigins.length
-                  .toString(),
-              numOfDayes: widget.auctionsModel.data[widget.index].numberOfDays
-                  .toString(),
-              padding: 0,
-            ),
-            Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
-                    ),
-                    color: widget.auctionsModel.data[widget.index].status ==
-                            AppStrings.auctionsOnGoing
-                        ? const Color(0xFFEEF5F1)
-                        : widget.auctionsModel.data[widget.index].status ==
-                                AppStrings.auctionsInProgress
-                            ? const Color(0xFFF2F2F2)
-                            : const Color(0xFFF8F0EE),
-                  ),
-                  child: getKTapIndex(context,
-                              widget.auctionsModel.data[widget.index].status) ==
-                          3
-                      ? const CompletedAuctionStutesWidget()
-                      : FittedBox(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    getAuctionTimerText(
-                                      widget.auctionsModel.data[widget.index]
-                                          .status,
-                                    ),
-                                    style:
-                                        AppStyles.styleBold16(context).copyWith(
-                                      color:
-                                          AppColors.typographyHeading(context),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: const Color(0xFFE6E6E6), width: 1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  // Timer Part
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                    child: getKTapIndex(context, widget.auctionsModel.data[widget.index].status) == 3
+                        ? const CompletedAuctionStutesWidget()
+                        : FittedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  getAuctionTimerText(
+                                    widget.auctionsModel.data[widget.index].status,
                                   ),
-                                ],
-                              ),
-                              const SizedBox(width: 16),
-                              TimerHomeWidget(
-                                  auctionData:
-                                      widget.auctionsModel.data[widget.index])
-                            ],
+                                  style: AppStyles.styleBold16(context).copyWith(
+                                    color: AppColors.typographyHeading(context),
+                                  ),
+                                ),
+                                const SizedBox(width: 24),
+                                TimerHomeWidget(
+                                    auctionData: widget.auctionsModel.data[widget.index]),
+                              ],
+                            ),
                           ),
+                  ),
+                  const Divider(height: 1, thickness: 1, color: Color(0xFFE6E6E6)),
+                  // Assets & Duration Part
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppAssets.app_imagesBriefcase,
+                              width: 20,
+                              height: 20,
+                              colorFilter: const ColorFilter.mode(Color(0xFF6B7280), BlendMode.srcIn),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              'الاصول ${widget.auctionsModel.data[widget.index].auctionOrigins.length}',
+                              style: AppStyles.styleBold16(context).copyWith(
+                                color: AppColors.typographyHeading(context),
+                              ),
+                            ),
+                          ],
                         ),
-                )
-              ],
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppAssets.app_imagesClock,
+                              width: 20,
+                              height: 20,
+                              colorFilter: const ColorFilter.mode(Color(0xFF6B7280), BlendMode.srcIn),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              'المدة ${widget.auctionsModel.data[widget.index].numberOfDays} ايام',
+                              style: AppStyles.styleBold16(context).copyWith(
+                                color: AppColors.typographyHeading(context),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 16),
             ShowMoreWidget(

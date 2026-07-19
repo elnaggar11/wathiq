@@ -76,7 +76,10 @@ class _WalletScreenState extends State<WalletScreen>
     );
     WalletCubit walletCubit = context.read<WalletCubit>();
     return KisGuest == true
-        ? const GuestWidget()
+        ? Scaffold(
+            appBar: CoustomAppBarWidget(title: 'المحفظة'),
+            body: const GuestWidget(),
+          )
         : DefaultTabController(
             length: 3,
             child: Scaffold(

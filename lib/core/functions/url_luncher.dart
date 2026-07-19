@@ -5,6 +5,8 @@ import 'package:media_scanner/media_scanner.dart';
 import 'package:open_file/open_file.dart' as file;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 import 'package:wathiq/core/error/failure.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
@@ -62,15 +64,33 @@ Future<Either<Failure, String>> downloadFile(
   }
 
   // ✅ اطلب صلاحية التخزين
-  if (!await Permission.manageExternalStorage.request().isGranted) {
+  bool isGranted = false;
+  if (await Permission.storage.request().isGranted) {
+    isGranted = true;
+  } else if (await Permission.manageExternalStorage.request().isGranted) {
+    isGranted = true;
+  }
+
+  if (!isGranted) {
     return const Left(AppFailure(message: 'تم رفض صلاحية التخزين'));
   }
 
   Dio dio = Dio();
 
   try {
+    Directory? dir;
+    if (Platform.isAndroid) {
+      dir = await getExternalStorageDirectory();
+    } else {
+      dir = await getApplicationDocumentsDirectory();
+    }
+    
+    if (dir == null) {
+      return const Left(AppFailure(message: 'فشل في الوصول إلى مسار التخزين'));
+    }
+
     String fileName = getFileNameFromUrl(url);
-    String filePath = '/storage/emulated/0/Download/$fileName';
+    String filePath = '${dir.path}/$fileName';
 
     await dio.download(
       url,

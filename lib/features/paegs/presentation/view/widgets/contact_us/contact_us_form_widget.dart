@@ -126,7 +126,7 @@ class ContactUsFormWidget extends StatelessWidget {
                 return 'يرجى ادخال الرسالة ';
               }
               if (value.length < 10) {
-                return 'يجب ان تكون الرساله اكثر من 40 حرف';
+                return 'يجب ان تكون الرساله اكثر من 10 حرف';
               }
               return null;
             },
@@ -148,6 +148,11 @@ class ContactUsFormWidget extends StatelessWidget {
                     title:
                         'تم إرسال رسالتك بنجاح! شكرًا لتواصلك معنا. سنقوم بمراجعة طلبك والرد عليك قريبًا',
                   );
+                  Future.delayed(const Duration(seconds: 2), () {
+                    if (context.mounted) {
+                      Navigator.of(context).pop();
+                    }
+                  });
                 } else if (state.postcontactUsRequestState ==
                     RequestState.error) {
                   mySnackBar(

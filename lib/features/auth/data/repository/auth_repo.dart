@@ -77,10 +77,9 @@ class AuthRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        String code =
-            response.data['data']['code']; //TODO : return msg at production
+        String message = response.data['message'];
 
-        return Right(code);
+        return Right(message);
       } else {
         log('Register Status code is 422');
         return Left(
@@ -99,14 +98,13 @@ class AuthRepository {
     try {
       final response = await remoteDataSource.login(params);
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
-        String code =
-            response.data['data']['code']; //TODO : return msg at production
+        String message = response.data['message'];
         serviceLocator<IAppLocalStorage>()
             .setValue(AppStrings.userName, response.data['data']['name']);
         serviceLocator<IAppLocalStorage>()
             .setValue(AppStrings.userIdentityNumber, params.identityNumber);
 
-        return Right(code);
+        return Right(message);
       } else if (response.statusCode == 401) {
         return Left(AppFailure(
           message: response.data['errors'][0]['message'],
@@ -130,12 +128,11 @@ class AuthRepository {
     try {
       final response = await remoteDataSource.foregtPassword(identityNumber);
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
-        String code =
-            response.data['data']['code']; //TODO : return msg at production
+        String message = response.data['message'];
         serviceLocator<IAppLocalStorage>()
             .setValue(AppStrings.userIdentityNumber, identityNumber);
 
-        return Right(code);
+        return Right(message);
       } else {
         return Left(AppFailure(
           message: response.data['errors'][0]['message'],
@@ -187,9 +184,8 @@ class AuthRepository {
     try {
       final response = await remoteDataSource.resendCode(identityNumber);
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
-        String code =
-            response.data['data']['code']; //TODO : return msg at production
-        return Right(code);
+        String message = response.data['message'];
+        return Right(message);
       } else {
         return Left(AppFailure(
           message: response.data['errors'][0]['message'],

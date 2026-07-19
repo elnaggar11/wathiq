@@ -69,8 +69,6 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
-
-
   void navigateToNextScreen(BuildContext context) async {
     // await SecureStorageServices().deleteCookie().then((value) => value);
     var value =
@@ -80,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
             false;
 
     timer = Timer(
-      Duration(seconds: isAppLocked ? 0 : 3),
+      Duration(seconds: isAppLocked ? 0 : 5),
       () {
         if (value != null) {
           KisGuest = false;
@@ -146,7 +144,12 @@ class SplashScreenMobileLayoutWidget extends StatelessWidget {
           fit: BoxFit.cover,
           width: size.width,
           height: size.height,
-        ).animate().fadeIn(duration: 800.ms, curve: Curves.easeIn),
+        ).animate().fadeIn(duration: 1500.ms, curve: Curves.easeOut).scale(
+              begin: const Offset(1.15, 1.15),
+              end: const Offset(1.0, 1.0),
+              duration: 4000.ms,
+              curve: Curves.easeOutQuart,
+            ),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -161,17 +164,22 @@ class SplashScreenMobileLayoutWidget extends StatelessWidget {
               )
                   .animate()
                   .scale(
-                    duration: 1200.ms,
+                    duration: 2000.ms,
                     curve: Curves.elasticOut,
-                    begin: const Offset(0.5, 0.5),
+                    begin: const Offset(0.0, 0.0),
                     end: const Offset(1.0, 1.0),
                   )
-                  .fadeIn(duration: 800.ms, curve: Curves.easeIn)
+                  .fadeIn(duration: 1200.ms, curve: Curves.easeIn)
                   .slideY(
-                    begin: 0.2,
+                    begin: 0.5,
                     end: 0.0,
-                    duration: 800.ms,
-                    curve: Curves.easeOutCubic,
+                    duration: 1500.ms,
+                    curve: Curves.easeOutCirc,
+                  )
+                  .then(delay: 500.ms)
+                  .shimmer(
+                    duration: 2000.ms,
+                    color: Colors.white.withValues(alpha: 0.5),
                   ),
               isAppLocked
                   ? GestureDetector(
@@ -190,6 +198,14 @@ class SplashScreenMobileLayoutWidget extends StatelessWidget {
                             color: AppColors.typographyHeadingWhite(context)),
                       ),
                     )
+                      .animate(delay: 1500.ms)
+                      .fadeIn(duration: 1200.ms, curve: Curves.easeIn)
+                      .slideY(
+                        begin: 0.3,
+                        end: 0,
+                        duration: 1200.ms,
+                        curve: Curves.easeOut,
+                      )
                   : const SizedBox.shrink(),
             ],
           ),

@@ -11,7 +11,6 @@ import 'package:wathiq/features/profile/presentation/view_model/profile/profile_
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
-import 'package:wathiq/features/paegs/presentation/view/widgets/sales_agent/stepper_widget.dart';
 import 'package:wathiq/features/profile/presentation/view/widgets/change_email/change_email_button_widget.dart';
 
 class ChangeEmailScreen extends StatefulWidget {
@@ -90,16 +89,14 @@ class ChangeEmailScreenMobileLayoutWidget extends StatelessWidget {
                 40.verticalSpace,
                 TextFormFieldWithTitleWidget(
                   controller: cubit.emailController,
-                  label: 'البريد الاليكتروني ',
+                  label: 'البريد الإلكتروني',
                   validator: (value) {
-                    if (value == null) {
-                      return 'يرجى ادخال البريد الاليكتروني  ';
+                    if (value == null || value.trim().isEmpty) {
+                      return 'يرجى إدخال البريد الإلكتروني';
                     }
-                    if (value.isEmpty) {
-                      return 'يرجى ادخال البريد الاليكتروني  ';
-                    }
-                    if (!value.contains('@')) {
-                      return 'يرجى ادخال  بريد الكتروني صحيح ';
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                        .hasMatch(value.trim())) {
+                      return 'يرجى إدخال بريد إلكتروني صحيح';
                     }
 
                     return null;

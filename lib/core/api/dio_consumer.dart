@@ -146,12 +146,13 @@ class DioConsumer extends ApiConsumer {
             throw const ConflictException();
           case StatusCode.internetServerError:
             throw const InternalServerErrorException();
+          default:
+            throw ServerException(error.response?.statusMessage ?? 'Server Error');
         }
-        break;
       case DioExceptionType.cancel:
         throw const CancelRequestException();
       case DioExceptionType.unknown:
-        throw const UnknownException();
+        throw UnknownException(error.error?.toString() ?? error.message);
       case DioExceptionType.badCertificate:
         throw const BadCertificateException();
       case DioExceptionType.connectionError:

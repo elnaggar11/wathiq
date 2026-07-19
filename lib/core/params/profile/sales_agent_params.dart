@@ -162,9 +162,11 @@ class SalesAgentParams extends Equatable {
     // Construct FormData
     return FormData.fromMap({
       if (letterOfAuthorization != null)
-        'letterOfAuthorization': await _createMultipartFile(letterOfAuthorization!),
+        'letterOfAuthorization':
+            await _createMultipartFile(letterOfAuthorization!),
       if (articlesOfAssociation != null)
-        'articlesOfAssociation': await _createMultipartFile(articlesOfAssociation!),
+        'articlesOfAssociation':
+            await _createMultipartFile(articlesOfAssociation!),
       if (identityAttachment != null)
         'identityAttachment': await _createMultipartFile(identityAttachment!),
       //
@@ -172,7 +174,8 @@ class SalesAgentParams extends Equatable {
         'bankCertificate': await _createMultipartFile(bankCertificate!),
       //
       if (commercialAttachment != null)
-        'commercialAttachment': await _createMultipartFile(commercialAttachment!),
+        'commercialAttachment':
+            await _createMultipartFile(commercialAttachment!),
       if (taxAttachment != null)
         'taxAttachment': await _createMultipartFile(taxAttachment!),
       if (valAttachment != null)

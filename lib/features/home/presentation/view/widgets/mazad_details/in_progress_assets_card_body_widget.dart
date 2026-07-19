@@ -29,47 +29,53 @@ class InProgressAssetsCardBodyWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              AssetsDetailsCardColumWidget(
-                dateLabel: 'تاريخ بداية المزاد',
-                maxWidth: 100,
-                date: formatDateFunction(
-                    homeCubit.auctionData!.startDate.toString()),
-                showCurrancyLogo: false,
-                icon: AppAssets.app_imagesCalendar,
-              ),
-              const SizedBox(width: 8),
-              AssetsDetailsCardColumWidget(
-                maxWidth: 100,
-                dateLabel: 'وقت بداية المزاد',
-                date: formatTimeFunction(
-                    homeCubit.auctionData!.startDate.toString()),
-                showCurrancyLogo: false,
-                icon: AppAssets.app_imagesAlarm,
-              ),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                AssetsDetailsCardColumWidget(
+                  dateLabel: 'تاريخ بداية المزاد',
+                  maxWidth: 100,
+                  date: formatDateFunction(
+                      homeCubit.auctionData!.startDate.toString()),
+                  showCurrancyLogo: false,
+                  icon: AppAssets.app_imagesCalendar,
+                ),
+                const SizedBox(width: 8),
+                AssetsDetailsCardColumWidget(
+                  maxWidth: 100,
+                  dateLabel: 'وقت بداية المزاد',
+                  date: formatTimeFunction(
+                      homeCubit.auctionData!.startDate.toString()),
+                  showCurrancyLogo: false,
+                  icon: AppAssets.app_imagesAlarm,
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 4),
-          Row(
-            children: [
-              AssetsDetailsCardColumWidget(
-                maxWidth: 100,
-                dateLabel: 'السعر الافتتاحي',
-                date: formatNumber(homeCubit.originList[index].openingPrice),
-                showCurrancyLogo: true,
-                icon: AppAssets.app_imagesBanknote,
-              ),
-              const SizedBox(width: 8),
-              AssetsDetailsCardColumWidget(
-                maxWidth: 100,
-                dateLabel: 'عربون الدخول',
-                date: formatNumber(homeCubit.originList[index].entryDeposit)
-                    .toString(),
-                showCurrancyLogo: true,
-                icon: AppAssets.app_imagesBillCheck,
-              ),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                AssetsDetailsCardColumWidget(
+                  maxWidth: 100,
+                  dateLabel: 'السعر الافتتاحي',
+                  date: formatNumber(homeCubit.originList[index].openingPrice),
+                  showCurrancyLogo: true,
+                  icon: AppAssets.app_imagesBanknote,
+                ),
+                const SizedBox(width: 8),
+                AssetsDetailsCardColumWidget(
+                  maxWidth: 100,
+                  dateLabel: 'عربون الدخول',
+                  date: formatNumber(homeCubit.originList[index].entryDeposit)
+                      .toString(),
+                  showCurrancyLogo: true,
+                  icon: AppAssets.app_imagesBillCheck,
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 12),
           BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {

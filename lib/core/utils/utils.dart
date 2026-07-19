@@ -55,7 +55,6 @@
 
 class GlobalVar {
   const GlobalVar._();
-  static const GlobalVar _instance = GlobalVar._();
   static bool KisAnonymous = false;
 }
 

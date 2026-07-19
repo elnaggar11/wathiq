@@ -24,6 +24,8 @@ class Assets {
 
   static const String imagesArrowDown = "assets/images/arrow-down.svg";
 
+  static const String imagesArrowDownIcon = "assets/images/caret_down.svg";
+
   static const String imagesArrowLeftLong = "assets/images/arrow-left-long.svg";
 
   static const String imagesAssets = "assets/images/assets.svg";

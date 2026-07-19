@@ -390,7 +390,7 @@ class LoadedUserInfoWidget extends StatelessWidget {
                           profileModel.data.email == null
                               ? 'ادخل البريد'
                               : 'تغير البريد',
-                          style: AppStyles.styleMedium14(context).copyWith(
+                          style: AppStyles.styleBold16(context).copyWith(
                             color: AppColors.primary(context),
                             decoration: TextDecoration.underline,
                             decorationColor: AppColors.primary(context),
@@ -403,54 +403,55 @@ class LoadedUserInfoWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              profileModel.data.email == null
-                  ? Row(
-                      children: [
-                        Text(
-                          'يرجى ادخال البريد الالكتروني',
-                          style: AppStyles.styleMedium14(context).copyWith(
-                            color: AppColors.danger(context),
-                          ),
-                        ),
-                      ],
-                    )
-                  : const SizedBox.shrink(),
+              // profileModel.data.email == null
+              //     ? Row(
+              //         children: [
+              //           Text(
+              //             'يرجى ادخال البريد الالكتروني',
+              //             style: AppStyles.styleMedium14(context).copyWith(
+              //               color: AppColors.danger(context),
+              //             ),
+              //           ),
+              //         ],
+              //       )
+              //     : const SizedBox.shrink(),
               const SizedBox(height: 44),
-              InkWell(
-                onTap: () {
-                  showDeleteAccountBottomSheet(context);
-                },
-                child: Container(
-                  height: 56,
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: ShapeDecoration(
-                    color: const Color(0x19EB5757),
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(width: 1, color: Color(0xFFE9EBEC)),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        Assets.imagesTrashBinTrash,
-                        fit: BoxFit.fill,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'حذف الحساب ',
-                        style: AppStyles.styleBold16(context).copyWith(
-                          color: AppColors.danger(context),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
+              // InkWell(
+              //   onTap: () {
+              //     showDeleteAccountBottomSheet(context);
+              //   },
+              //   child: Container(
+              //     height: 56,
+              //     width: double.infinity,
+              //     padding:
+              //         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              //     clipBehavior: Clip.antiAlias,
+              //     decoration: ShapeDecoration(
+              //       color: const Color(0x19EB5757),
+              //       shape: RoundedRectangleBorder(
+              //         side:
+              //             const BorderSide(width: 1, color: Color(0xFFE9EBEC)),
+              //         borderRadius: BorderRadius.circular(16),
+              //       ),
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         SvgPicture.asset(
+              //           Assets.imagesTrashBinTrash,
+              //           fit: BoxFit.fill,
+              //         ),
+              //         const SizedBox(width: 8),
+              //         Text(
+              //           'حذف الحساب ',
+              //           style: AppStyles.styleBold16(context).copyWith(
+              //             color: AppColors.danger(context),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 20),
             ],
           ),
         ),

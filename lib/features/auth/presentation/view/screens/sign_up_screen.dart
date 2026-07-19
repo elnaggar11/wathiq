@@ -111,7 +111,8 @@ class SignUpScreenMobileLayoutWidget extends StatelessWidget {
                           if (value.length != 10) {
                             return 'رقم الهوية الوطنية يجب ان يتكون من 10 ارقام';
                           }
-                          if (!value.startsWith('1') && !value.startsWith('2')) {
+                          if (!value.startsWith('1') &&
+                              !value.startsWith('2')) {
                             return 'رقم الهوية الوطنية / الاقامة خطأ';
                           }
                           return null;
@@ -177,37 +178,22 @@ class SignUpButtonWidget extends StatelessWidget {
           FloatingSnackBar.show(context, 'يرجي قبول الشروط والاحكام');
           return;
         }
-        cubit.signUp();
+        if (cubit.signUpFormKey.currentState!.validate()) {
+          cubit.completeSignUpNationalIDController.text = 
+              cubit.signUpNationalIDController.text.trim();
+          
+          context.navigateTo(
+            Routes.completeSignUpScreen,
+          );
+        }
       },
-      child: BlocConsumer<AuthCubit, AuthState>(
-        listenWhen: (previous, current) =>
-            previous.signUpRequestState != current.signUpRequestState,
-        listener: (context, state) {
-          if (state.signUpRequestState == RequestState.loaded) {
-            context.navigateTo(
-              Routes.completeSignUpScreen,
-            );
-          } else if (state.signUpRequestState == RequestState.error) {
-            mySnackBar(
-              state.signUpError?.message ?? 'هناك شئ ما خطأ حاول مجددا',
-              context,
-              isError: true,
-            );
-          }
-        },
-        builder: (context, state) {
-          if (state.signUpRequestState == RequestState.loading) {
-            return Lottie.asset(
-              AppAnimationAssets.loading,
-            );
-          } else {
-            return Text(
-              'إنشاء حساب جديد',
-              style: AppStyles.styleBold18(context)
-                  .copyWith(color: AppColors.white(context)),
-            );
-          }
-        },
+      child: Center(
+        child: Text(
+          'التالي',
+          style: AppStyles.styleBold16(context).copyWith(
+            color: AppColors.white(context),
+          ),
+        ),
       ),
     );
   }

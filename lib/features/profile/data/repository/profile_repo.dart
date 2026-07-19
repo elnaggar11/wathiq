@@ -95,7 +95,7 @@ class ProfileRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        return Right(response.data['data']['code']); //TODO : replase with msg
+        return Right(response.data['message']); //TODO : replase with msg
       } else {
         log('Register Status code is 422');
         return Left(
@@ -116,7 +116,7 @@ class ProfileRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        return Right(response.data['data']['code']);
+        return Right(response.data['message']);
       } else {
         log('Register Status code is 422');
         return Left(
@@ -137,7 +137,7 @@ class ProfileRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        return Right(response.data['data']['code']); //TODO : replase with msg
+        return Right(response.data['message']); //TODO : replase with msg
       } else {
         log('Register Status code is 422');
         return Left(
@@ -158,7 +158,7 @@ class ProfileRepository {
       if (response.statusCode! >= 200 && response.statusCode! <= 202) {
         log('Register Status code is 200');
 
-        return Right(response.data['data']['code']);
+        return Right(response.data['message']);
       } else {
         log('Register Status code is 422');
         return Left(

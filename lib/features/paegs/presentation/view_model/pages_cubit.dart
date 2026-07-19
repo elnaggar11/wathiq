@@ -1,13 +1,11 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:wathiq/features/paegs/data/models/notification_model.dart';
 import 'package:wathiq/features/paegs/data/models/question_model.dart';
 import 'package:wathiq/features/paegs/data/models/social_model.dart';
-
 import 'package:wathiq/app/injector.dart';
 import 'package:wathiq/core/error/failure.dart';
 import 'package:wathiq/core/functions/pick_images_and_files.dart';
@@ -45,11 +43,11 @@ class PagesCubit extends Cubit<PagesState> {
   final companyNameController = TextEditingController();
   final companyEmailController = TextEditingController();
   final companyPhoneNumberController = TextEditingController();
-  final companyPhoneKeyController = TextEditingController();
+  final companyPhoneKeyController = TextEditingController(text: '+966');
   final bankAccountNumberController = TextEditingController();
   final bankNameController = TextEditingController();
   final realEstateActivityController =
-      TextEditingController(text: 'مزادات عقارية');
+      TextEditingController(text: 'auctions');
   final valAuctionsLicenseNumberController = TextEditingController();
   final taxTypeController = TextEditingController();
   final taxNumberController = TextEditingController();
@@ -57,7 +55,7 @@ class PagesCubit extends Cubit<PagesState> {
   final commercialRegStartDateController = TextEditingController();
   final commercialRegEndDateController = TextEditingController();
   final userNameController = TextEditingController();
-  final userPhoneKeyController = TextEditingController();
+  final userPhoneKeyController = TextEditingController(text: '+966');
   final userPhoneNumberController = TextEditingController();
   final userEmailController = TextEditingController();
   final userBirthDayController = TextEditingController();
@@ -511,7 +509,7 @@ class PagesCubit extends Cubit<PagesState> {
       companyPhoneKey: companyPhoneKeyController.text.trim(),
       bankAccountNumber: bankAccountNumberController.text.trim(),
       bankName: bankNameController.text.trim(),
-      realEstateActivity: 'مزادات عقارية',
+      realEstateActivity: realEstateActivityController.text.trim(),
       valAuctionsLicenseNumber: valAuctionsLicenseNumberController.text.trim(),
       taxType: taxType,
       taxNumber: taxNumberController.text.trim(),

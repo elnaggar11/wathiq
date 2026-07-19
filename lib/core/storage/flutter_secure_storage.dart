@@ -1,60 +1,32 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:wathiq/app/injector.dart';
+import 'package:wathiq/core/storage/i_app_local_storage.dart';
 
-class SecureStorageServices extends FlutterSecureStorage {
-  static const String cookieToken = 'cookie';
-  final FlutterSecureStorage storage = const FlutterSecureStorage();
+class SecureStorageServices {
+  static const _cookieKey = 'cookie';
+
+  SecureStorageServices._();
+
+  static final SecureStorageServices _instance = SecureStorageServices._();
+  factory SecureStorageServices() => _instance;
+
+  final IAppLocalStorage _storage = serviceLocator<IAppLocalStorage>();
+
   String? _cookie;
 
   Future<void> setCookie({required String? cookie}) async {
-    try {
-      await storage.write(key: cookieToken, value: cookie);
-      _cookie = cookie;
-    } catch (e) {
-      print('Error writing cookie: $e');
-      // محاولة إعادة تعيين التخزين
-      await _resetStorage();
-    }
-  }
-
-  Future<void> deleteCookie() async {
-    try {
-      await storage.delete(key: cookieToken);
-      _cookie = null;
-    } catch (e) {
-      print('Error deleting cookie: $e');
-      await _resetStorage();
-    }
-  }
-
-  Future<String?> getCookie() async {
-    try {
-      _cookie = await storage.read(key: cookieToken);
-      print('getCookie: $_cookie');
-      return _cookie;
-    } catch (e) {
-      print('Error reading cookie: $e');
-      // محاولة إعادة تعيين التخزين
-      await _resetStorage();
-      return null;
-    }
-  }
-
-  Future<void> _resetStorage() async {
-    try {
-      // حذف جميع البيانات المخزنة
-      await storage.deleteAll();
-      _cookie = null;
-      print('Storage has been reset');
-    } catch (e) {
-      print('Error resetting storage: $e');
-    }
-  }
-
-  set cookie(String? cookie) {
+    await _storage.setValue(_cookieKey, cookie);
     _cookie = cookie;
   }
 
-  String? get cookie {
+  Future<void> deleteCookie() async {
+    await _storage.deleteValue(_cookieKey);
+    _cookie = null;
+  }
+
+  Future<String?> getCookie() async {
+    if (_cookie != null) return _cookie;
+
+    _cookie = _storage.getValue(_cookieKey)?.toString();
     return _cookie;
   }
 }

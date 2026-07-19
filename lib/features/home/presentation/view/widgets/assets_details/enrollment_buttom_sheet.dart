@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
+import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/enums.dart';
+import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 import 'package:wathiq/core/widgets/error_app_widget.dart';
@@ -622,25 +624,23 @@ class _ActiveAgenciesDropdownButtonFormFieldWidgetState
           //   textAlign: TextAlign.center,
           //   style: AppStyles.styleBold16(context),
           // ),
-          icon: Icon(
-            Icons.arrow_drop_down,
-            color: AppColors.grey500(context),
-          ),
-          // : InkWell(
-          //     onTap: () {
-          //       setState(() {
-          //         selectedValue = null;
-          //       });
-          //       pagesCubit.category = null;
-
-          //       pagesCubit.getQuestions();
-          //     },
-          //     child: SizedBox(
-          //       child: SvgPicture.asset(
-          //         Assets.imagesCloseIcon,
-          //       ),
-          //     ),
-          //   ),
+          icon: selectedValue == null
+              ? SvgPicture.asset(
+                  Assets.imagesArrowDownIcon,
+                )
+              : InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedValue = null;
+                    });
+                    homeCubit.agencyId = null;
+                  },
+                  child: SizedBox(
+                    child: SvgPicture.asset(
+                      Assets.imagesCloseIcon,
+                    ),
+                  ),
+                ),
         );
       },
     );

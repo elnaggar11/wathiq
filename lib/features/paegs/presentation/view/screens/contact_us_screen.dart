@@ -50,7 +50,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     duration: const Duration(milliseconds: 800),
                     delay: const Duration(milliseconds: 200),
                     child: Text(
-                      'نسعد بتواصلكم معنا ونرحب بمقترحاتكم والإجابة على استفساراتكم',
+                      'نرحب بجميع استفساراتكم واقتراحاتكم، كما يسعدنا تلقي أي ملاحظات تودون مشاركتها معنا. آراؤكم تهمنا وتسهم في تطوير خدماتنا.',
                       textAlign: TextAlign.start,
                       style: AppStyles.styleMedium16(context)
                           .copyWith(color: AppColors.typographyBody(context)),
@@ -62,125 +62,150 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     child: Column(
                       children: [
                         const SizedBox(height: 32),
-                  BlocBuilder<PagesCubit, PagesState>(
-                    builder: (context, state) {
-                      switch (state.getsocialRequestState) {
-                        case RequestState.loading:
-                        case RequestState.ideal:
-                          return const ShimmerContactUs();
-                        case RequestState.error:
-                          return ErrorAppWidget(
-                            text: state.socialError!.message,
-                            onTap: () {
-                              context.read<PagesCubit>().getSocial();
-                            },
-                          );
-                        case RequestState.loaded:
-                          return Container(
-                            padding: const EdgeInsets.all(40),
-                            decoration: ShapeDecoration(
-                              color: Colors
-                                  .white /* Background-background-white */,
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                  width: 1,
-                                  color: Color(
-                                      0xFFE1E1E2) /* Borders-primary */,
-                                ),
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                ContactUsCardWidget(
-                                  text: 'إتصل بنا',
-                                  subText:
-                                      '966${state.socialModel?.data?.phoneNumber?.number ?? ''}+',
-                                  subtextIcon: AppAssets.app_imagesCopy,
-                                  icon: AppAssets.app_imagesPhoneNum,
+                        BlocBuilder<PagesCubit, PagesState>(
+                          builder: (context, state) {
+                            switch (state.getsocialRequestState) {
+                              case RequestState.loading:
+                              case RequestState.ideal:
+                                return const ShimmerContactUs();
+                              case RequestState.error:
+                                return ErrorAppWidget(
+                                  text: state.socialError!.message,
                                   onTap: () {
-                                    String phoneNumber = (state.socialModel?.data?.phoneNumber?.key ?? '') +
-                                        (state.socialModel?.data?.phoneNumber?.number ?? '');
-                                    if (phoneNumber.isNotEmpty) {
-                                      callPhoneNumber(phoneNumber);
-                                    }
+                                    context.read<PagesCubit>().getSocial();
                                   },
-                                ),
-                                const SizedBox(height: 16),
-                                ContactUsCardWidget(
-                                  text: 'المحادثة المباشرة',
-                                  icon: AppAssets.app_imagesWhatsapp,
-                                  subText:
-                                      '966${state.socialModel?.data?.whatsapp?.number ?? ''}+',
-                                  onTap: () {
-                                    String whatsappNumber = (state.socialModel?.data?.whatsapp?.key ?? '') +
-                                        (state.socialModel?.data?.whatsapp?.number ?? '');
-                                    if (whatsappNumber.isNotEmpty) {
-                                      openLink('https://wa.me/$whatsappNumber');
-                                    }
-                                  },
-                                ),
-                                const SizedBox(height: 16),
-                                ContactUsCardWidget(
-                                  text: 'البريد الالكتروني',
-                                  subText: '${state.socialModel?.data?.email ?? ''}',
-                                  subtextIcon: AppAssets.app_imagesCopy,
-                                  icon: AppAssets.app_imagesEmail,
-                                  onTap: () {
-                                    if (state.socialModel?.data?.email != null) {
-                                      openEmail(email: state.socialModel!.data!.email);
-                                    }
-                                  },
-                                ),
-                                const SizedBox(height: 16),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SvgPicture.asset(
-                                        AppAssets.app_imagesOuroffice),
-                                    const SizedBox(
-                                      width: 8,
+                                );
+                              case RequestState.loaded:
+                                return Container(
+                                  padding: const EdgeInsets.all(40),
+                                  decoration: ShapeDecoration(
+                                    color: Colors
+                                        .white /* Background-background-white */,
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        width: 1,
+                                        color: Color(
+                                            0xFFE1E1E2) /* Borders-primary */,
+                                      ),
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'مكاتبنا',
-                                              textAlign: TextAlign.start,
-                                              style: AppStyles.styleBold16(
-                                                  context),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 4),
-                                        OurOfficeWrap(
-                                          offices: state.socialModel?.data
-                                                  ?.ourOffice ??
-                                              [],
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 16),
-                                ContactUsCardWidget(
-                                  text: 'تابعنا على',
-                                  onTap: null,
-                                  instagram: state.socialModel?.data?.instagram,
-                                  linkedin: state.socialModel?.data?.linkedin,
-                                  twitter: state.socialModel?.data?.twitter,
-                                  youtube: state.socialModel?.data?.facebook,
-                                ),
-                                const SizedBox(height: 16),
-                              ],
-                            ),
-                          );
-                      }
-                    },
-                  ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ContactUsCardWidget(
+                                        text: 'إتصل بنا',
+                                        subText:
+                                            '966${state.socialModel?.data?.phoneNumber?.number ?? ''}+',
+                                        subtextIcon: AppAssets.app_imagesCopy,
+                                        icon: AppAssets.app_imagesPhoneNum,
+                                        onTap: () {
+                                          String phoneNumber = (state
+                                                      .socialModel
+                                                      ?.data
+                                                      ?.phoneNumber
+                                                      ?.key ??
+                                                  '') +
+                                              (state.socialModel?.data
+                                                      ?.phoneNumber?.number ??
+                                                  '');
+                                          if (phoneNumber.isNotEmpty) {
+                                            callPhoneNumber(phoneNumber);
+                                          }
+                                        },
+                                      ),
+                                      const SizedBox(height: 16),
+                                      ContactUsCardWidget(
+                                        text: 'المحادثة المباشرة',
+                                        icon: AppAssets.app_imagesWhatsapp,
+                                        subText:
+                                            '966${state.socialModel?.data?.whatsapp?.number ?? ''}+',
+                                        onTap: () {
+                                          String whatsappNumber = (state
+                                                      .socialModel
+                                                      ?.data
+                                                      ?.whatsapp
+                                                      ?.key ??
+                                                  '') +
+                                              (state.socialModel?.data?.whatsapp
+                                                      ?.number ??
+                                                  '');
+                                          if (whatsappNumber.isNotEmpty) {
+                                            openLink(
+                                                'https://wa.me/$whatsappNumber');
+                                          }
+                                        },
+                                      ),
+                                      const SizedBox(height: 16),
+                                      ContactUsCardWidget(
+                                        text: 'البريد الالكتروني',
+                                        subText:
+                                            '${state.socialModel?.data?.email ?? ''}',
+                                        subtextIcon: AppAssets.app_imagesCopy,
+                                        icon: AppAssets.app_imagesEmail,
+                                        onTap: () {
+                                          if (state.socialModel?.data?.email !=
+                                              null) {
+                                            openEmail(
+                                                email: state
+                                                    .socialModel!.data!.email);
+                                          }
+                                        },
+                                      ),
+                                      const SizedBox(height: 16),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SvgPicture.asset(
+                                              AppAssets.app_imagesOuroffice),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'مكاتبنا',
+                                                    textAlign: TextAlign.start,
+                                                    style:
+                                                        AppStyles.styleBold16(
+                                                            context),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 4),
+                                              OurOfficeWrap(
+                                                offices: state.socialModel?.data
+                                                        ?.ourOffice ??
+                                                    [],
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 16),
+                                      ContactUsCardWidget(
+                                        text: 'تابعنا على',
+                                        onTap: null,
+                                        instagram:
+                                            state.socialModel?.data?.instagram,
+                                        linkedin:
+                                            state.socialModel?.data?.linkedin,
+                                        twitter:
+                                            state.socialModel?.data?.twitter,
+                                        youtube:
+                                            state.socialModel?.data?.facebook,
+                                      ),
+                                      const SizedBox(height: 16),
+                                    ],
+                                  ),
+                                );
+                            }
+                          },
+                        ),
                         ContactUsFormWidget(pagesCubit: pagesCubit),
                         const SizedBox(height: 16),
                       ],

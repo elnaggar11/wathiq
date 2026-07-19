@@ -117,9 +117,8 @@ class _MazadtypeDropdownButtonFormFieldWidgetState
         ),
       ),
       icon: selectedValue == null
-          ? Icon(
-              Icons.arrow_drop_down,
-              color: AppColors.grey500(context),
+          ? SvgPicture.asset(
+              Assets.imagesArrowDownIcon,
             )
           : InkWell(
               onTap: () {

@@ -6,6 +6,7 @@ import 'package:wathiq/app/injector.dart';
 import 'package:wathiq/core/functions/cache_app_data.dart';
 
 import 'package:wathiq/core/network/socket/socket_service.dart';
+import 'package:wathiq/core/notifications/firebase_messaging.dart';
 import 'package:wathiq/core/notifications/local_notifications.dart';
 
 void main() async {
@@ -27,8 +28,7 @@ void main() async {
     await setupServiceLocator();
     await cacheAppData();
 
-    /// NOTIFICATIONS
-    // await FirebaseNotifications.initialize();
+    await FirebaseNotifications.initialize();
     await LocalNotificationService.initialize();
 
     /// SOCKET IO INIT

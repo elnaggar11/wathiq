@@ -45,7 +45,7 @@ class CancelRequestException extends ServerException {
 }
 
 class UnknownException extends ServerException {
-  const UnknownException([String? message]) : super('Unknown ');
+  const UnknownException([String? message]) : super(message ?? 'Unknown ');
 }
 
 class BadCertificateException extends ServerException {

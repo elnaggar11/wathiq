@@ -11,6 +11,7 @@ import 'package:wathiq/core/widgets/text_form_field_with_title_widget.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/paegs/presentation/view/widgets/add_real_state/pages_cities_dropdown_button_form_field_widget.dart';
 import 'package:animate_do/animate_do.dart';
 
 class AddRealStateScreen extends StatefulWidget {
@@ -51,97 +52,84 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
               duration: const Duration(milliseconds: 800),
               child: Form(
                 key: cubit.addRealFormKey,
-              child: Column(
-                children: [
-                  const SizedBox(height: 32),
-                  TextFormFieldWithTitleWidget(
-                    controller: cubit.realStateNameController,
-                    label: 'الإسم بالكامل',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'برجاء ادخال الإسم ';
-                      }
+                child: Column(
+                  children: [
+                    const SizedBox(height: 32),
+                    TextFormFieldWithTitleWidget(
+                      controller: cubit.realStateNameController,
+                      label: 'الإسم بالكامل',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'برجاء ادخال الإسم ';
+                        }
 
-                      return null;
-                    },
-                    keyboardType: TextInputType.text,
-                  ),
-                  const SizedBox(height: 24),
-                  TextFormFieldWithTitleWidget(
-                    controller: cubit.realStatephoneNumberController,
-                    label: 'رقم الجوال',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'برجاء ادخال رقم الجوال';
-                      }
-                      if (!RegExp(r'^5\d{8}$').hasMatch(value)) {
-                        return 'يجب أن يبدأ رقم الجوال ب 5 ويتكون من 9 أرقام';
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.number,
-                    suffixIconSize: 70,
-                    suffix: Row(
-                      children: [
-                        Container(
-                          height: 50.h,
-                          width: 1.w,
-                          color: AppColors.separatingBorder(context),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                            horizontal: 0.w,
+                        return null;
+                      },
+                      keyboardType: TextInputType.text,
+                    ),
+                    const SizedBox(height: 24),
+                    TextFormFieldWithTitleWidget(
+                      controller: cubit.realStatephoneNumberController,
+                      label: 'رقم الجوال',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'برجاء ادخال رقم الجوال';
+                        }
+                        if (!RegExp(r'^5\d{8}$').hasMatch(value)) {
+                          return 'يجب أن يبدأ رقم الجوال ب 5 ويتكون من 9 أرقام';
+                        }
+                        return null;
+                      },
+                      keyboardType: TextInputType.number,
+                      suffixIconSize: 70,
+                      suffix: Row(
+                        children: [
+                          Container(
+                            height: 50.h,
+                            width: 1.w,
+                            color: AppColors.separatingBorder(context),
                           ),
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            height: 24.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.r),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 12.h,
+                              horizontal: 0.w,
                             ),
-                            child: Text(
-                              '966+',
-                              style: AppStyles.styleBold14(context).copyWith(
-                                color: AppColors.typographyHeading(context),
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              height: 24.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6.r),
+                              ),
+                              child: Text(
+                                '966+',
+                                style: AppStyles.styleBold14(context).copyWith(
+                                  color: AppColors.typographyHeading(context),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                  TextFormFieldWithTitleWidget(
-                    controller: cubit.areaController,
-                    label: 'المساحة',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'برجاء ادخال المساحة';
-                      }
+                    const SizedBox(height: 24),
+                    TextFormFieldWithTitleWidget(
+                      controller: cubit.areaController,
+                      label: 'المساحة',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'برجاء ادخال المساحة';
+                        }
 
-                      return null;
-                    },
-                    keyboardType: TextInputType.number,
-                  ),
-                  const SizedBox(height: 24),
-                  SizedBox(
-                    height: 95,
-                    child: Row(
+                        return null;
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
                       children: [
-                        Expanded(
-                          child: TextFormFieldWithTitleWidget(
-                            controller: cubit.cityController,
-                            label: 'المدينة',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'برجاء ادخال المدينة';
-                              }
-
-                              return null;
-                            },
-                            keyboardType: TextInputType.text,
-                          ),
+                        const Expanded(
+                          child: PagesCitiesDropdownButtonFormFieldWidget(),
                         ),
                         const SizedBox(width: 24),
                         Expanded(
@@ -160,40 +148,39 @@ class _AddRealStateScreenState extends State<AddRealStateScreen> {
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 2),
-                  TextFormFieldWithTitleWidget(
-                    controller: cubit.descriptionController,
-                    label: 'وصف العقار',
-                    maxLines: 4,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'برجاء ادخال وصف العقار';
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.text,
-                  ),
-                  const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Text(
-                        'هل العقار مقيم تقييم معتمد؟',
-                        style: AppStyles.styleSemiBold16(context).copyWith(
-                          color: AppColors.typographyHeading(context),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  const SelectRealEstateStatusRadioButton(),
-                  const SizedBox(height: 24),
-                  const AddRealStateButtonWidget(),
-                  const SizedBox(height: 24),
-                ],
-              ),
+                    const SizedBox(height: 24),
+                    TextFormFieldWithTitleWidget(
+                      controller: cubit.descriptionController,
+                      label: 'وصف العقار',
+                      maxLines: 4,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'برجاء ادخال وصف العقار';
+                        }
+                        return null;
+                      },
+                      keyboardType: TextInputType.text,
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
+                      children: [
+                        Text(
+                          'هل العقار مقيم تقييم معتمد؟',
+                          style: AppStyles.styleSemiBold16(context).copyWith(
+                            color: AppColors.typographyHeading(context),
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    const SelectRealEstateStatusRadioButton(),
+                    const SizedBox(height: 24),
+                    const AddRealStateButtonWidget(),
+                    const SizedBox(height: 24),
+                  ],
+                ),
               ),
             ),
           ),

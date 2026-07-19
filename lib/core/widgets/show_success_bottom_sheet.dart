@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wathiq/config/routes/app_routes.dart';
@@ -38,11 +39,11 @@ Future<void> showSuccessBottomSheet({
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset(Assets.imagesSuccessIcon),
+                Pulse(child: SvgPicture.asset(Assets.imagesSuccessIcon)),
                 const SizedBox(height: 32),
                 Text(title, // Format DateTime
                     textAlign: TextAlign.center,
-                    style: AppStyles.stylBold24(context)),
+                    style: AppStyles.styleBold24(context)),
                 SizedBox(height: subTitle != null ? 16 : 0),
                 subTitle != null
                     ? Text(subTitle, // Format DateTime

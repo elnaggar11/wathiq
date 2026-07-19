@@ -74,7 +74,8 @@ class AppInterceptor extends Interceptor {
       ..sendTimeout = const Duration(seconds: 60)
       ..receiveTimeout = const Duration(seconds: 60)
       ..headers = {
-        AppStrings.contentType: AppStrings.applicationJson,
+        if (options.data is! FormData)
+          AppStrings.contentType: AppStrings.applicationJson,
         'Accept': 'application/json',
       };
     final String? cookie = await SecureStorageServices().getCookie();
@@ -108,8 +109,11 @@ class AppInterceptor extends Interceptor {
         'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
     debugPrint('RESPONSE HEADERS: ${response.headers}');
     if (response.headers['set-cookie'] != null) {
-      await SecureStorageServices()
-          .setCookie(cookie: response.headers['set-cookie']?.first);
+      List<String> rawCookies = response.headers['set-cookie']!;
+      String formattedCookie =
+          rawCookies.map((c) => c.split(';').first).join('; ');
+
+      await SecureStorageServices().setCookie(cookie: formattedCookie);
 
       log('login cookie ${response.headers['set-cookie']!}');
       log('data ${response.data}');
@@ -117,6 +121,9 @@ class AppInterceptor extends Interceptor {
       SocketService().token = connectSid;
       debugPrint('connect.sid saved: $connectSid');
       print('Now Start cashe coocke $connectSid');
+      print('\x1B[97m================== TOKEN ==================\x1B[0m');
+      print('\x1B[97m$connectSid\x1B[0m');
+      print('\x1B[97m===========================================\x1B[0m');
     }
 
     super.onResponse(response, handler);

@@ -304,7 +304,6 @@ double getScaleFactor(context) {
   // double width = physicalWidth / devicePixelRatio;
 
   double width = MediaQuery.sizeOf(context).width;
-  print('width $width');
   if (width < SizeConfig.tablet) {
     return width / 440;
   } else if (width < SizeConfig.desktop) {
