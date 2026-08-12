@@ -497,25 +497,9 @@ class _DropdownButtonFormFieldWidgetState
                     BorderSide(color: AppColors.primary(context), width: 1),
               ),
             ),
-            icon: selectedValue == null
-                ? SvgPicture.asset(
-                    Assets.imagesArrowDownIcon,
-                  )
-                : InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedValue = null;
-                      });
-                      authCubit.completeSignUpCountryID = null;
-                      profileCubit.deleteCountryIDFunction();
-                      authCubit.getCountries();
-                    },
-                    child: SizedBox(
-                      child: SvgPicture.asset(
-                        Assets.imagesCloseIcon,
-                      ),
-                    ),
-                  ),
+            icon: SvgPicture.asset(
+              Assets.imagesArrowDownIcon,
+            ),
           );
         }
       },

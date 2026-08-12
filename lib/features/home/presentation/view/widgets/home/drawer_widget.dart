@@ -105,20 +105,44 @@ class _DrawerWidgetState extends State<DrawerWidget> {
       child: Column(
         children: [
           const SizedBox(height: 12),
+          // ── Header Section ──
           ListTile(
             title: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Logo with fade-down entrance
                 SvgPicture.asset(
                   AppAssets.app_imagesHorizintalLogo,
                   height: 36,
                   width: 150,
                   fit: BoxFit.contain,
-                ),
+                )
+                    .animate()
+                    .fadeIn(
+                      duration: 400.ms,
+                      curve: Curves.easeOut,
+                    )
+                    .slideY(
+                      begin: -0.3,
+                      end: 0,
+                      duration: 500.ms,
+                      curve: Curves.easeOutCubic,
+                    ),
                 const SizedBox(height: 30),
-                const DrawerDividerWidget(),
+                // Divider with scale-X expansion
+                const DrawerDividerWidget()
+                    .animate()
+                    .scaleX(
+                      begin: 0,
+                      end: 1,
+                      duration: 400.ms,
+                      delay: 150.ms,
+                      curve: Curves.easeOutCubic,
+                      alignment: Alignment.centerRight,
+                    ),
                 const SizedBox(height: 16),
+                // Profile card with slide-up + fade
                 KisGuest == true
                     ? const SizedBox.shrink()
                     : GestureDetector(
@@ -202,15 +226,39 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                             ],
                           ),
                         ),
-                      ),
+                      )
+                        .animate()
+                        .fadeIn(
+                          duration: 450.ms,
+                          delay: 200.ms,
+                          curve: Curves.easeOut,
+                        )
+                        .slideY(
+                          begin: 0.15,
+                          end: 0,
+                          duration: 450.ms,
+                          delay: 200.ms,
+                          curve: Curves.easeOutCubic,
+                        )
+                        .scale(
+                          begin: const Offset(0.95, 0.95),
+                          end: const Offset(1, 1),
+                          duration: 450.ms,
+                          delay: 200.ms,
+                          curve: Curves.easeOutCubic,
+                        ),
               ],
             ),
           ),
           const SizedBox(height: 16),
+          // ── Menu Items List ──
           Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.zero,
               itemCount: drawerList.length,
               itemBuilder: (context, index) {
+                // Stagger delay: 350ms base + 70ms per item
+                final staggerDelay = 350 + (70 * index);
                 return ListTileWidget(
                   isLast: index == drawerList.length - 1,
                   image: drawerList[index]['image'],
@@ -218,16 +266,17 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   onTap: drawerList[index]['onTap'],
                 )
                     .animate()
-                    .slideX(
-                      begin: 0.5,
-                      end: 0,
-                      delay: Duration(milliseconds: 100 * index),
-                      duration: const Duration(milliseconds: 100),
-                      curve: Curves.easeOutCubic,
-                    )
                     .fadeIn(
-                      delay: Duration(milliseconds: 100 * index),
-                      duration: const Duration(milliseconds: 100),
+                      delay: Duration(milliseconds: staggerDelay),
+                      duration: 400.ms,
+                      curve: Curves.easeOut,
+                    )
+                    .slideX(
+                      begin: 0.25,
+                      end: 0,
+                      delay: Duration(milliseconds: staggerDelay),
+                      duration: 450.ms,
+                      curve: Curves.easeOutQuart,
                     );
               },
             ),
@@ -253,7 +302,7 @@ class DrawerDividerWidget extends StatelessWidget {
   }
 }
 
-class ListTileWidget extends StatelessWidget {
+class ListTileWidget extends StatefulWidget {
   const ListTileWidget({
     super.key,
     required this.text,
@@ -267,50 +316,105 @@ class ListTileWidget extends StatelessWidget {
   final bool isLast;
 
   @override
+  State<ListTileWidget> createState() => _ListTileWidgetState();
+}
+
+class _ListTileWidgetState extends State<ListTileWidget>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _tapController;
+  late final Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _tapController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 120),
+      reverseDuration: const Duration(milliseconds: 200),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.97).animate(
+      CurvedAnimation(parent: _tapController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _tapController.dispose();
+    super.dispose();
+  }
+
+  void _handleTapDown(TapDownDetails _) {
+    _tapController.forward();
+  }
+
+  void _handleTapUp(TapUpDetails _) {
+    _tapController.reverse();
+  }
+
+  void _handleTapCancel() {
+    _tapController.reverse();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 6, top: 6),
-          child: ListTile(
-            // put image at right side
-            trailing: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxHeight: 42,
-                maxWidth: 42,
-              ),
-              child: SvgPicture.asset(
-                AppAssets.app_imagesMonotoneadd,
+    return AnimatedBuilder(
+      animation: _scaleAnimation,
+      builder: (context, child) {
+        return Transform.scale(
+          scale: _scaleAnimation.value,
+          child: child,
+        );
+      },
+      child: GestureDetector(
+        onTapDown: _handleTapDown,
+        onTapUp: _handleTapUp,
+        onTapCancel: _handleTapCancel,
+        onTap: widget.onTap,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6, top: 6),
+              child: ListTile(
+                // put image at right side
+                trailing: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxHeight: 42,
+                    maxWidth: 42,
+                  ),
+                  child: SvgPicture.asset(
+                    AppAssets.app_imagesMonotoneadd,
+                  ),
+                ),
+                leading: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxHeight: 42,
+                    maxWidth: 42,
+                  ),
+                  child: SvgPicture.asset(
+                    widget.image,
+                    fit: BoxFit.contain,
+                    color: AppColors.typographyHeading(context),
+                  ),
+                ),
+                title: Text(
+                  widget.text,
+                  textAlign: TextAlign.start,
+                  style: AppStyles.styleSemiBold18(context).copyWith(
+                    color: AppColors.typographyHeading(context),
+                    height: 1.33,
+                  ),
+                ),
               ),
             ),
-            leading: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxHeight: 42,
-                maxWidth: 42,
+            if (!widget.isLast)
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 18),
+                child: DrawerDividerWidget(),
               ),
-              child: SvgPicture.asset(
-                image,
-                fit: BoxFit.contain,
-                color: AppColors.typographyHeading(context),
-              ),
-            ),
-            title: Text(
-              text,
-              textAlign: TextAlign.start,
-              style: AppStyles.styleSemiBold18(context).copyWith(
-                color: AppColors.typographyHeading(context),
-                height: 1.33,
-              ),
-            ),
-            onTap: onTap,
-          ),
+          ],
         ),
-        if (!isLast)
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18),
-            child: DrawerDividerWidget(),
-          ),
-      ],
+      ),
     );
   }
 }
+

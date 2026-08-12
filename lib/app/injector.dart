@@ -195,6 +195,9 @@ Future<void> _setUpExternal() async {
   serviceLocator.registerLazySingleton(() => sharedPreferences);
 
   serviceLocator.registerLazySingleton(() => AppInterceptor());
+  bool isResponseLog = false;
+  bool isErrorLog = false;
+
   serviceLocator.registerLazySingleton(
     () => PrettyDioLogger(
       requestHeader: true,
@@ -204,6 +207,29 @@ Future<void> _setUpExternal() async {
       error: true,
       compact: true,
       maxWidth: 60,
+      logPrint: (object) {
+        final str = object.toString();
+        if (str.contains('Response')) {
+          isResponseLog = true;
+          isErrorLog = false;
+        } else if (str.contains('Error')) {
+          isErrorLog = true;
+          isResponseLog = false;
+        } else if (str.contains('Request')) {
+          isResponseLog = false;
+          isErrorLog = false;
+        }
+
+        if (isResponseLog) {
+          // Fluorescent Neon Green (RGB 57, 255, 20)
+          print('\x1B[38;2;57;255;20m$str\x1B[0m');
+        } else if (isErrorLog) {
+          // Bright Red
+          print('\x1B[91m$str\x1B[0m');
+        } else {
+          print(str);
+        }
+      },
     ),
   );
   serviceLocator.registerLazySingleton(() => Dio());

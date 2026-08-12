@@ -27,23 +27,23 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   void initState() {
     context.read<ProfileCubit>().getProfile();
-    _updateStatusBar();
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateStatusBar();
+    });
     super.initState();
   }
 
   void _updateStatusBar() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: AppColors.white(context),
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: AppColors.white(context),
-      ),
-    );
-    Future.delayed(const Duration(milliseconds: 500)).then((v) {
-      setState(() {});
-    });
+    if (mounted) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: AppColors.white(context),
+          systemNavigationBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.white(context),
+        ),
+      );
+    }
   }
 
   @override

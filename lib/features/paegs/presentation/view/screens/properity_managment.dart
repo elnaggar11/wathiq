@@ -14,6 +14,7 @@ import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_images.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/features/paegs/presentation/view_model/pages_cubit.dart';
+import 'package:wathiq/features/auth/presentation/view_model/auth/auth_cubit.dart';
 import 'package:animate_do/animate_do.dart';
 
 class ProperityManagmentScreen extends StatefulWidget {
@@ -27,13 +28,19 @@ class ProperityManagmentScreen extends StatefulWidget {
 class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
   @override
   void initState() {
+    super.initState();
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
         statusBarColor: AppColors.primary(context),
       ),
     );
-    super.initState();
+    // Fetch cities from API if not already loaded
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (context.read<AuthCubit>().state.getCountriesModel == null) {
+        context.read<AuthCubit>().getCountries();
+      }
+    });
   }
 
   @override
@@ -98,21 +105,23 @@ class _ProperityManagmentScreenState extends State<ProperityManagmentScreen> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: CustomDropdownField(
-                            label: 'المدينة',
-                            items: const [
-                              'البنك الأهلي السعودي',
-                              'مصرف الراجحي',
-                              'بنك الرياض',
-                              // ...etc
-                            ],
-                            onChanged: (value) {
-                              // handle change
-                              print('Selected: $value');
-                            },
-                            onItemTap: (item) {
-                              // optional: do something as soon as user taps the item
-                              print('Tapped item: $item');
+                          child: BlocBuilder<AuthCubit, AuthState>(
+                            builder: (context, authState) {
+                              final cities =
+                                  authState.getCountriesModel?.data ?? [];
+                              return CustomDropdownField(
+                                label: 'المدينة',
+                                items: cities
+                                    .map((city) => city.name)
+                                    .toList(),
+                                onChanged: (value) {
+                                  cubit.properityCityController.text =
+                                      value ?? '';
+                                },
+                                onItemTap: (item) {
+                                  cubit.properityCityController.text = item;
+                                },
+                              );
                             },
                           ),
                         ),
@@ -451,23 +460,9 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
         ),
       ),
       iconSize: 20,
-      icon: selectedValue == null
-          ? SvgPicture.asset(
-              Assets.imagesArrowDownIcon,
-            )
-          : InkWell(
-              onTap: () {
-                setState(() {
-                  selectedValue = null;
-                });
-              },
-              child: SizedBox(
-                child: SvgPicture.asset(
-                  Assets.imagesCloseIcon,
-                  color: AppColors.typographyBody(context),
-                ),
-              ),
-            ),
+      icon: SvgPicture.asset(
+        Assets.imagesArrowDownIcon,
+      ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'يرجى اختيار ${widget.label}';

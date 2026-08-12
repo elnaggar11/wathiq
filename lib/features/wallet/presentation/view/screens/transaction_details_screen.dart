@@ -176,8 +176,8 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
-                          desc:
-                              DateFormat('dd, MMMM, yyyy').format(heldFunds?.createdAt.toLocal() ?? DateTime.now()),
+                          desc: DateFormat('dd, MMMM, yyyy').format(
+                              heldFunds?.createdAt.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -185,8 +185,8 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                         ),
                         TransactionDetailsCardWidget(
                           title: 'وقت المعاملة',
-                          desc:
-                              DateFormat('hh:mm a').format(heldFunds?.createdAt.toLocal() ?? DateTime.now()),
+                          desc: DateFormat('hh:mm a').format(
+                              heldFunds?.createdAt.toLocal() ?? DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -236,15 +236,15 @@ class HeldFundsDetailsScreen extends StatelessWidget {
                     title: 'حجز عربون على ' +
                         (heldFunds.enrollment.auction.title ?? ''),
                     amount: formatNumber(heldFunds.amount ?? 0),
-                    date: DateFormat('dd, MMMM, yyyy').format(
-                        heldFunds.createdAt.toLocal() ?? DateTime.now()),
-                    time: DateFormat('hh:mm a').format(
-                        heldFunds.createdAt.toLocal() ?? DateTime.now()),
-                    referenceNumber: heldFunds.id.toString() ?? '',
-                    status: 'حجز عربون على ' +
-                        (heldFunds.enrollment.auction.title ?? ''),
-                    details: 'حجز عربون على ' +
-                        (heldFunds.enrollment.auction.title ?? ''),
+                    date: DateFormat('dd, MMMM, yyyy')
+                        .format(heldFunds.createdAt.toLocal()),
+                    time: DateFormat('hh:mm a')
+                        .format(heldFunds.createdAt.toLocal()),
+                    referenceNumber: heldFunds.id.toString(),
+                    status:
+                        'حجز عربون على ' + (heldFunds.enrollment.auction.title),
+                    details:
+                        'حجز عربون على ' + (heldFunds.enrollment.auction.title),
                     context: context,
                   );
                 },
@@ -324,8 +324,9 @@ class WithdrawDetailsScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
-                          desc:
-                              DateFormat('dd, MMMM, yyyy').format(withdrawRequest?.createdAt.toLocal() ?? DateTime.now()),
+                          desc: DateFormat('dd, MMMM, yyyy').format(
+                              withdrawRequest?.createdAt.toLocal() ??
+                                  DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -333,8 +334,9 @@ class WithdrawDetailsScreen extends StatelessWidget {
                         ),
                         TransactionDetailsCardWidget(
                           title: 'وقت المعاملة',
-                          desc:
-                              DateFormat('hh:mm a').format(withdrawRequest?.createdAt.toLocal() ?? DateTime.now()),
+                          desc: DateFormat('hh:mm a').format(
+                              withdrawRequest?.createdAt.toLocal() ??
+                                  DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -396,12 +398,12 @@ class WithdrawDetailsScreen extends StatelessWidget {
                   );
                   await PdfService.generateAndDownloadInvoice(
                     title: 'طلب سحب رصيد',
-                    amount: formatNumber(withdrawRequest.amount ?? 0),
-                    date: DateFormat('dd, MMMM, yyyy').format(
-                        withdrawRequest.createdAt.toLocal() ?? DateTime.now()),
-                    time: DateFormat('hh:mm a').format(
-                        withdrawRequest.createdAt.toLocal() ?? DateTime.now()),
-                    referenceNumber: withdrawRequest.id.toString() ?? '',
+                    amount: formatNumber(withdrawRequest.amount),
+                    date: DateFormat('dd, MMMM, yyyy')
+                        .format(withdrawRequest.createdAt.toLocal()),
+                    time: DateFormat('hh:mm a')
+                        .format(withdrawRequest.createdAt.toLocal()),
+                    referenceNumber: withdrawRequest.id.toString(),
                     status: withdrawRequest.status == 'pending'
                         ? 'قيد المعالجة'
                         : withdrawRequest.status == 'inProgress'
@@ -409,8 +411,7 @@ class WithdrawDetailsScreen extends StatelessWidget {
                             : withdrawRequest.status == 'rejected'
                                 ? 'عملية مرفوضة'
                                 : 'تم التحويل',
-                    details:
-                        'طلب سحب رصيد بواسطة ${withdrawRequest.name ?? ''}',
+                    details: 'طلب سحب رصيد بواسطة ${withdrawRequest.name}',
                     context: context,
                   );
                 },
@@ -490,8 +491,9 @@ class InvoiceDetailsScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         TransactionDetailsCardWidget(
                           title: 'تاريخ المعاملة',
-                          desc:
-                              DateFormat('dd, MMMM, yyyy').format(invoiceRequest?.issueDate.toLocal() ?? DateTime.now()),
+                          desc: DateFormat('dd, MMMM, yyyy').format(
+                              invoiceRequest?.issueDate.toLocal() ??
+                                  DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -499,8 +501,9 @@ class InvoiceDetailsScreen extends StatelessWidget {
                         ),
                         TransactionDetailsCardWidget(
                           title: 'وقت المعاملة',
-                          desc:
-                              DateFormat('hh:mm a').format(invoiceRequest?.issueDate.toLocal() ?? DateTime.now()),
+                          desc: DateFormat('hh:mm a').format(
+                              invoiceRequest?.issueDate.toLocal() ??
+                                  DateTime.now()),
                         ),
                         Divider(
                           thickness: 1,
@@ -663,7 +666,8 @@ class IntroTrunsactonDetailsScreenWidget extends StatelessWidget {
                       context.pop();
                     },
                     child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxHeight: 24, maxWidth: 24),
+                      constraints:
+                          const BoxConstraints(maxHeight: 24, maxWidth: 24),
                       child: SvgPicture.asset(Assets.imagesArrowLeftLong),
                     ),
                   ),

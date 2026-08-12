@@ -27,28 +27,26 @@ class _LayoutScreenState extends State<LayoutScreen> {
   @override
   void initState() {
     super.initState();
-    _updateStatusBar();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateStatusBar();
+    });
     if (!KisGuest) {
       context.read<ProfileCubit>().getProfile();
     }
   }
 
   void _updateStatusBar() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: AppColors.white(context),
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: AppColors.white(context),
-      ),
-    );
-
-    Future.delayed(const Duration(milliseconds: 500)).then((v) {
-      setState(() {});
-    });
+    if (mounted) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: AppColors.white(context),
+          systemNavigationBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.white(context),
+        ),
+      );
+    }
   }
-
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

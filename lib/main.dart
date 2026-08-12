@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wathiq/app/app.dart';
@@ -37,8 +36,5 @@ void main() async {
     print('Error in initialization: $e');
   }
 
-  runApp(DevicePreview(
-    enabled: false,
-    builder: (context) => MyApp(),
-  ));
+  runApp(MyApp());
 }

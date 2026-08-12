@@ -27,27 +27,27 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
-    _updateStatusBar();
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateStatusBar();
+    });
   }
 
   void _updateStatusBar() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: AppColors.white(context),
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: AppColors.white(context),
-      ),
-    );
-    Future.delayed(const Duration(milliseconds: 100)).then((v) {
-      setState(() {});
-    });
+    if (mounted) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: AppColors.white(context),
+          systemNavigationBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.white(context),
+        ),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    _updateStatusBar();
     // bool isAppLocked =
     //     serviceLocator<IAppLocalStorage>().getValue(AppStrings.isAppLocked) ??
     //         false;

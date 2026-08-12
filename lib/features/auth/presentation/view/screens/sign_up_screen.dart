@@ -3,15 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
 import 'package:wathiq/core/utils/app_colors.dart';
 import 'package:wathiq/core/utils/app_styles.dart';
 import 'package:wathiq/core/utils/images.dart';
 import 'package:wathiq/core/utils/media_query_values.dart';
 
 import 'package:wathiq/config/routes/app_routes.dart';
-import 'package:wathiq/core/utils/app_animations.dart';
-import 'package:wathiq/core/utils/enums.dart';
 import 'package:wathiq/core/widgets/adaptive_layout_widget.dart';
 import 'package:wathiq/core/widgets/coustom_app_bar_widget.dart';
 import 'package:wathiq/core/widgets/my_snackbar.dart';
@@ -179,9 +176,9 @@ class SignUpButtonWidget extends StatelessWidget {
           return;
         }
         if (cubit.signUpFormKey.currentState!.validate()) {
-          cubit.completeSignUpNationalIDController.text = 
+          cubit.completeSignUpNationalIDController.text =
               cubit.signUpNationalIDController.text.trim();
-          
+
           context.navigateTo(
             Routes.completeSignUpScreen,
           );

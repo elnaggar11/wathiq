@@ -69,23 +69,9 @@ class _PagesCitiesDropdownButtonFormFieldWidgetState
 
           return DropdownButtonFormField<String>(
             isExpanded: true,
-            icon: selectedValue == null
-                ? SvgPicture.asset(
-                    Assets.imagesArrowDownIcon,
-                  )
-                : InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedValue = null;
-                      });
-                      pagesCubit.cityController.clear();
-                    },
-                    child: SizedBox(
-                      child: SvgPicture.asset(
-                        Assets.imagesCloseIcon,
-                      ),
-                    ),
-                  ),
+            icon: SvgPicture.asset(
+              Assets.imagesArrowDownIcon,
+            ),
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
                 vertical: 16.h,

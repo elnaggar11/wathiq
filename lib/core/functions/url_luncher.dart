@@ -84,7 +84,7 @@ Future<Either<Failure, String>> downloadFile(
     } else {
       dir = await getApplicationDocumentsDirectory();
     }
-    
+
     if (dir == null) {
       return const Left(AppFailure(message: 'فشل في الوصول إلى مسار التخزين'));
     }

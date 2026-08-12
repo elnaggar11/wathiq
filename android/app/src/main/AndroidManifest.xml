@@ -24,7 +24,12 @@
         android:icon="@mipmap/launcher_icon">
 
 
-                <!-- Google Maps API Key -->
+        <!-- Disable Impeller to fix black screen on emulator -->
+        <meta-data
+            android:name="io.flutter.embedding.android.EnableImpeller"
+            android:value="false" />
+
+        <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCt7Xwjj2Fx1YFL4uUJxfn0qS9yJvaJYSE" />
